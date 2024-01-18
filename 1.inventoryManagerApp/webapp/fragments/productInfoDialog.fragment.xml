@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Dialog title="Product Details" contentWidth='750px'>
+        <customHeader>
+            <Bar >
+                <contentLeft>
+                    <Title text="Product Details"></Title>
+                </contentLeft>
+                <contentRight>
+                    <Button text="Close" press="handleCloseDialog"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <form:SimpleForm>
+                <form:content>
+                    <Label text="Product ID"></Label>
+                    <Text text="{inventoryItemsModel>ProductId}"></Text>
+                    <Label text="Name"></Label>
+                    <Text text="{inventoryItemsModel>Name}"></Text>
+                    <Label text="Description"></Label>
+                    <Text text="{inventoryItemsModel>Description}"></Text>
+                    <Label text="Supplier Name"></Label>
+                    <Text text="{inventoryItemsModel>SupplierName}"></Text>
+                    <Label text="Category"></Label>
+                    <Text text="{inventoryItemsModel>Category}"></Text>
+                    <Label text="Date Of Sale"></Label>
+                    <Text text="{inventoryItemsModel>DateOfSale}"></Text>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <!-- <footer>
+            <Toolbar >
+                <ToolbarSpacer/>
+                <Button text="{= ${inventoryItemsModel>isEditMode} ? 'Save' : 'Edit'}" press="handleDialogEditButtonPress"></Button>
+            </Toolbar>
+
+        </footer> -->
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,35 @@
+<mvc:View controllerName="fragmentdialogapp.controller.UserDetail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <IconTabBar >
+                <items>
+                    <IconTabFilter text="Personal Info">
+                        <content>
+                            <core:Fragment fragmentName="fragmentdialogapp.fragments.personalInfo" type="XML" />
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter text="Job Summary">
+                        <content>
+                            <core:Fragment fragmentName="fragmentdialogapp.fragments.jobSummary" type="XML" />
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter text="Working Experience">
+                        <content>
+                            <mvc:XMLView viewName="fragmentdialogapp.view.NestedView"></mvc:XMLView>
+                        </content>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <footer>
+            <Bar design="Footer">
+                <contentRight>
+                    <Button text="Open Dialog" press="openDialogControl"></Button>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

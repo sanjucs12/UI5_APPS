@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zp_qu_dg_pro_step_role_cds" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZP_QU_DG_PROC_STEP_ROLEType" sap:label="QUDG : Process Step Role" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProcessId"/>
+                    <PropertyRef Name="Action"/>
+                </Key>
+                <Property Name="Action_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProcessId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:field-control="Action_fc" sap:label="Action" sap:quickinfo="Action Code for Process" sap:value-list="standard"/>
+                <Property Name="ProcessName" Type="Edm.String" MaxLength="40" sap:label="Process Name"/>
+                <Property Name="image_url" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Char255"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="ChangedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Date of Last Change"/>
+                <NavigationProperty Name="to_ProcesstoRole" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_7F3E4EF2702B87AC113350B7E551B96F" FromRole="FromRole_assoc_7F3E4EF2702B87AC113350B7E551B96F" ToRole="ToRole_assoc_7F3E4EF2702B87AC113350B7E551B96F"/>
+                <NavigationProperty Name="to_processtoroleuser" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_2E32C148AFE436D13C0E6BCC93789FE0" FromRole="FromRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0" ToRole="ToRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0"/>
+                <NavigationProperty Name="to_proctosteprole" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_1D5DA9BF06B4868D61BD5202F2DE160F" FromRole="FromRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F" ToRole="ToRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_ROLE_USERType" sap:label="QUDG : Role User Maintanence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProcessId"/>
+                    <PropertyRef Name="Action"/>
+                    <PropertyRef Name="StepId"/>
+                    <PropertyRef Name="RoleName"/>
+                    <PropertyRef Name="UserName"/>
+                </Key>
+                <Property Name="ProcessId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Action" sap:quickinfo="Action Code for Process"/>
+                <Property Name="StepId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="RoleName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Role Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="ValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From" sap:quickinfo="Date of validity"/>
+                <Property Name="ValidToDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To" sap:quickinfo="Date of validity"/>
+                <Property Name="StepName" Type="Edm.String" MaxLength="30" sap:label="Step Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ProcessName" Type="Edm.String" MaxLength="40" sap:label="Process Name"/>
+                <NavigationProperty Name="to_UsertoProcess" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_1D347FBA783C3B9679DBDF48882550DD" FromRole="FromRole_assoc_1D347FBA783C3B9679DBDF48882550DD" ToRole="ToRole_assoc_1D347FBA783C3B9679DBDF48882550DD"/>
+                <NavigationProperty Name="to_UsertoRole" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_3B9591FFDC2CCC9EA524A16FD559B429" FromRole="FromRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429" ToRole="ToRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_STEPSType" sap:label="QUDG : Step Maintanence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProcessId"/>
+                    <PropertyRef Name="Action"/>
+                    <PropertyRef Name="StepId"/>
+                </Key>
+                <Property Name="ProcessId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Action" sap:quickinfo="Action Code for Process"/>
+                <Property Name="StepId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="StepName" Type="Edm.String" MaxLength="30" sap:label="Step Name"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
+                <Property Name="StepType" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Step Type" sap:value-list="standard"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="ChangedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Date of Last Change"/>
+                <Property Name="ProcessName" Type="Edm.String" MaxLength="40" sap:label="Process Name"/>
+                <NavigationProperty Name="to_SteptoProcess" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_61EA37B516D581C23A4856D68CDE16DC" FromRole="FromRole_assoc_61EA37B516D581C23A4856D68CDE16DC" ToRole="ToRole_assoc_61EA37B516D581C23A4856D68CDE16DC"/>
+                <NavigationProperty Name="to_SteptoRole" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_A747CF8019656E3B3DBFB4E2BA9D3836" FromRole="FromRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836" ToRole="ToRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_STEPS_ROLEType" sap:label="QUDG : Step Role Maintanence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProcessId"/>
+                    <PropertyRef Name="StepId"/>
+                    <PropertyRef Name="Action"/>
+                    <PropertyRef Name="AssignedRole"/>
+                </Key>
+                <Property Name="ProcessId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="Process Name" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="StepId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="Process Name" sap:quickinfo="16 Byte UUID in 32 Characters (Hexadecimal Encoded)"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Action" sap:quickinfo="Action Code for Process"/>
+                <Property Name="AssignedRole" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Assigned Role" sap:quickinfo="Role Name" sap:value-list="standard"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="ChangedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Date of Last Change"/>
+                <Property Name="ProcessName" Type="Edm.String" MaxLength="40" sap:label="Process Name"/>
+                <Property Name="StepName" Type="Edm.String" MaxLength="30" sap:label="StepName" sap:quickinfo="Step Name"/>
+                <NavigationProperty Name="to_roletoproc" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_232858EEF344DFF03ECC37B2A6BD7E50" FromRole="FromRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50" ToRole="ToRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50"/>
+                <NavigationProperty Name="to_RoletoStep" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_A48965069A3605724AC8A1AB863A7FD9" FromRole="FromRole_assoc_A48965069A3605724AC8A1AB863A7FD9" ToRole="ToRole_assoc_A48965069A3605724AC8A1AB863A7FD9"/>
+                <NavigationProperty Name="to_RoletoUser" Relationship="cds_zp_qu_dg_pro_step_role_cds.assoc_6B08C32E822709D9ABD952E0E5752EB0" FromRole="FromRole_assoc_6B08C32E822709D9ABD952E0E5752EB0" ToRole="ToRole_assoc_6B08C32E822709D9ABD952E0E5752EB0"/>
+            </EntityType>
+            <EntityType Name="ZQU_DG_ACTION_VHType" sap:label="Value Help for Step" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ActionCode"/>
+                </Key>
+                <Property Name="ActionCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="ActionName" sap:label="Action Code" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="ActionName" Type="Edm.String" MaxLength="60" sap:label="Action Name" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZQU_DG_LANGUAGE_VHType" sap:label="QUDG : Value Help for Language" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LanguageCode"/>
+                </Key>
+                <Property Name="LanguageCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="LanguageName" sap:label="Code" sap:quickinfo="2-Character SAP Language Code"/>
+                <Property Name="LanguageName" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language"/>
+            </EntityType>
+            <EntityType Name="ZQU_DG_ROLE_VHType" sap:label="Value Help for Role" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RoleName"/>
+                </Key>
+                <Property Name="RoleName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="RoleDescription" sap:label="Role Name"/>
+                <Property Name="RoleDescription" Type="Edm.String" MaxLength="80" sap:label="Role Description"/>
+            </EntityType>
+            <EntityType Name="ZQU_DG_STEPTYPE_VHType" sap:label="Value Help for Step" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StepType"/>
+                </Key>
+                <Property Name="StepType" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="StepTypeName" sap:label="Step Type" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="StepTypeName" Type="Edm.String" MaxLength="60" sap:label="Step Type Name" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <Association Name="assoc_232858EEF344DFF03ECC37B2A6BD7E50" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="1" Role="FromRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="1" Role="ToRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50"/>
+            </Association>
+            <Association Name="assoc_A48965069A3605724AC8A1AB863A7FD9" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="1" Role="FromRole_assoc_A48965069A3605724AC8A1AB863A7FD9"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType" Multiplicity="1" Role="ToRole_assoc_A48965069A3605724AC8A1AB863A7FD9"/>
+            </Association>
+            <Association Name="assoc_6B08C32E822709D9ABD952E0E5752EB0" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="1" Role="FromRole_assoc_6B08C32E822709D9ABD952E0E5752EB0">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_ROLE_USERType" Multiplicity="*" Role="ToRole_assoc_6B08C32E822709D9ABD952E0E5752EB0"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_6B08C32E822709D9ABD952E0E5752EB0">
+                        <PropertyRef Name="AssignedRole"/>
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="StepId"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_6B08C32E822709D9ABD952E0E5752EB0">
+                        <PropertyRef Name="RoleName"/>
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="StepId"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_2E32C148AFE436D13C0E6BCC93789FE0" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="1" Role="FromRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_ROLE_USERType" Multiplicity="*" Role="ToRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0"/>
+            </Association>
+            <Association Name="assoc_1D5DA9BF06B4868D61BD5202F2DE160F" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="1" Role="FromRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="*" Role="ToRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F"/>
+            </Association>
+            <Association Name="assoc_7F3E4EF2702B87AC113350B7E551B96F" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="1" Role="FromRole_assoc_7F3E4EF2702B87AC113350B7E551B96F">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType" Multiplicity="*" Role="ToRole_assoc_7F3E4EF2702B87AC113350B7E551B96F"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_7F3E4EF2702B87AC113350B7E551B96F">
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_7F3E4EF2702B87AC113350B7E551B96F">
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_61EA37B516D581C23A4856D68CDE16DC" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType" Multiplicity="1" Role="FromRole_assoc_61EA37B516D581C23A4856D68CDE16DC"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="1" Role="ToRole_assoc_61EA37B516D581C23A4856D68CDE16DC"/>
+            </Association>
+            <Association Name="assoc_A747CF8019656E3B3DBFB4E2BA9D3836" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType" Multiplicity="1" Role="FromRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="*" Role="ToRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836">
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="StepId"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836">
+                        <PropertyRef Name="Action"/>
+                        <PropertyRef Name="StepId"/>
+                        <PropertyRef Name="ProcessId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_1D347FBA783C3B9679DBDF48882550DD" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_ROLE_USERType" Multiplicity="1" Role="FromRole_assoc_1D347FBA783C3B9679DBDF48882550DD"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" Multiplicity="0..1" Role="ToRole_assoc_1D347FBA783C3B9679DBDF48882550DD"/>
+            </Association>
+            <Association Name="assoc_3B9591FFDC2CCC9EA524A16FD559B429" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_ROLE_USERType" Multiplicity="1" Role="FromRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429"/>
+                <End Type="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" Multiplicity="1" Role="ToRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429"/>
+            </Association>
+            <EntityContainer Name="cds_zp_qu_dg_pro_step_role_cds_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZP_QU_DG_PROC_STEP_ROLE" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_ROLE_USER" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_ROLE_USERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_STEPS" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_STEPS_ROLE" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType" sap:updatable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZQU_DG_ACTION_VH" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZQU_DG_ACTION_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZQU_DG_LANGUAGE_VH" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZQU_DG_LANGUAGE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZQU_DG_ROLE_VH" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZQU_DG_ROLE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZQU_DG_STEPTYPE_VH" EntityType="cds_zp_qu_dg_pro_step_role_cds.ZQU_DG_STEPTYPE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A747CF8019656E3B3DBFB4E2BA9D3836" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_A747CF8019656E3B3DBFB4E2BA9D3836" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_STEPS" Role="FromRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836"/>
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="ToRole_assoc_A747CF8019656E3B3DBFB4E2BA9D3836"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_232858EEF344DFF03ECC37B2A6BD7E50" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_232858EEF344DFF03ECC37B2A6BD7E50" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="FromRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50"/>
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="ToRole_assoc_232858EEF344DFF03ECC37B2A6BD7E50"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6B08C32E822709D9ABD952E0E5752EB0" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_6B08C32E822709D9ABD952E0E5752EB0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="FromRole_assoc_6B08C32E822709D9ABD952E0E5752EB0"/>
+                    <End EntitySet="ZP_QU_DG_ROLE_USER" Role="ToRole_assoc_6B08C32E822709D9ABD952E0E5752EB0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A48965069A3605724AC8A1AB863A7FD9" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_A48965069A3605724AC8A1AB863A7FD9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="FromRole_assoc_A48965069A3605724AC8A1AB863A7FD9"/>
+                    <End EntitySet="ZP_QU_DG_STEPS" Role="ToRole_assoc_A48965069A3605724AC8A1AB863A7FD9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_61EA37B516D581C23A4856D68CDE16DC" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_61EA37B516D581C23A4856D68CDE16DC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_STEPS" Role="FromRole_assoc_61EA37B516D581C23A4856D68CDE16DC"/>
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="ToRole_assoc_61EA37B516D581C23A4856D68CDE16DC"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1D347FBA783C3B9679DBDF48882550DD" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_1D347FBA783C3B9679DBDF48882550DD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_ROLE_USER" Role="FromRole_assoc_1D347FBA783C3B9679DBDF48882550DD"/>
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="ToRole_assoc_1D347FBA783C3B9679DBDF48882550DD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1D5DA9BF06B4868D61BD5202F2DE160F" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_1D5DA9BF06B4868D61BD5202F2DE160F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="FromRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F"/>
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="ToRole_assoc_1D5DA9BF06B4868D61BD5202F2DE160F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3B9591FFDC2CCC9EA524A16FD559B429" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_3B9591FFDC2CCC9EA524A16FD559B429" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_ROLE_USER" Role="FromRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429"/>
+                    <End EntitySet="ZP_QU_DG_STEPS_ROLE" Role="ToRole_assoc_3B9591FFDC2CCC9EA524A16FD559B429"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2E32C148AFE436D13C0E6BCC93789FE0" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_2E32C148AFE436D13C0E6BCC93789FE0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="FromRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0"/>
+                    <End EntitySet="ZP_QU_DG_ROLE_USER" Role="ToRole_assoc_2E32C148AFE436D13C0E6BCC93789FE0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7F3E4EF2702B87AC113350B7E551B96F" Association="cds_zp_qu_dg_pro_step_role_cds.assoc_7F3E4EF2702B87AC113350B7E551B96F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_PROC_STEP_ROLE" Role="FromRole_assoc_7F3E4EF2702B87AC113350B7E551B96F"/>
+                    <End EntitySet="ZP_QU_DG_STEPS" Role="ToRole_assoc_7F3E4EF2702B87AC113350B7E551B96F"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType/Action" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Step"/>
+                        <PropertyValue Property="CollectionPath" String="ZQU_DG_ACTION_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Action"/>
+                                    <PropertyValue Property="ValueListProperty" String="ActionCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ActionName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="QUDG : Value Help for Language"/>
+                        <PropertyValue Property="CollectionPath" String="ZQU_DG_LANGUAGE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="LanguageCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LanguageName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="QUDG : Value Help for Language"/>
+                        <PropertyValue Property="CollectionPath" String="ZQU_DG_LANGUAGE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="LanguageCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LanguageName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType/StepType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Step"/>
+                        <PropertyValue Property="CollectionPath" String="ZQU_DG_STEPTYPE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="StepType"/>
+                                    <PropertyValue Property="ValueListProperty" String="StepType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StepTypeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPS_ROLEType/AssignedRole" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Role"/>
+                        <PropertyValue Property="CollectionPath" String="ZQU_DG_ROLE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="AssignedRole"/>
+                                    <PropertyValue Property="ValueListProperty" String="RoleName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="RoleDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.cds_zp_qu_dg_pro_step_role_cds_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_PROC_STEP_ROLEType/ProcessName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.ZP_QU_DG_STEPSType/StepName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.cds_zp_qu_dg_pro_step_role_cds_Entities/ZP_QU_DG_PROC_STEP_ROLE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Action_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ProcesstoRole"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_proctosteprole"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Action_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.cds_zp_qu_dg_pro_step_role_cds_Entities/ZP_QU_DG_STEPS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SteptoRole"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_pro_step_role_cds.cds_zp_qu_dg_pro_step_role_cds_Entities/ZP_QU_DG_STEPS_ROLE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RoletoUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZP_QU_DG_PRO_STEP_ROLE_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZP_QU_DG_PRO_STEP_ROLE_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

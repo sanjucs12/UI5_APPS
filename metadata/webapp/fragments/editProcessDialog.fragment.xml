@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:sf="sap.ui.comp.smartfield"
+    xmlns:form="sap.ui.comp.smartform">
+    <Dialog id="dialog_process" title="EDIT PROCESS" contentWidth="500px">
+        <content>
+
+            <!-- <smartFilterBar:SmartFilterBar id="smartFilterBar_Action" entitySet="ZP_QU_DG_PROC_STEP_ROLE">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="Action" visibleInAdvancedArea="true" filterType="single"></smartFilterBar:ControlConfiguration>
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar> -->
+            <Label text="Action"/>
+            <Input type="Text" value="{Action}" editable="false" id="smartFilterBar_Action"/>
+            <Label text="Process Name"/>
+            <Input type="Text" id="smartField_Process" value="{ProcessName}" editable="true"/>
+            <Button text="Edit" press="handleDialogEditButton"/>
+            <Button text="Cancel" press="handleDialogCancelButton"></Button>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

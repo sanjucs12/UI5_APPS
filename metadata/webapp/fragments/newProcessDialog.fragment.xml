@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Dialog id="dialog_process" title="Create New Process" contentWidth="500px">
+        <content>
+            <!--<VBox>-->
+            <smartFilterBar:SmartFilterBar id="smartFilterBar_Action" entitySet="ZP_QU_DG_PROC_STEP_ROLE">
+                <smartFilterBar:controlConfiguration>
+                    <!-- Smart Filter for Action -->
+                    <smartFilterBar:ControlConfiguration key="Action" visibleInAdvancedArea="true" filterType="single"></smartFilterBar:ControlConfiguration>
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+            <!--Smart field for Process Name-->
+            <Label text="Process Name"/>
+            <Input type="Text" id="smartField_Process"/>
+            <!--<smartField:SmartField id="smartField_Process" entitySet="ZP_QU_DG_PROC_STEP_ROLE" value="{ProcessName}">-->
+            <!--	<smartField:customData>-->
+            <!--		<core:CustomData key="ProcessName" value='true'/>-->
+            <!--	</smartField:customData>-->
+            <!--</smartField:SmartField>-->
+            <!--</VBox>-->
+            <Button text="Create" press="handleDialogCreateButton"/>
+            <Button text="Cancel" press="handleDialogCancelButton"></Button>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

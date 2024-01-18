@@ -1,0 +1,81 @@
+<mvc:View controllerName="inventory.controller.inventory"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table id="tableId" items="{inventoryItemsModel>/ProductCollection}" growing="true" growingScrollToLoad="true" growingThreshold="25">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Inventory Items" level="H2"/>
+                        <Text id="itemsCount" text="({inventoryItemsModel>/ProductCollection/length})"></Text>
+                        <ToolbarSpacer />
+                        <SearchField id="searchField" width="auto" liveChange=".handleSearchFilter" placeholder="Search by Category"></SearchField>
+                        <!-- <Text id="itemsCount" text="Total Items : {= ${inventoryItemsModel>/ProductCollection}.length }"></Text> -->
+                        
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column >
+                        <Label text="Product ID"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Name"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Category"></Label>
+                    </Column>
+                    <!-- <Column >
+                        <Label text="Description"></Label>
+                    </Column> -->
+                    <Column >
+                        <Label text="Quantity"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Unit Price"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Updated On"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Status"></Label>
+                    </Column>
+                    <Column >
+                        <Label text="Action"></Label>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Active" press="handleOpenDialog">
+                        <cells>
+                            <Input value="{inventoryItemsModel>ProductId}" editable="{inventoryItemsModel>Editable}"></Input >
+                            <Input value="{inventoryItemsModel>Name}" editable="{inventoryItemsModel>Editable}"></Input >
+                            <Input value="{inventoryItemsModel>Category}" editable="{inventoryItemsModel>Editable}"></Input >
+                            <!-- <Text text="{inventoryItemsModel>Description}"></Text> -->
+                            <Input value="{inventoryItemsModel>Quantity}" editable="{inventoryItemsModel>Editable}"></Input >
+                            <Input value=
+                            "{parts:
+                            [{path:'inventoryItemsModel>Price'},
+                            {path:'inventoryItemsModel>CurrencyCode'}],
+                            type:'sap.ui.model.type.Currency'
+                            }" editable="{inventoryItemsModel>Editable}"></Input >
+                            <Input value="{path:'inventoryItemsModel>DateOfSale', formatter:'.customFormatter.dateFormatter'}" editable="{inventoryItemsModel>Editable}"></Input >
+                            <ObjectStatus text="{inventoryItemsModel>Status}" state="{path:'inventoryItemsModel>Status', formatter:'.customFormatter.statusColorFormatter'}"></ObjectStatus>
+
+                            <HBox >
+                                <Button icon="sap-icon://edit" press="handleEditButton" visible="{= !${inventoryItemsModel>Editable} }"></Button>
+                                <Button icon="sap-icon://delete" press="handleDeleteButton" visible="{= !${inventoryItemsModel>Editable} }"></Button>
+                                <Button icon="sap-icon://save" press="handleSaveButton" visible="{= ${inventoryItemsModel>Editable} }"></Button>
+                                <Button icon="sap-icon://cancel" press="handleCancelButton" visible="{= ${inventoryItemsModel>Editable} }"></Button>
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Toolbar >
+                <Button text="getJsonModel" press="handleGetJsonModel"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

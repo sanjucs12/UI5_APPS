@@ -1,0 +1,90 @@
+<mvc:View controllerName="metadata.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartTable='sap.ui.comp.smarttable'>
+    <!-- <Page id="page" title="{i18n>title}">
+        <content> -->
+    <ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{ProcessName}"/>
+                </expandedHeading>
+                <actions>
+                    <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditButton"/>
+                    <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteButton"/>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+            <layout:VerticalLayout>
+                <m:ObjectStatus title="Process Name" text="{ProcessName}"/>
+                <m:ObjectStatus title="Action" text="{Action}"/>
+            </layout:VerticalLayout>
+        </headerContent>
+        <sections>
+            <ObjectPageSection titleUppercase="false" title="Process Details">
+                <subSections>
+                    <!--///>>>>>FIRST BLOCK (SMART FORM)<<<<<<///-->
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <smartForm:SmartForm>
+                                <smartForm:Group>
+                                    <smartForm:GroupElement>
+                                        <smartField:SmartField value="{ProcessName}"/>
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{Action}"/>
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                            </smartForm:SmartForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <!--///SECOND BLOCK = STEPS///-->
+            <ObjectPageSection titleUppercase="false" title="Step Details">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <smartTable:SmartTable id="smartTable_steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true">
+                                <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection" items="{ProcessDataModel>/}">
+                                    <m:headerToolbar>
+                                        <m:OverflowToolbar>
+                                            <m:ToolbarSpacer/>
+                                            <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
+                                            <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
+                                        </m:OverflowToolbar>
+                                    </m:headerToolbar>
+                                    <m:columns>
+                                        <m:Column >
+                                            <m:Label text="Step Name"></m:Label>
+                                        </m:Column>
+                                        <m:Column >
+                                            <m:Label text="Step Type"></m:Label>
+                                        </m:Column>
+                                    </m:columns>
+                                    <m:items>
+                                        <m:ColumnListItem vAlign="Middle" type="Navigation" press="onSelectStepRow">
+                                            <m:cells>
+                                                <m:Text text="{ProcessDataModel>StepName}"></m:Text >
+                                                <m:Text text="{ProcessDataModel>StepType}"></m:Text >
+                                            </m:cells>
+                                        </m:ColumnListItem>
+                                    </m:items>
+                                </m:Table>
+                            </smartTable:SmartTable>
+
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+    <!-- </content>
+    </Page> -->
+</mvc:View>
