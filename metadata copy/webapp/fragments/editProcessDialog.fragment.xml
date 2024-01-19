@@ -2,20 +2,30 @@
     xmlns="sap.m"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartForm="sap.ui.comp.smartform">
-    <Dialog id="dialog_process" title="EDIT PROCESS" contentWidth="750px">
+
+    <Dialog id="dialog_process" title="EDIT PROCESS">
         <content>
-            <smartForm:SmartForm editable="true">
-                <smartForm:Group>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField id="smartField_editProcessName" value="{ProcessName}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField id="smartField_editAction" value="{Action}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
-                    </smartForm:GroupElement>
-                </smartForm:Group>
-            </smartForm:SmartForm>
-            <Button text="Save" press="handle_editProcessDialog_EditButton"/>
-            <Button text="Cancel" press="handle_editProcessDialog_CancelButton"></Button>
+            <VBox class="sapUiSmallMargin">
+                <smartForm:SmartForm editable="true">
+                    <smartForm:Group>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_editProcessName" value="{ProcessName}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_editAction" value="{Action}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
+                        </smartForm:GroupElement>
+                    </smartForm:Group>
+                </smartForm:SmartForm>
+            </VBox>
         </content>
+        <footer>
+            <Toolbar >
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="Save" press="handle_editProcessDialog_EditButton" type="Emphasized"/>
+                    <Button text="Cancel" press="handle_editProcessDialog_CancelButton"></Button>
+                </content>
+            </Toolbar>
+        </footer>
     </Dialog>
 </core:FragmentDefinition>

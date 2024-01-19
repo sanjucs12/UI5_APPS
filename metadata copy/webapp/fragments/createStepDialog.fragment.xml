@@ -2,20 +2,30 @@
     xmlns="sap.m"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartForm="sap.ui.comp.smartform">
-    <Dialog id="dialog_createNewStep" title="Create New Step" contentWidth="750px">
+
+    <Dialog id="dialog_createNewStep" title="Create New Step">
         <content>
-            <smartForm:SmartForm editable="true">
-                <smartForm:Group>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField id="smartField_newStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
-                    </smartForm:GroupElement>
-                </smartForm:Group>
-            </smartForm:SmartForm>
-            <Button text="Create" press="handle_createStepDialog_CreateButton"/>
-            <Button text="Cancel" press="handle_createStepDialog_CancelButton"></Button>
+            <VBox class="sapUiSmallMargin">
+                <smartForm:SmartForm editable="true">
+                    <smartForm:Group>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_newStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                        </smartForm:GroupElement>
+                    </smartForm:Group>
+                </smartForm:SmartForm>
+            </VBox>
         </content>
+        <footer>
+            <Toolbar >
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="Create" press="handle_createStepDialog_CreateButton" type="Emphasized"/>
+                    <Button text="Cancel" press="handle_createStepDialog_CancelButton"></Button>
+                </content>
+            </Toolbar>
+        </footer>
     </Dialog>
 </core:FragmentDefinition>
