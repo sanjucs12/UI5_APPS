@@ -367,7 +367,7 @@ sap.ui.define([
 
 
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
             onBeforeRebindRolesTable: function (oEvent) {
                 var oFilter = new sap.ui.model.Filter({
                     path: "ProcessId",
