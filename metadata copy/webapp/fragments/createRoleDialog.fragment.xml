@@ -8,8 +8,13 @@
             <VBox class="sapUiSmallMargin">
                 <smartForm:SmartForm editable="true">
                     <smartForm:Group>
-                        <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_assaignStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                        <smartForm:GroupElement label="Step Name">
+                            <ComboBox items="{JSONModel_Steps>/steps}" id="comboBox_step" showClearIcon="true" required="true">
+                                <items>
+                                    <core:Item key="{JSONModel_Steps>StepId}" text="{JSONModel_Steps>StepName}"/>
+                                </items>
+                            </ComboBox>
+                            <!-- <smartField:SmartField id="smartField_assaignStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField> -->
                         </smartForm:GroupElement>
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_assaignRoleName" value="{AssignedRole}" entitySet="ZP_QU_DG_STEPS_ROLE"></smartField:SmartField>

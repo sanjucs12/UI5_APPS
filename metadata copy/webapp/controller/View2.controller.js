@@ -152,8 +152,8 @@ sap.ui.define([
                     error: function (oError) {
                         console.error("Error updating data", oError);
                     }
-                });             
-                
+                });
+
             },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
@@ -378,6 +378,19 @@ sap.ui.define([
             },
 
             handleCreateRoleButton: function () {
+                var aTableItems = this.getView().byId('table_steps').getItems();
+                var aArray = []
+                console.log(aTableItems);
+                aTableItems.map((item) => {
+                    aArray.push(item.getBindingContext().getObject());
+                })
+                //console.log(aArray);
+                var oModel = new sap.ui.model.json.JSONModel({
+                    steps: aArray
+                });
+                //console.log(oModel)   
+                this.getView().setModel(oModel,"JSONModel_Steps"); // Set the model to the view
+
                 if (!this.oCreateRoleDialog) {
                     this.loadFragment({
                         name: "metadata.fragments.createRoleDialog"
@@ -394,7 +407,9 @@ sap.ui.define([
                 var oModel = this.getView().getModel();
                 var sPath = this.createRolePath;
                 var sRoleName = this.getView().byId("smartField_assaignRoleName").getValue();
-                var sStepName = this.getView().byId("smartField_assaignStepName").getValue();
+                //var sStepName = this.getView().byId("smartField_assaignStepName").getValue();
+                var sStepName = this.getView().byId("comboBox_step").getSelectedItem().getText();
+                //console.log(sStepName);
                 // console.log(sPath)
                 // console.log(sRoleName);
 
