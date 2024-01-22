@@ -6,7 +6,9 @@
     xmlns:smartForm="sap.ui.comp.smartform"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable='sap.ui.comp.smarttable'
-    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:ng="sap.suite.ui.commons.networkgraph"
+    xmlns:ngl="sap.suite.ui.commons.networkgraph.layout">
     <!-- <Page id="page" title="{i18n>title}">
         <content> -->
     <ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
@@ -17,6 +19,7 @@
                     <m:Title text="{ProcessName}"/>
                 </expandedHeading>
                 <actions>
+                    <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/>
                     <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
                     <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
                 </actions>
@@ -74,6 +77,30 @@
                 </subSections>
             </ObjectPageSection>
             <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>THIRD BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+            <ObjectPageSection titleUppercase="false" title="Step Graph">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto">
+                                <ng:layoutAlgorithm>
+                                    <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
+                                </ng:layoutAlgorithm>
+                                <ng:nodes>
+                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="false" descriptionLineSize="0" shape="Box">
+                                        <ng:attributes>
+                                            <ng:ElementAttribute label="{StepName}" value="{StepName}"/>
+                                        </ng:attributes>
+                                    </ng:Node>
+                                </ng:nodes>
+                                <ng:lines>
+                                    <ng:Line from="{from}" to="{to}" press="linePress"/>
+                                </ng:lines>
+                            </ng:Graph>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>FOURTH BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
             <ObjectPageSection titleUppercase="false" title="Step Roles">
                 <subSections>
                     <ObjectPageSubSection>
@@ -83,7 +110,7 @@
                                     <m:OverflowToolbar design="Transparent">
                                         <m:ToolbarSpacer/>
                                         <m:Button text="Create" press="handleCreateRoleButton" icon="sap-icon://create"></m:Button>
-                                        <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>                                        
+                                        <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>
                                 <m:Table id="table_roles" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">

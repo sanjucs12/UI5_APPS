@@ -1,25 +1,26 @@
 <mvc:View controllerName="networkgraph.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.suite.ui.commons.networkgraph"
-    xmlns:mo="sap.m"
-    xmlns:layout="sap.suite.ui.commons.networkgraph.layout" height="100%">
+    xmlns:mo="sap.m" 
+    xmlns:layout="sap.suite.ui.commons.networkgraph.layout"
+    height="100%">
     <mo:Page id="networkGraphContainer" title="{i18n>title}">
         <mo:content>
-            <!-- <Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="graph" height="auto">
+            <Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto">
                 <layoutAlgorithm>
                     <layout:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                 </layoutAlgorithm>
                 <nodes>
-                    <Node icon="sap-icon://action-settings" key="{id}" description="{title}" title="{title}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="false" descriptionLineSize="0" shape="Box">
+                    <Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="false" descriptionLineSize="0" shape="Box">
                         <attributes>
-                            <ElementAttribute label="{label}" value="{value}"/>
+                            <ElementAttribute label="{StepName}" value="{StepName}"/>
                         </attributes>
                     </Node>
                 </nodes>
                 <lines>
                     <Line from="{from}" to="{to}" press="linePress"/>
                 </lines>
-            </Graph> -->
+            </Graph>
         </mo:content>
     </mo:Page>
 </mvc:View>

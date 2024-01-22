@@ -22,9 +22,11 @@ sap.ui.define([
                 var processPath = decodeURIComponent(encodedPath);
 
                 this.processPath = processPath
-                this.getProcessData(processPath); // Call readData with the processPath (GET REQUEST)
+          
+                this.createGraphPath = `${processPath}/to_ProcesstoRole`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
                 this.createStepPath = `${processPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${processPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
+                this.getProcessData(); // Call readData_ MAINLY CREATING A NETWORK GRAPH (GET REQUEST)
                 //console.log(this.createStepPath)
                 smartTableSteps.rebindTable();
                 smartTableRoles.rebindTable();
@@ -33,13 +35,15 @@ sap.ui.define([
                 });
             },
 
-            getProcessData: function (url) {
+            getProcessData: function () {
                 var oModel = this.getOwnerComponent().getModel();
-                var sPath = `${url}/to_ProcesstoRole`; // Defining the path for specific request                
+                //var sPath = `${url}/to_ProcesstoRole`; // Defining the path for specific request  
+                var sPath = this.createGraphPath;             
                 console.log(sPath)
                 oModel.read(sPath, {
                     success: function (response) {
                         console.log("Data Read Successfully: ", response.results);
+                        this._createNetworkGraph(response.results);
                     }.bind(this),
                     error: function (oError) {
                         // Handle error
@@ -156,6 +160,10 @@ sap.ui.define([
 
             },
 
+            handleGetProcessDetailsButton: function () {
+                this.getProcessData(this.processPath)
+            },
+
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
             handleStepRowClick: function (oEvent) {
@@ -227,6 +235,7 @@ sap.ui.define([
                                         oTable.removeSelections();   // Deselect all items after deletion
                                         that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
                                         that.getView().byId("editStepButton").setEnabled(false);
+                                        that.getProcessData()  //UPDATING THE GRAPH
                                     },
                                     error: function () {
                                         // Handle deletion error
@@ -275,8 +284,9 @@ sap.ui.define([
                 //Creating new Process in the Model
                 oModel.create(sPath, oNewStep, {
                     success: function (response) {
-                        console.log(response);
+                        //console.log(response);
                         that.oCreateStepDialog.close();
+                        that.getProcessData();
                     },
                     error: function (error) {
                         alert('error')
@@ -333,7 +343,8 @@ sap.ui.define([
                         console.log(`EDITED: ${response}`);
                         that.oEditStepDialog.close();  //CLOSING THE DIALOG
                         that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
-                        that.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON                      
+                        that.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
+                        that.getProcessData(); //UPDATE THE GRAPH                     
                     },
                     error: function (error) {
                         alert('error')
@@ -389,7 +400,7 @@ sap.ui.define([
                     steps: aArray
                 });
                 //console.log(oModel)   
-                this.getView().setModel(oModel,"JSONModel_Steps"); // Set the model to the view
+                this.getView().setModel(oModel, "JSONModel_Steps"); // Set the model to the view
 
                 if (!this.oCreateRoleDialog) {
                     this.loadFragment({
@@ -492,5 +503,29 @@ sap.ui.define([
             },
 
             handle_RolesTable_RowClick: function () { },
+
+            /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
+            _createNetworkGraph: function (data) {
+
+                //var oNetworkModel = new sap.ui.model.json.JSONModel();               
+                const nodes = data.map(step => ({ ...step }));
+                const lines = [];
+                for (let i = 0; i < data.length - 1; i++) {
+                    lines.push({
+                        from: data[i].StepId,
+                        to: data[i + 1].StepId
+                    });
+                }
+
+                // Create final result object
+                const result = {
+                    nodes,
+                    lines,
+                };
+                //console.log(result)
+                var oNetworkModel = new sap.ui.model.json.JSONModel(result);
+                //console.log(oNetworkModel.getData())
+                this.getView().byId("networkGraph").setModel(oNetworkModel)
+            }
         });
     });
