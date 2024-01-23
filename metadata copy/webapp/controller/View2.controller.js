@@ -12,6 +12,13 @@ sap.ui.define([
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.getRoute("RouteView2").attachPatternMatched(this.onPatternMatched, this);
+
+                //CREATING A MODEL TO TOGGLE STEP GRAPH AND STEP TABLE
+                var oToggleGraphTableModel = new sap.ui.model.json.JSONModel({
+                    table: false,
+                    graph: true,
+                });
+                this.getView().setModel(oToggleGraphTableModel, "toggleGraphTable");
             },
 
             onPatternMatched: function (oEvent) {
@@ -505,10 +512,8 @@ sap.ui.define([
             handle_RolesTable_RowClick: function () { },
 
             /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
-            _createNetworkGraph: function (data) {
-             
+            _createNetworkGraph: function (data) {             
                 const nodes = data.map(step => ({ ...step }));
-
                 const firstNode = nodes[0];
                 const lastNode = nodes[nodes.length-1];
                 
@@ -524,7 +529,6 @@ sap.ui.define([
                     //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
                     // }
                 }
-
                 // Create final result object
                 const oGraphData = {
                     nodes,
@@ -534,6 +538,22 @@ sap.ui.define([
                 var oNetworkModel = new sap.ui.model.json.JSONModel(oGraphData);
                 //console.log(oNetworkModel.getData())
                 this.getView().byId("networkGraph").setModel(oNetworkModel)
+            },
+
+            handleNodeClick: function (oEvent){
+                //console.log(oEvent.getSource())
+                var sStepId = oEvent.getSource().getBindingContext().getObject().StepId
+                //console.log(sStepId)
+                var oRolesTable = this.getView().byId('table_roles').getBinding('items')
+                // var bSelectedProperty = oEvent.getSource().getSelected();
+                // console.log(bSelectedProperty)
+                //console.log(oRolesTable)
+                var oFilter = new sap.ui.model.Filter({
+                    path: "StepId",
+                    operator: sap.ui.model.FilterOperator.EQ,
+                    value1: sStepId
+                });
+                oRolesTable.filter(oFilter);
             }
         });
     });

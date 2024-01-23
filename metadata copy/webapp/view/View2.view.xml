@@ -52,18 +52,29 @@
                 </subSections>
             </ObjectPageSection>
             <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>SECOND BLOCK : STEPS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-            <ObjectPageSection titleUppercase="false" title="Step Details">
+            <ObjectPageSection titleUppercase="false" title="Steps">
                 <subSections>
-                    <ObjectPageSubSection>
+                    <ObjectPageSubSection >
+                        <blocks >
+                            <m:Toolbar>
+                                <m:ToolbarSpacer/>
+                                <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
+                                <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
+                                <m:ToolbarSpacer/>
+                                <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
+                            </m:Toolbar>
+                        </blocks>
+                    </ObjectPageSubSection>
+
+                    <ObjectPageSubSection visible="{toggleGraphTable>/table}">
                         <blocks>
                             <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true">
                                 <smartTable:customToolbar>
                                     <m:OverflowToolbar design="Transparent">
                                         <m:ToolbarSpacer/>
-                                        <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
+                                        <!-- <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button> -->
                                         <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
                                         <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                                        <!-- <m:Button text="Assaign a Role" press="handleAssaignRoleButton" icon="sap-icon://edit" id="assaignRoleButton" enabled="false"></m:Button> -->
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>
                                 <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
@@ -74,21 +85,16 @@
                             </smartTable:SmartTable>
                         </blocks>
                     </ObjectPageSubSection>
-                </subSections>
-            </ObjectPageSection>
-            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>THIRD BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-            <ObjectPageSection titleUppercase="false" title="Step Graph">
-                <subSections>
-                    <ObjectPageSubSection>
+                    <ObjectPageSubSection visible="{toggleGraphTable>/graph}">
                         <blocks>
                             <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto">
                                 <ng:layoutAlgorithm>
                                     <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                                 </ng:layoutAlgorithm>
                                 <ng:nodes>
-                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="true" descriptionLineSize="0" shape="Box">
+                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
                                         <ng:attributes>
-                                            <ng:ElementAttribute label="{StepName}" value="{StepName}"/>
+                                            <ng:ElementAttribute label="" value=""/>
                                         </ng:attributes>
                                     </ng:Node>
                                 </ng:nodes>
@@ -100,6 +106,30 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
+            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>THIRD BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+            <!-- <ObjectPageSection titleUppercase="false" title="Step Graph">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto">
+                                <ng:layoutAlgorithm>
+                                    <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
+                                </ng:layoutAlgorithm>
+                                <ng:nodes>
+                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
+                                        <ng:attributes>
+                                            <ng:ElementAttribute label="" value=""/>
+                                        </ng:attributes>
+                                    </ng:Node>
+                                </ng:nodes>
+                                <ng:lines>
+                                    <ng:Line from="{from}" to="{to}" press="linePress"/>
+                                </ng:lines>
+                            </ng:Graph>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection> -->
             <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>FOURTH BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
             <ObjectPageSection titleUppercase="false" title="Step Roles">
                 <subSections>
