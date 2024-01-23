@@ -31,6 +31,7 @@
                 <m:ObjectStatus title="Action" text="{Action}"/>
             </layout:VerticalLayout>
         </headerContent>
+
         <sections>
             <!--///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FIRST BLOCK : PROCESS DETAILS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
             <ObjectPageSection titleUppercase="false" title="Process Details">
@@ -51,7 +52,8 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>SECOND BLOCK : STEPS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+
+            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>SECOND BLOCK : STEPS AND GRAPH<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
             <ObjectPageSection titleUppercase="false" title="Steps">
                 <subSections>
                     <ObjectPageSubSection >
@@ -106,40 +108,17 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
+
             <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>THIRD BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-            <!-- <ObjectPageSection titleUppercase="false" title="Step Graph">
-                <subSections>
-                    <ObjectPageSubSection>
-                        <blocks>
-                            <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto">
-                                <ng:layoutAlgorithm>
-                                    <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
-                                </ng:layoutAlgorithm>
-                                <ng:nodes>
-                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
-                                        <ng:attributes>
-                                            <ng:ElementAttribute label="" value=""/>
-                                        </ng:attributes>
-                                    </ng:Node>
-                                </ng:nodes>
-                                <ng:lines>
-                                    <ng:Line from="{from}" to="{to}" press="linePress"/>
-                                </ng:lines>
-                            </ng:Graph>
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-            </ObjectPageSection> -->
-            <!--///>>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>FOURTH BLOCK : STEPS ROLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
             <ObjectPageSection titleUppercase="false" title="Step Roles">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="true">
+                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
                                 <smartTable:customToolbar>
                                     <m:OverflowToolbar design="Transparent">
                                         <m:ToolbarSpacer/>
-                                        <m:Button text="Create" press="handleCreateRoleButton" icon="sap-icon://create"></m:Button>
+                                        <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
                                         <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>

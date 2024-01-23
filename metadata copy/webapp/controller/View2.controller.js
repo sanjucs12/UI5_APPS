@@ -29,7 +29,7 @@ sap.ui.define([
                 var processPath = decodeURIComponent(encodedPath);
 
                 this.processPath = processPath
-          
+
                 this.createGraphPath = `${processPath}/to_ProcesstoRole`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
                 this.createStepPath = `${processPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${processPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
@@ -45,7 +45,7 @@ sap.ui.define([
             getProcessData: function () {
                 var oModel = this.getOwnerComponent().getModel();
                 //var sPath = `${url}/to_ProcesstoRole`; // Defining the path for specific request  
-                var sPath = this.createGraphPath;             
+                var sPath = this.createGraphPath;
                 console.log(sPath)
                 oModel.read(sPath, {
                     success: function (response) {
@@ -383,7 +383,64 @@ sap.ui.define([
                 }
             },
 
+            /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
+            _createNetworkGraph: function (data) {
+                const nodes = data.map(step => ({ ...step }));
+                const firstNode = nodes[0];
+                const lastNode = nodes[nodes.length - 1];
 
+                const lines = [];
+                if (data.length <= 2) {
+                    lines.push({ from: firstNode.StepId, to: lastNode.StepId });
+                } else {
+                    for (let i = 1; i < nodes.length - 1; i++) {
+                        lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
+                        lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                    }
+                    // for (let i = 1; i < nodes.length - 1; i++) {
+                    //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                    // }
+                }
+                // Create final result object
+                const oGraphData = {
+                    nodes,
+                    lines,
+                };
+                console.log(oGraphData)
+                var oNetworkModel = new sap.ui.model.json.JSONModel(oGraphData);
+                //console.log(oNetworkModel.getData())
+                this.getView().byId("networkGraph").setModel(oNetworkModel)
+            },
+
+            handleNodeClick: function (oEvent) {
+                var oSmartTableRoles = this.getView().byId('smartTable_roles')
+                var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
+
+                oAssaignRoleButton.setEnabled(true);
+                oSmartTableRoles.rebindTable()  //BINDING ROLES TO TABLE : THIS WILL BIND ALL THE ROLES RELATED TO STEP
+
+                //console.log(oEvent.getSource())
+                var sStepId = oEvent.getSource().getBindingContext().getObject().StepId
+                var sStepName = oEvent.getSource().getBindingContext().getObject().StepName
+                var oRolesTable = this.getView().byId('table_roles').getBinding('items')
+
+                // var oSelectedNodeData = oEvent.getSource().getBindingContext().getObject();
+                var oSelectedNodeModel = new sap.ui.model.json.JSONModel({
+                    stepId: sStepId,
+                    stepName: sStepName
+                });
+                this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeDetails")
+                //console.log(oSelectedNodeModel)
+
+
+                //ADDING FILTER : FILTER THE ROLES RELATED TO PARTICULAR STEP           
+                var oFilter = new sap.ui.model.Filter({
+                    path: "StepId",
+                    operator: sap.ui.model.FilterOperator.EQ,
+                    value1: sStepId
+                });
+                oRolesTable.filter(oFilter);   //BINDING FILTERED ROLES TO TABLE
+            },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
             onBeforeRebindRolesTable: function (oEvent) {
@@ -395,19 +452,7 @@ sap.ui.define([
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
             },
 
-            handleCreateRoleButton: function () {
-                var aTableItems = this.getView().byId('table_steps').getItems();
-                var aArray = []
-                console.log(aTableItems);
-                aTableItems.map((item) => {
-                    aArray.push(item.getBindingContext().getObject());
-                })
-                //console.log(aArray);
-                var oModel = new sap.ui.model.json.JSONModel({
-                    steps: aArray
-                });
-                //console.log(oModel)   
-                this.getView().setModel(oModel, "JSONModel_Steps"); // Set the model to the view
+            handleAssaignRoleButton: function () {
 
                 if (!this.oCreateRoleDialog) {
                     this.loadFragment({
@@ -425,8 +470,7 @@ sap.ui.define([
                 var oModel = this.getView().getModel();
                 var sPath = this.createRolePath;
                 var sRoleName = this.getView().byId("smartField_assaignRoleName").getValue();
-                //var sStepName = this.getView().byId("smartField_assaignStepName").getValue();
-                var sStepName = this.getView().byId("comboBox_step").getSelectedItem().getText();
+                var sStepName = this.getView().byId("textField_assaignStepName").getText();
                 //console.log(sStepName);
                 // console.log(sPath)
                 // console.log(sRoleName);
@@ -511,49 +555,5 @@ sap.ui.define([
 
             handle_RolesTable_RowClick: function () { },
 
-            /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
-            _createNetworkGraph: function (data) {             
-                const nodes = data.map(step => ({ ...step }));
-                const firstNode = nodes[0];
-                const lastNode = nodes[nodes.length-1];
-                
-                const lines = [];
-                if (data.length <= 2) {
-                    lines.push({ from: firstNode.StepId, to: lastNode.StepId });
-                } else {
-                    for (let i = 1; i < nodes.length - 1; i++) {
-                        lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
-                        lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
-                    }
-                    // for (let i = 1; i < nodes.length - 1; i++) {
-                    //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
-                    // }
-                }
-                // Create final result object
-                const oGraphData = {
-                    nodes,
-                    lines,
-                };
-                console.log(oGraphData)
-                var oNetworkModel = new sap.ui.model.json.JSONModel(oGraphData);
-                //console.log(oNetworkModel.getData())
-                this.getView().byId("networkGraph").setModel(oNetworkModel)
-            },
-
-            handleNodeClick: function (oEvent){
-                //console.log(oEvent.getSource())
-                var sStepId = oEvent.getSource().getBindingContext().getObject().StepId
-                //console.log(sStepId)
-                var oRolesTable = this.getView().byId('table_roles').getBinding('items')
-                // var bSelectedProperty = oEvent.getSource().getSelected();
-                // console.log(bSelectedProperty)
-                //console.log(oRolesTable)
-                var oFilter = new sap.ui.model.Filter({
-                    path: "StepId",
-                    operator: sap.ui.model.FilterOperator.EQ,
-                    value1: sStepId
-                });
-                oRolesTable.filter(oFilter);
-            }
         });
     });
