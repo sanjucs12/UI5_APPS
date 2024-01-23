@@ -86,7 +86,7 @@
                                     <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                                 </ng:layoutAlgorithm>
                                 <ng:nodes>
-                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="false" descriptionLineSize="0" shape="Box">
+                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="true" descriptionLineSize="0" shape="Box">
                                         <ng:attributes>
                                             <ng:ElementAttribute label="{StepName}" value="{StepName}"/>
                                         </ng:attributes>

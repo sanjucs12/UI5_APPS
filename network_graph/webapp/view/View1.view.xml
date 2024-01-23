@@ -11,9 +11,9 @@
                     <layout:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                 </layoutAlgorithm>
                 <nodes>
-                    <Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" collapsed="{collapsed}" attributes="{attributes}" showActionLinksButton="false" showDetailButton="false" descriptionLineSize="0" shape="Box">
+                    <Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
                         <attributes>
-                            <ElementAttribute label="{StepName}" value="{StepName}"/>
+                            <ElementAttribute label="" value=""/>
                         </attributes>
                     </Node>
                 </nodes>

@@ -513,13 +513,17 @@ sap.ui.define([
                 const lastNode = nodes[nodes.length-1];
                 
                 const lines = [];
-                for (let i = 1; i < nodes.length-1; i++) {
-                    lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
-                    lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                if (data.length <= 2) {
+                    lines.push({ from: firstNode.StepId, to: lastNode.StepId });
+                } else {
+                    for (let i = 1; i < nodes.length - 1; i++) {
+                        lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
+                        lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                    }
+                    // for (let i = 1; i < nodes.length - 1; i++) {
+                    //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                    // }
                 }
-                // for (let i = 1; i < nodes.length-1; i++) {
-                //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
-                // }
 
                 // Create final result object
                 const oGraphData = {
