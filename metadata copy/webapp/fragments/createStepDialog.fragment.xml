@@ -11,6 +11,9 @@
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_newStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
                         </smartForm:GroupElement>
+                             <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_newStepSequence" value="{StepSequence}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                        </smartForm:GroupElement>
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
                         </smartForm:GroupElement>

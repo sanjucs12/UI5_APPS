@@ -94,9 +94,10 @@
                                     <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                                 </ng:layoutAlgorithm>
                                 <ng:nodes>
-                                    <ng:Node icon="sap-icon://action-settings" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
+                                    <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
                                         <ng:attributes>
-                                            <ng:ElementAttribute label="" value=""/>
+                                            <ng:ElementAttribute label="Step Type" value="{StepType}"/>
+                                            <ng:ElementAttribute label="Sequence" value="{StepSequence}"/>                                            
                                         </ng:attributes>
                                     </ng:Node>
                                 </ng:nodes>
@@ -138,10 +139,10 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <layout:ResponsiveSplitter defaultPane="default">
-                                <layout:PaneContainer resize=".onRootContainerResize">
-                                    <layout:SplitPane requiredParentWidth="400" id="default">
-                                        <m:Panel headerText="Minimum parent width 400" height="100%">
+                            <layout:ResponsiveSplitter defaultPane="rolesPane">
+                                <layout:PaneContainer>
+                                    <layout:SplitPane requiredParentWidth="600" id="rolesPane">
+                                        <m:Panel headerText="ROLES" height="100%">
                                             <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
                                                 <smartTable:customToolbar>
                                                     <m:OverflowToolbar design="Transparent">
@@ -159,9 +160,9 @@
                                         </m:Panel>
                                     </layout:SplitPane>
 
-                                    <layout:PaneContainer orientation="Vertical" resize=".onInnerContainerResize">
+                                    <layout:PaneContainer orientation="Horizontal">
                                         <layout:SplitPane requiredParentWidth="600">
-                                            <m:Panel headerText="Minimum parent width 600">
+                                            <m:Panel headerText="USERS">
                                                 <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
                                                     <smartTable:customToolbar>
                                                         <m:OverflowToolbar design="Transparent">

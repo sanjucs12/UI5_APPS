@@ -9,8 +9,11 @@
                 <smartForm:SmartForm editable="true">
                     <smartForm:Group>
                         <smartForm:GroupElement label="Step Name">
-                            <!-- <smartField:SmartField id="smartField_assaignStepName" value="{JSONModel_SelectedNodeDetails>/stepName}" /> -->
-                            <Text text="{JSONModel_SelectedNodeDetails>/stepName}" id="textField_assaignStepName"></Text>
+                            <!-- <smartField:SmartField value="{JSONModel_SelectedNodeDetails>/StepName}" /> -->
+                            <Text text="{JSONModel_SelectedNodeDetails>/StepName}" id="textField_assaignStepName"></Text>
+                        </smartForm:GroupElement>
+                            <smartForm:GroupElement label="Step Sequence">
+                            <Text text="{JSONModel_SelectedNodeDetails>/StepSequence}" id="textField_assaignStepSequence"></Text>
                         </smartForm:GroupElement>
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_assaignRoleName" value="{AssignedRole}" entitySet="ZP_QU_DG_STEPS_ROLE"></smartField:SmartField>

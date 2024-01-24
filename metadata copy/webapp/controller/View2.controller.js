@@ -282,15 +282,17 @@ sap.ui.define([
             handle_createStepDialog_CreateButton: function (oEvent) {
                 var oModel = this.getView().getModel();
                 var sPath = this.createStepPath;
-                var stepName = this.getView().byId("smartField_newStepName").getValue();
-                var stepType = this.getView().byId("smartField_newStepType").getValue();
+                var sStepName = this.getView().byId("smartField_newStepName").getValue();
+                var sStepType = this.getView().byId("smartField_newStepType").getValue();
+                var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
 
                 var that = this; //SAVING THIS CONTEXT IN A VARIABLE
 
                 // Create a new entry with action
                 var oNewStep = {
-                    StepName: stepName,
-                    StepType: stepType
+                    StepName: sStepName,
+                    StepType: sStepType,
+                    StepSequence: sStepSequence
                 };
                 //console.log(oNewStep);
 
@@ -427,14 +429,18 @@ sap.ui.define([
 
                 //console.log(oEvent.getSource())
                 var sStepId = oEvent.getSource().getBindingContext().getObject().StepId
-                var sStepName = oEvent.getSource().getBindingContext().getObject().StepName
+                // var sStepName = oEvent.getSource().getBindingContext().getObject().StepName
+                var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
                 var oRolesTable = this.getView().byId('table_roles').getBinding('items')
 
                 // var oSelectedNodeData = oEvent.getSource().getBindingContext().getObject();
-                var oSelectedNodeModel = new sap.ui.model.json.JSONModel({
-                    stepId: sStepId,
-                    stepName: sStepName
-                });
+                console.log(oClickedNodeData)
+                var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
+
+                // var oSelectedNodeModel = new sap.ui.model.json.JSONModel({
+                //     stepId: sStepId,
+                //     stepName: sStepName
+                // });
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeDetails")
                 //console.log(oSelectedNodeModel)
 
@@ -477,6 +483,7 @@ sap.ui.define([
                 var sPath = this.createRolePath;
                 var sRoleName = this.getView().byId("smartField_assaignRoleName").getValue();
                 var sStepName = this.getView().byId("textField_assaignStepName").getText();
+                var sStepSequence = this.getView().byId("textField_assaignStepSequence").getText();
                 //console.log(sStepName);
                 // console.log(sPath)
                 // console.log(sRoleName);
@@ -484,7 +491,8 @@ sap.ui.define([
                 //Create a new entry
                 var oNewRole = {
                     AssignedRole: sRoleName,
-                    StepName: sStepName
+                    StepName: sStepName,
+                    StepSequence: sStepSequence
                 };
                 //console.log(oNewRole);
 
