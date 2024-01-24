@@ -171,6 +171,12 @@ sap.ui.define([
                 this.getProcessData(this.processPath)
             },
 
+            handleGoToSampleViewButton: function () {
+                console.log('clicked')
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo('RouteView3');
+            },
+
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
             handleStepRowClick: function (oEvent) {

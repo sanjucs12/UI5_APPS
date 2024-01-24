@@ -1,0 +1,60 @@
+<mvc:View xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartTable='sap.ui.comp.smarttable' height="100%">
+    <layout:ResponsiveSplitter defaultPane="default">
+        <layout:PaneContainer resize=".onRootContainerResize">
+
+            <layout:SplitPane requiredParentWidth="400" id="default">
+                <!-- <l:layoutData>
+                    <l:SplitterLayoutData size="{sizes>/pane1}" />
+                </l:layoutData> -->
+                <m:Panel headerText="Minimum parent width 400" height="100%">
+                    <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
+                        <smartTable:customToolbar>
+                            <m:OverflowToolbar design="Transparent">
+                                <m:ToolbarSpacer/>
+                                <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
+                                <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
+                            </m:OverflowToolbar>
+                        </smartTable:customToolbar>
+                        <m:Table id="table_roles" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
+                            <m:items>
+                                <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
+                            </m:items>
+                        </m:Table>
+                    </smartTable:SmartTable>
+                </m:Panel>
+            </layout:SplitPane>
+
+            <layout:PaneContainer orientation="Vertical" resize=".onInnerContainerResize">
+                <layout:SplitPane requiredParentWidth="600">
+                    <!-- <l:layoutData>
+                        <l:SplitterLayoutData size="{sizes>/pane2}" />
+                    </l:layoutData> -->
+                    <m:Panel headerText="Minimum parent width 600">
+                        <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
+                            <smartTable:customToolbar>
+                                <m:OverflowToolbar design="Transparent">
+                                    <m:ToolbarSpacer/>
+                                    <m:Button text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
+                                    <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" enabled="false"></m:Button>
+                                </m:OverflowToolbar>
+                            </smartTable:customToolbar>
+                            <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </smartTable:SmartTable>
+                    </m:Panel>
+                </layout:SplitPane>
+            </layout:PaneContainer>
+
+        </layout:PaneContainer>
+
+    </layout:ResponsiveSplitter>
+</mvc:View>
