@@ -139,8 +139,10 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <layout:ResponsiveSplitter defaultPane="rolesPane">
+                            <layout:ResponsiveSplitter defaultPane="rolesPane">                            
                                 <layout:PaneContainer>
+
+                                 <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________ROLES TABLE___________________________<<<<<<<<<<<<<< -->
                                     <layout:SplitPane requiredParentWidth="600" id="rolesPane">
                                         <m:Panel headerText="ROLES" height="100%">
                                             <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
@@ -160,22 +162,16 @@
                                         </m:Panel>
                                     </layout:SplitPane>
 
-                                    <layout:PaneContainer orientation="Horizontal">
+                                    <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________USERS TABLE___________________________<<<<<<<<<<<<<< -->
+                                    <layout:PaneContainer orientation="Vertical">
                                         <layout:SplitPane requiredParentWidth="600">
                                             <m:Panel headerText="USERS">
                                                 <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
-                                                    <smartTable:customToolbar>
-                                                        <m:OverflowToolbar design="Transparent">
-                                                            <m:ToolbarSpacer/>
-                                                            <m:Button text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
-                                                            <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" enabled="false"></m:Button>
-                                                        </m:OverflowToolbar>
-                                                    </smartTable:customToolbar>
-                                                    <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
+                                                    <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
                                                         <m:items>
-                                                            <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
+                                                            <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>
                                                         </m:items>
-                                                    </m:Table>
+                                                    </m:Table> -->
                                                 </smartTable:SmartTable>
                                             </m:Panel>
                                         </layout:SplitPane>

@@ -421,46 +421,43 @@ sap.ui.define([
             },
 
             handleNodeClick: function (oEvent) {
-                var oSmartTableRoles = this.getView().byId('smartTable_roles')
+                var oSmartTable_roles = this.getView().byId('smartTable_roles')
+                var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
-
-                oAssaignRoleButton.setEnabled(true);
-                oSmartTableRoles.rebindTable()  //BINDING ROLES TO TABLE : THIS WILL BIND ALL THE ROLES RELATED TO STEP
+                oAssaignRoleButton.setEnabled(true);            
 
                 //console.log(oEvent.getSource())
-                var sStepId = oEvent.getSource().getBindingContext().getObject().StepId
-                // var sStepName = oEvent.getSource().getBindingContext().getObject().StepName
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
-                var oRolesTable = this.getView().byId('table_roles').getBinding('items')
-
-                // var oSelectedNodeData = oEvent.getSource().getBindingContext().getObject();
                 console.log(oClickedNodeData)
+
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
-
-                // var oSelectedNodeModel = new sap.ui.model.json.JSONModel({
-                //     stepId: sStepId,
-                //     stepName: sStepName
-                // });
-                this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeDetails")
-                //console.log(oSelectedNodeModel)
-
-
-                //ADDING FILTER : FILTER THE ROLES RELATED TO PARTICULAR STEP           
-                var oFilter = new sap.ui.model.Filter({
-                    path: "StepId",
-                    operator: sap.ui.model.FilterOperator.EQ,
-                    value1: sStepId
-                });
-                oRolesTable.filter(oFilter);   //BINDING FILTERED ROLES TO TABLE
+                this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeData")
+                oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
+               // oSmartTable_users.rebindTable()  //BINDING USERS TABLE
             },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
             onBeforeRebindRolesTable: function (oEvent) {
+                var oModel = this.getView().getModel("JSONModel_SelectedNodeData")
+                var sStepId = oModel.getData().StepId;
+                //console.log(sStepId);
+                
+                //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oFilter = new sap.ui.model.Filter({
-                    path: "ProcessId",
-                    operator: sap.ui.model.FilterOperator.EQ,
-                    value1: this.decodeProcessIdFromPath(this.processPath)
-                });
+                    filters: [
+                        new sap.ui.model.Filter({
+                            path: 'ProcessId',
+                            operator: sap.ui.model.FilterOperator.EQ,
+                            value1: this.decodeProcessIdFromPath(this.processPath)
+                        }),
+                        new sap.ui.model.Filter({
+                            path: 'StepId',
+                            operator: sap.ui.model.FilterOperator.EQ,
+                            value1: sStepId
+                        })
+                    ],
+                    and: true  // BOTH THE CONTITIONS SHOULD BE TRUE
+                })
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
             },
 
@@ -567,7 +564,24 @@ sap.ui.define([
                 });
             },
 
-            handle_RolesTable_RowClick: function () { },
+            handle_RolesTable_RowClick: function (oEvent) {
+                var oSmartTable_users = this.getView().byId('smartTable_users')
+                var oSelectedRoleData = oEvent.getSource().getBindingContext().getObject();
+                var oSelectedRoleModel = new sap.ui.model.json.JSONModel(oSelectedRoleData);
+                this.getView().setModel(oSelectedRoleModel, "JSONModel_SelectedRoleData")
+                oSmartTable_users.rebindTable();
+            },
 
+            onBeforeRebindUsersTable: function (oEvent) {
+                var oModel = this.getView().getModel("JSONModel_SelectedRoleData")
+                var sAssignedRole = oModel.getData().AssignedRole
+                //console.log(sAssignedRole)
+                var oFilter = new sap.ui.model.Filter({
+                    path: "RoleName",
+                    operator: sap.ui.model.FilterOperator.EQ,
+                    value1: sAssignedRole
+                });
+                oEvent.getParameter("bindingParams").filters.push(oFilter);
+            }
         });
     });
