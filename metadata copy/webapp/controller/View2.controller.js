@@ -394,21 +394,37 @@ sap.ui.define([
             /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
             _createNetworkGraph: function (data) {
                 const nodes = data.map(step => ({ ...step }));
-                const firstNode = nodes[0];
-                const lastNode = nodes[nodes.length - 1];
+                // const firstNode = nodes[0];
+                // const lastNode = nodes[nodes.length - 1];
 
-                const lines = [];
-                if (data.length <= 2) {
-                    lines.push({ from: firstNode.StepId, to: lastNode.StepId });
-                } else {
-                    for (let i = 1; i < nodes.length - 1; i++) {
-                        lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
-                        lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                let lines = [];
+
+                //OLD LOGIC
+                // if (data.length <= 2) {
+                //     lines.push({ from: firstNode.StepId, to: lastNode.StepId });
+                // } else {
+                //     for (let i = 1; i < nodes.length - 1; i++) {
+                //         lines.push({ from: firstNode.StepId, to: nodes[i].StepId });
+                //         lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
+                //     }
+                // }
+ 
+                for (let i = 0; i < data.length; i++) {
+                    let child = data[i].StepSequence
+                    let parentArray = []
+                    for (let j = 0; j < data.length; j++) {
+                        if (data[j].StepSequence == child - 1) {
+                            parentArray.push(data[j])
+                        }
                     }
-                    // for (let i = 1; i < nodes.length - 1; i++) {
-                    //     lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
-                    // }
+                    //console.log("child = ", data[i].StepId, parentArray)
+                    for (let k = 0; k < parentArray.length; k++) {
+                        lines.push({ from: parentArray[k].StepId, to: data[i].StepId })
+                    }
                 }
+
+                //console.log(lines);
+
                 // Create final result object
                 const oGraphData = {
                     nodes,
@@ -424,7 +440,7 @@ sap.ui.define([
                 var oSmartTable_roles = this.getView().byId('smartTable_roles')
                 var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
-                oAssaignRoleButton.setEnabled(true);            
+                oAssaignRoleButton.setEnabled(true);
 
                 //console.log(oEvent.getSource())
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
@@ -433,7 +449,7 @@ sap.ui.define([
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeData")
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
-               // oSmartTable_users.rebindTable()  //BINDING USERS TABLE
+                // oSmartTable_users.rebindTable()  //BINDING USERS TABLE
             },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
@@ -441,7 +457,7 @@ sap.ui.define([
                 var oModel = this.getView().getModel("JSONModel_SelectedNodeData")
                 var sStepId = oModel.getData().StepId;
                 //console.log(sStepId);
-                
+
                 //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oFilter = new sap.ui.model.Filter({
                     filters: [

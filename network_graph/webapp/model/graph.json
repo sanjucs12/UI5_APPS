@@ -1,118 +1,18 @@
 {
 	"nodes": [
-	   	{
-			"id": "Start",
-			"title": "Initiator",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/male_KentC.jpg",
-			"attributes": [
-				{
-					"label": 4,
-					"value": ""
-				}
-			],
-			
-		
-			"location": "Brno",
-			"position": "Development Manager",
-			"email": "thomas.mann@example.com",
-			"phone": "+000 423 235 013"
-		},
-	
-		{
-			"id": "Mann",
-			"title": "Final Approver",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/male_KentC.jpg",
-			"attributes": [
-				{
-					"label": 4,
-					"value": ""
-				}
-			],
-			
-			"team": 4,
-			"location": "Brno",
-			"position": "Development Manager",
-			"email": "thomas.mann@example.com",
-			"phone": "+000 423 235 013"
-		},
-		{
-			"id": "Toman",
-			"title": "Martin Toman",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/male_EastJ.jpg",
-		    	"attributes": [
-				{
-					"label": 6,
-					"value": ""
-				}
-			],
-			"location": "Brno",
-			"position": "Data Engineer",
-			"email": "martin.toman@example.com",
-			"phone": "+000 423 235 014"
-		},
-		{
-			"id": "Lee",
-			"title": "James Lee",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/male_NicolsJ.jpg",
-			
-			"location": "Brno",
-			"position": "Developer Associate",
-			"email": "james.lee@example.com",
-			"phone": "+000 423 235 015"
-		},
-		{
-			"id": "York",
-			"title": "Michal York",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/male_FieldJ.jpg",
-			
-			"location": "Brno",
-			"position": "Implementation Specialist",
-			"email": "michal.york@example.com",
-			"phone": "+000 423 235 016"
-		},
-		{
-			"id": "Lancaster",
-			"title": "Doris Lancaster",
-			"src": "./test-resources/sap/suite/ui/commons/demokit/images/people/female_GainsV.jpg",
-		
-			"location": "Brno",
-			"position": "Creative Developer",
-			"email": "doris.lancaster@example.com",
-			"phone": "+000 423 235 017"
-		}
+	  { "StepId": "a", "StepName": "step x", "StepSequence": "1" },
+	  { "StepId": "b", "StepName": "step xy", "StepSequence": "2" },
+	  { "StepId": "c", "StepName": "step xz", "StepSequence": "2" },
+	  { "StepId": "d", "StepName": "step z", "StepSequence": "3" },
+	  { "StepId": "e", "StepName": "step z", "StepSequence": "3" }
 	],
 	"lines": [
-		{
-			"from": "Toman",
-			"to": "Mann"
-		},
-		{
-			"from": "Lee",
-			"to": "Mann"
-		},
-		{
-			"from": "York",
-			"to": "Mann"
-		},
-		{
-			"from": "Lancaster",
-			"to": "Mann"
-		},
-			{
-			"from": "Start",
-			"to": "Toman"
-		},
-		{
-			"from": "Start",
-			"to": "Lee"
-		},
-		{
-			"from": "Start",
-			"to": "York"
-		},
-		{
-			"from": "Start",
-			"to": "Lancaster"
-		}
+	  { "from": "a", "to": "b" },
+	  { "from": "a", "to": "c" },
+	  { "from": "b", "to": "d" },
+	  { "from": "b", "to": "e" },
+	  { "from": "c", "to": "d" },
+	  { "from": "c", "to": "e" }
 	]
-}
+  }
+  
