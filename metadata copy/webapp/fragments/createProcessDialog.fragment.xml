@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartForm="sap.ui.comp.smartform">
-    
+
     <Dialog id="dialog_createProcess" title="Create New Process">
         <content>
             <VBox class="sapUiSmallMargin">
@@ -22,8 +22,8 @@
             <Toolbar >
                 <content>
                     <ToolbarSpacer />
-                    <Button text="Create" press="handleDialogCreateButton" type="Emphasized"/>
-                    <Button text="Cancel" press="handleDialogCancelButton"></Button>
+                    <Button text="Create" press="handleCreateProcessDialog_CreateButton" type="Emphasized"/>
+                    <Button text="Cancel" press="handleCreateProcessDialog_CancelButton"></Button>
                 </content>
             </Toolbar>
         </footer>

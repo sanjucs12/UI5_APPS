@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox) {
+    function (Controller, MessageBox, MessageToast) {
         "use strict";
 
         return Controller.extend("metadata.controller.View1", {
@@ -41,18 +42,20 @@ sap.ui.define([
                             aSelectedItems.forEach(function (oSelectedItem) {
                                 var sPath = oSelectedItem.getBindingContext().getPath();
                                 oModel.remove(sPath, {
-                                    success: function () {
+                                    success: function (response) {
                                         // Deletion successful, you may want to perform additional tasks
-                                        console.log("Item deleted successfully");
+                                        //console.log("Item deleted successfully");
+                                        MessageToast.show('Process Deleted');                                        
+                                        oTable.removeSelections(); // Deselect all items after deletion
                                     },
-                                    error: function () {
+                                    error: function (error) {
                                         // Handle deletion error
-                                        console.error("Error deleting item");
+                                        //console.error("Error deleting item");
+                                        MessageToast.show('SOMETHING WENT WRONG')
                                     }
                                 });
                             });
-                            // Deselect all items after deletion
-                            oTable.removeSelections();
+
                         }
                     }
                 });
@@ -72,11 +75,11 @@ sap.ui.define([
 
             },
 
-            handleDialogCancelButton: function () {
+            handleCreateProcessDialog_CancelButton: function () {
                 this.oCreateProcessDialog.close();
             },
 
-            handleDialogCreateButton: function () {
+            handleCreateProcessDialog_CreateButton: function () {
                 var oModel = this.getView().getModel();
                 var sProcessName = this.getView().byId("smartField_newProcessName").getValue();;
                 var sAction = this.getView().byId("smartField_newAction").getValue();
@@ -91,16 +94,18 @@ sap.ui.define([
                 // Creating new Process in the Model
                 oModel.create("/ZP_QU_DG_PROC_STEP_ROLE", oNewProcess, {
                     success: function (response) {
-                        console.log(`SUCCESS : ${response}`)
-                    },
+                        //console.log(response);
+                        this.oCreateProcessDialog.close(); // Close the dialog
+                        MessageToast.show('Process Created')
+                    }.bind(this),
                     error: function (error) {
-                        console.log(`ERROR : ${error}`)
+                        //console.log(error)
+                        MessageToast.show('SOMETHING WENT WRONG')
                     }
                 });                
-                this.oCreateProcessDialog.close(); // Close the dialog
             },
 
-            handleProcessRowSelection: function () {
+            handleProcessTable_RowSelection: function () {
                 //console.log('selected');
                 var oTable = this.getView().byId('table_process');
                 var oDeleteProcessButton = this.getView().byId("deleteProcessButton")
@@ -108,7 +113,7 @@ sap.ui.define([
                 oDeleteProcessButton.setEnabled(aSelectedItems.length > 0); // Enable the Delete button if at least one row is selected, otherwise disable it
             },
 
-            handleProcessRowClick: function (oEvent) {
+            handleProcessTable_RowClick: function (oEvent) {
                 var sPath = oEvent.getSource().getBindingContext().getPath()
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('RouteView2', {

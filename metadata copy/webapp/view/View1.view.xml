@@ -23,9 +23,9 @@
                         <Button text="Delete" press="handleDeleteProcessButton" icon="sap-icon://delete" id="deleteProcessButton" enabled="false"></Button>
                     </OverflowToolbar>
                 </smartTable:customToolbar>
-                <Table id="table_process" mode="SingleSelectLeft" selectionChange="handleProcessRowSelection">
+                <Table id="table_process" mode="SingleSelectLeft" selectionChange="handleProcessTable_RowSelection">
                     <items>
-                        <ColumnListItem vAlign="Middle" type="Navigation" press="handleProcessRowClick"></ColumnListItem>
+                        <ColumnListItem vAlign="Middle" type="Navigation" press="handleProcessTable_RowClick"></ColumnListItem>
                     </items>
                 </Table>
             </smartTable:SmartTable>

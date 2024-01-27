@@ -337,6 +337,7 @@ sap.ui.define([
                 this.oEditStepDialog.close();
             },
 
+            
             handle_editStepDialog_saveButton: function (oEvent) {
                 var oModel = this.getOwnerComponent().getModel();
                 var sPath = oEvent.getSource().getBindingContext().getPath()

@@ -12,7 +12,7 @@
     <!-- <Page id="page" title="{i18n>title}">
         <content> -->
     <ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
-        <!--///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>HEADER SECTION<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+        <!-->>>>>>>>>>>>>>>>>>___________SECTION - 01:HEADER SECTION______________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
@@ -34,7 +34,7 @@
         </headerContent>
 
         <sections>
-            <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>________FIRST BLOCK : PROCESS DETAILS______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+            <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-02 : PROCESS DETAILS______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
                 <ObjectPageSection titleUppercase="false" title="Process Details">
                     <subSections>
                         <ObjectPageSubSection>
@@ -54,7 +54,7 @@
                     </subSections>
                 </ObjectPageSection>
 
-                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECOND BLOCK : STEPS AND GRAPH______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECTION-03 : STEPS AND GRAPH______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
                     <ObjectPageSection titleUppercase="false" title="Steps">
                         <subSections>
                             <ObjectPageSubSection >
@@ -127,10 +127,10 @@
                         </subSections>
                     </ObjectPageSection> -->
 
-                    <!--///>>>>>>>>>>>>>>>>>>>>>___________FOURTH  BLOCK : SPLITTER___________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+                    <!-->>>>>>___________SECTION-04 : SPLITTER(ROLES AND USERS TABLES)___________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
                     <ObjectPageSection titleUppercase="false" title="Step Roles">
                         <subSections>
-                            <ObjectPageSubSection>
+                            <ObjectPageSubSection >
                                 <blocks>
                                     <layout:ResponsiveSplitter defaultPane="rolesPane">
                                         <layout:PaneContainer>
