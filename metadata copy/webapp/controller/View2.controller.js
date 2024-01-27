@@ -79,7 +79,7 @@ sap.ui.define([
                 }
             },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>__________SECTION 1____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
             handleDeleteProcessButton: function (oEvent) {
                 //alert('clicked')
@@ -177,7 +177,7 @@ sap.ui.define([
                 oRouter.navTo('RouteView3');
             },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>____________SECTION 2_______________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
             handleStepRowClick: function (oEvent) {
                 var sPath = oEvent.getSource().getBindingContext().getPath();
@@ -391,7 +391,7 @@ sap.ui.define([
                 }
             },
 
-            /////////////>>>>>>>>>>>>>>>>>>>NETWORK GRAPH<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
+            /////////////>>>>>>>>>>>>>>>>>>>___________NETWORK GRAPH__________<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
             _createNetworkGraph: function (data) {
                 const nodes = data.map(step => ({ ...step }));
                 // const firstNode = nodes[0];
@@ -408,7 +408,7 @@ sap.ui.define([
                 //         lines.push({ from: nodes[i].StepId, to: lastNode.StepId });
                 //     }
                 // }
- 
+
                 for (let i = 0; i < data.length; i++) {
                     let child = data[i].StepSequence
                     let parentArray = []
@@ -442,17 +442,27 @@ sap.ui.define([
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
                 oAssaignRoleButton.setEnabled(true);
 
+                //IF JSONModel_SelectedNodeData is already present, reset the role to empty string because it has the data of previously selected node
+                var oModel = this.getView().getModel('JSONModel_SelectedRoleData');
+                if (oModel) {
+                    oModel.setData({
+                        AssignedRole: ""
+                    });
+                    oSmartTable_users.rebindTable()
+                    //console.log(oModel.getData())
+                }
+
                 //console.log(oEvent.getSource())
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
-                console.log(oClickedNodeData)
+                //console.log(oClickedNodeData)
 
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeData")
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
-                // oSmartTable_users.rebindTable()  //BINDING USERS TABLE
+                //oSmartTable_users.rebindTable()  //BINDING USERS TABLE
             },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SECTION 3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>___________SECTION 3_____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
             onBeforeRebindRolesTable: function (oEvent) {
                 var oModel = this.getView().getModel("JSONModel_SelectedNodeData")
                 var sStepId = oModel.getData().StepId;
