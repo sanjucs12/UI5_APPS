@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox) {
+    function (Controller, MessageBox, MessageToast) {
         "use strict";
 
         return Controller.extend("metadata.controller.View2", {
@@ -22,24 +23,48 @@ sap.ui.define([
             },
 
             onPatternMatched: function (oEvent) {
-                var encodedPath = oEvent.getParameter("arguments").processPath;
-                var objectPageLayout = this.getView().byId('idObjectPageLayout')
-                var smartTableSteps = this.getView().byId("smartTable_steps")
-                var smartTableRoles = this.getView().byId("smartTable_roles")
-                var processPath = decodeURIComponent(encodedPath);
+                var sEncodedPath = oEvent.getParameter("arguments").processPath;
+                var oObjectPageLayout = this.getView().byId('idObjectPageLayout')
+                var oSmartTable_Steps = this.getView().byId("smartTable_steps")
+                var oSmartTable_Roles = this.getView().byId("smartTable_roles")
+                var oSmartTable_Users = this.getView().byId("smartTable_users")
+                var sProcessPath = decodeURIComponent(sEncodedPath);
 
-                this.processPath = processPath
+                this.processPath = sProcessPath
 
-                this.createGraphPath = `${processPath}/to_ProcesstoRole`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
-                this.createStepPath = `${processPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
-                this.createRolePath = `${processPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
-                this.getProcessData(); // Call readData_ MAINLY CREATING A NETWORK GRAPH (GET REQUEST)
+                this.createGraphPath = `${sProcessPath}/to_ProcesstoRole`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
+                this.createStepPath = `${sProcessPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
+                this.createRolePath = `${sProcessPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
+                this.getProcessData(); // Call readData_ MAINLY FOR CREATING A NETWORK GRAPH (GET REQUEST)
                 //console.log(this.createStepPath)
-                smartTableSteps.rebindTable();
-                smartTableRoles.rebindTable();
-                objectPageLayout.bindElement({
-                    path: decodeURIComponent(encodedPath),
+                oObjectPageLayout.bindElement({
+                    path: decodeURIComponent(sEncodedPath),
                 });
+                oSmartTable_Steps.rebindTable();
+
+                //IF JSONModel_SelectedStepData and JSONModel_SelectedRoleData is already present, reset the values to empty string and rebind the related tables to empty values
+
+                var oModel_Step = this.getView().getModel("JSONModel_SelectedStepData")
+                var oModel_Role = this.getView().getModel("JSONModel_SelectedRoleData")
+                //console.log(oModel_Step.getData());
+                //console.log(oModel_Role.getData());
+
+                if (oModel_Step) {
+                    var oDataObject = oModel_Step.getData()
+                    Object.keys(oDataObject).forEach(function (index) {
+                        oDataObject[index] = ''
+                    });
+                    //console.log(oModel_Step.getData())            
+                    oSmartTable_Roles.rebindTable();
+                }
+                if (oModel_Role) {
+                    var oDataObject = oModel_Role.getData()
+                    Object.keys(oDataObject).forEach(function (index) {
+                        oDataObject[index] = ''
+                    });
+                    //console.log(oModel_Role.getData())  
+                    oSmartTable_Users.rebindTable();
+                }
             },
 
             getProcessData: function () {
@@ -81,7 +106,7 @@ sap.ui.define([
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>__________SECTION 1____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
-            handleDeleteProcessButton: function (oEvent) {
+            handleDeleteProcessButton: function () {
                 //alert('clicked')
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel = this.getOwnerComponent().getModel();
@@ -92,22 +117,23 @@ sap.ui.define([
                 MessageBox.confirm(`Are you sure you want to delete ${sProcessName}?`, {
                     icon: MessageBox.Icon.WARNING,
                     actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.NO,
+                    emphasizedAction: MessageBox.Action.YES,
 
                     //callback function when the MessageBox is closed
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.YES) {
                             // User confirmed deletion
-                            oModel.setUseBatch(false); // Disable batch processing for the OData model
+                            //oModel.setUseBatch(false); // Disable batch processing for the OData model
                             oModel.remove(sPath, {
-                                success: function () {
-                                    // Deletion successful
-                                    console.log("Item deleted successfully");
-                                    oRouter.navTo('RouteView1')
+                                success: function (oResponse) {
+                                    //console.log("Item deleted successfully"); 
+                                    MessageToast.show("Process Deleted")                                   
+                                    oRouter.navTo('RouteView1')                                   
                                 },
-                                error: function () {
+                                error: function (oError) {
                                     // Handle deletion error
-                                    console.error("Error deleting item");
+                                    //console.error("Error deleting item");
+                                    MessageToast.show("Error: Something went Wrong")
                                 }
                             });
 
@@ -135,7 +161,6 @@ sap.ui.define([
                     });
                     this.oEditProcessDialog.open();
                 }
-
             },
 
             handle_editProcessDialog_CancelButton: function () {
@@ -156,12 +181,14 @@ sap.ui.define([
 
                 // Update the data in the OData service
                 oModel.update(sPath, oEditedProcessDetails, {
-                    success: function () {
-                        console.log("Data updated successfully");
+                    success: function (oResponse) {
+                        //console.log("Data updated successfully");
+                        MessageToast.show("Process details updated")
                         that.oEditProcessDialog.close(); // Close the dialog
                     },
                     error: function (oError) {
-                        console.error("Error updating data", oError);
+                        //console.error("Error updating data", oError);
+                        MessageToast.show("Error: Somenthing went wrong")
                     }
                 });
 
@@ -201,7 +228,7 @@ sap.ui.define([
                 // }
             },
 
-            handleStepRowSelection: function (oEvent) {
+            handleStepRowSelection: function () {
                 //console.log('selected');
                 var oTable = this.getView().byId('table_steps');
                 var oDeleteStepButton = this.getView().byId("deleteStepButton")
@@ -220,39 +247,36 @@ sap.ui.define([
 
                 var that = this; //SAVING THE CONTEXT OF THIS IN A VARIABLE
 
-                // Check if any items are selected
-                if (aSelectedItems.length === 0) {
-                    // No items selected, show an error or inform the user
-                    MessageBox.error("No Items Selected");
-                    return;
-                }
+                // // Check if any items are selected
+                // if (aSelectedItems.length === 0) {
+                //     // No items selected, show an error or inform the user
+                //     MessageBox.error("No Items Selected");
+                //     return;
+                // }
 
                 // Confirm deletion with the user
                 MessageBox.confirm("Are you sure you want to delete the selected steps?", {
                     icon: MessageBox.Icon.WARNING,
                     actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.NO,
+                    emphasizedAction: MessageBox.Action.YES,
                     //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.YES) {
-                            // User confirmed deletion
-                            oModel.setUseBatch(false);
-
                             // Iterate through selected items and delete them
                             aSelectedItems.forEach(function (oSelectedItem) {
                                 var sPath = oSelectedItem.getBindingContext().getPath();
                                 oModel.remove(sPath, {
-                                    success: function () {
-                                        // Deletion successful, you may want to perform additional tasks
-                                        console.log("Item deleted successfully");
+                                    success: function (oResponse) {
+                                        //console.log("Item deleted successfully");
+                                        MessageToast.show('Item deleted successfully')
                                         oTable.removeSelections();   // Deselect all items after deletion
                                         that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
                                         that.getView().byId("editStepButton").setEnabled(false);
                                         that.getProcessData()  //UPDATING THE GRAPH
                                     },
-                                    error: function () {
-                                        // Handle deletion error
-                                        console.error("Error deleting item");
+                                    error: function (oError) {
+                                        //console.error("Error deleting item");
+                                        MessageToast.show('Error: Something went wrong')
                                     }
                                 });
                             });
@@ -261,7 +285,7 @@ sap.ui.define([
                 });
             },
 
-            handleCreateStepButton: function (oEvent) {
+            handleCreateStepButton: function () {
                 //console.log(oModel)
                 if (!this.oCreateStepDialog) {
                     this.loadFragment({
@@ -279,7 +303,7 @@ sap.ui.define([
                 this.oCreateStepDialog.close();
             },
 
-            handle_createStepDialog_CreateButton: function (oEvent) {
+            handle_createStepDialog_CreateButton: function () {
                 var oModel = this.getView().getModel();
                 var sPath = this.createStepPath;
                 var sStepName = this.getView().byId("smartField_newStepName").getValue();
@@ -298,13 +322,15 @@ sap.ui.define([
 
                 //Creating new Process in the Model
                 oModel.create(sPath, oNewStep, {
-                    success: function (response) {
+                    success: function (oResponse) {
                         //console.log(response);
+                        MessageToast.show(`New Step added: ${sStepName}`)
                         that.oCreateStepDialog.close();
-                        that.getProcessData();
+                        that.getProcessData();  //MAKING A GET CALL WILL UPDATE THE GRAPH
                     },
-                    error: function (error) {
-                        alert('error')
+                    error: function (oError) {
+                        MessageToast.show('Error: Something went wrong')
+                        //alert('error')
                     }
                 });
             },
@@ -337,7 +363,7 @@ sap.ui.define([
                 this.oEditStepDialog.close();
             },
 
-            
+
             handle_editStepDialog_saveButton: function (oEvent) {
                 var oModel = this.getOwnerComponent().getModel();
                 var sPath = oEvent.getSource().getBindingContext().getPath()
@@ -356,51 +382,41 @@ sap.ui.define([
                 //Updating in the Model
                 oModel.update(sPath, oNewEditedStep, {
                     success: function (response) {
-                        console.log(`EDITED: ${response}`);
+                        //console.log(`EDITED: ${response}`);
+                        MessageToast.show("Step details updated")
                         that.oEditStepDialog.close();  //CLOSING THE DIALOG
                         that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
                         that.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
                         that.getProcessData(); //UPDATE THE GRAPH                     
                     },
-                    error: function (error) {
-                        alert('error')
+                    error: function (oError) {
+                        // alert('error')
+                        MessageToast.show("Error: Something went wrong")
                     }
                 });
             },
 
             handleAssaignRoleButton: function () {
-                var oTable = this.getView().byId('table_steps');
-                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
-                var sPath = aSelectedItems[0].getBindingContext().getPath()
-                //console.log(sPath)
-
                 if (!this.oCreateRoleDialog) {
                     this.loadFragment({
                         name: "metadata.fragments.createRoleDialog"
                     }).then(function (oDialog) {
                         this.oCreateRoleDialog = oDialog;
-                        // this.oCreateRoleDialog.bindElement({
-                        //     path: sPath,
-                        // });
                         this.oCreateRoleDialog.open();
                     }.bind(this));
                 } else {
-                    // this.oCreateRoleDialog.bindElement({
-                    //     path: sPath,
-                    // });
                     this.oCreateRoleDialog.open();
                 }
             },
 
             /////////////>>>>>>>>>>>>>>>>>>>___________NETWORK GRAPH__________<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
             _createNetworkGraph: function (data) {
-                const nodes = data.map(step => ({ ...step }));
-                // const firstNode = nodes[0];
-                // const lastNode = nodes[nodes.length - 1];
-
+                let nodes = data.map(step => ({ ...step }));
                 let lines = [];
 
                 //OLD LOGIC
+                // const firstNode = nodes[0];
+                // const lastNode = nodes[nodes.length - 1];              
                 // if (data.length <= 2) {
                 //     lines.push({ from: firstNode.StepId, to: lastNode.StepId });
                 // } else {
@@ -443,29 +459,27 @@ sap.ui.define([
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
                 oAssaignRoleButton.setEnabled(true);
 
-                //IF JSONModel_SelectedNodeData is already present, reset the role to empty string because it has the data of previously selected node
-                var oModel = this.getView().getModel('JSONModel_SelectedRoleData');
-                if (oModel) {
-                    oModel.setData({
-                        AssignedRole: ""
+                //IF JSONModel_SelectedRoleData is already present, reset the role to empty string because it has the data of previously selected node
+                var oModel_SelectedRole = this.getView().getModel('JSONModel_SelectedRoleData');
+                if (oModel_SelectedRole) {
+                    var oDataObject = oModel_SelectedRole.getData()
+                    Object.keys(oDataObject).forEach(function (index) {
+                        oDataObject[index] = ''
                     });
                     oSmartTable_users.rebindTable()
-                    //console.log(oModel.getData())
                 }
-
                 //console.log(oEvent.getSource())
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
                 //console.log(oClickedNodeData)
 
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
-                this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedNodeData")
+                this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedStepData")
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
-                //oSmartTable_users.rebindTable()  //BINDING USERS TABLE
             },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>___________SECTION 3_____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
             onBeforeRebindRolesTable: function (oEvent) {
-                var oModel = this.getView().getModel("JSONModel_SelectedNodeData")
+                var oModel = this.getView().getModel("JSONModel_SelectedStepData")
                 var sStepId = oModel.getData().StepId;
                 //console.log(sStepId);
 
@@ -522,14 +536,17 @@ sap.ui.define([
 
                 //Creating new Process in the Model
                 oModel.create(sPath, oNewRole, {
-                    success: function (response) {
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        alert('error')
+                    success: function (oResponse) {
+                        //console.log(response);
+                        MessageToast.show(` New Role assigned to ${sStepName}`)
+                        this.oCreateRoleDialog.close();
+                    }.bind(this),
+                    error: function (oError) {
+                        //alert('error')
+                        MessageToast.show('Error: Something went wrong')
                     }
                 });
-                this.oCreateRoleDialog.close();
+                
             },
 
             handle_createRoleDialog_cancelButton: function () {
@@ -551,37 +568,38 @@ sap.ui.define([
 
                 var aSelectedItems = oTable.getSelectedItems(); // Get selected items
 
-                // Check if any items are selected
-                if (aSelectedItems.length === 0) {
-                    // No items selected, show an error or inform the user
-                    MessageBox.error("No Items Selected");
-                    return;
-                }
+                // // Check if any items are selected
+                // if (aSelectedItems.length === 0) {
+                //     // No items selected, show an error or inform the user
+                //     MessageBox.error("No Items Selected");
+                //     return;
+                // }
 
                 // Confirm deletion with the user
                 MessageBox.confirm("Are you sure you want to delete the selected Role?", {
                     icon: MessageBox.Icon.WARNING,
                     actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.NO,
+                    emphasizedAction: MessageBox.Action.YES,
                     //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.YES) {
                             // User confirmed deletion
-                            oModel.setUseBatch(false);
+                            //oModel.setUseBatch(false);
 
                             // Iterate through selected items and delete them
                             aSelectedItems.forEach(function (oSelectedItem) {
                                 var sPath = oSelectedItem.getBindingContext().getPath();
                                 oModel.remove(sPath, {
-                                    success: function () {
-                                        // Deletion successful, you may want to perform additional tasks
-                                        console.log("Item deleted successfully");
+                                    success: function (oResponse) {
+                                        //console.log("Item deleted successfully");
+                                        MessageToast.show("Item deleted successfully")
                                         oTable.removeSelections();  // Deselect all items after deletion
                                         oDeleteStepButton.setEnabled(false)  //Disable the delete button
                                     },
-                                    error: function () {
+                                    error: function (oError) {
                                         // Handle deletion error
-                                        console.error("Error deleting item");
+                                        //console.error("Error deleting item");
+                                        MessageToast.show("Error: Something went wrong")
                                     }
                                 });
                             });
@@ -594,8 +612,8 @@ sap.ui.define([
             handle_RolesTable_RowClick: function (oEvent) {
                 var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oSelectedRoleData = oEvent.getSource().getBindingContext().getObject();
-                var oSelectedRoleModel = new sap.ui.model.json.JSONModel(oSelectedRoleData);
-                this.getView().setModel(oSelectedRoleModel, "JSONModel_SelectedRoleData")
+                var oModel_SelectedRole = new sap.ui.model.json.JSONModel(oSelectedRoleData);
+                this.getView().setModel(oModel_SelectedRole, "JSONModel_SelectedRoleData")
                 oSmartTable_users.rebindTable();
             },
 

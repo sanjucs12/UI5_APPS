@@ -12,99 +12,99 @@
     <!-- <Page id="page" title="{i18n>title}">
         <content> -->
     <ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
-        <!-->>>>>>>>>>>>>>>>>>___________SECTION - 01:HEADER SECTION______________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-        <headerTitle>
-            <ObjectPageDynamicHeaderTitle>
-                <expandedHeading>
-                    <m:Title text="{ProcessName}"/>
-                </expandedHeading>
-                <actions>
-                    <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/>
-                    <m:Button text="Go To Sample view" type="Neutral" press="handleGoToSampleViewButton"/>
-                    <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
-                    <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
-                </actions>
-            </ObjectPageDynamicHeaderTitle>
-        </headerTitle>
-        <headerContent>
-            <layout:VerticalLayout>
-                <m:ObjectStatus title="Process Name" text="{ProcessName}"/>
-                <m:ObjectStatus title="Action" text="{Action}"/>
-            </layout:VerticalLayout>
-        </headerContent>
+        <!-->>>>>>>>>>>>>>>>>>___________SECTION - 01:HEADER SECTION______________        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+            <headerTitle>
+                <ObjectPageDynamicHeaderTitle>
+                    <expandedHeading>
+                        <m:Title text="{ProcessName}"/>
+                    </expandedHeading>
+                    <actions>
+                        <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/>
+                        <m:Button text="Go To Sample view" type="Neutral" press="handleGoToSampleViewButton"/>
+                        <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
+                        <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
+                    </actions>
+                </ObjectPageDynamicHeaderTitle>
+            </headerTitle>
+            <headerContent>
+                <layout:VerticalLayout>
+                    <m:ObjectStatus title="Process Name" text="{ProcessName}"/>
+                    <m:ObjectStatus title="Action" text="{Action}"/>
+                </layout:VerticalLayout>
+            </headerContent>
 
-        <sections>
-            <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-02 : PROCESS DETAILS______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-                <ObjectPageSection titleUppercase="false" title="Process Details">
-                    <subSections>
-                        <ObjectPageSubSection>
-                            <blocks>
-                                <smartForm:SmartForm>
-                                    <smartForm:Group>
-                                        <smartForm:GroupElement>
-                                            <smartField:SmartField value="{ProcessName}"/>
-                                        </smartForm:GroupElement>
-                                        <smartForm:GroupElement >
-                                            <smartField:SmartField value="{Action}"/>
-                                        </smartForm:GroupElement>
-                                    </smartForm:Group>
-                                </smartForm:SmartForm>
-                            </blocks>
-                        </ObjectPageSubSection>
-                    </subSections>
-                </ObjectPageSection>
-
-                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECTION-03 : STEPS AND GRAPH______<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-                    <ObjectPageSection titleUppercase="false" title="Steps">
+            <sections>
+                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-02 : PROCESS DETAILS______                <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                    <ObjectPageSection titleUppercase="false" title="Process Details">
                         <subSections>
-                            <ObjectPageSubSection >
-                                <m:VBox >
-                                    <m:Toolbar >
-                                        <m:ToolbarSpacer/>
-                                        <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
-                                        <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
-                                        <m:ToolbarSpacer/>
-                                        <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
-                                    </m:Toolbar>
-
-                                    <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true" visible="{toggleGraphTable>/table}">
-                                        <smartTable:customToolbar>
-                                            <m:OverflowToolbar design="Transparent">
-                                                <m:ToolbarSpacer/>
-                                                <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
-                                                <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                                            </m:OverflowToolbar>
-                                        </smartTable:customToolbar>
-                                        <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
-                                            <m:items>
-                                                <m:ColumnListItem vAlign="Middle" type="Active" press="handleStepRowClick"></m:ColumnListItem>
-                                            </m:items>
-                                        </m:Table>
-                                    </smartTable:SmartTable>
-
-                                    <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto" visible="{toggleGraphTable>/graph}">
-                                        <ng:layoutAlgorithm>
-                                            <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
-                                        </ng:layoutAlgorithm>
-                                        <ng:nodes>
-                                            <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
-                                                <ng:attributes>
-                                                    <ng:ElementAttribute label="Step Type" value="{StepType}"/>
-                                                    <ng:ElementAttribute label="Sequence" value="{StepSequence}"/>
-                                                </ng:attributes>
-                                            </ng:Node>
-                                        </ng:nodes>
-                                        <ng:lines>
-                                            <ng:Line from="{from}" to="{to}" press="linePress"/>
-                                        </ng:lines>
-                                    </ng:Graph>
-                                </m:VBox>
+                            <ObjectPageSubSection>
+                                <blocks>
+                                    <smartForm:SmartForm>
+                                        <smartForm:Group>
+                                            <smartForm:GroupElement>
+                                                <smartField:SmartField value="{ProcessName}"/>
+                                            </smartForm:GroupElement>
+                                            <smartForm:GroupElement >
+                                                <smartField:SmartField value="{Action}"/>
+                                            </smartForm:GroupElement>
+                                        </smartForm:Group>
+                                    </smartForm:SmartForm>
+                                </blocks>
                             </ObjectPageSubSection>
                         </subSections>
                     </ObjectPageSection>
 
-                 <!--///>>>>>>>>>>>>>>>>>>>>>>>>>>_____THIRD BLOCK : STEPS ROLE__________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-                    <!-- <ObjectPageSection titleUppercase="false" title="Step Roles">
+                    <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECTION-03 : STEPS AND GRAPH______                    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                        <ObjectPageSection titleUppercase="false" title="Steps">
+                            <subSections>
+                                <ObjectPageSubSection >
+                                    <m:VBox >
+                                        <m:Toolbar >
+                                            <m:ToolbarSpacer/>
+                                            <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
+                                            <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
+                                            <m:ToolbarSpacer/>
+                                            <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
+                                        </m:Toolbar>
+
+                                        <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true" visible="{toggleGraphTable>/table}">
+                                            <smartTable:customToolbar>
+                                                <m:OverflowToolbar design="Transparent">
+                                                    <m:ToolbarSpacer/>
+                                                    <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
+                                                    <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
+                                                </m:OverflowToolbar>
+                                            </smartTable:customToolbar>
+                                            <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
+                                                <m:items>
+                                                    <m:ColumnListItem vAlign="Middle" type="Active" press="handleStepRowClick"></m:ColumnListItem>
+                                                </m:items>
+                                            </m:Table>
+                                        </smartTable:SmartTable>
+
+                                        <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto" visible="{toggleGraphTable>/graph}">
+                                            <ng:layoutAlgorithm>
+                                                <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
+                                            </ng:layoutAlgorithm>
+                                            <ng:nodes>
+                                                <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
+                                                    <ng:attributes>
+                                                        <ng:ElementAttribute label="Step Type" value="{StepType}"/>
+                                                        <ng:ElementAttribute label="Sequence" value="{StepSequence}"/>
+                                                    </ng:attributes>
+                                                </ng:Node>
+                                            </ng:nodes>
+                                            <ng:lines>
+                                                <ng:Line from="{from}" to="{to}" press="linePress"/>
+                                            </ng:lines>
+                                        </ng:Graph>
+                                    </m:VBox>
+                                </ObjectPageSubSection>
+                            </subSections>
+                        </ObjectPageSection>
+
+                        <!--///>>>>>>>>>>>>>>>>>>>>>>>>>>_____THIRD BLOCK : STEPS ROLE__________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+                        <!-- <ObjectPageSection titleUppercase="false" title="Step Roles">
                         <subSections>
                             <ObjectPageSubSection>
                                 <blocks>
@@ -127,56 +127,56 @@
                         </subSections>
                     </ObjectPageSection> -->
 
-                    <!-->>>>>>___________SECTION-04 : SPLITTER(ROLES AND USERS TABLES)___________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-                    <ObjectPageSection titleUppercase="false" title="Step Roles">
-                        <subSections>
-                            <ObjectPageSubSection >
-                                <blocks>
-                                    <layout:ResponsiveSplitter defaultPane="rolesPane">
-                                        <layout:PaneContainer>
+                        <!-->>>>>>___________SECTION-04 : SPLITTER(ROLES AND USERS TABLES)___________                        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+                            <ObjectPageSection titleUppercase="false" title="Step Roles">
+                                <subSections>
+                                    <ObjectPageSubSection >
+                                        <blocks>
+                                            <layout:ResponsiveSplitter defaultPane="rolesPane">
+                                                <layout:PaneContainer>
 
-                                            <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________ROLES TABLE___________________________<<<<<<<<<<<<<< -->
-                                            <layout:SplitPane requiredParentWidth="600" id="rolesPane">
-                                                <m:Panel headerText="ROLES" height="100%">
-                                                    <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
-                                                        <smartTable:customToolbar>
-                                                            <m:OverflowToolbar design="Transparent">
-                                                                <m:ToolbarSpacer/>
-                                                                <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
-                                                                <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
-                                                            </m:OverflowToolbar>
-                                                        </smartTable:customToolbar>
-                                                        <m:Table id="table_roles" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
-                                                            <m:items>
-                                                                <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
-                                                            </m:items>
-                                                        </m:Table>
-                                                    </smartTable:SmartTable>
-                                                </m:Panel>
-                                            </layout:SplitPane>
+                                                    <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________ROLES TABLE___________________________<<<<<<<<<<<<<< -->
+                                                    <layout:SplitPane requiredParentWidth="600" id="rolesPane">
+                                                        <m:Panel headerText="ROLES" height="100%">
+                                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
+                                                                <smartTable:customToolbar>
+                                                                    <m:OverflowToolbar design="Transparent">
+                                                                        <m:ToolbarSpacer/>
+                                                                        <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
+                                                                        <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
+                                                                    </m:OverflowToolbar>
+                                                                </smartTable:customToolbar>
+                                                                <m:Table id="table_roles" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
+                                                                    <m:items>
+                                                                        <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
+                                                                    </m:items>
+                                                                </m:Table>
+                                                            </smartTable:SmartTable>
+                                                        </m:Panel>
+                                                    </layout:SplitPane>
 
-                                            <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________USERS TABLE___________________________<<<<<<<<<<<<<< -->
-                                            <layout:PaneContainer orientation="Vertical">
-                                                <layout:SplitPane requiredParentWidth="600">
-                                                    <m:Panel headerText="USERS">
-                                                        <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
-                                                            <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
-                                                        <m:items>
-                                                            <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>
-                                                        </m:items>
-                                                    </m:Table> -->
-                                                        </smartTable:SmartTable>
-                                                    </m:Panel>
-                                                </layout:SplitPane>
-                                            </layout:PaneContainer>
-                                        </layout:PaneContainer>
-                                    </layout:ResponsiveSplitter>
-                                </blocks>
-                            </ObjectPageSubSection>
-                        </subSections>
-                    </ObjectPageSection>
-                </sections>
-            </ObjectPageLayout>
-            <!-- </content>
+                                                    <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________USERS TABLE___________________________<<<<<<<<<<<<<< -->
+                                                    <layout:PaneContainer orientation="Vertical">
+                                                        <layout:SplitPane requiredParentWidth="600">
+                                                            <m:Panel headerText="USERS">
+                                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
+                                                                    <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
+                                                                        <m:items>
+                                                                            <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>
+                                                                        </m:items>
+                                                                    </m:Table> -->
+                                                                </smartTable:SmartTable>
+                                                            </m:Panel>
+                                                        </layout:SplitPane>
+                                                    </layout:PaneContainer>
+                                                </layout:PaneContainer>
+                                            </layout:ResponsiveSplitter>
+                                        </blocks>
+                                    </ObjectPageSubSection>
+                                </subSections>
+                            </ObjectPageSection>
+                        </sections>
+                    </ObjectPageLayout>
+                    <!-- </content>
     </Page> -->
-        </mvc:View>
+                </mvc:View>

@@ -19,37 +19,35 @@ sap.ui.define([
 
                 // Get selected items
                 var aSelectedItems = oTable.getSelectedItems();
+                var sProcessName = aSelectedItems[0].getBindingContext().getObject().ProcessName
 
-                // Check if any items are selected
-                if (aSelectedItems.length === 0) {
-                    // No items selected, show an error or inform the user
-                    MessageBox.error("Please select at least one item to delete");
-                    return;
-                }
+                // // Check if any items are selected
+                // if (aSelectedItems.length === 0) {
+                //     // No items selected, show an error or inform the user
+                //     MessageBox.error("Please select at least one item to delete");
+                //     return;
+                // }
 
                 // Confirm deletion with the user
-                MessageBox.confirm("Are you sure you want to delete the selected item(s)?", {
+                MessageBox.confirm(`Are you sure you want to delete ${sProcessName}?`, {
                     icon: MessageBox.Icon.WARNING,
                     actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.NO,
+                    emphasizedAction: MessageBox.Action.YES,
                     //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.YES) {
-                            // User confirmed deletion
-                            oModel.setUseBatch(false);
+                            //oModel.setUseBatch(false);
 
                             // Iterate through selected items and delete them
                             aSelectedItems.forEach(function (oSelectedItem) {
                                 var sPath = oSelectedItem.getBindingContext().getPath();
                                 oModel.remove(sPath, {
-                                    success: function (response) {
-                                        // Deletion successful, you may want to perform additional tasks
+                                    success: function (oResponse) {
                                         //console.log("Item deleted successfully");
                                         MessageToast.show('Process Deleted');                                        
                                         oTable.removeSelections(); // Deselect all items after deletion
                                     },
-                                    error: function (error) {
-                                        // Handle deletion error
+                                    error: function (oError) {
                                         //console.error("Error deleting item");
                                         MessageToast.show('SOMETHING WENT WRONG')
                                     }
@@ -93,12 +91,12 @@ sap.ui.define([
 
                 // Creating new Process in the Model
                 oModel.create("/ZP_QU_DG_PROC_STEP_ROLE", oNewProcess, {
-                    success: function (response) {
+                    success: function (oResponse) {
                         //console.log(response);
                         this.oCreateProcessDialog.close(); // Close the dialog
                         MessageToast.show('Process Created')
                     }.bind(this),
-                    error: function (error) {
+                    error: function (oError) {
                         //console.log(error)
                         MessageToast.show('SOMETHING WENT WRONG')
                     }
