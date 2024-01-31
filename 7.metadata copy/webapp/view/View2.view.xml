@@ -67,7 +67,7 @@
                                             <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
                                         </m:Toolbar>
 
-                                        <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true" visible="{toggleGraphTable>/table}">
+                                        <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" header="Steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true" visible="{toggleGraphTable>/table}" enableAutoColumnWidth="true">
                                             <smartTable:customToolbar>
                                                 <m:OverflowToolbar design="Transparent">
                                                     <m:ToolbarSpacer/>
@@ -103,30 +103,6 @@
                             </subSections>
                         </ObjectPageSection>
 
-                        <!--///>>>>>>>>>>>>>>>>>>>>>>>>>>_____THIRD BLOCK : STEPS ROLE__________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-                        <!-- <ObjectPageSection titleUppercase="false" title="Step Roles">
-                        <subSections>
-                            <ObjectPageSubSection>
-                                <blocks>
-                                    <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
-                                        <smartTable:customToolbar>
-                                            <m:OverflowToolbar design="Transparent">
-                                                <m:ToolbarSpacer/>
-                                                <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
-                                                <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
-                                            </m:OverflowToolbar>
-                                        </smartTable:customToolbar>
-                                        <m:Table id="table_roles" mode="SingleSelectLeft" selectionChange="handle_RolesTable_RowSelection">
-                                            <m:items>
-                                                <m:ColumnListItem vAlign="Middle" type="Active" press="handle_RolesTable_RowClick"></m:ColumnListItem>
-                                            </m:items>
-                                        </m:Table>
-                                    </smartTable:SmartTable>
-                                </blocks>
-                            </ObjectPageSubSection>
-                        </subSections>
-                    </ObjectPageSection> -->
-
                         <!-->>>>>>___________SECTION-04 : SPLITTER(ROLES AND USERS TABLES)___________                        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
                             <ObjectPageSection titleUppercase="false" title="Step Roles">
                                 <subSections>
@@ -137,8 +113,8 @@
 
                                                     <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________ROLES TABLE___________________________<<<<<<<<<<<<<< -->
                                                     <layout:SplitPane requiredParentWidth="600" id="rolesPane">
-                                                        <m:Panel headerText="ROLES" height="100%">
-                                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
+                                                        <m:Panel height="100%">
+                                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" header="Roles" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false" enableAutoColumnWidth="true">
                                                                 <smartTable:customToolbar>
                                                                     <m:OverflowToolbar design="Transparent">
                                                                         <m:ToolbarSpacer/>
@@ -158,8 +134,8 @@
                                                     <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________USERS TABLE___________________________<<<<<<<<<<<<<< -->
                                                     <layout:PaneContainer orientation="Vertical">
                                                         <layout:SplitPane requiredParentWidth="600">
-                                                            <m:Panel headerText="USERS">
-                                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
+                                                            <m:Panel>
+                                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" header="Users" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false" enableAutoColumnWidth="true">
                                                                     <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
                                                                         <m:items>
                                                                             <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>
