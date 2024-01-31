@@ -106,13 +106,6 @@
           "target": [
             "TargetView2"
           ]
-        },
-        {
-          "name": "RouteView3",
-          "pattern": "Dummy",
-          "target": [
-            "TargetView3"
-          ]
         }
       ],
       "targets": {
@@ -129,13 +122,6 @@
           "clearControlAggregation": false,
           "viewId": "view2",
           "viewName": "View2"
-        },
-        "TargetView3": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Dummy",
-          "viewName": "Dummy"
         }
       }
     },

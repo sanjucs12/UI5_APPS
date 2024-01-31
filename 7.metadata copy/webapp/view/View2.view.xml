@@ -19,8 +19,7 @@
                         <m:Title text="{ProcessName}"/>
                     </expandedHeading>
                     <actions>
-                        <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/>
-                        <m:Button text="Go To Sample view" type="Neutral" press="handleGoToSampleViewButton"/>
+                        <!-- <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/> -->                        
                         <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
                         <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
                     </actions>

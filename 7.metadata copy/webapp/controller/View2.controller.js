@@ -71,10 +71,10 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
                 //var sPath = `${url}/to_ProcesstoRole`; // Defining the path for specific request  
                 var sPath = this.createGraphPath;
-                console.log(sPath)
+                //console.log(sPath)
                 oModel.read(sPath, {
                     success: function (response) {
-                        console.log("Data Read Successfully: ", response.results);
+                        //console.log("Data Read Successfully: ", response.results);
                         this._createNetworkGraph(response.results);
                     }.bind(this),
                     error: function (oError) {
@@ -194,15 +194,9 @@ sap.ui.define([
 
             },
 
-            handleGetProcessDetailsButton: function () {
-                this.getProcessData(this.processPath)
-            },
-
-            handleGoToSampleViewButton: function () {
-                console.log('clicked')
-                const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo('RouteView3');
-            },
+            // handleGetProcessDetailsButton: function () {
+            //     this.getProcessData(this.processPath)
+            // },
 
             /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>____________SECTION 2_______________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
 
@@ -484,7 +478,7 @@ sap.ui.define([
                     nodes,
                     lines,
                 };
-                console.log(oGraphData)
+                //console.log(oGraphData)
                 var oNetworkModel = new sap.ui.model.json.JSONModel(oGraphData);
                 //console.log(oNetworkModel.getData())
                 this.getView().byId("networkGraph").setModel(oNetworkModel)
