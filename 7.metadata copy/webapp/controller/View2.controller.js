@@ -127,8 +127,8 @@ sap.ui.define([
                             oModel.remove(sPath, {
                                 success: function (oResponse) {
                                     //console.log("Item deleted successfully"); 
-                                    MessageToast.show("Process Deleted")                                   
-                                    oRouter.navTo('RouteView1')                                   
+                                    MessageToast.show("Process Deleted")
+                                    oRouter.navTo('RouteView1')
                                 },
                                 error: function (oError) {
                                     // Handle deletion error
@@ -286,7 +286,6 @@ sap.ui.define([
             },
 
             handleCreateStepButton: function () {
-                //console.log(oModel)
                 if (!this.oCreateStepDialog) {
                     this.loadFragment({
                         name: "metadata.fragments.createStepDialog"
@@ -306,33 +305,53 @@ sap.ui.define([
             handle_createStepDialog_CreateButton: function () {
                 var oModel = this.getView().getModel();
                 var sPath = this.createStepPath;
-                var sStepName = this.getView().byId("smartField_newStepName").getValue();
-                var sStepType = this.getView().byId("smartField_newStepType").getValue();
-                var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
+                // var sStepName = this.getView().byId("smartField_newStepName").getValue();
+                // var sStepType = this.getView().byId("smartField_newStepType").getValue();
+                // var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
 
-                var that = this; //SAVING THIS CONTEXT IN A VARIABLE
+                /////_____VALIDATIONS_______/////
+                var oSmartField_stepName = this.getView().byId("smartField_newStepName");
+                var oSmartField_stepType = this.getView().byId("smartField_newStepType");
+                var oSmartField_stepSequence = this.getView().byId("smartField_newStepSequence");
+                let aSmartFields = [oSmartField_stepName, oSmartField_stepType, oSmartField_stepSequence]
 
-                // Create a new entry with action
-                var oNewStep = {
-                    StepName: sStepName,
-                    StepType: sStepType,
-                    StepSequence: sStepSequence
-                };
-                //console.log(oNewStep);
-
-                //Creating new Process in the Model
-                oModel.create(sPath, oNewStep, {
-                    success: function (oResponse) {
-                        //console.log(response);
-                        MessageToast.show(`New Step added: ${sStepName}`)
-                        that.oCreateStepDialog.close();
-                        that.getProcessData();  //MAKING A GET CALL WILL UPDATE THE GRAPH
-                    },
-                    error: function (oError) {
-                        MessageToast.show('Error: Something went wrong')
-                        //alert('error')
+                aSmartFields.forEach((field) => {
+                    if (!field.getValue()) {
+                        field.setValueState("Error");
+                        return;
                     }
+                })
+
+                var bFormValidation = aSmartFields.every((field) => {
+                    return field.getValue();
                 });
+                //console.log(bFormValidation)
+
+
+                if (bFormValidation) {
+                    // Create a new entry with action
+                    var oNewStep = {
+                        StepName: oSmartField_stepName.getValue(),
+                        StepType: oSmartField_stepType.getValue(),
+                        StepSequence: oSmartField_stepSequence.getValue()
+                    };
+                    //console.log(oNewStep);
+
+                    //Creating new Process in the Model
+                    oModel.create(sPath, oNewStep, {
+                        success: function (oResponse) {
+                            //console.log(response);
+                            MessageToast.show(`New Step added: ${oNewStep.StepName}`)
+                            this.oCreateStepDialog.close();
+                            this.getProcessData();  //MAKING A GET CALL WILL UPDATE THE GRAPH
+                        }.bind(this),
+                        error: function (oError) {
+                            MessageToast.show('Error: Something went wrong')
+                            //alert('error')
+                        }
+                    });
+
+                }
             },
 
             handleEditStepButton: function (oEvent) {
@@ -370,30 +389,48 @@ sap.ui.define([
                 var sEditedStepName = this.getView().byId("smartField_editStepName").getValue();
                 var sEditedStepType = this.getView().byId("smartField_editStepType").getValue();
 
-                var that = this;  //SAVING THE THIS CONTEXT IN A VARIABLE
+                /////_____VALIDATIONS_______/////
+                var oSmartField_EditedStepName = this.getView().byId("smartField_editStepName");
+                var oSmartField_EditedStepType = this.getView().byId("smartField_editStepType")
+                let aSmartFields = [oSmartField_EditedStepName, oSmartField_EditedStepType]
 
-                // Creating a new Object
-                var oNewEditedStep = {
-                    StepName: sEditedStepName,
-                    StepType: sEditedStepType
-                };
-                console.log(oNewEditedStep);
-
-                //Updating in the Model
-                oModel.update(sPath, oNewEditedStep, {
-                    success: function (response) {
-                        //console.log(`EDITED: ${response}`);
-                        MessageToast.show("Step details updated")
-                        that.oEditStepDialog.close();  //CLOSING THE DIALOG
-                        that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
-                        that.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
-                        that.getProcessData(); //UPDATE THE GRAPH                     
-                    },
-                    error: function (oError) {
-                        // alert('error')
-                        MessageToast.show("Error: Something went wrong")
+                aSmartFields.forEach((field) => {
+                    if (!field.getValue()) {
+                        field.setValueState("Error");
+                        return;
                     }
+                })
+
+                var bFormValidation = aSmartFields.every((field) => {
+                    return field.getValue();
                 });
+                //console.log(bFormValidation)
+
+                if (bFormValidation) {
+                    // Creating a new Object
+                    var oNewEditedStep = {
+                        StepName: sEditedStepName,
+                        StepType: sEditedStepType
+                    };
+                    //console.log(oNewEditedStep);
+
+                    //Updating in the Model
+                    oModel.update(sPath, oNewEditedStep, {
+                        success: function (response) {
+                            //console.log(`EDITED: ${response}`);
+                            MessageToast.show("Step details updated")
+                            this.oEditStepDialog.close();  //CLOSING THE DIALOG
+                            this.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
+                            this.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
+                            this.getProcessData(); //UPDATE THE GRAPH                     
+                        }.bind(this),
+                        error: function (oError) {
+                            // alert('error')
+                            MessageToast.show("Error: Something went wrong")
+                        }
+                    });
+
+                }
             },
 
             handleAssaignRoleButton: function () {
@@ -546,7 +583,7 @@ sap.ui.define([
                         MessageToast.show('Error: Something went wrong')
                     }
                 });
-                
+
             },
 
             handle_createRoleDialog_cancelButton: function () {
@@ -627,6 +664,15 @@ sap.ui.define([
                     value1: sAssignedRole
                 });
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
-            }
+            },
+
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>___________FORM VALIDATIONS____________<<<<<<<<<<<<<<<<<<<<<<
+            handleInputChange: function (oEvent) {
+                //console.log('changed')
+                var sValue = oEvent.getParameters().value;
+                if (sValue.length) {
+                    oEvent.getSource().setValueState('None')
+                }
+            },
         });
     });

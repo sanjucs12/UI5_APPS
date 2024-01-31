@@ -9,10 +9,10 @@
                 <smartForm:SmartForm editable="true">
                     <smartForm:Group>
                         <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_newProcessName" value="{ProcessName}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
+                            <smartField:SmartField id="smartField_newProcessName" value="{ProcessName}" entitySet="ZP_QU_DG_PROC_STEP_ROLE" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
                         <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_newAction" value="{Action}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
+                            <smartField:SmartField id="smartField_newAction" value="{Action}" entitySet="ZP_QU_DG_PROC_STEP_ROLE" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
                     </smartForm:Group>
                 </smartForm:SmartForm>

@@ -9,13 +9,13 @@
                 <smartForm:SmartForm editable="true">
                     <smartForm:Group>
                         <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_newStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                            <smartField:SmartField id="smartField_newStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
                              <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_newStepSequence" value="{StepSequence}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                            <smartField:SmartField id="smartField_newStepSequence" value="{StepSequence}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
                         <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS"></smartField:SmartField>
+                            <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
                     </smartForm:Group>
                 </smartForm:SmartForm>
