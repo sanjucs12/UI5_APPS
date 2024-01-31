@@ -44,7 +44,7 @@ sap.ui.define([
                                 oModel.remove(sPath, {
                                     success: function (oResponse) {
                                         //console.log("Item deleted successfully");
-                                        MessageToast.show('Process Deleted');                                        
+                                        MessageToast.show('Process Deleted');
                                         oTable.removeSelections(); // Deselect all items after deletion
                                     },
                                     error: function (oError) {
@@ -79,8 +79,33 @@ sap.ui.define([
 
             handleCreateProcessDialog_CreateButton: function () {
                 var oModel = this.getView().getModel();
+
                 var sProcessName = this.getView().byId("smartField_newProcessName").getValue();;
                 var sAction = this.getView().byId("smartField_newAction").getValue();
+
+                /////_____VALIDATIONS_______/////
+                // var oSmartField_ProcessName = this.getView().byId("smartField_newProcessName");
+                // var oSmartField_Action = this.getView().byId("smartField_newAction");
+                // let aSmartFields = [oSmartField_ProcessName, oSmartField_Action]
+
+                // aSmartFields.forEach((field) => {
+                //     if (!field.getValue()) {
+                //         field.setValueState("Error");
+                //         field.getIdForLabel() === "smartField_newProcessName" ? field.setValueStateText("Please enter Process Name") : field.setValueStateText("Please select Action");
+                //         return;
+                //     }
+                // })
+
+                // if(!sProcessName){
+                //     oSmartField_ProcessName.setValueState("Error");
+                //     oSmartField_ProcessName.setValueStateText("Please enter Process Name");
+                //     return;
+                // }
+                // if(!sAction){
+                //     oSmartField_Action.setValueState("Error");
+                //     oSmartField_Action.setValueStateText("Please select Action");
+                //     return;
+                // }
 
                 // Create a new entry with action
                 var oNewProcess = {
@@ -100,7 +125,7 @@ sap.ui.define([
                         //console.log(error)
                         MessageToast.show('SOMETHING WENT WRONG')
                     }
-                });                
+                });
             },
 
             handleProcessTable_RowSelection: function () {
