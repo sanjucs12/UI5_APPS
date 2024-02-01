@@ -65,6 +65,15 @@ sap.ui.define([
                     //console.log(oModel_Role.getData())  
                     oSmartTable_Users.rebindTable();
                 }
+
+                ///IF THE MODEL  "toggleGraphTable" IS ALREADY PRESENT, MAKE GRAPH AS DEFAULT VIEW
+                var oModel_taggleGraphTable = this.getView().getModel("toggleGraphTable");
+                if(oModel_taggleGraphTable){
+                    oModel_taggleGraphTable.setData({
+                        table: false,
+                        graph: true,
+                    })
+                }
             },
 
             getProcessData: function () {

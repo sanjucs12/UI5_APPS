@@ -19,7 +19,7 @@
                         <m:Title text="{ProcessName}"/>
                     </expandedHeading>
                     <actions>
-                        <!-- <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/> -->                        
+                        <!-- <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/> -->
                         <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
                         <ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
                     </actions>
@@ -34,20 +34,22 @@
 
             <sections>
                 <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-02 : PROCESS DETAILS______                <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-                    <ObjectPageSection titleUppercase="false" title="Process Details">
+                    <ObjectPageSection title="Process Details">
                         <subSections>
                             <ObjectPageSubSection>
                                 <blocks>
-                                    <smartForm:SmartForm>
-                                        <smartForm:Group>
-                                            <smartForm:GroupElement>
-                                                <smartField:SmartField value="{ProcessName}"/>
-                                            </smartForm:GroupElement>
-                                            <smartForm:GroupElement >
-                                                <smartField:SmartField value="{Action}"/>
-                                            </smartForm:GroupElement>
-                                        </smartForm:Group>
-                                    </smartForm:SmartForm>
+                                    <layout:VerticalLayout>
+                                        <smartForm:SmartForm>
+                                            <smartForm:Group>
+                                                <smartForm:GroupElement>
+                                                    <smartField:SmartField value="{ProcessName}"/>
+                                                </smartForm:GroupElement>
+                                                <smartForm:GroupElement >
+                                                    <smartField:SmartField value="{Action}"/>
+                                                </smartForm:GroupElement>
+                                            </smartForm:Group>
+                                        </smartForm:SmartForm>
+                                    </layout:VerticalLayout>
                                 </blocks>
                             </ObjectPageSubSection>
                         </subSections>
@@ -105,9 +107,9 @@
                         <!-->>>>>>___________SECTION-04 : SPLITTER(ROLES AND USERS TABLES)___________                        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
                             <ObjectPageSection titleUppercase="false" title="Step Roles">
                                 <subSections>
-                                    <ObjectPageSubSection >
+                                    <ObjectPageSubSection>
                                         <blocks>
-                                            <layout:ResponsiveSplitter defaultPane="rolesPane">
+                                            <layout:ResponsiveSplitter defaultPane="usersPane">
                                                 <layout:PaneContainer>
 
                                                     <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________ROLES TABLE___________________________<<<<<<<<<<<<<< -->
@@ -131,10 +133,10 @@
                                                     </layout:SplitPane>
 
                                                     <!-- >>>>>>>>>>>>>>>>>>>>>>>_________________USERS TABLE___________________________<<<<<<<<<<<<<< -->
-                                                    <layout:PaneContainer orientation="Vertical">
-                                                        <layout:SplitPane requiredParentWidth="600">
-                                                            <m:Panel>
-                                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" header="Users" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false" enableAutoColumnWidth="true">
+                                                    <layout:PaneContainer >
+                                                        <layout:SplitPane requiredParentWidth="600" id="usersPane">
+                                                            <m:Panel height="100%">
+                                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" header="Users" tableType="Table" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false" enableAutoColumnWidth="true">
                                                                     <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
                                                                         <m:items>
                                                                             <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>
