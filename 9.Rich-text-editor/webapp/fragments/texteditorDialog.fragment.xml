@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:rte = "sap.ui.richtexteditor">
+	<Dialog id="dialog_richTextEditor" title="Comment">
+		<content>
+			<l:VerticalLayout id="idVerticalLayout" class="sapUiContentPadding" width="100%">
+				<rte:RichTextEditor id="richTextEditor" editorType="TinyMCE" width="100%" height="400px" required="true" showGroupFont="true" showGroupLink="true" showGroupInsert="true" showGroupTextAlign="true" customToolbar="true">
+				</rte:RichTextEditor>
+			</l:VerticalLayout>
+		</content>
+		<footer>
+			<Toolbar >
+				<content>
+					<ToolbarSpacer/>
+					<Button text="Submit" press="handle_SubmitButton" type="Emphasized"/>
+					<Button text="Cancel" press="handle_CancelButton"></Button>
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

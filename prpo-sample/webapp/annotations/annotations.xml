@@ -1,0 +1,73 @@
+<Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
+    <Annotation Term="UI.LineItem">
+        <Collection>
+            <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="MaterialPlannedDeliveryDurn" />
+                <Annotation Term="UI.Chart">
+                    <Record>
+                        <PropertyValue EnumMember="UI.ChartType/VerticalBullet" Property="ChartType" />
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="MaterialPlannedDeliveryDurn" />
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#BulletChartDataPoint" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Record>
+        </Collection>
+    </Annotation>
+    <Annotation Term="UI.DataPoint" Qualifier="BulletChartDataPoint">
+        <Record>
+            <PropertyValue Property="MinimumValue" Value="0"/>
+            <PropertyValue Property="MaximumValue" Value="10"/>
+            <PropertyValue Property="CriticalityCalculation">
+                <Record>
+                    <PropertyValue Property="ImprovementDirection" EnumMember="UI.CriticalityDirectionType/Target" />
+                    <PropertyValue Property="DeviationRangeLowValue" Value="0"/>
+                    <PropertyValue Property="ToleranceRangeLowValue" Value="3"/>
+                    <PropertyValue Property="ToleranceRangeHighValue" Value="7"/>
+                    <PropertyValue Property="DeviationRangeHighValue" Value="10"/>
+                </Record>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+</Annotations>
+
+
+<!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
+    <Annotation Term="UI.Chart">
+        <Record>
+            <PropertyValue EnumMember="UI.ChartType/Bullet" Property="ChartType" />
+            <PropertyValue Property="Measures">
+                <Collection>
+                    <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="MeasureAttributes">
+                <Collection>
+                    <Record Type="UI.ChartMeasureAttributeType">
+                        <PropertyValue Property="Measure" PropertyPath="MaterialPlannedDeliveryDurn" />
+                        <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#BulletChartDataPoint" />
+                    </Record>
+                </Collection>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+    <Annotation Term="UI.DataPoint" Qualifier="BulletChartDataPoint">
+        <Record>
+            <PropertyValue Path="MaterialPlannedDeliveryDurn" Property="Value" />
+            <PropertyValue Property="MinimumValue" Value="0"/>
+            <PropertyValue Property="MaximumValue" Value="10"/>
+            <PropertyValue Property="CriticalityCalculation">
+            </PropertyValue>
+        </Record>
+    </Annotation>
+</Annotations> -->
