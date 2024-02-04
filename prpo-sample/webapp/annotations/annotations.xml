@@ -1,4 +1,4 @@
-<Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
+<!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
     <Annotation Term="UI.LineItem">
         <Collection>
             <Record Type="UI.DataField">
@@ -39,10 +39,10 @@
             </PropertyValue>
         </Record>
     </Annotation>
-</Annotations>
+</Annotations> -->
 
 
-<!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
+<Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
     <Annotation Term="UI.Chart">
         <Record>
             <PropertyValue EnumMember="UI.ChartType/Bullet" Property="ChartType" />
@@ -70,4 +70,66 @@
             </PropertyValue>
         </Record>
     </Annotation>
-</Annotations> -->
+</Annotations>
+
+
+<!-- <edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="MM_PUR_PR_PROCESS_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext">
+                <Annotation Term="UI.Chart">
+                    <Record>
+                        <PropertyValue EnumMember="UI.ChartType/Bullet" Property="ChartType" />
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="MaterialPlannedDeliveryDurn" />
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#BulletChartDataPoint" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BulletChartDataPoint">
+                    <Record>
+                        <PropertyValue Path="MaterialPlannedDeliveryDurn" Property="Value" />
+                        <PropertyValue Property="MinimumValue" Value="0"/>
+                        <PropertyValue Property="MaximumValue" Value="10"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx> -->

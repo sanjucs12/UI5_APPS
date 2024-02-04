@@ -45,11 +45,7 @@
                 </Table>
             </smartTable:SmartTable>
 
-            <!-- <smartmicrochart:SmartMicroChart id="smartChartDeltaBullet" entitySet="ProC_Purchasereqitmdtlsextducts" enableAutoBinding="true" chartBindingPath="/C_Purchasereqitmdtlsext('MaterialPlannedDeliveryDurn')" size="Responsive">
-                <smartmicrochart:customData>
-                    <core:CustomData key="chartQualifier" value="BulletChartQualifier" />
-                </smartmicrochart:customData>
-            </smartmicrochart:SmartMicroChart> -->
+
 
         </content>
     </Page>

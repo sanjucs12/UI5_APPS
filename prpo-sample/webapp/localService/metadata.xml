@@ -1488,23 +1488,7 @@
                     </Collection>
                 </Annotation>
             </Annotations>
-            <!-- <Annotation Term="UI.Chart">
-                <Record>
-                    <PropertyValue EnumMember="UI.ChartType/Pie" Property="ChartType" />
-                    <PropertyValue Property="Measures">
-                        <Collection>
-                            <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
-                        </Collection>
-                    </PropertyValue>
-                    <PropertyValue Property="MeasureAttributes">
-                        <Collection>
-                            <Record Type="UI.ChartMeasureAttributeType">
-                                <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint" />
-                            </Record>
-                        </Collection>
-                    </PropertyValue>
-                </Record>
-            </Annotation> -->
+    
             <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/MM_PUR_PR_PROCESS_SRV/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/MM_PUR_PR_PROCESS_SRV/$metadata"
