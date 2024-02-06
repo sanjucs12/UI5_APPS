@@ -4,7 +4,8 @@
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable='sap.ui.comp.smarttable'
     xmlns:smartmicrochart="sap.ui.comp.smartmicrochart"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:microchart="sap.suite.ui.microchart">
     <Page id="page" title="{i18n>title}">
         <content>
 
@@ -12,10 +13,13 @@
                 <smartFilterBar:controlConfiguration>
                     <smartFilterBar:ControlConfiguration key="PurchaseRequisition" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
                     <smartFilterBar:ControlConfiguration key="PurchaseRequisitionItem" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="PurReqCreationDate" visibleInAdvancedArea="true" conditionType="{
+								module: 'sap.ui.comp.config.condition.DateRangeType'
+							}"></smartFilterBar:ControlConfiguration>
                 </smartFilterBar:controlConfiguration>
             </smartFilterBar:SmartFilterBar>
 
-            <smartTable:SmartTable entitySet="C_Purchasereqitmdtlsext" id="smartTable_process" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="PurchaseRequisition,PurchaseRequisitionItem,PurchaseRequisitionPrice,ProcessingStatusName,MaterialPlannedDeliveryDurn" enableAutoBinding="true" header="Purchase Requisition" enableAutoColumnWidth="true" useTablePersonalisation="true">
+            <smartTable:SmartTable entitySet="C_Purchasereqitmdtlsext" id="smartTable_chart" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="PurchaseRequisition,PurchaseRequisitionPrice,ProcessingStatusName,MaterialPlannedDeliveryDurn,PurReqCreationDate" enableAutoBinding="true" header="Purchase Requisition" enableAutoColumnWidth="true" class="sapUiResponsiveContentPadding" showDetailsButton="true">
                 <smartTable:customToolbar >
                     <OverflowToolbar design="Transparent">
                         <ToolbarSpacer/>
@@ -23,29 +27,43 @@
                         <Button text="Delete" press="handleDeleteProcessButton" icon="sap-icon://delete" id="deleteProcessButton" enabled="false"></Button>
                     </OverflowToolbar>
                 </smartTable:customToolbar>
-                <Table id="table_process" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection">
-                    <!-- <items>
-                        <ColumnListItem vAlign="Middle" type="Navigation" press="handleProcessTable_RowClick"></ColumnListItem>
-                    </items> -->
+                <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection">
                     <columns>
-                        <Column width="15rem">
+                        <Column >
                             <customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "smartMircoChart", "columnIndex": "5"}' />
+                                <core:CustomData key="p13nData" value='\{"columnKey": "MircoChart", "columnIndex": "5"}' />
                             </customData>
-                            <Label text="Micro Chart" />
+                            <Label text="Planned Delivery Days" />
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "ObjectStatus", "columnIndex": "6"}' />
+                            </customData>
+                            <Label text="Processing Status" />
                         </Column>
                     </columns>
                     <items>
-                        <ColumnListItem>
+                        <ColumnListItem vAlign="Middle" type="Navigation">
                             <cells>
-                                <smartmicrochart:SmartHarveyBallMicroChart entitySet="C_Purchasereqitmdtlsext" class="sapUiTinyMarginTopBottom" />
+                                <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                    <microchart:actual>
+                                        <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
+                                    </microchart:actual>
+                                </microchart:BulletMicroChart>
+                            </cells>
+                            <cells>
+                                <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
             </smartTable:SmartTable>
-
-
+            <!-- 
+            <smartmicrochart:SmartMicroChart id="smartChartBullet" entitySet="C_Purchasereqitmdtlsext" enableAutoBinding="true" chartBindingPath="{/C_Purchasereqitmdtlsext('10000000')}">
+                <smartmicrochart:customData>
+                    <core:CustomData key="chartQualifier" value="BulletChartQualifier"/>
+                </smartmicrochart:customData>
+            </smartmicrochart:SmartMicroChart> -->
 
         </content>
     </Page>

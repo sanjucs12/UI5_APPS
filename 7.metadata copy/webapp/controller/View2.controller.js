@@ -36,7 +36,7 @@ sap.ui.define([
                 this.createStepPath = `${sProcessPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${sProcessPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
                 this.getProcessData(); // Call readData_ MAINLY FOR CREATING A NETWORK GRAPH (GET REQUEST)
-                //console.log(this.createStepPath)
+                console.log(this.createStepPath)
                 oObjectPageLayout.bindElement({
                     path: decodeURIComponent(sEncodedPath),
                 });

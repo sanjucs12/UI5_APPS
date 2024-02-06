@@ -1,0 +1,56 @@
+<mvc:View controllerName="prposample1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:smartmicrochart="sap.ui.comp.smartmicrochart"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="C_Purchasereqitmdtlsext">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="PurchaseRequisition" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="PurchaseRequisitionItem" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <!-- <smartTable:SmartTable entitySet="C_Purchasereqitmdtlsext" id="smartTable_process" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="PurchaseRequisition,PurchaseRequisitionItem,PurchaseRequisitionPrice,ProcessingStatusName,MaterialPlannedDeliveryDurn" enableAutoBinding="true" header="Purchase Requisition" enableAutoColumnWidth="true" useTablePersonalisation="true">
+                <smartTable:customToolbar >
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer/>
+                        <Button text="Create" press="handleCreateProcessButton" icon="sap-icon://create"></Button>
+                        <Button text="Delete" press="handleDeleteProcessButton" icon="sap-icon://delete" id="deleteProcessButton" enabled="false"></Button>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+                <Table id="table_process" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection">
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation" press="handleProcessTable_RowClick"></ColumnListItem>
+                    </items>
+                    <columns>
+                        <Column width="15rem">
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "smartMircoChart", "columnIndex": "5"}' />
+                            </customData>
+                            <Label text="Micro Chart" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <smartmicrochart:SmartHarveyBallMicroChart entitySet="C_Purchasereqitmdtlsext" class="sapUiTinyMarginTopBottom" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable> -->
+
+            <smartmicrochart:SmartMicroChart id="smartChartBullet" entitySet="C_Purchasereqitmdtlsext" enableAutoBinding="true" chartBindingPath="/C_Purchasereqitmdtlsext('10000000')">
+                <smartmicrochart:customData>
+                    <core:CustomData key="chartQualifier" value="BulletChartQualifier"/>
+                </smartmicrochart:customData>
+            </smartmicrochart:SmartMicroChart>
+        </content>
+    </Page>
+</mvc:View>
+

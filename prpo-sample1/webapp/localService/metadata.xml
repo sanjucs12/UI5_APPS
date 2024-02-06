@@ -1489,7 +1489,7 @@
                 </Annotation>
             </Annotations>
 
-            <!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_PurchasereqitmdtlsextType/MaterialPlannedDeliveryDurn"
+            <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_PurchasereqitmdtlsextType"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="UI.Chart" Qualifier="BulletChartQualifier">
                     <Record>
@@ -1531,8 +1531,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations> -->
-
+            </Annotations>
             <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/MM_PUR_PR_PROCESS_SRV/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/MM_PUR_PR_PROCESS_SRV/$metadata"
