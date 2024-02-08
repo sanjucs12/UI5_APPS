@@ -1,0 +1,120 @@
+<mvc:View controllerName="managepr.controller.ManagePR"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:objectPage="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:uitable="sap.ui.table"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:microchart="sap.suite.ui.microchart">
+    <!-- <Page id="page" title="{i18n>title}">
+    <content> -->
+    <objectPage:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <!-->>>>>>>>>>>>>>>>>>___________SECTION - 01:HEADER SECTION______________        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
+            <objectPage:headerTitle>
+                <objectPage:ObjectPageDynamicHeaderTitle>
+                    <objectPage:expandedHeading>
+                        <Title text="Process Name"/>
+                    </objectPage:expandedHeading>
+                    <objectPage:actions>
+                        <!-- <Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/> -->
+                        <objectPage:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
+                        <objectPage:ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
+                    </objectPage:actions>
+                </objectPage:ObjectPageDynamicHeaderTitle>
+            </objectPage:headerTitle>
+            <objectPage:headerContent>
+                <layout:VerticalLayout>
+                    <ObjectStatus title="Process Name" text="ProcessName"/>
+                    <ObjectStatus title="Action" text="Action"/>
+                </layout:VerticalLayout>
+            </objectPage:headerContent>
+
+            <objectPage:sections>
+                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-02 : PROCESS DETAILS______                <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                    <objectPage:ObjectPageSection title="Process Details">
+                        <objectPage:subSections>
+                            <objectPage:ObjectPageSubSection>
+                                <objectPage:blocks>
+                                    <layout:VerticalLayout>
+                                        <!-- <smartForSmartForm>
+                                            <smartForGroup>
+                                                <smartForGroupElement>
+                                                    <smartField:SmartField value="Process Name"/>
+                                                </smartForGroupElement>
+                                                <smartForGroupElement >
+                                                    <smartField:SmartField value="Action"/>
+                                                </smartForGroupElement>
+                                            </smartForGroup>
+                                        </smartForSmartForm> -->
+                                    </layout:VerticalLayout>
+                                </objectPage:blocks>
+                            </objectPage:ObjectPageSubSection>
+                        </objectPage:subSections>
+                    </objectPage:ObjectPageSection>
+
+                    <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECTION-03 : STEPS AND GRAPH______                    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                        <objectPage:ObjectPageSection titleUppercase="false" title="PR">
+                            <objectPage:subSections>
+                                <objectPage:ObjectPageSubSection >
+                                    <VBox >
+                                        <!-- <Toolbar >
+                                            <ToolbarSpacer/>
+                                            <RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
+                                            <RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
+                                            <ToolbarSpacer/>
+                                            <Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></Button>
+                                        </Toolbar> -->
+
+                                        <smartTable:SmartTable entitySet="C_Purchasereqitmdtlsext" id="smartTable_chart" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="PurchaseRequisition,PurchaseRequisitionPrice,ProcessingStatusName,MaterialPlannedDeliveryDurn,PurReqCreationDate" enableAutoBinding="true" header="Purchase Requisition" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true">
+                                            <smartTable:customToolbar>
+                                                <OverflowToolbar design="Transparent">
+                                                    <ToolbarSpacer />
+                                                    <Button text="Create" press="handleCreateProcessButton" icon="sap-icon://create" />
+                                                    <Button text="Delete" press="handleDeleteProcessButton" icon="sap-icon://delete" id="deleteProcessButton" enabled="false" />
+                                                </OverflowToolbar>
+                                            </smartTable:customToolbar>
+
+                                            <!-- <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
+                                                <columns>
+                                                    <Column >
+                                                        <customData>
+                                                            <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
+                                                        </customData>
+                                                        <mLLabel text="Planned Delivery Days" />
+                                                    </Column>
+                                                    <Column >
+                                                        <customData>
+                                                            <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
+                                                        </customData>
+                                                        <Label text="Processing Status" />
+                                                    </Column>
+                                                </columns>
+                                                <items>
+                                                    <ColumnListItem vAlign="Middle" type="Navigation">
+                                                        <cells>
+                                                            <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                                                <microchart:actual>
+                                                                    <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
+                                                                </microchart:actual>
+                                                            </microchart:BulletMicroChart>
+                                                        </cells>
+                                                        <cells>
+                                                            <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
+                                                        </cells>
+                                                    </ColumnListItem>
+                                                </items>
+                                            </Table> -->
+                                        </smartTable:SmartTable>
+                                    </VBox>
+                                </objectPage:ObjectPageSubSection>
+                            </objectPage:subSections>
+                        </objectPage:ObjectPageSection>
+                    </objectPage:sections>
+                </objectPage:ObjectPageLayout>
+                <!-- </content>
+    </Page> -->
+            </mvc:View>

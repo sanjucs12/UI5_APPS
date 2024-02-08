@@ -1,0 +1,94 @@
+<mvc:View controllerName="prposample.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uitable="sap.ui.table"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:smartmicrochart="sap.ui.comp.smartmicrochart"
+    xmlns:core="sap.ui.core"
+    xmlns:microchart="sap.suite.ui.microchart">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="C_Purchasereqitmdtlsext">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="PurchaseRequisition" visibleInAdvancedArea="true" />
+                    <smartFilterBar:ControlConfiguration key="PurchaseRequisitionItem" visibleInAdvancedArea="true" />
+                    <smartFilterBar:ControlConfiguration key="PurReqCreationDate" visibleInAdvancedArea="true" conditionType="{
+								module: 'sap.ui.comp.config.condition.DateRangeType'
+							}" />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable entitySet="C_Purchasereqitmdtlsext" id="smartTable_chart" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="PurchaseRequisition,PurchaseRequisitionPrice,ProcessingStatusName,MaterialPlannedDeliveryDurn,PurReqCreationDate" enableAutoBinding="true" header="Purchase Requisition" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true">
+                <smartTable:customToolbar>
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer />
+                        <Button text="Create" press="handleCreateProcessButton" icon="sap-icon://create" />
+                        <Button text="Delete" press="handleDeleteProcessButton" icon="sap-icon://delete" id="deleteProcessButton" enabled="false" />
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+
+                <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
+                    <columns>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
+                            </customData>
+                            <Label text="Planned Delivery Days" />
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
+                            </customData>
+                            <Label text="Processing Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation">
+                            <cells>
+                                <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                    <microchart:actual>
+                                        <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
+                                    </microchart:actual>
+                                </microchart:BulletMicroChart>
+                            </cells>
+                            <cells>
+                                <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <!-- <uitable:Table id="table" selectionMode="MultiToggle" enableSelectAll="true" threshold="50" enableBusyIndicator="true">
+                    <uitable:noData>
+                        <BusyIndicator class="sapUiMediumMargin" />
+                    </uitable:noData>
+                    <uitable:columns>
+                        <uitable:Column>
+                            <uitable:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}'/>
+                            </uitable:customData>
+                            <Label text="Planned Delivery Days" />
+                            <uitable:template>
+                                <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                    <microchart:actual>
+                                        <microchart:BulletMicroChartData id="bulletMicroChart1" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}" />
+                                    </microchart:actual>
+                                </microchart:BulletMicroChart>
+                            </uitable:template>
+                        </uitable:Column>
+                        <uitable:Column>
+                            <uitable:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}'/>
+                            </uitable:customData>
+                            <Label text="Planned Delivery Days" />
+                            <uitable:template>
+                                <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
+                            </uitable:template>
+                        </uitable:Column>
+                    </uitable:columns>
+                </uitable:Table> -->
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>
