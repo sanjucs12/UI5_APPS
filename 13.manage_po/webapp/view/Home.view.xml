@@ -4,6 +4,7 @@
     xmlns="sap.m"
     xmlns:objectPage="sap.uxap"
     xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
     xmlns:smartForm="sap.ui.comp.smartform"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable='sap.ui.comp.smarttable'
@@ -11,90 +12,161 @@
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:microchart="sap.suite.ui.microchart">
 
-    <objectPage:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="false" upperCaseAnchorBar="false">
-        <!-->>>>>>>>>>>>>>>>>>___________SECTION - 01:HEADER SECTION______________        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///-->
-            <!-- <objectPage:headerTitle>
-                <objectPage:ObjectPageDynamicHeaderTitle>
-                    <objectPage:expandedHeading>
-                        <Title text="Purchase Orders"/>
-                    </objectPage:expandedHeading>
-                    <objectPage:actions>
-                        <objectPage:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
-                        <objectPage:ObjectPageHeaderActionButton icon="sap-icon://delete" text="Delete" tooltip="Delete" press="handleDeleteProcessButton"/>
-                    </objectPage:actions>
-                </objectPage:ObjectPageDynamicHeaderTitle>
-            </objectPage:headerTitle> -->
-            <objectPage:headerContent>
+    <!-- <objectPage:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="false" upperCaseAnchorBar="false">
+
+        <objectPage:headerContent>
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchaseOrderSet" initialized="onSFBinitialized">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+        </objectPage:headerContent>
+
+        <objectPage:sections>
+
+            <objectPage:ObjectPageSection title="My Group">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection>
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+
+            <objectPage:ObjectPageSection title="My PO">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+
+                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_chart" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Order Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebindTable">
+                            <smartTable:customToolbar>
+                                <OverflowToolbar design="Transparent">
+                                    <ToolbarSpacer />
+                                    <Button text="Create SES" press="handleCreateProcessButton" icon="sap-icon://create" />
+                                    <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" id="deleteProcessButton" enabled="false" />
+                                </OverflowToolbar>
+                            </smartTable:customToolbar>
+
+                            <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
+                                <columns>
+                                    <Column >
+                                        <customData>
+                                            <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
+                                        </customData>
+                                        <mLLabel text="Planned Delivery Days" />
+                                    </Column>
+                                    <Column >
+                                        <customData>
+                                            <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
+                                        </customData>
+                                        <Label text="Processing Status" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle" type="Navigation">
+                                        <cells>
+                                            <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                                <microchart:actual>
+                                                    <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
+                                                </microchart:actual>
+                                            </microchart:BulletMicroChart>
+                                        </cells>
+                                        <cells>
+                                            <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </smartTable:SmartTable>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+        </objectPage:sections>
+    </objectPage:ObjectPageLayout> -->
+
+    <f:DynamicPage id="dynamicPageId">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="PURCHASE ORDERS"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
                 <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchaseOrderSet" initialized="onSFBinitialized">
-                    <smartFilterBar:controlConfiguration>
+                    <!-- <smartFilterBar:controlConfiguration>
                         <smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" />
-                    </smartFilterBar:controlConfiguration>
+                    </smartFilterBar:controlConfiguration> -->
                 </smartFilterBar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter text="Purchase Group">
+                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_PurchaseGroup" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Group" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_PurchaseOrderTable">
+                            <smartTable:customToolbar>
+                                <OverflowToolbar design="Transparent">
+                                    <ToolbarSpacer />
+                                    <Button text="Create SES" press="handleCreateProcessButton" icon="sap-icon://create" />
+                                    <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" enabled="false" />
+                                </OverflowToolbar>
+                            </smartTable:customToolbar>
+                            <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
 
-            </objectPage:headerContent>
-
-            <objectPage:sections>
-                <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>________SECTION-01 : GROUP______                <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-                    <objectPage:ObjectPageSection title="My Group">
-                        <objectPage:subSections>
-                            <objectPage:ObjectPageSubSection>
-                                <objectPage:blocks>
-                                    <layout:VerticalLayout>
-                                        <!-- SOME GROUP -->
-                                    </layout:VerticalLayout>
-                                </objectPage:blocks>
-                            </objectPage:ObjectPageSubSection>
-                        </objectPage:subSections>
-                    </objectPage:ObjectPageSection>
-
-                    <!-->>>>>>>>>>>>>>>>>>>>>>>>>>_____SECTION-02 : PR TABLE______                    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-                        <objectPage:ObjectPageSection title="My PO">
-                            <objectPage:subSections>
-                                <objectPage:ObjectPageSubSection >
-
-                                    <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_chart" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Order Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebindTable">
-                                        <smartTable:customToolbar>
-                                            <OverflowToolbar design="Transparent">
-                                                <ToolbarSpacer />
-                                                <Button text="Create SES" press="handleCreateProcessButton" icon="sap-icon://create" />
-                                                <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" id="deleteProcessButton" enabled="false" />
-                                            </OverflowToolbar>
-                                        </smartTable:customToolbar>
-
-                                        <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
-                                                <!-- <columns>
-                                                    <Column >
-                                                        <customData>
-                                                            <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
-                                                        </customData>
-                                                        <mLLabel text="Planned Delivery Days" />
-                                                    </Column>
-                                                    <Column >
-                                                        <customData>
-                                                            <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
-                                                        </customData>
-                                                        <Label text="Processing Status" />
-                                                    </Column>
-                                                </columns>
-                                                <items>
-                                                    <ColumnListItem vAlign="Middle" type="Navigation">
-                                                        <cells>
-                                                            <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
-                                                                <microchart:actual>
-                                                                    <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
-                                                                </microchart:actual>
-                                                            </microchart:BulletMicroChart>
-                                                        </cells>
-                                                        <cells>
-                                                            <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
-                                                        </cells>
-                                                    </ColumnListItem>
-                                                </items> -->
-                                            </Table>
-                                    </smartTable:SmartTable>
-                                </objectPage:ObjectPageSubSection>
-                            </objectPage:subSections>
-                        </objectPage:ObjectPageSection>
-                    </objectPage:sections>
-                </objectPage:ObjectPageLayout>
-            </mvc:View>
+                            </Table>
+                        </smartTable:SmartTable>
+                    </IconTabFilter>
+                    <IconTabFilter text="Purchase Orders">
+                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_chart" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Order Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_PurchaseOrderTable">
+                            <smartTable:customToolbar>
+                                <OverflowToolbar design="Transparent">
+                                    <ToolbarSpacer />
+                                    <Button text="Create SES" press="handleCreateProcessButton" icon="sap-icon://create" />
+                                    <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" id="deleteProcessButton" enabled="false" />
+                                </OverflowToolbar>
+                            </smartTable:customToolbar>
+                            <!-- <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
+                                <columns>
+                                    <Column >
+                                        <customData>
+                                            <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
+                                        </customData>
+                                        <Label text="Planned Delivery Days" />
+                                    </Column>
+                                    <Column >
+                                        <customData>
+                                            <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
+                                        </customData>
+                                        <Label text="Processing Status" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle" type="Navigation">
+                                        <cells>
+                                            <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
+                                                <microchart:actual>
+                                                    <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
+                                                </microchart:actual>
+                                            </microchart:BulletMicroChart>
+                                        </cells>
+                                        <cells>
+                                            <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table> -->
+                        </smartTable:SmartTable>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

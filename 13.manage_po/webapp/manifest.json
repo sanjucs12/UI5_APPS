@@ -20,10 +20,14 @@
         "uri": "/sap/opu/odata/sap/ZMM_MANAGE_PO_SRV/",
         "type": "OData",
         "settings": {
-          "annotations": [],
+          "annotations": ["localAnnotations"],
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "localAnnotations": {
+        "uri": "annotations/annotations.xml",
+        "type": "ODataAnnotation"
       }
     }
   },

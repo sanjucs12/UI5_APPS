@@ -1,0 +1,75 @@
+<!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="UI.Chart">
+        <Record>
+            <PropertyValue EnumMember="UI.ChartType/Bullet" Property="ChartType" />
+            <PropertyValue Property="Title" String="Product Title" />
+            <PropertyValue Property="Description" String="Product Description" />
+            <PropertyValue Property="Measures">
+                <Collection>
+                    <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="MeasureAttributes">
+                <Collection>
+                    <Record Type="UI.ChartMeasureAttributeType">
+                        <PropertyValue Property="Measure" PropertyPath="MaterialPlannedDeliveryDurn" />
+                        <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
+                        <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#MaterialPlannedDeliveryDurn" />
+                    </Record>
+                </Collection>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+    <Annotation Term="UI.DataPoint">
+        <Record>
+            <PropertyValue String="Days" Property="Title" />
+            <PropertyValue Path="MaterialPlannedDeliveryDurn" Property="Value" />
+            <PropertyValue Decimal="5" Property="TargetValue" />
+            <PropertyValue Decimal="6" Property="ForecastValue" />
+            <PropertyValue Decimal="0" Property="MinimumValue" />
+            <PropertyValue Decimal="10" Property="MaximumValue" />
+            <PropertyValue Property="CriticalityCalculation">
+                <Record>
+                    <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimize"/>
+                    <PropertyValue Decimal="4" Property="ToleranceRangeLowValue" />
+                    <PropertyValue Decimal="6" Property="ToleranceRangeHighValue" />
+                    <PropertyValue Decimal="2" Property="DeviationRangeLowValue" />
+                    <PropertyValue Decimal="8" Property="DeviationRangeHighValue" />
+                </Record>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+</Annotations> -->
+
+<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZMM_MANAGE_PO_SRV.PurchaseOrder">
+    <Annotation Term="UI.FieldGroup" Qualifier="Date.Group">
+        <Record>
+            <PropertyValue Property="Label" String="Date Group" />
+            <PropertyValue Property="Data">
+                <Collection>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="Eindt" />
+                    </Record>
+                </Collection>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+
+    <Annotation Term="UI.LineItem">
+        <Collection>
+            <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="Eindt" />
+            </Record>
+        </Collection>
+    </Annotation>
+</Annotations>
+
+<!-- <Annotations Target="ZMM_MANAGE_PO_SRV.PurchaseOrderSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="UI.LineItem">
+        <Collection>
+            <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="Eindt" />
+            </Record>
+        </Collection>
+    </Annotation>
+</Annotations> -->

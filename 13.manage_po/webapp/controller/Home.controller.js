@@ -11,7 +11,7 @@ sap.ui.define([
             onInit: function () {
             },
 
-            handleBeforeRebindTable: function (oEvent) {
+            handleBeforeRebind_PurchaseOrderTable: function (oEvent) {
                 var sEmail = 'krishna@airditsoftware.com';
                 var sPlantId = '1100'
 
