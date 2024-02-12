@@ -1,75 +1,128 @@
-<!-- <Annotations Target="MM_PUR_PR_PROCESS_SRV.C_Purchasereqitmdtlsext" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <Annotation Term="UI.Chart">
-        <Record>
-            <PropertyValue EnumMember="UI.ChartType/Bullet" Property="ChartType" />
-            <PropertyValue Property="Title" String="Product Title" />
-            <PropertyValue Property="Description" String="Product Description" />
-            <PropertyValue Property="Measures">
-                <Collection>
-                    <PropertyPath>MaterialPlannedDeliveryDurn</PropertyPath>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="MeasureAttributes">
-                <Collection>
-                    <Record Type="UI.ChartMeasureAttributeType">
-                        <PropertyValue Property="Measure" PropertyPath="MaterialPlannedDeliveryDurn" />
-                        <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
-                        <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#MaterialPlannedDeliveryDurn" />
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZMM_MANAGE_PO_SRV/$metadata">
+        <edmx:Include Alias="Metadata" Namespace="ZMM_MANAGE_PO_SRV"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="managepo.annotations.annotation.ZMM_MANAGE_PO_SRV">
+            <Annotations Target="Metadata.PurchaseOrder">
+
+                <!-- <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Ekgrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Ebeln"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Eknam"/>
+                        </Record>
+                    </Collection>
+                </Annotation> -->
+
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <!-- <PropertyPath>Werks</PropertyPath>
+                        <PropertyPath >Ebeln</PropertyPath>
+                        <PropertyPath >Eindt</PropertyPath>
+                        <PropertyPath >Frgke</PropertyPath>
+                        <PropertyPath >Matkl</PropertyPath> -->
+                        <PropertyPath >Ekgrp</PropertyPath>
+                        <PropertyPath >Bsart</PropertyPath>
+                        <PropertyPath >Kokrs</PropertyPath>
+                        <PropertyPath >Werks</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Ekgrp">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Purch. Group"/>
+                        <PropertyValue Property="CollectionPath" String="PurchasingGrpVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Ekgrp"/>
+                                    <PropertyValue Property="ValueListProperty" String="Purchasinggroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Descriptions"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
                     </Record>
-                </Collection>
-            </PropertyValue>
-        </Record>
-    </Annotation>
-    <Annotation Term="UI.DataPoint">
-        <Record>
-            <PropertyValue String="Days" Property="Title" />
-            <PropertyValue Path="MaterialPlannedDeliveryDurn" Property="Value" />
-            <PropertyValue Decimal="5" Property="TargetValue" />
-            <PropertyValue Decimal="6" Property="ForecastValue" />
-            <PropertyValue Decimal="0" Property="MinimumValue" />
-            <PropertyValue Decimal="10" Property="MaximumValue" />
-            <PropertyValue Property="CriticalityCalculation">
-                <Record>
-                    <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimize"/>
-                    <PropertyValue Decimal="4" Property="ToleranceRangeLowValue" />
-                    <PropertyValue Decimal="6" Property="ToleranceRangeHighValue" />
-                    <PropertyValue Decimal="2" Property="DeviationRangeLowValue" />
-                    <PropertyValue Decimal="8" Property="DeviationRangeHighValue" />
-                </Record>
-            </PropertyValue>
-        </Record>
-    </Annotation>
-</Annotations> -->
+                </Annotation>
+            </Annotations>
 
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZMM_MANAGE_PO_SRV.PurchaseOrder">
-    <Annotation Term="UI.FieldGroup" Qualifier="Date.Group">
-        <Record>
-            <PropertyValue Property="Label" String="Date Group" />
-            <PropertyValue Property="Data">
-                <Collection>
-                    <Record Type="UI.DataField">
-                        <PropertyValue Property="Value" Path="Eindt" />
+             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Bsart">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Document Type"/>
+                        <PropertyValue Property="CollectionPath" String="DocumentTypeVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Bsart"/>
+                                    <PropertyValue Property="ValueListProperty" String="Purchasingdocumenttype"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Purchasingdocumentcategory"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
                     </Record>
-                </Collection>
-            </PropertyValue>
-        </Record>
-    </Annotation>
+                </Annotation>
+            </Annotations>
 
-    <Annotation Term="UI.LineItem">
-        <Collection>
-            <Record Type="UI.DataField">
-                <PropertyValue Property="Value" Path="Eindt" />
-            </Record>
-        </Collection>
-    </Annotation>
-</Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Kokrs">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="CO Area"/>
+                        <PropertyValue Property="CollectionPath" String="CostCentreVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Kokrs"/>
+                                    <PropertyValue Property="ValueListProperty" String="Controllingarea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Costcenter"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
 
-<!-- <Annotations Target="ZMM_MANAGE_PO_SRV.PurchaseOrderSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <Annotation Term="UI.LineItem">
-        <Collection>
-            <Record Type="UI.DataField">
-                <PropertyValue Property="Value" Path="Eindt" />
-            </Record>
-        </Collection>
-    </Annotation>
-</Annotations> -->
+             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Werks">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant"/>
+                        <PropertyValue Property="CollectionPath" String="PlantVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Werks"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plantdetails"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Descriptions"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -27,7 +27,10 @@
       },
       "localAnnotations": {
         "uri": "annotations/annotations.xml",
-        "type": "ODataAnnotation"
+        "type": "ODataAnnotation",
+        "settings": {
+					"localUri": "annotations/annotations.xml"
+				}
       }
     }
   },
