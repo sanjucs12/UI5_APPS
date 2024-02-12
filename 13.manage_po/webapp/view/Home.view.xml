@@ -124,8 +124,11 @@
                                     <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" enabled="false" />
                                 </OverflowToolbar>
                             </smartTable:customToolbar>
-                            <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
-
+                            <Table id="table_myGroup" mode="MultiSelect" selectionChange="handleMyGroupTable_RowSelection" growing="true">
+                                <items>
+                                    <ColumnListItem vAlign="Middle" type="Navigation" press="handleMyGroupTable_RowClick">
+                                    </ColumnListItem>
+                                </items>
                             </Table>
                         </smartTable:SmartTable>
                     </IconTabFilter>
@@ -139,36 +142,12 @@
                                     <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" id="deleteProcessButton" enabled="false" />
                                 </OverflowToolbar>
                             </smartTable:customToolbar>
-                            <!-- <Table id="table_chart" mode="MultiSelect" selectionChange="handleProcessTable_RowSelection" growing="true">
-                                <columns>
-                                    <Column >
-                                        <customData>
-                                            <core:CustomData key="p13nData" value='\{"columnKey": "MaterialPlannedDeliveryDurn","leadingProperty": "MaterialPlannedDeliveryDurn", "sortProperty": "MaterialPlannedDeliveryDurn", "columnIndex": "5"}' />
-                                        </customData>
-                                        <Label text="Planned Delivery Days" />
-                                    </Column>
-                                    <Column >
-                                        <customData>
-                                            <core:CustomData key="p13nData" value='\{"columnKey": "ProcessingStatusName","leadingProperty": "ProcessingStatusName", "sortProperty": "ProcessingStatusName", "columnIndex": "6"}' />
-                                        </customData>
-                                        <Label text="Processing Status" />
-                                    </Column>
-                                </columns>
+                            <Table id="table_myPo" mode="MultiSelect" selectionChange="handleMyPoTable_RowSelection" growing="true">
                                 <items>
-                                    <ColumnListItem vAlign="Middle" type="Navigation">
-                                        <cells>
-                                            <microchart:BulletMicroChart size="S" scale=" days" minValue="0" targetValue="5" maxValue="10" class="sapUiSmallMargin">
-                                                <microchart:actual>
-                                                    <microchart:BulletMicroChartData id="bulletMicroChart" value="{path:'MaterialPlannedDeliveryDurn', formatter:'.stringToNumber'}" color="{path:'MaterialPlannedDeliveryDurn', formatter:'.statusColorFormatter'}"/>
-                                                </microchart:actual>
-                                            </microchart:BulletMicroChart>
-                                        </cells>
-                                        <cells>
-                                            <ObjectStatus class="sapUiSmallMarginBottom" text="{ProcessingStatusName}" icon="{= ${ProcessingStatusName} === 'PO created' ? 'sap-icon://sys-enter-2' : 'sap-icon://information' }" state="{= ${ProcessingStatusName} === 'PO created' ? 'Success' : 'Information' }" />
-                                        </cells>
+                                    <ColumnListItem vAlign="Middle" type="Navigation" press="handleMyPoTable_RowClick">
                                     </ColumnListItem>
                                 </items>
-                            </Table> -->
+                            </Table>
                         </smartTable:SmartTable>
                     </IconTabFilter>
                 </items>

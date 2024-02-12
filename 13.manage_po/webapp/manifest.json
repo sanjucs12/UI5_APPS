@@ -106,6 +106,13 @@
           "target": [
             "TargetHome"
           ]
+        },
+        {
+          "name": "RoutePoDetails",
+          "pattern": "PoDetails/{po}",
+          "target": [
+            "TargetPoDetails"
+          ]
         }
       ],
       "targets": {
@@ -115,6 +122,13 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "TargetPoDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PoDetails",
+          "viewName": "PoDetails"
         }
       }
     },

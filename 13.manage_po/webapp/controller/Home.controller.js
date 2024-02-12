@@ -34,13 +34,24 @@ sap.ui.define([
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
             },
 
-            // onSFBinitialized: function () {
-            //     // Add default value for ProductCode field
-            //     var _oSmartFilterBar = this.getView().byId("smartFilterBar");
-            //     _oSmartFilterBar.setFilterData({
-            //         Werks: "1100",
-            //         Email: "krishna@airditsoftware.com",
-            //     })
-            // }
+            handleMyGroupTable_RowClick: function (oEvent) {
+                var sPath = oEvent.getSource().getBindingContext().getPath()
+                console.log(oEvent.getSource().getBindingContext().getObject())
+                //console.log(encodeURIComponent(sPath))
+                // var oRouter = this.getOwnerComponent().getRouter();
+                // oRouter.navTo('RoutePoDetails', {
+                //     "po": encodeURIComponent(sPath)
+                // })
+            },
+
+            handleMyPoTable_RowClick: function (oEvent) {
+                var sPath = oEvent.getSource().getBindingContext().getPath()
+                //console.log(encodeURIComponent(sPath))
+                var oRouter = this.getOwnerComponent().getRouter();
+                // oRouter.navTo('RoutePoDetails', {
+                //     "po": encodeURIComponent(sPath)
+                // })
+            }
+
         });
     });

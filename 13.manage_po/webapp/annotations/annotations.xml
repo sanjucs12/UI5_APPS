@@ -28,22 +28,20 @@
 
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
-                        <!-- <PropertyPath>Werks</PropertyPath>
-                        <PropertyPath >Ebeln</PropertyPath>
-                        <PropertyPath >Eindt</PropertyPath>
-                        <PropertyPath >Frgke</PropertyPath>
-                        <PropertyPath >Matkl</PropertyPath> -->
-                        <PropertyPath >Ekgrp</PropertyPath>
                         <PropertyPath >Bsart</PropertyPath>
-                        <PropertyPath >Kokrs</PropertyPath>
                         <PropertyPath >Werks</PropertyPath>
+                        <PropertyPath >Matkl</PropertyPath>
+                        <PropertyPath >Ekgrp</PropertyPath>
+                        <PropertyPath >Kokrs</PropertyPath>
+                        <PropertyPath >Elikz</PropertyPath>
+                        <PropertyPath >Procstat</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Ekgrp">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Purch. Group"/>
+                        <PropertyValue Property="Label" String="Purchase Group"/>
                         <PropertyValue Property="CollectionPath" String="PurchasingGrpVHSet"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
@@ -61,7 +59,7 @@
                 </Annotation>
             </Annotations>
 
-             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Bsart">
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Bsart">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Document Type"/>
@@ -103,7 +101,7 @@
                 </Annotation>
             </Annotations>
 
-             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Werks">
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Werks">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Plant"/>
@@ -117,6 +115,69 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Descriptions"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Matkl">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group"/>
+                        <PropertyValue Property="CollectionPath" String="MaterialGroupVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Matkl"/>
+                                    <PropertyValue Property="ValueListProperty" String="Materialgroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Materialgroupdescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Elikz">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group"/>
+                        <PropertyValue Property="CollectionPath" String="CloseOpenVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Elikz"/>
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Priority"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Procstat">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group"/>
+                        <PropertyValue Property="CollectionPath" String="ProcessingStatusVHSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Procstat"/>
+                                    <PropertyValue Property="ValueListProperty" String="Descr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Val"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
