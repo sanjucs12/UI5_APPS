@@ -13,21 +13,31 @@
 
     <objectPage:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="false" upperCaseAnchorBar="false">
 
+        <objectPage:headerTitle>
+            <objectPage:ObjectPageDynamicHeaderTitle>
+                <objectPage:expandedHeading>
+                    <Title id="title_poNumber"/>
+                </objectPage:expandedHeading>
+            </objectPage:ObjectPageDynamicHeaderTitle>
+        </objectPage:headerTitle>
+
         <objectPage:headerContent>
             <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchaseOrderSet">
                 <smartFilterBar:controlConfiguration>
-                    <smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" />
+                    <smartFilterBar:ControlConfiguration key="Bsart" visibleInAdvancedArea="true" />
                 </smartFilterBar:controlConfiguration>
             </smartFilterBar:SmartFilterBar>
         </objectPage:headerContent>
         <objectPage:sections>
 
-            <objectPage:ObjectPageSection title="Section 1">
+            <objectPage:ObjectPageSection title="Item Details">
                 <objectPage:subSections>
                     <objectPage:ObjectPageSubSection>
                         <objectPage:blocks>
                             <layout:VerticalLayout>
-                                <Text text="section 1"/>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_ItemDetails" initiallyVisibleFields="Matnr,Matkl,Eknam,Ekgrp,Sbmenge,Eindt,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Item Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
                             </layout:VerticalLayout>
                         </objectPage:blocks>
                     </objectPage:ObjectPageSubSection>
@@ -35,12 +45,84 @@
             </objectPage:ObjectPageSection>
 
 
-            <objectPage:ObjectPageSection title="Section 2">
+            <objectPage:ObjectPageSection title="Service Details">
                 <objectPage:subSections>
                     <objectPage:ObjectPageSubSection >
                         <objectPage:blocks>
                             <layout:VerticalLayout>
-                                <Text text="section 2"/>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_ServiceDetails" initiallyVisibleFields="Extrow,Srvpos,Ktext1,Menge,Meins,Sbtbtwr" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Service Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+            <objectPage:ObjectPageSection title="Delivery Details">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_DeliveryDetails" initiallyVisibleFields="Eindt,Menge,Slfdt,Wemng,Banfn,Bnfpo" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Delivery Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+            <objectPage:ObjectPageSection title="Invoice Details">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_InvoiceDetails" initiallyVisibleFields="Mwskz,Repos,Erekz,Webre,Lebre" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Invoice Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+            <objectPage:ObjectPageSection title="Account Assaignment">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_AccountAssaignment" initiallyVisibleFields="Vrtkz,Menge,Vproz,Netwr" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Account Assaignment" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+            <objectPage:ObjectPageSection title="Customer Data">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_CustomerData" initiallyVisibleFields="" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Customer Data" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+
+            <objectPage:ObjectPageSection title="Condition">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_Condition" initiallyVisibleFields="Kschl,Kwert,Kbetr,Kpein" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Condition" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_Table" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+
+                                </smartTable:SmartTable>
                             </layout:VerticalLayout>
                         </objectPage:blocks>
                     </objectPage:ObjectPageSubSection>

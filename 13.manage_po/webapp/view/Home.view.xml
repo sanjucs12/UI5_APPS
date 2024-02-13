@@ -89,7 +89,6 @@
     </objectPage:ObjectPageLayout> -->
 
     <f:DynamicPage id="dynamicPageId">
-        <!-- DynamicPage Title -->
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
@@ -97,16 +96,20 @@
                 </f:heading>
             </f:DynamicPageTitle>
         </f:title>
-        <!-- DynamicPage Header -->
         <f:header>
             <f:DynamicPageHeader pinnable="true">
                 <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchaseOrderSet" persistencyKey="SmartFilter_Explored">
                     <smartFilterBar:controlConfiguration>
-                        <!-- <smartFilterBar:ControlConfiguration key="Werks" visibleInAdvancedArea="true" />
-                        <smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" />
-                        <smartFilterBar:ControlConfiguration key="Eindt" visibleInAdvancedArea="true" />
-                        <smartFilterBar:ControlConfiguration key="Frgke" visibleInAdvancedArea="true" />
-                        <smartFilterBar:ControlConfiguration key="Matkl" visibleInAdvancedArea="true" /> -->
+                        <smartFilterBar:ControlConfiguration key="Bsart" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Werks" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Matkl" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Ekgrp" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Kokrs" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Elikz" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Procstat" visibleInAdvancedArea="true" />
+                        <smartFilterBar:ControlConfiguration key="Eindt" visibleInAdvancedArea="true" conditionType="{
+								module: 'sap.ui.comp.config.condition.DateRangeType'
+							}"/>
                     </smartFilterBar:controlConfiguration>
                 </smartFilterBar:SmartFilterBar>
             </f:DynamicPageHeader>
@@ -115,13 +118,13 @@
             <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter text="My Group">
-                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_PurchaseGroup" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Group" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_PurchaseOrderTable" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_PurchaseGroup" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="My Group" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_MyGroupTable" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
                             <smartTable:customToolbar>
                                 <OverflowToolbar design="Transparent">
                                     <ToolbarSpacer />
                                     <!-- <SearchField liveChange="onSearch"/> -->
-                                    <Button text="Create SES" press="handleCreateProcessButton" icon="sap-icon://create" />
-                                    <Button text="Approval Log" press="handleDeleteProcessButton" icon="sap-icon://it-instance" enabled="false" />
+                                    <Button text="Create SES" icon="sap-icon://create" />
+                                    <Button text="Approval Log" icon="sap-icon://it-instance" enabled="false" />
                                 </OverflowToolbar>
                             </smartTable:customToolbar>
                             <Table id="table_myGroup" mode="MultiSelect" selectionChange="handleMyGroupTable_RowSelection" growing="true">
@@ -133,7 +136,7 @@
                         </smartTable:SmartTable>
                     </IconTabFilter>
                     <IconTabFilter text="My PO">
-                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_chart" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Purchase Order Details" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_PurchaseOrderTable" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
+                        <smartTable:SmartTable entitySet="PurchaseOrderSet" id="smartTable_chart" initiallyVisibleFields="Ebeln,Matnr,Knttx,Pstyp,Ebelp,Afnam,Sbmenge,Eindt,Netpr,Lifnr,Werks" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="My PO" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="handleBeforeRebind_MyPoTable" useVariantManagement="true" showVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored">
                             <smartTable:customToolbar>
                                 <OverflowToolbar design="Transparent">
                                     <ToolbarSpacer />

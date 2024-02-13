@@ -28,13 +28,15 @@
 
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
-                        <PropertyPath >Bsart</PropertyPath>
+                        <!-- <PropertyPath >Bsart</PropertyPath>
                         <PropertyPath >Werks</PropertyPath>
                         <PropertyPath >Matkl</PropertyPath>
                         <PropertyPath >Ekgrp</PropertyPath>
                         <PropertyPath >Kokrs</PropertyPath>
                         <PropertyPath >Elikz</PropertyPath>
                         <PropertyPath >Procstat</PropertyPath>
+                        <PropertyPath >Eindt</PropertyPath> -->
+                        <!-- <PropertyPath >Ebeln</PropertyPath> -->
                     </Collection>
                 </Annotation>
             </Annotations>
