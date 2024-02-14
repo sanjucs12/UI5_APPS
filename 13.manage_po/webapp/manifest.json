@@ -109,7 +109,7 @@
         },
         {
           "name": "RoutePoDetails",
-          "pattern": "PoDetails/{po}",
+          "pattern": "PoDetails/{po}/:vendor:",
           "target": [
             "TargetPoDetails"
           ]

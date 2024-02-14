@@ -12,7 +12,8 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.getRoute("RoutePoDetails").attachPatternMatched(function (oEvent) {
                     var sPO = oEvent.getParameter("arguments").po;
-                    //console.log(sPO)
+                    var sVendor = oEvent.getParameter("arguments").vendor;
+                    console.log(sVendor)
                     this.PO_Number = sPO;
                     this.getView().byId('smartTable_ItemDetails').rebindTable()
                     this.getView().byId('smartTable_ServiceDetails').rebindTable()
@@ -21,6 +22,8 @@ sap.ui.define([
                     this.getView().byId('smartTable_AccountAssaignment').rebindTable()
                     this.getView().byId('smartTable_CustomerData').rebindTable()
                     this.getView().byId('title_poNumber').setText(sPO)
+                    this.getView().byId('text_vendor1').setText(sVendor)
+                    this.getView().byId('text_vendor2').setText(sPO)
                 }, this);
             },
 

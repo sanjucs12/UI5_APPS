@@ -10,36 +10,20 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="managepo.annotations.annotation.ZMM_MANAGE_PO_SRV">
-            <Annotations Target="Metadata.PurchaseOrder">
-
-                <!-- <Annotation Term="UI.LineItem">
-                    <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Ekgrp"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Ebeln"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Eknam"/>
-                        </Record>
-                    </Collection>
-                </Annotation> -->
-
+            <!-- <Annotations Target="Metadata.PurchaseOrder">
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
-                        <!-- <PropertyPath >Bsart</PropertyPath>
+                        <PropertyPath >Bsart</PropertyPath>
                         <PropertyPath >Werks</PropertyPath>
                         <PropertyPath >Matkl</PropertyPath>
                         <PropertyPath >Ekgrp</PropertyPath>
                         <PropertyPath >Kokrs</PropertyPath>
                         <PropertyPath >Elikz</PropertyPath>
                         <PropertyPath >Procstat</PropertyPath>
-                        <PropertyPath >Eindt</PropertyPath> -->
-                        <!-- <PropertyPath >Ebeln</PropertyPath> -->
+                        <PropertyPath >Eindt</PropertyPath>
                     </Collection>
                 </Annotation>
-            </Annotations>
+            </Annotations> -->
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Ekgrp">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -62,6 +46,7 @@
             </Annotations>
 
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PurchaseOrder/Bsart">
+                <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Document Type"/>

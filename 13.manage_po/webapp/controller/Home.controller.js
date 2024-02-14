@@ -61,11 +61,13 @@ sap.ui.define([
                 var sPath = oEvent.getSource().getBindingContext().getPath()
                 var oPO_Details = oEvent.getSource().getBindingContext().getObject();
                 var sPO = oPO_Details.Ebeln
-                //console.log(sPO)
+                var sVendor = oPO_Details.Lifnr
+                console.log(oPO_Details)
                 //console.log(encodeURIComponent(sPath))
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('RoutePoDetails', {
-                    po: sPO
+                    po: sPO,
+                    vendor: sVendor
                 })
             },
 
@@ -73,11 +75,13 @@ sap.ui.define([
                 var sPath = oEvent.getSource().getBindingContext().getPath()
                 var oPO_Details = oEvent.getSource().getBindingContext().getObject();
                 var sPO = oPO_Details.Ebeln
+                var sVendor = oPO_Details.Lifnr
                 //console.log(sPO)
                 //console.log(encodeURIComponent(sPath))
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('RoutePoDetails', {
-                    po: sPO
+                    po: sPO,
+                    vendor: sVendor
                 })
             }
         });
