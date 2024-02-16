@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_PO_LIST_DETAILS_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_PO_LIST_DETAILSType" sap:label="PO Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_Email"/>
+                    <PropertyRef Name="PurchOrder"/>
+                    <PropertyRef Name="ItemNo"/>
+                </Key>
+                <Property Name="P_Email" Type="Edm.String" Nullable="false" MaxLength="241" sap:label="E-Mail Address"/>
+                <Property Name="PurchOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="PONumberItem" Type="Edm.String" MaxLength="16" sap:label="PO Number/Item"/>
+                <Property Name="Doctyp" Type="Edm.String" MaxLength="24" sap:label="Doc Type"/>
+                <Property Name="DocCat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purch. Doc. Category" sap:quickinfo="Purchasing Document Category"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
+                <Property Name="PurchOrg" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Purchase Group" sap:quickinfo="Purchasing Group"/>
+                <Property Name="ConditionNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Doc. Condition No." sap:quickinfo="Number of the Document Condition"/>
+                <Property Name="PurchOrgDesc" Type="Edm.String" MaxLength="18" sap:label="Description p. group" sap:quickinfo="Description of purchasing group"/>
+                <Property Name="RealaseInd" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="MatGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Mat.Group" sap:quickinfo="Material Group"/>
+                <Property Name="wgbez" Type="Edm.String" MaxLength="20" sap:label="Material Group Desc." sap:quickinfo="Material Group Description"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:quickinfo="Short Text"/>
+                <Property Name="Requisitioner" Type="Edm.String" MaxLength="12" sap:label="Requistioner" sap:quickinfo="Name of requisitioner/requester"/>
+                <Property Name="OrderQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
+                <Property Name="OrderUnit" Type="Edm.String" MaxLength="3" sap:label="Deliver UOM" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="NetOrderPrice" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Net Price"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sloc" sap:quickinfo="Storage location"/>
+                <Property Name="lgobe" Type="Edm.String" MaxLength="16" sap:label="Description" sap:quickinfo="Description of Storage Location"/>
+                <Property Name="ItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item category" sap:quickinfo="Item category in purchasing document"/>
+                <Property Name="ptext" Type="Edm.String" MaxLength="20" sap:label="Item Category/Account" sap:quickinfo="Text for Item Category"/>
+                <Property Name="AccAssignmentCat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Acct Assignment Cat." sap:quickinfo="Account Assignment Category"/>
+                <Property Name="knttx" Type="Edm.String" MaxLength="20" sap:label="AcctAssgntCateg Desc" sap:quickinfo="Account Assignment Category Description"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="46" sap:label="Supplier"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="35" sap:label="Plant"/>
+                <Property Name="wemng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Deliver Quantity" sap:quickinfo="Quantity of goods received"/>
+                <Property Name="emailId" Type="Edm.String" MaxLength="241"/>
+                <Property Name="ServiceHide" Type="Edm.String" MaxLength="5" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_accassign" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_9A482BCD6FC44735C72A895099F53EEA" FromRole="FromRole_assoc_9A482BCD6FC44735C72A895099F53EEA" ToRole="ToRole_assoc_9A482BCD6FC44735C72A895099F53EEA"/>
+                <NavigationProperty Name="to_condition" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_AFA5CB7D6084D14F31FE292D44DA308D" FromRole="FromRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D" ToRole="ToRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D"/>
+                <NavigationProperty Name="to_invdet" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_A7DFA2D2C850D979E6C3DEA112237C24" FromRole="FromRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24" ToRole="ToRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24"/>
+                <NavigationProperty Name="to_servicepo" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_5860852DA325970B573744AD1CF7C06C" FromRole="FromRole_assoc_5860852DA325970B573744AD1CF7C06C" ToRole="ToRole_assoc_5860852DA325970B573744AD1CF7C06C"/>
+                <NavigationProperty Name="Parameters" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_E51C6B446102F82433C47CFF2CF8F4A8" FromRole="ToRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8" ToRole="FromRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_PO_LIST_DETAILSParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_Email"/>
+                </Key>
+                <Property Name="P_Email" Type="Edm.String" Nullable="false" MaxLength="241" sap:parameter="mandatory" sap:label="E-Mail Address" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZC_PO_LIST_DETAILS_CDS.assoc_E51C6B446102F82433C47CFF2CF8F4A8" FromRole="FromRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8" ToRole="ToRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8"/>
+            </EntityType>
+            <EntityType Name="ZI_ACCOUNT_ASSIGNMENT_DETType" sap:label="Account Assignment Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="POOrder"/>
+                    <PropertyRef Name="POItem"/>
+                </Key>
+                <Property Name="POOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="POItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="GL Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Cost Center" sap:quickinfo="Funds Center"/>
+                <Property Name="Asset" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="OrderNo" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Order No" sap:quickinfo="Order Number"/>
+                <Property Name="Destribution" Type="Edm.String" MaxLength="29" sap:label="Distribution"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantity"/>
+                <Property Name="DistrbutionPercent" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="Distribution Percent" sap:quickinfo="Distribution percentage in the case of multiple acct assgt"/>
+                <Property Name="NetOrderValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:label="Net Order Value" sap:quickinfo="Net Order Value in PO Currency"/>
+            </EntityType>
+            <EntityType Name="ZI_PM_ConditionTabType" sap:label="Condition tab" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchaseOrderNumber"/>
+                    <PropertyRef Name="ConditionNo"/>
+                    <PropertyRef Name="ConditionType"/>
+                </Key>
+                <Property Name="PurchaseOrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="ConditionNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition Number" sap:quickinfo="Number of the Document Condition"/>
+                <Property Name="ConditionType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type" sap:quickinfo="Condition type"/>
+                <Property Name="ConditionValue" Type="Edm.Decimal" Precision="16" Scale="3" sap:label="Condition Value"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Amount" sap:quickinfo="Rate (Amount or Percentage)"/>
+                <Property Name="PricingUnit" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Price unit" sap:quickinfo="Condition Pricing Unit"/>
+            </EntityType>
+            <EntityType Name="ZI_PM_ServicePOType" sap:label="Service PO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchaseOrder"/>
+                    <PropertyRef Name="PurchaseOrderItem"/>
+                    <PropertyRef Name="PackageNumber"/>
+                    <PropertyRef Name="ServiceLineNumber"/>
+                </Key>
+                <Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="PackageNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Package number"/>
+                <Property Name="ServiceLineNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Service Line" sap:quickinfo="Line Number"/>
+                <Property Name="ServiceNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Service Number" sap:quickinfo="Activity Number"/>
+                <Property Name="ServiceDescription" Type="Edm.String" MaxLength="40" sap:label="Service Description" sap:quickinfo="Short Text"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="UnitOfMeasure" sap:label="Quantity" sap:quickinfo="Quantity with Sign"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" MaxLength="3" sap:label="Unit Of Measure" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="GrossPrice" Type="Edm.Decimal" Precision="12" Scale="3" sap:label="Gross Price"/>
+            </EntityType>
+            <EntityType Name="zi_po_inv_detType" sap:label="Invoice Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ebeln"/>
+                    <PropertyRef Name="ebelp"/>
+                </Key>
+                <Property Name="ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="mwskz" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on sales/purchases code"/>
+                <Property Name="repos" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Invoice receipt" sap:quickinfo="Invoice receipt indicator"/>
+                <Property Name="erekz" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Final Invoice" sap:quickinfo="Final Invoice Indicator"/>
+                <Property Name="webre" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="GR-Based Inv. Verif." sap:quickinfo="Indicator: GR-Based Invoice Verification"/>
+                <Property Name="lebre" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Srv.-Based Inv. Ver." sap:quickinfo="Indicator for Service-Based Invoice Verification"/>
+            </EntityType>
+            <Association Name="assoc_E51C6B446102F82433C47CFF2CF8F4A8" sap:content-version="1">
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSParameters" Multiplicity="1" Role="FromRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8"/>
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" Multiplicity="*" Role="ToRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8"/>
+            </Association>
+            <Association Name="assoc_AFA5CB7D6084D14F31FE292D44DA308D" sap:content-version="1">
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" Multiplicity="1" Role="FromRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D"/>
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZI_PM_ConditionTabType" Multiplicity="*" Role="ToRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D"/>
+            </Association>
+            <Association Name="assoc_A7DFA2D2C850D979E6C3DEA112237C24" sap:content-version="1">
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" Multiplicity="1" Role="FromRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24"/>
+                <End Type="ZC_PO_LIST_DETAILS_CDS.zi_po_inv_detType" Multiplicity="*" Role="ToRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24"/>
+            </Association>
+            <Association Name="assoc_5860852DA325970B573744AD1CF7C06C" sap:content-version="1">
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" Multiplicity="1" Role="FromRole_assoc_5860852DA325970B573744AD1CF7C06C"/>
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZI_PM_ServicePOType" Multiplicity="*" Role="ToRole_assoc_5860852DA325970B573744AD1CF7C06C"/>
+            </Association>
+            <Association Name="assoc_9A482BCD6FC44735C72A895099F53EEA" sap:content-version="1">
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" Multiplicity="1" Role="FromRole_assoc_9A482BCD6FC44735C72A895099F53EEA"/>
+                <End Type="ZC_PO_LIST_DETAILS_CDS.ZI_ACCOUNT_ASSIGNMENT_DETType" Multiplicity="*" Role="ToRole_assoc_9A482BCD6FC44735C72A895099F53EEA"/>
+            </Association>
+            <EntityContainer Name="ZC_PO_LIST_DETAILS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_PO_LIST_DETAILSSet" EntityType="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_PO_LIST_DETAILS" EntityType="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILSParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_ACCOUNT_ASSIGNMENT_DET" EntityType="ZC_PO_LIST_DETAILS_CDS.ZI_ACCOUNT_ASSIGNMENT_DETType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PM_ConditionTab" EntityType="ZC_PO_LIST_DETAILS_CDS.ZI_PM_ConditionTabType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PM_ServicePO" EntityType="ZC_PO_LIST_DETAILS_CDS.ZI_PM_ServicePOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zi_po_inv_det" EntityType="ZC_PO_LIST_DETAILS_CDS.zi_po_inv_detType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A7DFA2D2C850D979E6C3DEA112237C24" Association="ZC_PO_LIST_DETAILS_CDS.assoc_A7DFA2D2C850D979E6C3DEA112237C24" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_PO_LIST_DETAILSSet" Role="FromRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24"/>
+                    <End EntitySet="zi_po_inv_det" Role="ToRole_assoc_A7DFA2D2C850D979E6C3DEA112237C24"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9A482BCD6FC44735C72A895099F53EEA" Association="ZC_PO_LIST_DETAILS_CDS.assoc_9A482BCD6FC44735C72A895099F53EEA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_PO_LIST_DETAILSSet" Role="FromRole_assoc_9A482BCD6FC44735C72A895099F53EEA"/>
+                    <End EntitySet="ZI_ACCOUNT_ASSIGNMENT_DET" Role="ToRole_assoc_9A482BCD6FC44735C72A895099F53EEA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5860852DA325970B573744AD1CF7C06C" Association="ZC_PO_LIST_DETAILS_CDS.assoc_5860852DA325970B573744AD1CF7C06C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_PO_LIST_DETAILSSet" Role="FromRole_assoc_5860852DA325970B573744AD1CF7C06C"/>
+                    <End EntitySet="ZI_PM_ServicePO" Role="ToRole_assoc_5860852DA325970B573744AD1CF7C06C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AFA5CB7D6084D14F31FE292D44DA308D" Association="ZC_PO_LIST_DETAILS_CDS.assoc_AFA5CB7D6084D14F31FE292D44DA308D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_PO_LIST_DETAILSSet" Role="FromRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D"/>
+                    <End EntitySet="ZI_PM_ConditionTab" Role="ToRole_assoc_AFA5CB7D6084D14F31FE292D44DA308D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E51C6B446102F82433C47CFF2CF8F4A8" Association="ZC_PO_LIST_DETAILS_CDS.assoc_E51C6B446102F82433C47CFF2CF8F4A8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_PO_LIST_DETAILS" Role="FromRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8"/>
+                    <End EntitySet="ZC_PO_LIST_DETAILSSet" Role="ToRole_assoc_E51C6B446102F82433C47CFF2CF8F4A8"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILS_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILS_CDS_Entities/ZC_PO_LIST_DETAILS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_Email</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_Email</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_PO_LIST_DETAILS_CDS.ZC_PO_LIST_DETAILS_CDS_Entities/ZC_PO_LIST_DETAILSSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ServiceHide</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ServiceHide</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZC_PO_LIST_DETAILS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZC_PO_LIST_DETAILS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,7 +1,7 @@
 {
     "_version": "1.59.0",
     "sap.app": {
-        "id": "com.test.listreportapp",
+        "id": "dalmia",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -12,27 +12,27 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
-            "version": "1.12.0",
-            "toolsId": "645ea00e-fc73-4659-865c-ced72d810678"
+            "version": "1.12.4",
+            "toolsId": "f7304c64-f57c-4c99-8807-e6bab54a86e5"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZLIST_REPORT_CDS/",
+                "uri": "/sap/opu/odata/sap/ZC_PO_LIST_DETAILS_CDS/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "ZLIST_REPORT_CDS_VAN",
+                        "ZC_PO_LIST_DETAILS_CDS_VAN",
                         "annotation"
                     ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
                 }
             },
-            "ZLIST_REPORT_CDS_VAN": {
-                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZLIST_REPORT_CDS_VAN',Version='0001')/$value/",
+            "ZC_PO_LIST_DETAILS_CDS_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_PO_LIST_DETAILS_CDS_VAN',Version='0001')/$value/",
                 "type": "ODataAnnotation",
                 "settings": {
-                    "localUri": "localService/ZLIST_REPORT_CDS_VAN.xml"
+                    "localUri": "localService/ZC_PO_LIST_DETAILS_CDS_VAN.xml"
                 }
             },
             "annotation": {
@@ -63,7 +63,7 @@
     "sap.ui5": {
         "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.120.3",
+            "minUI5Version": "1.120.7",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -82,7 +82,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "com.test.listreportapp.i18n.i18n"
+                    "bundleName": "dalmia.i18n.i18n"
                 }
             },
             "": {
@@ -114,22 +114,10 @@
             "extensions": {
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                        "controllerName": "com.test.listreportapp.ext.controller.ListReportExt",
-                        "sap.ui.generic.app": {
-                            "EmployeeDetails": {
-                                "EntitySet": "EmployeeDetails",
-                                "Actions": {
-                                    "uploadButton": {
-                                        "id": "uploadButtonButton",
-                                        "text": "Upload Excel",
-                                        "press": "upload",
-                                        "requiresSelection": false
-                                    }
-                                }
-                            }
-                        }
+                        "controllerName": "dalmia.ext.controller.ListReportExt"
                     }
                 }
+               
             }
         }
     },
@@ -142,8 +130,8 @@
             "showDraftToggle": false
         },
         "pages": {
-            "ListReport|EmployeeDetails": {
-                "entitySet": "EmployeeDetails",
+            "ListReport|ZC_PO_LIST_DETAILSSet": {
+                "entitySet": "ZC_PO_LIST_DETAILSSet",
                 "component": {
                     "name": "sap.suite.ui.generic.template.ListReport",
                     "list": true,
@@ -155,15 +143,12 @@
                             "dateSettings": {
                                 "useDateRange": true
                             }
-                        },
-                        "dataLoadSettings": {
-                            "loadDataOnAppLaunch": "always"
                         }
                     }
                 },
                 "pages": {
-                    "ObjectPage|EmployeeDetails": {
-                        "entitySet": "EmployeeDetails",
+                    "ObjectPage|ZC_PO_LIST_DETAILSSet": {
+                        "entitySet": "ZC_PO_LIST_DETAILSSet",
                         "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
                         "component": {
                             "name": "sap.suite.ui.generic.template.ObjectPage"

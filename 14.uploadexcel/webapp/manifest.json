@@ -1,7 +1,7 @@
 {
     "_version": "1.59.0",
     "sap.app": {
-        "id": "com.test.listreportapp",
+        "id": "uploadexcel",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -12,8 +12,8 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
-            "version": "1.12.0",
-            "toolsId": "645ea00e-fc73-4659-865c-ced72d810678"
+            "version": "1.12.3",
+            "toolsId": "b5a14027-1de2-45e5-b864-4250dbdf3fde"
         },
         "dataSources": {
             "mainService": {
@@ -63,7 +63,7 @@
     "sap.ui5": {
         "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.120.3",
+            "minUI5Version": "1.120.6",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -82,7 +82,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "com.test.listreportapp.i18n.i18n"
+                    "bundleName": "uploadexcel.i18n.i18n"
                 }
             },
             "": {
@@ -114,15 +114,15 @@
             "extensions": {
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                        "controllerName": "com.test.listreportapp.ext.controller.ListReportExt",
+                        "controllerName": "uploadexcel.ext.controller.ListReportExt",
                         "sap.ui.generic.app": {
                             "EmployeeDetails": {
                                 "EntitySet": "EmployeeDetails",
                                 "Actions": {
-                                    "uploadButton": {
-                                        "id": "uploadButtonButton",
+                                    "uploadExcel": {
+                                        "id": "uploadExcelButton",
                                         "text": "Upload Excel",
-                                        "press": "upload",
+                                        "press": "uploadExcel",
                                         "requiresSelection": false
                                     }
                                 }
@@ -155,9 +155,6 @@
                             "dateSettings": {
                                 "useDateRange": true
                             }
-                        },
-                        "dataLoadSettings": {
-                            "loadDataOnAppLaunch": "always"
                         }
                     }
                 },
