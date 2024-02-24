@@ -16,29 +16,27 @@
         <objectPage:headerTitle>
             <objectPage:ObjectPageDynamicHeaderTitle>
                 <objectPage:expandedHeading>
-                    <Title id="title_poNumber"/>
+                    <!-- <Title id="title_poNumber"/>
+                    <Avatar class="sapUiSmallMarginEnd" src="../src/purchase-order-icon-26.jpg" displaySize="S" /> -->
+                    <FlexBox wrap="Wrap" fitContainer="true">
+                        <Avatar class="sapUiSmallMarginEnd" src="../src/purchase-order-icon-26.jpg" displaySize="S" />
+                        <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                            <Title id="title_poNumber"/>
+                            <Text id="text_vendor1"/>
+                        </layout:VerticalLayout>
+                    </FlexBox>
                 </objectPage:expandedHeading>
-                <!-- <objectPage:actions>
-                    <OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="Share"/>
-                </objectPage:actions> -->
-                <objectPage:expandedContent>
-                    <Text id="text_vendor1" text="Vendor Name"/>
-                </objectPage:expandedContent>
 
                 <objectPage:snappedContent>
-                    <Text id="text_vendor2" text="Vendor Name"/>
+                    <Text id="text_vendor2" text="vendor"/>
                 </objectPage:snappedContent>
 
             </objectPage:ObjectPageDynamicHeaderTitle>
         </objectPage:headerTitle>
 
-        <objectPage:headerContent>
-            <!-- <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchaseOrderSet">
-                <smartFilterBar:controlConfiguration>
-                    <smartFilterBar:ControlConfiguration key="Bsart" visibleInAdvancedArea="true" />
-                </smartFilterBar:controlConfiguration>
-            </smartFilterBar:SmartFilterBar> -->
-        </objectPage:headerContent>
+        <!-- <objectPage:headerContent>
+
+        </objectPage:headerContent> -->
         <objectPage:sections>
 
             <objectPage:ObjectPageSection title="Item Details">

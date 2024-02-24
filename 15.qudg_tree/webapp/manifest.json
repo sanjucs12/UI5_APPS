@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "managepo",
+    "id": "qudgtree",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,25 +12,18 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.12.3",
-      "toolsId": "2b6f87fb-a834-426b-9246-33bcb65def4f"
+      "version": "1.12.4",
+      "toolsId": "1911cf7c-b3f3-4e68-937e-f418daec41a2"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZMM_MANAGE_PO_SRV/",
+        "uri": "/sap/opu/odata/sap/ZC_QUDG_MM_PRODH_CDS/",
         "type": "OData",
         "settings": {
-          "annotations": ["localAnnotations"],
+          "annotations": [],
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
-      },
-      "localAnnotations": {
-        "uri": "annotations/annotations.xml",
-        "type": "ODataAnnotation",
-        "settings": {
-					"localUri": "annotations/annotations.xml"
-				}
       }
     }
   },
@@ -53,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.120.6",
+      "minUI5Version": "1.120.8",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -73,7 +66,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "managepo.i18n.i18n"
+          "bundleName": "qudgtree.i18n.i18n"
         }
       },
       "": {
@@ -94,46 +87,32 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "managepo.view",
+        "viewPath": "qudgtree.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": true
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "RouteHome",
+          "name": "RouteProductHeirarchy",
           "pattern": ":?query:",
           "target": [
-            "TargetHome"
-          ]
-        },
-        {
-          "name": "RoutePoDetails",
-          "pattern": "PoDetails/{po}/:vendor:",
-          "target": [
-            "TargetPoDetails"
+            "TargetProductHeirarchy"
           ]
         }
       ],
       "targets": {
-        "TargetHome": {
+        "TargetProductHeirarchy": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": true,
-          "viewId": "Home",
-          "viewName": "Home"
-        },
-        "TargetPoDetails": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": true,
-          "viewId": "PoDetails",
-          "viewName": "PoDetails"
+          "clearControlAggregation": false,
+          "viewId": "ProductHeirarchy",
+          "viewName": "ProductHeirarchy"
         }
       }
     },
     "rootView": {
-      "viewName": "managepo.view.App",
+      "viewName": "qudgtree.view.App",
       "type": "XML",
       "async": true,
       "id": "App"

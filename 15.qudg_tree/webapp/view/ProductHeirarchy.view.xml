@@ -1,0 +1,21 @@
+<mvc:View controllerName="qudgtree.controller.ProductHeirarchy"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Tree id="Tree" items="{path: 'JSONModel_Data>/results',
+				    parameters : {
+		                countMode: 'Inline',
+                         treeAnnotationProperties : {
+                    hierarchyLevelFor : 'JSONModel_Data>HLEVEL',
+                    hierarchyNodeFor : 'JSONModel_Data>NODEID',
+                    hierarchyParentNodeFor : 'JSONModel_Data>PARENTNODE'
+                }
+		            }
+                    
+            }">
+                <StandardTreeItem title="{JSONModel_Data>PHDSC}"/>
+            </Tree>
+        </content >
+    </Page>
+</mvc:View>
