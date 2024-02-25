@@ -32,8 +32,8 @@ sap.ui.define([
 
                 this.processPath = sProcessPath
 
-                this.createGraphPath = `${sProcessPath}/to_ProcesstoRole`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
-                this.createStepPath = `${sProcessPath}/to_ProcesstoRole`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
+                this.createGraphPath = `${sProcessPath}/to_Processtostep`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
+                this.createStepPath = `${sProcessPath}/to_Processtostep`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${sProcessPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
                 this.getProcessData(); // Call readData_ MAINLY FOR CREATING A NETWORK GRAPH (GET REQUEST)
                 console.log(this.createStepPath)
@@ -68,7 +68,7 @@ sap.ui.define([
 
                 ///IF THE MODEL  "toggleGraphTable" IS ALREADY PRESENT, MAKE GRAPH AS DEFAULT VIEW
                 var oModel_taggleGraphTable = this.getView().getModel("toggleGraphTable");
-                if(oModel_taggleGraphTable){
+                if (oModel_taggleGraphTable) {
                     oModel_taggleGraphTable.setData({
                         table: false,
                         graph: true,
@@ -316,7 +316,8 @@ sap.ui.define([
                 var oSmartField_stepName = this.getView().byId("smartField_newStepName");
                 var oSmartField_stepType = this.getView().byId("smartField_newStepType");
                 var oSmartField_stepSequence = this.getView().byId("smartField_newStepSequence");
-                let aSmartFields = [oSmartField_stepName, oSmartField_stepType, oSmartField_stepSequence]
+                var oSmartField_stepApprover = this.getView().byId("smartField_newStepApprover");
+                let aSmartFields = [oSmartField_stepName, oSmartField_stepType, oSmartField_stepSequence, oSmartField_stepApprover]
 
                 aSmartFields.forEach((field) => {
                     if (!field.getValue()) {
@@ -336,7 +337,8 @@ sap.ui.define([
                     var oNewStep = {
                         StepName: oSmartField_stepName.getValue(),
                         StepType: oSmartField_stepType.getValue(),
-                        StepSequence: oSmartField_stepSequence.getValue()
+                        StepSequence: oSmartField_stepSequence.getValue(),
+                        StepApprover: oSmartField_stepApprover.getValue()
                     };
                     //console.log(oNewStep);
 

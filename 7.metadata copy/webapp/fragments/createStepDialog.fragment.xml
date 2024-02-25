@@ -17,6 +17,9 @@
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_newStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
                         </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_newStepApprover" value="{StepApprover}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
+                        </smartForm:GroupElement>
                     </smartForm:Group>
                 </smartForm:SmartForm>
             </VBox>
