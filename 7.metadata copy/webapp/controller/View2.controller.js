@@ -35,6 +35,7 @@ sap.ui.define([
                 this.createGraphPath = `${sProcessPath}/to_Processtostep`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
                 this.createStepPath = `${sProcessPath}/to_Processtostep`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${sProcessPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
+                this.createRejectionPath = `${sProcessPath}/to_Proctosteprej`;  //(POST REQUEST PATH TO CREATE REJECTION FOR A PARTICULAR STEP)
                 this.getProcessData(); // Call readData_ MAINLY FOR CREATING A NETWORK GRAPH (GET REQUEST)
                 console.log(this.createStepPath)
                 oObjectPageLayout.bindElement({
@@ -113,7 +114,7 @@ sap.ui.define([
                 }
             },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>__________SECTION 1____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////___________________________________SECTION 1 : HEADER____________________________________________///////
 
             handleDeleteProcessButton: function () {
                 //alert('clicked')
@@ -207,7 +208,7 @@ sap.ui.define([
             //     this.getProcessData(this.processPath)
             // },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>____________SECTION 2_______________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////___________________________________SECTION 2 : STEPS TABLE________________________________________///////
 
             handleStepRowClick: function (oEvent) {
                 var sPath = oEvent.getSource().getBindingContext().getPath();
@@ -236,10 +237,12 @@ sap.ui.define([
                 var oTable = this.getView().byId('table_steps');
                 var oDeleteStepButton = this.getView().byId("deleteStepButton")
                 var oEditStepButton = this.getView().byId("editStepButton")
+                var oRejectStepButton = this.getView().byId("rejectStepButton")
                 //var oAssaignRoleButton = this.getView().byId("assaignRoleButton")
                 var aSelectedItems = oTable.getSelectedItems(); // Get selected items
                 oDeleteStepButton.setEnabled(aSelectedItems.length > 0); // Enable the Delete button if at least one row is selected, otherwise disable it
                 oEditStepButton.setEnabled(aSelectedItems.length > 0); // Enable the Delete button if at least one row is selected, otherwise disable it
+                oRejectStepButton.setEnabled(aSelectedItems.length > 0); // Enable the Reject button if at least one row is selected, otherwise disable it
                 //oAssaignRoleButton.setEnabled(aSelectedItems.length > 0); // Enable the Delete button if at least one row is selected, otherwise disable it
             },
 
@@ -438,20 +441,85 @@ sap.ui.define([
                 }
             },
 
-            handleAssaignRoleButton: function () {
-                if (!this.oCreateRoleDialog) {
+            // handleAssaignRoleButton: function () {
+            //     if (!this.oCreateRoleDialog) {
+            //         this.loadFragment({
+            //             name: "metadata.fragments.createRoleDialog"
+            //         }).then(function (oDialog) {
+            //             this.oCreateRoleDialog = oDialog;
+            //             this.oCreateRoleDialog.open();
+            //         }.bind(this));
+            //     } else {
+            //         this.oCreateRoleDialog.open();
+            //     }
+            // },
+
+            handleRejectStepButton: function (oEvent) {
+                var oTable = this.getView().byId('table_steps');
+                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
+                var sPath = aSelectedItems[0].getBindingContext().getPath()
+                //console.log(sPath)
+
+                if (!this.oRejectStepDialog) {
                     this.loadFragment({
-                        name: "metadata.fragments.createRoleDialog"
+                        name: "metadata.fragments.rejectStepDialog"
                     }).then(function (oDialog) {
-                        this.oCreateRoleDialog = oDialog;
-                        this.oCreateRoleDialog.open();
+                        this.oRejectStepDialog = oDialog;
+                        this.oRejectStepDialog.bindElement({
+                            path: sPath,
+                        });
+                        this.oRejectStepDialog.open();
                     }.bind(this));
                 } else {
-                    this.oCreateRoleDialog.open();
+                    this.oRejectStepDialog.bindElement({
+                        path: sPath,
+                    });
+                    this.oRejectStepDialog.open();
                 }
             },
 
-            /////////////>>>>>>>>>>>>>>>>>>>___________NETWORK GRAPH__________<<<<<<<<<<<<<<<<<<<<<<////////////////////////////////
+            handle_rejectStepDialog_CancelButton: function () {
+                this.oRejectStepDialog.close();
+            },
+
+            handle_rejectStepDialog_RejectButton: function () {
+                var oModel = this.getView().getModel();
+                var sPath = this.createRejectionPath;
+                // var sStepName = this.getView().byId("smartField_newStepName").getValue();
+                // var sStepType = this.getView().byId("smartField_newStepType").getValue();
+                // var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
+
+                /////_____VALIDATIONS_______/////
+                var oSmartField_stepName = this.getView().byId("smartField_rStepName");
+                var oSmartField_stepSequence = this.getView().byId("smartField_rStepSequence");
+                var oSmartField_RejectionStepName = this.getView().byId("smartField_rRejectionStepName");
+                var oSmartField_RejectionStepSequence = this.getView().byId("smartField_rRejectionStepSequence");
+
+                //console.log(bFormValidation)
+
+                var oNewRejectionStep = {
+                    StepName: oSmartField_stepName.getValue(),
+                    StepSequence: oSmartField_stepSequence.getValue(),
+                    RejectionStepName: oSmartField_RejectionStepName.getValue(),
+                    RejectionStepSeq: oSmartField_RejectionStepSequence.getValue()
+                };
+                console.log(oNewRejectionStep);
+
+                // Creating new Rejection in the Model
+                oModel.create(sPath, oNewRejectionStep, {
+                    success: function (oResponse) {
+                        //console.log(response);
+                        // MessageToast.show(`New Step added: ${oNewStep.StepName}`)
+                        this.oRejectStepDialog.close();
+                    }.bind(this),
+                    error: function (oError) {
+                        MessageToast.show('Error: Something went wrong')
+                    }
+                });    
+                
+            },
+
+            //////____________________________SECTION 2: NETWORK GRAPH___________________________________
             _createNetworkGraph: function (data) {
                 let nodes = data.map(step => ({ ...step }));
                 let lines = [];
@@ -519,7 +587,7 @@ sap.ui.define([
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
             },
 
-            /////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>___________SECTION 3_____________<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////
+            /////______________________________SECTION 4: ROLES AND USERS____________________________________
             onBeforeRebindRolesTable: function (oEvent) {
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
                 var sStepId = oModel.getData().StepId;
@@ -545,7 +613,6 @@ sap.ui.define([
             },
 
             handleAssaignRoleButton: function () {
-
                 if (!this.oCreateRoleDialog) {
                     this.loadFragment({
                         name: "metadata.fragments.createRoleDialog"
@@ -679,5 +746,6 @@ sap.ui.define([
                     oEvent.getSource().setValueState('None')
                 }
             },
+
         });
     });
