@@ -67,13 +67,14 @@
                                 <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
                             </m:Toolbar>
 
-                            <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" header="Steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType,StepApprover,StepSequence" enableAutoBinding="true" visible="{toggleGraphTable>/table}" enableAutoColumnWidth="true">
+                            <!--_______________________________STEPS TABLE___________________________________-->
+                            <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" header="Steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType,StepApprover,StepSequence" enableAutoBinding="true" visible="{toggleGraphTable>/table}">
                                 <smartTable:customToolbar>
                                     <m:OverflowToolbar design="Transparent">
                                         <m:ToolbarSpacer/>
                                         <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
                                         <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                                        <m:Button text="Upon Reject" press="handleRejectStepButton" icon="sap-icon://edit" id="rejectStepButton" enabled="false"></m:Button>
+                                        <m:Button text="Upon Reject" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>
                                 <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
@@ -83,6 +84,7 @@
                                 </m:Table>
                             </smartTable:SmartTable>
 
+                            <!--_______________________________STEPS GRAPH___________________________________-->
                             <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto" visible="{toggleGraphTable>/graph}">
                                 <ng:layoutAlgorithm>
                                     <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
@@ -108,14 +110,13 @@
             <ObjectPageSection titleUppercase="false" title="Rejection Steps">
                 <subSections>
                     <ObjectPageSubSection >
-                        <smartTable:SmartTable id="smartTable_RejectionSteps" entitySet="ZP_QU_DG_STEP_REJ" beforeRebindTable="onBeforeRebindStepsTable" header="Rejection Step Details" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepSequence,RejectionStepName,RejectionStepSeq" enableAutoBinding="true" enableAutoColumnWidth="true">
-                            <!-- <smartTable:customToolbar>
-                                            <m:OverflowToolbar design="Transparent">
-                                                <m:ToolbarSpacer/>
-                                                <m:Button text="Create" press="handleCreateButton_RejectionStep" icon="sap-icon://create"></m:Button>
-                                                <m:Button text="Delete" press="handleDeleteButton_RejectionStep" icon="sap-icon://delete"></m:Button>
-                                            </m:OverflowToolbar>
-                                        </smartTable:customToolbar> -->
+                        <smartTable:SmartTable id="smartTable_RejectionSteps" entitySet="ZP_QU_DG_STEP_REJ" beforeRebindTable="onBeforeRebindStepsTable" header="Rejection Step Details" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepSequence,RejectionStepName,RejectionStepSeq" enableAutoBinding="true">
+                            <smartTable:customToolbar>
+                                <m:OverflowToolbar design="Transparent">
+                                    <m:ToolbarSpacer/>
+                                    <m:Button text="Delete" press="handleDeleteButton_RejectionStep" icon="sap-icon://delete"></m:Button>
+                                </m:OverflowToolbar>
+                            </smartTable:customToolbar>
                             <m:Table id="table_RejectionSteps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
                                 <m:items>
                                     <m:ColumnListItem vAlign="Middle" type="Active" press="handleStepRowClick"></m:ColumnListItem>
@@ -137,7 +138,7 @@
                                     <!-- __________________________________ROLES TABLE_______________-___________________- -->
                                     <layout:SplitPane requiredParentWidth="600" id="rolesPane">
                                         <m:Panel height="100%">
-                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" header="Roles" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false" enableAutoColumnWidth="true">
+                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" header="Roles" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
                                                 <smartTable:customToolbar>
                                                     <m:OverflowToolbar design="Transparent">
                                                         <m:ToolbarSpacer/>
@@ -158,7 +159,7 @@
                                     <layout:PaneContainer >
                                         <layout:SplitPane requiredParentWidth="600" id="usersPane">
                                             <m:Panel height="100%">
-                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" header="Users" tableType="Table" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false" enableAutoColumnWidth="true">
+                                                <smartTable:SmartTable id="smartTable_users" beforeRebindTable="onBeforeRebindUsersTable" entitySet="ZP_QU_DG_ROLE_USER" showRowCount="true" header="Users" tableType="ResponsiveTable" initiallyVisibleFields="UserName,RoleName" enableAutoBinding="false">
                                                     <!-- <m:Table id="table_users" mode="SingleSelectLeft" selectionChange="handle_UsersTable_RowSelection">
                                                                         <m:items>
                                                                             <m:ColumnListItem vAlign="Middle" type="Active" press="handle_UsersTable_RowClick"></m:ColumnListItem>

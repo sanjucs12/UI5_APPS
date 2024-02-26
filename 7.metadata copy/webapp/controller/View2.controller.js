@@ -587,6 +587,51 @@ sap.ui.define([
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
             },
 
+             
+            /////______________________________SECTION 3: STEP REJECTION TABLE____________________________________
+            handleDeleteButton_RejectionStep: function () {
+                var oModel = this.getOwnerComponent().getModel();
+                var oTable = this.getView().byId('table_RejectionSteps');
+                var oDeleteStepButton = this.getView().byId("deleteRoleButton")
+
+                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
+
+
+                // Confirm deletion with the user
+                MessageBox.confirm("Are you sure you want to delete the selected Rejection Step?", {
+                    icon: MessageBox.Icon.WARNING,
+                    actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                    emphasizedAction: MessageBox.Action.YES,
+                    //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
+                    onClose: function (oAction) {
+                        if (oAction === MessageBox.Action.YES) {
+                            // User confirmed deletion
+                            //oModel.setUseBatch(false);
+
+                            // Iterate through selected items and delete them
+                            aSelectedItems.forEach(function (oSelectedItem) {
+                                var sPath = oSelectedItem.getBindingContext().getPath();
+                                oModel.remove(sPath, {
+                                    success: function (oResponse) {
+                                        //console.log("Item deleted successfully");
+                                        MessageToast.show("Item deleted successfully")
+                                        oTable.removeSelections();  // Deselect all items after deletion
+                                        oDeleteStepButton.setEnabled(false)  //Disable the delete button
+                                    },
+                                    error: function (oError) {
+                                        // Handle deletion error
+                                        //console.error("Error deleting item");
+                                        MessageToast.show("Error: Something went wrong")
+                                    }
+                                });
+                            });
+
+                        }
+                    }
+                });
+            },
+            
+            
             /////______________________________SECTION 4: ROLES AND USERS____________________________________
             onBeforeRebindRolesTable: function (oEvent) {
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
