@@ -28,6 +28,7 @@ sap.ui.define([
                 var oSmartTable_Steps = this.getView().byId("smartTable_steps")
                 var oSmartTable_Roles = this.getView().byId("smartTable_roles")
                 var oSmartTable_Users = this.getView().byId("smartTable_users")
+                var oSmartTable_RejectionSteps = this.getView().byId("smartTable_RejectionSteps")
                 var sProcessPath = decodeURIComponent(sEncodedPath);
 
                 this.processPath = sProcessPath
@@ -42,6 +43,7 @@ sap.ui.define([
                     path: decodeURIComponent(sEncodedPath),
                 });
                 oSmartTable_Steps.rebindTable();
+                oSmartTable_RejectionSteps.rebindTable();
 
                 //IF JSONModel_SelectedStepData and JSONModel_SelectedRoleData is already present, reset the values to empty string and rebind the related tables to empty values
 
@@ -86,6 +88,9 @@ sap.ui.define([
                     success: function (response) {
                         //console.log("Data Read Successfully: ", response.results);
                         this._createNetworkGraph(response.results);
+                        var oDataModel = new sap.ui.model.json.JSONModel(response.results);
+                        // console.log(oDataModel)
+                        this.getView().setModel(oDataModel, "JSON_STEPSDATA")
                     }.bind(this),
                     error: function (oError) {
                         // Handle error
@@ -455,27 +460,90 @@ sap.ui.define([
             // },
 
             handleRejectStepButton: function (oEvent) {
-                var oTable = this.getView().byId('table_steps');
-                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
-                var sPath = aSelectedItems[0].getBindingContext().getPath()
-                //console.log(sPath)
 
-                if (!this.oRejectStepDialog) {
-                    this.loadFragment({
-                        name: "metadata.fragments.rejectStepDialog"
-                    }).then(function (oDialog) {
-                        this.oRejectStepDialog = oDialog;
-                        this.oRejectStepDialog.bindElement({
-                            path: sPath,
-                        });
+                //CHECK WHICH VIEW IS OPEN : TABLE OR GRAPH
+                var oModel_View = this.getView().getModel("toggleGraphTable").getData();
+                //console.log(oModel_View)                
+
+                //GET THE DATA ARRAY TO BE SHOWN IN DROPDOWN
+                var oModelData = this.getView().getModel("JSON_STEPSDATA").getData();
+                //console.log(oModelData)
+
+
+                ///______________IF  STEP IS SELECTED FROM GRAPH________________
+
+                var oModel_RejectionStepG = this.getView().getModel("JSONModel_SelectedStepData")
+
+                if (oModel_RejectionStepG && oModel_View.graph) {
+                    var sStepName = oModel_RejectionStepG.getData().StepName
+                    var sStepSequence = oModel_RejectionStepG.getData().StepSequence
+                    var aDropDownArray = []
+                    oModelData.map((data) => {
+                        //console.log(data)
+                        if (data.StepSequence < sStepSequence) {
+                            aDropDownArray.push(data)
+                        }
+                        if (data.StepSequence === sStepSequence && data.StepName != sStepName) {
+                            aDropDownArray.push(data)
+                        }
+                    })
+                    //console.log(aDropDownArray)
+                    oModel_RejectionStepG.setProperty('/dropDown', aDropDownArray)
+                    //console.log(oModel_RejectionStepG)
+
+                    //LOADING A FRAGMENT
+                    if (!this.oRejectStepDialog) {
+                        this.loadFragment({
+                            name: "metadata.fragments.rejectStepDialog"
+                        }).then(function (oDialog) {
+                            this.oRejectStepDialog = oDialog;
+                            this.oRejectStepDialog.setModel(oModel_RejectionStepG, "JSONModel_RejectionStep")
+                            this.oRejectStepDialog.open();
+                        }.bind(this));
+                    } else {
+                        this.oRejectStepDialog.setModel(oModel_RejectionStepG, "JSONModel_RejectionStep")
                         this.oRejectStepDialog.open();
-                    }.bind(this));
-                } else {
-                    this.oRejectStepDialog.bindElement({
-                        path: sPath,
-                    });
-                    this.oRejectStepDialog.open();
+                    }
                 }
+
+                // ///__________________IF  STEP IS SELECTED FROM TABLE_______________________    
+                var oTable = this.getView().byId('table_steps');
+                var aSelectedItems = oTable.getSelectedItems(); // Get selected items 
+
+                if (aSelectedItems && oModel_View.table) {
+                    var sPath = aSelectedItems[0].getBindingContext().getPath()
+                    var oObject = aSelectedItems[0].getBindingContext().getObject()
+                    const oModel_RejectionStepT = new sap.ui.model.json.JSONModel(oObject);
+                    var sStepName = oModel_RejectionStepT.getData().StepName
+                    var sStepSequence = oModel_RejectionStepT.getData().StepSequence
+                    var aDropDownArray = []
+                    oModelData.map((data) => {
+                        if (data.StepSequence < sStepSequence) {
+                            aDropDownArray.push(data)
+                        }
+                        if (data.StepSequence === sStepSequence && data.StepName != sStepName) {
+                            aDropDownArray.push(data)
+                        }
+                    })
+                    oModel_RejectionStepT.setProperty('/dropDown', aDropDownArray)
+
+                    //___LOADING A FRAGMENT
+                    if (!this.oRejectStepDialog) {
+                        this.loadFragment({
+                            name: "metadata.fragments.rejectStepDialog"
+                        }).then(function (oDialog) {
+                            this.oRejectStepDialog = oDialog;
+                            this.oRejectStepDialog.setModel(oModel_RejectionStepT, "JSONModel_RejectionStep")
+                            this.oRejectStepDialog.open();
+                        }.bind(this));
+                    } else {
+                        this.oRejectStepDialog.setModel(oModel_RejectionStepT, "JSONModel_RejectionStep")
+                        this.oRejectStepDialog.open();
+                    }
+
+                }
+
+
             },
 
             handle_rejectStepDialog_CancelButton: function () {
@@ -515,8 +583,8 @@ sap.ui.define([
                     error: function (oError) {
                         MessageToast.show('Error: Something went wrong')
                     }
-                });    
-                
+                });
+
             },
 
             //////____________________________SECTION 2: NETWORK GRAPH___________________________________
@@ -567,7 +635,9 @@ sap.ui.define([
                 var oSmartTable_roles = this.getView().byId('smartTable_roles')
                 var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
+                var oRejectStepButton = this.getView().byId('rejectStepButton')
                 oAssaignRoleButton.setEnabled(true);
+                oRejectStepButton.setEnabled(true);
 
                 //IF JSONModel_SelectedRoleData is already present, reset the role to empty string because it has the data of previously selected node
                 var oModel_SelectedRole = this.getView().getModel('JSONModel_SelectedRoleData');
@@ -580,14 +650,14 @@ sap.ui.define([
                 }
                 //console.log(oEvent.getSource())
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
-                //console.log(oClickedNodeData)
+                console.log(oClickedNodeData)
 
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedStepData")
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
             },
 
-             
+
             /////______________________________SECTION 3: STEP REJECTION TABLE____________________________________
             handleDeleteButton_RejectionStep: function () {
                 var oModel = this.getOwnerComponent().getModel();
@@ -630,8 +700,19 @@ sap.ui.define([
                     }
                 });
             },
-            
-            
+
+            onBeforeRebindRejectionStepsTable: function (oEvent) {
+                //console.log("Rebind table")
+                var oFilter = new sap.ui.model.Filter({
+                    path: "ProcessId",
+                    operator: sap.ui.model.FilterOperator.EQ,
+                    value1: this.decodeProcessIdFromPath(this.processPath)
+                });
+                oEvent.getParameter("bindingParams").filters.push(oFilter);
+            },
+
+
+
             /////______________________________SECTION 4: ROLES AND USERS____________________________________
             onBeforeRebindRolesTable: function (oEvent) {
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")

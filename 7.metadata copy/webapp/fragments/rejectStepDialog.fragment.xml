@@ -6,7 +6,7 @@
     <Dialog id="dialog_RejectStep" title="Create Rejection Steps">
         <content>
             <VBox class="sapUiSmallMargin">
-                <smartForm:SmartForm editable="true">
+                <!-- <smartForm:SmartForm editable="true">
                     <smartForm:Group>
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_rStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS" editable="false"></smartField:SmartField>
@@ -21,7 +21,24 @@
                             <smartField:SmartField id="smartField_rRejectionStepSequence" value="{RejectionStepSeq}" entitySet="ZP_QU_DG_STEP_REJ"></smartField:SmartField>
                         </smartForm:GroupElement>
                     </smartForm:Group>
+                </smartForm:SmartForm> -->
+
+                <smartForm:SmartForm editable="true">
+                    <smartForm:Group>
+                        <smartForm:GroupElement label="Step Name">
+                            <Text text="{JSONModel_RejectionStep>/StepName}" id="textField_StepName"></Text>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement label="Step Sequence">
+                            <Text text="{JSONModel_RejectionStep>/StepSequence}" id="textField_StepSequence"></Text>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement label="Rejection Step Name">
+                            <ComboBox items="{path: 'JSONModel_RejectionStep>/dropDown'}" showSecondaryValues= "true">
+                                <core:ListItem key="{JSONModel_RejectionStep>StepName}" text="{JSONModel_RejectionStep>StepName}" additionalText = "{JSONModel_RejectionStep>StepSequence}"/>
+                            </ComboBox>
+                        </smartForm:GroupElement>
+                    </smartForm:Group>
                 </smartForm:SmartForm>
+
             </VBox>
         </content>
         <footer>

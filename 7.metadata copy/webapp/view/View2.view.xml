@@ -64,6 +64,7 @@
                                 <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
                                 <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
                                 <m:ToolbarSpacer/>
+                                 <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
                                 <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
                             </m:Toolbar>
 
@@ -74,7 +75,7 @@
                                         <m:ToolbarSpacer/>
                                         <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
                                         <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                                        <m:Button text="Upon Reject" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
+                                        <!-- <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button> -->
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>
                                 <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
@@ -110,7 +111,7 @@
             <ObjectPageSection titleUppercase="false" title="Rejection Steps">
                 <subSections>
                     <ObjectPageSubSection >
-                        <smartTable:SmartTable id="smartTable_RejectionSteps" entitySet="ZP_QU_DG_STEP_REJ" beforeRebindTable="onBeforeRebindStepsTable" header="Rejection Step Details" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepSequence,RejectionStepName,RejectionStepSeq" enableAutoBinding="true">
+                        <smartTable:SmartTable id="smartTable_RejectionSteps" entitySet="ZP_QU_DG_STEP_REJ" beforeRebindTable="onBeforeRebindRejectionStepsTable" header="Rejection Step Details" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepSequence,RejectionStepName,RejectionStepSeq" enableAutoBinding="true">
                             <smartTable:customToolbar>
                                 <m:OverflowToolbar design="Transparent">
                                     <m:ToolbarSpacer/>
