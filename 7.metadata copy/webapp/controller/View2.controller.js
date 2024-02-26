@@ -553,31 +553,25 @@ sap.ui.define([
             handle_rejectStepDialog_RejectButton: function () {
                 var oModel = this.getView().getModel();
                 var sPath = this.createRejectionPath;
-                // var sStepName = this.getView().byId("smartField_newStepName").getValue();
-                // var sStepType = this.getView().byId("smartField_newStepType").getValue();
-                // var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
 
-                /////_____VALIDATIONS_______/////
-                var oSmartField_stepName = this.getView().byId("smartField_rStepName");
-                var oSmartField_stepSequence = this.getView().byId("smartField_rStepSequence");
-                var oSmartField_RejectionStepName = this.getView().byId("smartField_rRejectionStepName");
-                var oSmartField_RejectionStepSequence = this.getView().byId("smartField_rRejectionStepSequence");
-
-                //console.log(bFormValidation)
+                var oSmartField_stepName = this.getView().byId("textField_StepName");
+                var oSmartField_stepSequence = this.getView().byId("textField_StepSequence");
+                var oSmartField_Dropdown = this.getView().byId("comboBox_dropDown");
+                // console.log(oSmartField_Dropdown)
 
                 var oNewRejectionStep = {
-                    StepName: oSmartField_stepName.getValue(),
-                    StepSequence: oSmartField_stepSequence.getValue(),
-                    RejectionStepName: oSmartField_RejectionStepName.getValue(),
-                    RejectionStepSeq: oSmartField_RejectionStepSequence.getValue()
+                    StepName: oSmartField_stepName.getText(),
+                    StepSequence: oSmartField_stepSequence.getText(),
+                    RejectionStepName: oSmartField_Dropdown.getSelectedItem().getText(),
+                    RejectionStepSeq:  oSmartField_Dropdown.getSelectedItem().getAdditionalText()
                 };
                 console.log(oNewRejectionStep);
 
-                // Creating new Rejection in the Model
+                // Creating new Rejection Step in the Model
                 oModel.create(sPath, oNewRejectionStep, {
                     success: function (oResponse) {
                         //console.log(response);
-                        // MessageToast.show(`New Step added: ${oNewStep.StepName}`)
+                        MessageToast.show(`New Rejection Step added`)
                         this.oRejectStepDialog.close();
                     }.bind(this),
                     error: function (oError) {

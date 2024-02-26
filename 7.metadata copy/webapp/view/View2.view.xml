@@ -15,8 +15,22 @@
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
-                    <m:Title text="{ProcessName}"/>
+                    <m:HBox>
+                        <m:Title text="{ProcessName}" wrapping="true"/>
+                    </m:HBox>
                 </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Avatar class="sapUiSmallMarginEnd" src="sap-icon://workflow-tasks" displaySize="S"/>
+                        <m:Title text="{ProcessName}" wrapping="true"/>
+                    </m:FlexBox>
+                </snappedHeading>
+                <expandedContent>
+                    <smartField:SmartField value="{Action}" textLabel="Action" showLabel="true"/>
+                </expandedContent>
+                <snappedContent>
+                    <smartField:SmartField value="{Action}" textLabel="Action" showLabel="true"/>
+                </snappedContent>
                 <actions>
                     <!-- <m:Button text="Get Process Data" type="Emphasized" press="handleGetProcessDetailsButton"/> -->
                     <ObjectPageHeaderActionButton icon="sap-icon://edit" text="Edit" tooltip="Edit" press="handleEditProcessButton"/>
@@ -25,10 +39,12 @@
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
         <headerContent>
-            <layout:VerticalLayout>
-                <m:ObjectStatus title="Process Name" text="{ProcessName}"/>
-                <m:ObjectStatus title="Action" text="{Action}"/>
-            </layout:VerticalLayout>
+            <m:FlexBox wrap="Wrap">
+                <m:Avatar class="sapUiSmallMarginEnd" src="sap-icon://workflow-tasks" displaySize="S"/>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <smartField:SmartField value="{Action}" textLabel="Action" showLabel="true"/>
+                </layout:VerticalLayout>
+            </m:FlexBox>
         </headerContent>
 
         <sections>
@@ -64,7 +80,7 @@
                                 <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
                                 <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
                                 <m:ToolbarSpacer/>
-                                 <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
+                                <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
                                 <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
                             </m:Toolbar>
 
