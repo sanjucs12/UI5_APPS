@@ -1,11 +1,11 @@
-jQuery.sap.require("uploadexcel.libs.xlsx");
+jQuery.sap.require("zinvcategory.libs.xlsx");
 
 sap.ui.define(
     ["sap/suite/ui/generic/template/lib/AppComponent"],
     function (Component) {
         "use strict";
 
-        return Component.extend("uploadexcel.Component", {
+        return Component.extend("zinvcategory.Component", {
             metadata: {
                 manifest: "json"
             }

@@ -4,7 +4,6 @@
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable='sap.ui.comp.smarttable'
     xmlns:f="sap.f">
-
             <f:DynamicPage id="dynamicPageId">
                 <f:title>
                     <f:DynamicPageTitle>
@@ -38,7 +37,6 @@
                             </items>
                         </Table>
                     </smartTable:SmartTable>
-
                 </f:content>
             </f:DynamicPage>
 

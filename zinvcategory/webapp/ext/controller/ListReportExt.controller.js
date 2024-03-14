@@ -6,30 +6,13 @@ sap.ui.define([
     'use strict';
 
     return {
-        uploadExcel: function (oEvent) {
+        uploadButtonClick: function (oEvent) {
+            console.log('clicked')
             console.log(XLSX)
-            // if (!this.oDialog) {
-            //     Fragment.load({
-            //         id: "excel_upload",
-            //         name: "uploadexcel.ext.fragment.ExcelUpload",
-            //         type: "XML",
-            //         controller: this
-            //     }).then((oDialog) => {
-            //         var oFileUploader = Fragment.byId("excel_upload", "uploadSet");
-            //         oFileUploader.removeAllItems();
-            //         this.oDialog = oDialog;
-            //         this.oDialog.open();
-            //     })
-            //         .catch(error => alert(error.message));
-            // } else {
-            //     var oFileUploader = Fragment.byId("excel_upload", "uploadSet");
-            //     oFileUploader.removeAllItems();
-            //     this.oDialog.open();
-            // }
 
             if (!this.oUploadDialog) {
                 this.loadFragment({
-                    name: "uploadexcel.ext.fragment.ExcelUpload"
+                    name: "zinvcategory.ext.fragment.ExcelUpload"
                 }).then(function (oDialog) {
                     var oFileUploader = this.byId("uploadSet");
                     oFileUploader.removeAllItems();
@@ -61,39 +44,103 @@ sap.ui.define([
                 });
                 // Extract data from the first sheet
                 var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                debugger;
                 var jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                // Modify JSON data
+                jsonData = jsonData.map(function (item) {
+                    var newItem = {};
+                    Object.keys(item).forEach(function (key) {
+                        var newKey = key.replace(/\s+/g, '').toLowerCase(); // Remove spaces and convert to lowercase
+                        // newItem[newKey] = item[key];
+                        newItem[newKey] = String(item[key]); // Convert value to string
+                    });
+                    return newItem;
+                });
                 console.log(jsonData);
                 var oExcelData_Model = new sap.ui.model.json.JSONModel(jsonData);
                 that.getView().setModel(oExcelData_Model, "oExcelData_Model");
             };
             reader.readAsArrayBuffer(oFile);
-
         },
+
         onItemRemoved: function (oEvent) {
             console.log("File Remove/delete Event Fired!!!")
             /* TODO: Clear the already read excel file data */
         },
 
         handle_UploadBtn: function (oEvent) {
-            //console.log("Upload Button Clicked!!!")
+            console.log("Upload Button Clicked!!!")
             var oModel = this.getOwnerComponent().getModel()
             var oData = this.getView().getModel("oExcelData_Model").getData();
-            // console.log(oData)
-            //this.validateExcel();
-            oData.forEach((data) => {
-                console.log(data)
-                oModel.create("/EmployeeDetailsType", data, {
+            //console.log(oData)
+            // const oSamplePayload = {
+            //     plant: '1602',
+            //     storage_location: "0001",
+            //     mat_group: '10004',
+            //     from_material: '4000001878',
+            //     to_material: "4000001877",
+            //     category_main: null,
+            //     category_piv_main: null,
+            //     inv_group: null,
+            //     shop_flr_loc: null,
+            //     category_mat: null,
+            //     category_mat_sfr: null
+            // }
+
+            // oModel.create("/ZC_INV_CATEGORY", oPayload, {
+            //     success: function (oResponse) {
+            //         console.log(oResponse);
+            //     },
+            //     error: function (oError) {
+            //         console.log(oError)
+            //     }
+            // });
+            oData.map((data) => {
+                const oPayload = {
+                    plant: data.plant,
+                    storage_location: data.storagelocation,
+                    mat_group: data.materialgroup,
+                    from_material: data.frommaterial,
+                    to_material: data.tomaterial,
+                    category_main: data.categorymain ? data.categorymain : null,
+                    category_piv_main: data.categorypivmain ? data.categorypivmain : null,
+                    inv_group: data.inventorygroup ? data.inventorygroup : null,
+                    shop_flr_loc: data.shopfloorlocation ? data.shopfloorlocation : null,
+                    category_mat: data.categorymaterial ? data.categorymaterial : null,
+                    category_mat_sfr: data.categorymaterialshopfloor ? data.categorymaterialshopfloor : null,
+                }
+                console.log(oPayload)
+                oModel.create("/ZC_INV_CATEGORY", oPayload, {
                     success: function (oResponse) {
                         console.log(oResponse);
-
-                    }.bind(this),
+                    },
                     error: function (oError) {
                         console.log(oError)
                     }
                 });
-
             })
+            //BATCH OPERATIONS
+            // var oModel = this.getOwnerComponent().getModel();
+            // var oData = this.getView().getModel("oExcelData_Model").getData();
+            // var batchChanges = [];
+
+            // oData.forEach((data) => {
+            //     batchChanges.push(oModel.create("/ZC_INV_CATEGORY", data));
+            // });
+
+            // oModel.submitBatch(function (oResponse) {
+            //     var aResponses = oResponse.__batchResponses;
+            //     var bHasError = aResponses.some(function (response) {
+            //         return response.response && response.response.statusCode >= 400;
+            //     });
+
+            //     if (bHasError) {
+            //         console.log("Batch request failed.");
+            //     } else {
+            //         console.log("Batch request successful.");
+            //     }
+            // });
+
         },
         validateExcel: function () {
             var oFileUploader = this.byId("uploadSet");

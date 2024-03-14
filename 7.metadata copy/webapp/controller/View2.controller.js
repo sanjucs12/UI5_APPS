@@ -644,7 +644,7 @@ sap.ui.define([
                 }
                 //console.log(oEvent.getSource())
                 var oClickedNodeData = oEvent.getSource().getBindingContext().getObject()
-                console.log(oClickedNodeData)
+                //console.log(oClickedNodeData)
 
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedStepData")

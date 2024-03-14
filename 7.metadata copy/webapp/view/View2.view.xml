@@ -80,7 +80,7 @@
                                 <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
                                 <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
                                 <m:ToolbarSpacer/>
-                                <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button>
+                                <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://employee-rejections" id="rejectStepButton" enabled="false"></m:Button>
                                 <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
                             </m:Toolbar>
 

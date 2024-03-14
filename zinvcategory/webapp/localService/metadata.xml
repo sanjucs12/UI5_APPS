@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_INV_CATEGORY_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_INV_CATEGORYType" sap:label="Material Wise Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="plant"/>
+                    <PropertyRef Name="storage_location"/>
+                    <PropertyRef Name="mat_group"/>
+                    <PropertyRef Name="from_material"/>
+                    <PropertyRef Name="to_material"/>
+                </Key>
+                <Property Name="from_material_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="mat_group_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="plant_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="storage_location_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_material_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:field-control="plant_fc" sap:label="Plant" sap:value-list="standard"/>
+                <Property Name="storage_location" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:field-control="storage_location_fc" sap:label="Storage Location" sap:quickinfo="Storage location" sap:value-list="standard"/>
+                <Property Name="mat_group" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:field-control="mat_group_fc" sap:label="Material Group" sap:value-list="standard"/>
+                <Property Name="from_material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:field-control="from_material_fc" sap:label="From Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="to_material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:field-control="to_material_fc" sap:label="To Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="category_main" Type="Edm.String" MaxLength="30" sap:label="Category Main" sap:value-list="standard"/>
+                <Property Name="category_piv_main" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Category PIV Main"/>
+                <Property Name="shop_flr_loc" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Shop Floor Location"/>
+                <Property Name="inv_group" Type="Edm.String" MaxLength="15" sap:label="Inventory Group" sap:quickinfo="Group for Inventory" sap:value-list="standard"/>
+                <Property Name="category_mat" Type="Edm.String" MaxLength="20" sap:label="Category Material" sap:quickinfo="Category - Material" sap:value-list="standard"/>
+                <Property Name="category_mat_sfr" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Category - Material Shop Floor" sap:quickinfo="Category Main - Shop Floor"/>
+                <Property Name="plant_name" Type="Edm.String" MaxLength="30" sap:label="Name 1" sap:quickinfo="Name"/>
+                <Property Name="plant_status" Type="Edm.Byte"/>
+                <Property Name="image_url" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Image URL for inv" sap:quickinfo="Image URL for Physical Inventory"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="created_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created Date" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="changed_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="changed_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed Date" sap:quickinfo="Date of Last Change"/>
+            </EntityType>
+            <EntityType Name="ZI_CATMAIN_VHType" sap:label="Value Help for Group" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainName"/>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="DomainName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Domain name"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Category Main" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZI_CATMAT_VHType" sap:label="Value Help for Category Material" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainName"/>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="DomainName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Domain name"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Category Material" sap:quickinfo="Short Text for Fixed Values"/>
+                <Property Name="group_indicator" Type="Edm.String" MaxLength="15" sap:label="Group for Inventory"/>
+            </EntityType>
+            <EntityType Name="ZI_GROUP_VHType" sap:label="Value Help for Group" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainName"/>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="DomainName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Domain name"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Group" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZI_Material_VHType" sap:label="Material Number Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialNumber"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="MaterialText" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+            </EntityType>
+            <EntityType Name="ZI_MatGroup_VHType" sap:label="Material Group Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialGroup"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="MaterialGroupText" Type="Edm.String" MaxLength="20" sap:label="Material Group Description"/>
+            </EntityType>
+            <EntityType Name="ZI_Plant_VHType" sap:label="Plant Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="PlantText" Type="Edm.String" MaxLength="30" sap:label="Plant Description" sap:quickinfo="Plant Text"/>
+            </EntityType>
+            <EntityType Name="ZI_StorageLocation_VHType" sap:label="Storage Location Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StorageLocation"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocationText" Type="Edm.String" MaxLength="16" sap:label="Storage Location Description" sap:quickinfo="Description of Storage Location"/>
+            </EntityType>
+            <EntityContainer Name="ZC_INV_CATEGORY_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_INV_CATEGORY" EntityType="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CATMAIN_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_CATMAIN_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CATMAT_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_CATMAT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_GROUP_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_GROUP_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_Material_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_Material_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_MatGroup_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_MatGroup_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_Plant_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_Plant_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_StorageLocation_VH" EntityType="ZC_INV_CATEGORY_CDS.ZI_StorageLocation_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_Plant_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/storage_location" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Storage Location Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_StorageLocation_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="storage_location"/>
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocation"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocationText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/mat_group" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_MatGroup_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="mat_group"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/from_material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Number Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_Material_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="from_material"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/to_material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Number Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_Material_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="to_material"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/category_main" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Group"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CATMAIN_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="category_main"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/inv_group" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Group"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_GROUP_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="inv_group"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType/category_mat" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Category Material"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CATMAT_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="category_mat"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="inv_group"/>
+                                    <PropertyValue Property="ValueListProperty" String="group_indicator"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORY_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORY_CDS_Entities/ZC_INV_CATEGORY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>from_material_fc</PropertyPath>
+                                <PropertyPath>mat_group_fc</PropertyPath>
+                                <PropertyPath>plant_fc</PropertyPath>
+                                <PropertyPath>storage_location_fc</PropertyPath>
+                                <PropertyPath>to_material_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>from_material_fc</PropertyPath>
+                                <PropertyPath>mat_group_fc</PropertyPath>
+                                <PropertyPath>plant_fc</PropertyPath>
+                                <PropertyPath>storage_location_fc</PropertyPath>
+                                <PropertyPath>to_material_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_CATEGORY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_CATEGORY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

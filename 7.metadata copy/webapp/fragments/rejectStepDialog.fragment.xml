@@ -15,7 +15,7 @@
                             <Text text="{JSONModel_RejectionStep>/StepSequence}" id="textField_StepSequence"></Text>
                         </smartForm:GroupElement>
                         <smartForm:GroupElement label="Rejection Step Name">
-                            <ComboBox items="{path: 'JSONModel_RejectionStep>/dropDown'}" showSecondaryValues= "false" id="comboBox_dropDown">
+                            <ComboBox items="{path: 'JSONModel_RejectionStep>/dropDown'}" showSecondaryValues= "false" id="comboBox_dropDown" class="sapUiSmallMarginBottom">
                                 <core:ListItem key="{JSONModel_RejectionStep>StepName}" text="{JSONModel_RejectionStep>StepName}" additionalText = "{JSONModel_RejectionStep>StepSequence}"/>
                             </ComboBox>
                         </smartForm:GroupElement>
