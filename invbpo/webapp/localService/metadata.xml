@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_INV_BPO_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_INV_BPOType" sap:label="Sloc &amp; Division wise BPO Maintanence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="storage_location"/>
+                    <PropertyRef Name="division"/>
+                    <PropertyRef Name="valid_from"/>
+                    <PropertyRef Name="valid_to"/>
+                </Key>
+                <Property Name="division_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="storage_location_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valid_from_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valid_to_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="storage_location" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:field-control="storage_location_fc" sap:label="Storage Location" sap:quickinfo="Storage location" sap:value-list="standard"/>
+                <Property Name="division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:field-control="division_fc" sap:label="Division" sap:value-list="standard"/>
+                <Property Name="valid_from" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="valid_from_fc" sap:label="Valid From" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="valid_to" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="valid_to_fc" sap:label="Valid To" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="bpo_1st_level" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="BPO 1st Level"/>
+                <Property Name="bpo_2nd_level" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="BPO 2nd Level"/>
+                <Property Name="bpo_final_level" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="BPO Final Level" sap:quickinfo="Final BPO"/>
+                <Property Name="sloc_status" Type="Edm.Byte"/>
+                <Property Name="image_url" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Image URL for inv" sap:quickinfo="Image URL for Physical Inventory"/>
+            </EntityType>
+            <EntityType Name="ZI_Division_VHType" sap:label="Division Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="DivisionText" Type="Edm.String" MaxLength="20" sap:label="Division Description" sap:quickinfo="Name"/>
+            </EntityType>
+            <EntityType Name="ZI_StorageLocation_VHType" sap:label="Storage Location Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StorageLocation"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocationText" Type="Edm.String" MaxLength="16" sap:label="Storage Location Description" sap:quickinfo="Description of Storage Location"/>
+            </EntityType>
+            <EntityContainer Name="ZC_INV_BPO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_INV_BPO" EntityType="ZC_INV_BPO_CDS.ZC_INV_BPOType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_Division_VH" EntityType="ZC_INV_BPO_CDS.ZI_Division_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_StorageLocation_VH" EntityType="ZC_INV_BPO_CDS.ZI_StorageLocation_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/storage_location" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Storage Location Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_StorageLocation_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="storage_location"/>
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocation"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocationText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/division" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Division Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_Division_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="division"/>
+                                    <PropertyValue Property="ValueListProperty" String="Division"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DivisionText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPO_CDS_Entities/ZC_INV_BPO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>division_fc</PropertyPath>
+                                <PropertyPath>storage_location_fc</PropertyPath>
+                                <PropertyPath>valid_from_fc</PropertyPath>
+                                <PropertyPath>valid_to_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>division_fc</PropertyPath>
+                                <PropertyPath>storage_location_fc</PropertyPath>
+                                <PropertyPath>valid_from_fc</PropertyPath>
+                                <PropertyPath>valid_to_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>storage_location</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_BPO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_BPO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

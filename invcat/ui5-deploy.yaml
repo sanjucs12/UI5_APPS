@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: invcat
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        log: 5 
+        target:
+          destination: HAP_DEP
+          url: http://10.178.18.243:8200
+        app:
+          name: ZINVCAT
+          description: Material Wise Category
+          package: ZPP01
+          transport: DEVK908771
+        exclude:
+          - /test/

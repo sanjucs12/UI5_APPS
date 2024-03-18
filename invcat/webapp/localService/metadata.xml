@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_INV_CATEGORY_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_INV_CATEGORYType" sap:label="Material Wise Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="plant"/>
+                    <PropertyRef Name="from_material"/>
+                    <PropertyRef Name="to_material"/>
+                    <PropertyRef Name="mat_group"/>
+                    <PropertyRef Name="storage_location"/>
+                </Key>
+                <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="from_material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="From Material" sap:quickinfo="Material Number"/>
+                <Property Name="to_material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="To Material" sap:quickinfo="Material Number"/>
+                <Property Name="mat_group" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="storage_location" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="category_main" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Category Main"/>
+                <Property Name="category_piv_main" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Category PIV Main"/>
+                <Property Name="shop_flr_loc" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Shop Floor Location"/>
+                <Property Name="inv_group" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Inventory Group" sap:quickinfo="Group for Inventory"/>
+                <Property Name="category_mat" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Category - Material"/>
+                <Property Name="category_mat_sfr" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Category - Material Shop Floor" sap:quickinfo="Category Main - Shop Floor"/>
+            </EntityType>
+            <EntityContainer Name="ZC_INV_CATEGORY_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_INV_CATEGORY" EntityType="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORYType" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZC_INV_CATEGORY_CDS.ZC_INV_CATEGORY_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_CATEGORY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_CATEGORY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
