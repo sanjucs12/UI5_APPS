@@ -71,7 +71,7 @@ sap.ui.define([
                     });
                     return newItem;
                 });
-                console.log(jsonData);
+                //console.log(jsonData);
                 var oExcelData_Model = new sap.ui.model.json.JSONModel(jsonData);
                 that.getView().setModel(oExcelData_Model, "oExcelData_Model");
             };
@@ -79,19 +79,21 @@ sap.ui.define([
         },
 
         handle_UploadBtn: function (oEvent) {
-            let oModel = this.getOwnerComponent().getModel()
-            let oData = this.getView().getModel("oExcelData_Model").getData();
+            var oModel = this.getOwnerComponent().getModel()
+            var oData = this.getView().getModel("oExcelData_Model").getData();
             if (!this.validateExcel(oData) || !oData.length) {
                 MessageBox.error("PLEASE FILL MANDATORY FIELDS")
                 return;
             }
-            let promises = []; // Array to store promises
+            var promises = []; // Array to store promises
             var that = this;
 
             Fragment.byId("excel_upload", "uploadDialogSet").setBusy(true);
+
+            oModel.setUseBatch(false);
             oData.forEach((data) => {
-                let promise = new Promise((resolve, reject) => {
-                    const oPayload = {
+                var promise = new Promise((resolve, reject) => {
+                    var oPayload = {
                         plant: data.plant,
                         storage_location: data.storagelocation,
                         mat_group: data.materialgroup,
@@ -109,11 +111,11 @@ sap.ui.define([
                         success: function (oResponse) {
                             //console.log(oResponse);
                             resolve(oResponse);
-                            //console.log(oPayload)
                         },
                         error: function (oError) {
                             //console.log(oError);
                             reject(oError);
+
                         }
                     });
 
@@ -121,37 +123,92 @@ sap.ui.define([
                 promises.push(promise); // Push each promise into the array
             })
 
-            Promise.all(promises)
-                .then(function (oResponse) {
-                    console.log("All requests completed successfully."); // Execute this when all promises are resolved
+
+            // Promise.all(promises)
+            //     .then((oResponse) => {
+            //         console.log("All requests completed successfully."); // Execute this when all promises are resolved
+            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+            //         that.oUploadDialog.close();
+            //         that.getView().getModel("oExcelData_Model").destroy(); //Destroy the model data after successfull request
+            //         MessageBox.success("Excel upload completed successfully");
+            //     })
+            //     .catch((oError) => {
+            //         let aMessageContainer = []  //STORE ALL THE ERROR MESSAGES IN A SINGLE ARRAY
+            //         promises.forEach((promise, index) => {
+            //             promise.catch((error) => {
+            //                 var oError = JSON.parse(error.responseText)
+            //                 var aInnerErrors = oError.error.innererror.errordetails;
+            //                 var sOuterError = oError.error.message.value;
+            //                 var messages = [];
+
+            //                 //ADDING INNER ERRORS TO THE ARRAY
+            //                 aInnerErrors.forEach(function (item) {
+            //                     messages.push(item.message);
+            //                 });
+
+            //                 // Adding outer errors to the array
+            //                 messages.push(sOuterError)
+
+            //                 //JOINING ALL THE ERRORS IN A SINGLE STRING
+            //                 var messagesString = messages.join('\n');
+            //                 //console.log(messagesString);
+            //                 //let sMessage = oError.error.message.value
+            //                 var sErrorMessage = `Found errors in line number ${index + 2} :\n ${messagesString}`
+
+            //                 //STORING EACH MESSAGES IN AN ARRAY : aMessageContainer
+            //                 aMessageContainer.push(sErrorMessage)
+            //                 //MessageBox.error(sErrorMessage)
+            //             })
+            //         })
+            //         return Promise.resolve(aMessageContainer);
+            //     })
+            //     .then(function (response) {
+            //         console.log(response)
+            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+            //         let sAllErrorMessages = response.join('\n');
+            //         MessageBox.error(sAllErrorMessages)
+            //     })
+
+            async function processPromises() {
+                try {
+                    const oResponse = await Promise.all(promises);
+                    console.log("All requests completed successfully.");
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
                     that.oUploadDialog.close();
-                    that.getView().getModel("oExcelData_Model").destroy(); //Destroy the model data after successfull request
+                    that.getView().getModel("oExcelData_Model").destroy(); // Destroy the model data after successful request
                     MessageBox.success("Excel upload completed successfully");
-                })
-                .catch(function (oError) {
-                    //console.log(oError);
-                    // Handle each rejected promise individually
-                    promises.forEach((promise, index) => {
-                        promise.catch((error) => {
-                            console.log("Error in promise", index, ":", error);
-                            //let oErrorPayload = oData[index]
-                            var oError = JSON.parse(error.responseText)
-                            var aErrors = oError.error.innererror.errordetails;
+                } catch (oError) {
+                    const aMessageContainer = []; //STORE ALL THE ERROR MESSAGES IN A SINGLE ARRAY
 
-                            var messages = [];
-                            aErrors.forEach(function (item) {
+                    for (let index = 0; index < promises.length; index++) {
+                        try {
+                            await promises[index];
+                        } catch (error) {
+                            const oError = JSON.parse(error.responseText);
+                            const aInnerErrors = oError.error.innererror.errordetails;
+                            const sOuterError = oError.error.message.value;
+                            const messages = [];
+
+                            // Add inner errors to the array
+                            aInnerErrors.forEach(function (item) {
                                 messages.push(item.message);
                             });
-                            var messagesString = messages.join('\n');
-                            //console.log(messagesString);
-                            //let sMessage = oError.error.message.value
-                            var sErrorMessage = `Found errors in line number ${index + 2} :\n ${messagesString}`
-                            MessageBox.error(sErrorMessage)
-                        });
-                    });
+                            messages.push(sOuterError); // Add outer error to the array
+                            const messagesString = messages.join('\n');
+                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${messagesString} \n`;
+                            aMessageContainer.push(sErrorMessage);
+                        }
+                    }
+
+                    //console.log(aMessageContainer);
+                    let sAllErrorMessages = aMessageContainer.join('\n')
+                    //console.log(sAllErrorMessages)
+                    MessageBox.error(sAllErrorMessages)
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
-                });
+                }
+            }
+
+            processPromises();
         },
 
         validateExcel: function (oData) {

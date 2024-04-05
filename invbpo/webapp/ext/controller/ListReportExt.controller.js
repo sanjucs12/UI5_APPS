@@ -91,6 +91,7 @@ sap.ui.define([
             var that = this;
 
             Fragment.byId("excel_upload", "uploadDialogSet").setBusy(true);
+            oModel.setUseBatch(false);
             oData.forEach((data) => {
                 let promise = new Promise((resolve, reject) => {
                     const oPayload = {
@@ -105,50 +106,85 @@ sap.ui.define([
                     console.log(oPayload)
                     oModel.create("/ZC_INV_BPO", oPayload, {
                         success: function (oResponse) {
-                            //console.log(oResponse);
                             resolve(oResponse);
-                            //console.log(oPayload)
                         },
                         error: function (oError) {
-                            //console.log(oError);
                             reject(oError);
                         }
                     });
-
                 })
                 promises.push(promise); // Push each promise into the array
             })
 
-            Promise.all(promises)
-                .then(function (oResponse) {
-                    console.log("All requests completed successfully."); // Execute this when all promises are resolved
+            // Promise.all(promises)
+            //     .then(function (oResponse) {
+            //         console.log("All requests completed successfully."); // Execute this when all promises are resolved
+            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+            //         that.oUploadDialog.close();
+            //         that.getView().getModel("oExcelData_Model").destroy(); //Destroy the model data after successfull request
+            //         MessageBox.success("Excel upload completed successfully");
+            //     })
+            //     .catch(function (oError) {
+            //         //console.log(oError);
+            //         // Handle each rejected promise individually
+            //         promises.forEach((promise, index) => {
+            //             promise.catch((error) => {
+            //                 console.log("Error in promise", index, ":", error);
+            //                 //let oErrorPayload = oData[index]
+            //                 var oError = JSON.parse(error.responseText)
+            //                 var aErrors = oError.error.innererror.errordetails;
+            //                 var messages = [];
+            //                 aErrors.forEach(function (item) {
+            //                     messages.push(item.message);
+            //                 });
+            //                 var messagesString = messages.join('\n');
+            //                 //console.log(messagesString);
+            //                 //let sMessage = oError.error.message.value
+            //                 var sErrorMessage = `Found errors in line number ${index + 2} :\n ${messagesString}`
+            //                 MessageBox.error(sErrorMessage)
+            //             });
+            //         });
+            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+            //     });
+
+            async function processPromises() {
+                try {
+                    const oResponse = await Promise.all(promises);
+                    console.log("All requests completed successfully.");
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
                     that.oUploadDialog.close();
-                    that.getView().getModel("oExcelData_Model").destroy(); //Destroy the model data after successfull request
+                    that.getView().getModel("oExcelData_Model").destroy(); // Destroy the model data after successful request
                     MessageBox.success("Excel upload completed successfully");
-                })
-                .catch(function (oError) {
-                    //console.log(oError);
-                    // Handle each rejected promise individually
-                    promises.forEach((promise, index) => {
-                        promise.catch((error) => {
-                            console.log("Error in promise", index, ":", error);
-                            //let oErrorPayload = oData[index]
-                            var oError = JSON.parse(error.responseText)
-                            var aErrors = oError.error.innererror.errordetails;
-                            var messages = [];
-                            aErrors.forEach(function (item) {
+                } catch (oError) {
+                    const aMessageContainer = []; //STORE ALL THE ERROR MESSAGES IN A SINGLE ARRAY
+
+                    for (let index = 0; index < promises.length; index++) {
+                        try {
+                            await promises[index];
+                        } catch (error) {
+                            const oError = JSON.parse(error.responseText);
+                            const aInnerErrors = oError.error.innererror.errordetails;
+                            const sOuterError = oError.error.message.value;
+                            const messages = [];
+
+                            // Add inner errors to the array
+                            aInnerErrors.forEach(function (item) {
                                 messages.push(item.message);
                             });
-                            var messagesString = messages.join('\n');
-                            //console.log(messagesString);
-                            //let sMessage = oError.error.message.value
-                            var sErrorMessage = `Found errors in line number ${index + 2} :\n ${messagesString}`
-                            MessageBox.error(sErrorMessage)
-                        });
-                    });
+                            messages.push(sOuterError); // Add outer error to the array
+                            const messagesString = messages.join('\n');
+                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${messagesString} \n`;
+                            aMessageContainer.push(sErrorMessage);
+                        }
+                    }
+
+                    //console.log(aMessageContainer);
+                    let sAllErrorMessages = aMessageContainer.join('\n')
+                    //console.log(sAllErrorMessages)
+                    MessageBox.error(sAllErrorMessages)
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
-                });
+                }
+            }
         },
 
         validateExcel: function (oData) {
@@ -196,6 +232,14 @@ sap.ui.define([
 
             // Trigger the download
             a.click();
+
+            //TEST
+            // let a = document.createElement('a');
+            // a.href = "../../utils/Products.xlsx";
+            // a.download = 'template_BPO.xlsx';
+
+            // // Trigger the download
+            // a.click();
 
         },
 

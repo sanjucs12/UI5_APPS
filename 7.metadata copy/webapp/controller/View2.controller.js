@@ -30,9 +30,7 @@ sap.ui.define([
                 var oSmartTable_Users = this.getView().byId("smartTable_users")
                 var oSmartTable_RejectionSteps = this.getView().byId("smartTable_RejectionSteps")
                 var sProcessPath = decodeURIComponent(sEncodedPath);
-
                 this.processPath = sProcessPath
-
                 this.createGraphPath = `${sProcessPath}/to_Processtostep`;  //(THE DATA COMMING FROM THIS REQUEST IS USED TO CREATE THE NETWORK GRAPH)
                 this.createStepPath = `${sProcessPath}/to_Processtostep`;  //(POST REQUEST PATH TO CREATE NEW STEP FOR A PARTICULAR PROCESS)
                 this.createRolePath = `${sProcessPath}/to_proctosteprole`;  //(POST REQUEST PATH TO CREATE NEW ROLE FOR A PARTICULAR STEP)
@@ -301,16 +299,18 @@ sap.ui.define([
                     this.loadFragment({
                         name: "metadata.fragments.createStepDialog"
                     }).then(function (oDialog) {
-                        this.oCreateStepDialog = oDialog;
+                        this.oCreateStepDialog = oDialog;                   
                         this.oCreateStepDialog.open();
                     }.bind(this));
-                } else {
+                } else {                   
                     this.oCreateStepDialog.open();
                 }
             },
 
             handle_createStepDialog_CancelButton: function () {
                 this.oCreateStepDialog.close();
+                this.oCreateStepDialog.destroy(true);
+                this.oCreateStepDialog = undefined;
             },
 
             handle_createStepDialog_CreateButton: function () {
@@ -356,6 +356,8 @@ sap.ui.define([
                             //console.log(response);
                             MessageToast.show(`New Step added: ${oNewStep.StepName}`)
                             this.oCreateStepDialog.close();
+                            this.oCreateStepDialog.destroy(true);
+                            this.oCreateStepDialog = undefined;
                             this.getProcessData();  //MAKING A GET CALL WILL UPDATE THE GRAPH
                         }.bind(this),
                         error: function (oError) {
@@ -627,6 +629,7 @@ sap.ui.define([
 
             handleNodeClick: function (oEvent) {
                 var oSmartTable_roles = this.getView().byId('smartTable_roles')
+                var oSmartTable_RejectionSteps = this.getView().byId('smartTable_RejectionSteps')
                 var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
                 var oRejectStepButton = this.getView().byId('rejectStepButton')
@@ -649,6 +652,7 @@ sap.ui.define([
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedStepData")
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
+                oSmartTable_RejectionSteps.rebindTable()   //Added by rakesh
             },
 
 
@@ -696,12 +700,32 @@ sap.ui.define([
             },
 
             onBeforeRebindRejectionStepsTable: function (oEvent) {
+                //Changed by rakesh 5th april 2024
                 //console.log("Rebind table")
-                var oFilter = new sap.ui.model.Filter({
-                    path: "ProcessId",
-                    operator: sap.ui.model.FilterOperator.EQ,
-                    value1: this.decodeProcessIdFromPath(this.processPath)
-                });
+                // var oFilter = new sap.ui.model.Filter({
+                //     path: "ProcessId",
+                //     operator: sap.ui.model.FilterOperator.EQ,
+                //     value1: this.decodeProcessIdFromPath(this.processPath)
+                // });
+                // oEvent.getParameter("bindingParams").filters.push(oFilter);      
+                 //ADDING TWO FILTERS i.e., ProcessId and StepId
+                var oModel = this.getView().getModel("JSONModel_SelectedStepData")
+                var sStepId = oModel.getData().StepId;
+                 var oFilter = new sap.ui.model.Filter({
+                    filters: [
+                        new sap.ui.model.Filter({
+                            path: 'ProcessId',
+                            operator: sap.ui.model.FilterOperator.EQ,
+                            value1: this.decodeProcessIdFromPath(this.processPath)
+                        }),
+                        new sap.ui.model.Filter({
+                            path: 'StepId',
+                            operator: sap.ui.model.FilterOperator.EQ,
+                            value1: sStepId
+                        })
+                    ],
+                    and: true  // BOTH THE CONTITIONS SHOULD BE TRUE
+                })
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
             },
 
