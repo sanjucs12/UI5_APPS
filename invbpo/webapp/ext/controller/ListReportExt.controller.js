@@ -36,7 +36,7 @@ sap.ui.define([
         },
 
         onUploadSetComplete: function (oEvent) {
-            console.log("File Uploaded!!!")
+            //console.log("File Uploaded!!!")
             let that = this;
             // getting the UploadSet Control and uploadButton reference
             let oFileUploader = Fragment.byId("excel_upload", "uploadSet");
@@ -103,7 +103,7 @@ sap.ui.define([
                         bpo_2nd_level: data.bpo2ndlevel,
                         bpo_final_level: data.bpofinallevel,
                     }
-                    console.log(oPayload)
+                    //console.log(oPayload)
                     oModel.create("/ZC_INV_BPO", oPayload, {
                         success: function (oResponse) {
                             resolve(oResponse);
@@ -115,37 +115,6 @@ sap.ui.define([
                 })
                 promises.push(promise); // Push each promise into the array
             })
-
-            // Promise.all(promises)
-            //     .then(function (oResponse) {
-            //         console.log("All requests completed successfully."); // Execute this when all promises are resolved
-            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
-            //         that.oUploadDialog.close();
-            //         that.getView().getModel("oExcelData_Model").destroy(); //Destroy the model data after successfull request
-            //         MessageBox.success("Excel upload completed successfully");
-            //     })
-            //     .catch(function (oError) {
-            //         //console.log(oError);
-            //         // Handle each rejected promise individually
-            //         promises.forEach((promise, index) => {
-            //             promise.catch((error) => {
-            //                 console.log("Error in promise", index, ":", error);
-            //                 //let oErrorPayload = oData[index]
-            //                 var oError = JSON.parse(error.responseText)
-            //                 var aErrors = oError.error.innererror.errordetails;
-            //                 var messages = [];
-            //                 aErrors.forEach(function (item) {
-            //                     messages.push(item.message);
-            //                 });
-            //                 var messagesString = messages.join('\n');
-            //                 //console.log(messagesString);
-            //                 //let sMessage = oError.error.message.value
-            //                 var sErrorMessage = `Found errors in line number ${index + 2} :\n ${messagesString}`
-            //                 MessageBox.error(sErrorMessage)
-            //             });
-            //         });
-            //         Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
-            //     });
 
             async function processPromises() {
                 try {
@@ -172,25 +141,27 @@ sap.ui.define([
                                 messages.push(item.message);
                             });
                             messages.push(sOuterError); // Add outer error to the array
-                            const messagesString = messages.join('\n');
-                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${messagesString} \n`;
+
+                            //REMOVE DUPLICATES FROM THE ARRAY messages
+                            let aMessages = [...new Set(messages)]
+                            const sMessagesString = aMessages.join('\n');
+                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${sMessagesString} \n`;
                             aMessageContainer.push(sErrorMessage);
                         }
                     }
 
-                    //console.log(aMessageContainer);
                     let sAllErrorMessages = aMessageContainer.join('\n')
-                    //console.log(sAllErrorMessages)
                     MessageBox.error(sAllErrorMessages)
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
                 }
             }
+            processPromises();
         },
 
         validateExcel: function (oData) {
             //console.log(oData)
             let bValidate = oData.every((item) => {
-                return (item.plant && item.storagelocation && item.materialgroup && item.categorymaterial);
+                return (item.plant && item.materialgroup && item.categorymaterial);
             })
             return bValidate
         },
@@ -233,14 +204,6 @@ sap.ui.define([
             // Trigger the download
             a.click();
 
-            //TEST
-            // let a = document.createElement('a');
-            // a.href = "../../utils/Products.xlsx";
-            // a.download = 'template_BPO.xlsx';
-
-            // // Trigger the download
-            // a.click();
-
         },
 
         handle_CloseBtn: function (oEvent) {
@@ -248,7 +211,7 @@ sap.ui.define([
         },
 
         onItemRemoved: function (oEvent) {
-            console.log('removed')
+            //console.log('removed')
             let oFileUploader = Fragment.byId("excel_upload", "uploadSet");
             let oUploadBtn = Fragment.byId("excel_upload", "uploadBtn");
             oUploadBtn.setEnabled(oFileUploader.getList().getItems().length > 0 ? true : false)

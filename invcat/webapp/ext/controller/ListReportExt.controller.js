@@ -37,7 +37,7 @@ sap.ui.define([
         },
 
         onUploadSetComplete: function (oEvent) {
-            console.log("File Uploaded!!!")
+            //console.log("File Uploaded!!!")
             var that = this;
             // getting the UploadSet Control reference
             let oFileUploader = Fragment.byId("excel_upload", "uploadSet");
@@ -194,8 +194,11 @@ sap.ui.define([
                                 messages.push(item.message);
                             });
                             messages.push(sOuterError); // Add outer error to the array
-                            const messagesString = messages.join('\n');
-                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${messagesString} \n`;
+
+                            //REMOVE DUPLICATES FROM THE ARRAY messages
+                            let aMessages = [...new Set(messages)]
+                            const sMessagesString = aMessages.join('\n');
+                            const sErrorMessage = `FOUND BELOW ERRORS IN LINE ${index + 2} :\n ${sMessagesString} \n`;
                             aMessageContainer.push(sErrorMessage);
                         }
                     }
@@ -213,7 +216,7 @@ sap.ui.define([
 
         validateExcel: function (oData) {
             let bValidate = oData.every((item) => {
-                return (item.plant && item.storagelocation && item.materialgroup && item.frommaterial && item.tomaterial);
+                return (item.plant && item.materialgroup && item.frommaterial && item.tomaterial);
             })
             return bValidate
         },
