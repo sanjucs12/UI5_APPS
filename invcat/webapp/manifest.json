@@ -151,10 +151,16 @@
                         "condensedTableLayout": true,
                         "smartVariantManagement": true,
                         "enableTableFilterInPageVariant": true,
+                        "useExportToExcel": true,
                         "filterSettings": {
                             "dateSettings": {
                                 "useDateRange": true
                             }
+                        },
+                        "tableSettings": {
+                            "multiSelect": true,
+                            "selectAll": true,
+                            "useExportToExcel": true
                         }
                     }
                 },

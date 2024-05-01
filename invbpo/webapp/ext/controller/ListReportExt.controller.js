@@ -7,6 +7,12 @@ sap.ui.define([
     'use strict';
 
     return {
+        onInit: function () {
+            //debugger;
+            //this.getView().byId("responsiveTable").setProperty("useExportToExcel", true)
+            // this.getView().byId("responsiveTable").setProperty("useInfoToolbar", true)
+            //this.getView().byId("responsiveTable").setUseExportToExcel(true);
+        },
 
         uploadButtonClick: function (oEvent) {
             //console.log(XLSX)
@@ -124,6 +130,7 @@ sap.ui.define([
                     that.oUploadDialog.close();
                     that.getView().getModel("oExcelData_Model").destroy(); // Destroy the model data after successful request
                     MessageBox.success("Excel upload completed successfully");
+                    oModel.setUseBatch(true);
                 } catch (oError) {
                     const aMessageContainer = []; //STORE ALL THE ERROR MESSAGES IN A SINGLE ARRAY
 
@@ -153,6 +160,7 @@ sap.ui.define([
                     let sAllErrorMessages = aMessageContainer.join('\n')
                     MessageBox.error(sAllErrorMessages)
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+                    oModel.setUseBatch(true);
                 }
             }
             processPromises();

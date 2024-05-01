@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>App Title</title>
+    <style>
+        html,
+        body,
+        body>div,
+        #container,
+        #container-uiarea {
+            height: 100%;
+        }
+    </style>
+    <script id="sap-ui-bootstrap" src="resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resourceroots='{
+            "aicoe": "./"
+        }' data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true" data-sap-ui-frameOptions="trusted"></script>
+    <script>
+        function show(pageName, filterValue) {
+
+            var newUrl = "https://app.powerbi.com/reportEmbed?reportId=97ed6c46-793e-4ba0-8454-0d2d053d3cf6&autoAuth=true&ctid=35db81e3-52bb-42a9-9d79-0a40236ee492";
+
+            if (null != filterValue && "" != filterValue) {
+
+                newUrl += "&$filter=Industries/Industry eq '" + filterValue + "'";
+
+            }
+
+            //Assumes there's an iFrame on the page with id="iFrame"
+
+            var report = document.getElementById("iFrame")
+
+            report.src = newUrl;
+
+        }
+    </script>
+    <iframe title="ageing report" width="1240" height="800"
+        src="https://app.powerbi.com/reportEmbed?reportId=97ed6c46-793e-4ba0-8454-0d2d053d3cf6&autoAuth=true&ctid=35db81e3-52bb-42a9-9d79-0a40236ee492"
+        frameborder="0" allowFullScreen="true"></iframe>
+</head>
+
+<body class="sapUiBody sapUiSizeCompact" id="content">
+    <div data-sap-ui-component data-name="aicoe" data-id="container" data-settings='{"id" : "aicoe"}'
+        data-handle-validation="true"></div>
+</body>
+
+</html>

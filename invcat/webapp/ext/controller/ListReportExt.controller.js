@@ -175,7 +175,9 @@ sap.ui.define([
                     console.log("All requests completed successfully.");
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
                     that.oUploadDialog.close();
+                    //that.oUploadDialog.destroy();
                     that.getView().getModel("oExcelData_Model").destroy(); // Destroy the model data after successful request
+                    oModel.setUseBatch(true);
                     MessageBox.success("Excel upload completed successfully");
                 } catch (oError) {
                     const aMessageContainer = []; //STORE ALL THE ERROR MESSAGES IN A SINGLE ARRAY
@@ -208,6 +210,7 @@ sap.ui.define([
                     //console.log(sAllErrorMessages)
                     MessageBox.error(sAllErrorMessages)
                     Fragment.byId("excel_upload", "uploadDialogSet").setBusy(false);
+                    oModel.setUseBatch(true);
                 }
             }
 
