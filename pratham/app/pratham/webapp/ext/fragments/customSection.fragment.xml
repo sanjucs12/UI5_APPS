@@ -1,0 +1,11 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+
+	<HBox core:require="{handler: 'pratham/ext/controller/test'}">
+		<Button text="Accept" press="handler.handleClick" />
+	</HBox>
+
+
+	<HBox>
+		<Button text="Reject" press=".extension.myApp.ext.OPExtend.accept" />
+	</HBox>
+</core:FragmentDefinition> -->

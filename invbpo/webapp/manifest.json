@@ -28,6 +28,14 @@
           "odataVersion": "2.0"
         }
       },
+      "ExcelUpload": {
+        "uri": "/sap/opu/odata/sap/ZPHYINVBPO_SRV/",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService/ExcelUpload/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
       "ZC_INV_BPO_CDS_VAN": {
         "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_INV_BPO_CDS_VAN',Version='0001')/$value/",
         "type": "ODataAnnotation",
@@ -35,6 +43,7 @@
           "localUri": "localService/ZC_INV_BPO_CDS_VAN.xml"
         }
       },
+
       "annotation": {
         "type": "ODataAnnotation",
         "uri": "annotations/annotation.xml",
@@ -61,7 +70,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.120.4",
       "libs": {
@@ -97,6 +106,10 @@
           }
         }
       },
+      "Excel_Upload": {
+        "dataSource": "ExcelUpload",
+        "preload": true
+    },
       "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "uri": "i18n/i18n.properties"
@@ -114,7 +127,7 @@
       "extensions": {
         "sap.ui.controllerExtensions": {
           "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-            "controllerName": "invbpo.ext.controller.ListReportExt",
+            "controllerName": "invbpo.ext.controller.ListReportExt1",
             "sap.ui.generic.app": {
               "ZC_INV_BPO": {
                 "EntitySet": "ZC_INV_BPO",
@@ -122,7 +135,7 @@
                   "uploadExcel": {
                     "id": "uploadExcelButton",
                     "text": "Upload Excel",
-                    "press": "uploadButtonClick",
+                    "press": "handleUploadButtonClick",
                     "requiresSelection": false
                   }
                 }

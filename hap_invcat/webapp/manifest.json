@@ -1,7 +1,7 @@
 {
     "_version": "1.59.0",
     "sap.app": {
-        "id": "invcat",
+        "id": "hapinvcat",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -12,35 +12,27 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
-            "version": "1.12.1",
-            "toolsId": "a9a539d9-8ce8-4f4b-8c9b-67d993ea8a24"
+            "version": "1.13.3",
+            "toolsId": "3ece29d7-8b85-4625-a75b-9a89f4f081db"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZC_INV_CATEGORY_CDS/",
+                "uri": "/sap/opu/odata/sap/ZPHYINVCUST_SRV/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "ZC_INV_CATEGORY_CDS_VAN",
+                        "ZPHYINVCUST_ANNO_MDL",
                         "annotation"
                     ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
                 }
             },
-            "ExcelUpload": {
-                "uri": "/sap/opu/odata/sap/ZPHYINVCUST_SRV/",
-                "type": "OData",
-                "settings": {
-                    "localUri": "localService/ExcelUpload/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            },
-            "ZC_INV_CATEGORY_CDS_VAN": {
-                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_INV_CATEGORY_CDS_VAN',Version='0001')/$value/",
+            "ZPHYINVCUST_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZPHYINVCUST_ANNO_MDL',Version='0001')/$value/",
                 "type": "ODataAnnotation",
                 "settings": {
-                    "localUri": "localService/ZC_INV_CATEGORY_CDS_VAN.xml"
+                    "localUri": "localService/ZPHYINVCUST_ANNO_MDL.xml"
                 }
             },
             "annotation": {
@@ -71,7 +63,7 @@
     "sap.ui5": {
         "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.120.4",
+            "minUI5Version": "1.123.1",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -90,7 +82,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "invcat.i18n.i18n"
+                    "bundleName": "hapinvcat.i18n.i18n"
                 }
             },
             "": {
@@ -104,10 +96,6 @@
                         "sap-value-list": "none"
                     }
                 }
-            },
-            "Excel_Upload": {
-                "dataSource": "ExcelUpload",
-                "preload": true
             },
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
@@ -126,12 +114,12 @@
             "extensions": {
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                        "controllerName": "invcat.ext.controller.ListReportExt1",
+                        "controllerName": "hapinvcat.ext.controller.ListReportExt",
                         "sap.ui.generic.app": {
                             "ZC_INV_CATEGORY": {
                                 "EntitySet": "ZC_INV_CATEGORY",
                                 "Actions": {
-                                    "uploadExcel": {
+                                    "UploadExcel": {
                                         "id": "UploadExcelButton",
                                         "text": "Upload Excel",
                                         "press": "handleUploadButtonClick",
@@ -163,13 +151,13 @@
                         "condensedTableLayout": true,
                         "smartVariantManagement": true,
                         "enableTableFilterInPageVariant": true,
-                        "useExportToExcel": true,
                         "filterSettings": {
                             "dateSettings": {
                                 "useDateRange": true
                             }
                         },
                         "tableSettings": {
+                            "type": "ResponsiveTable",
                             "multiSelect": true,
                             "selectAll": true,
                             "useExportToExcel": true

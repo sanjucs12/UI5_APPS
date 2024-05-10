@@ -2,7 +2,7 @@
     xmlns:core="sap.ui.core"
     xmlns:upload="sap.m.upload">
     <Dialog id="uploadDialogSet" title="Excel Upload">
-        <content>      
+        <content>    
             
             <VBox class="sapUiSmallMargin" >
             <upload:UploadSet uploadEnabled="true" id="uploadSet" fileTypes="xlsx,xls" maxFileNameLength="200"  uploadCompleted="onUploadSetComplete" afterItemRemoved="onItemRemoved" terminationEnabled="true" mode="None">
