@@ -137,7 +137,13 @@
                     "text": "Upload Excel",
                     "press": "handleUploadButtonClick",
                     "requiresSelection": false
-                  }
+                  },
+                  "deleteAll": {
+                    "id": "DeleteAllButton",
+                    "text": "Delete All",
+                    "press": "handleDeleteAllButtonClick",
+                    "requiresSelection": false
+                }
                 }
               }
             }
@@ -174,15 +180,6 @@
               "multiSelect": true,
               "selectAll": true,
               "useExportToExcel": true
-            },
-            "sections": {
-              "idItems": {
-                "tableSettings": {
-                  "multiSelect": true,
-                  "selectAll": true,
-                  "useExportToExcel": true
-                }
-              }
             }
           }
         },

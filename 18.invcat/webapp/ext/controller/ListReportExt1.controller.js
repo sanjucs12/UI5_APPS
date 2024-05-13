@@ -5,6 +5,10 @@ sap.ui.define([
     'use strict';
 
     return {
+        onInit: function () {
+            this.getView().byId("responsiveTable").getParent().setProperty("useExportToExcel", true)
+        },
+
         handleUploadButtonClick: function (oEvent) {
             if (!this.importDialog) {
                 this.importDialog = sap.ui.xmlfragment("invcat.ext.fragment.fileUpload", this);
@@ -87,5 +91,31 @@ sap.ui.define([
             var sUrl = oDataModel.sServiceUrl + "/MatCatUploadSet";
             oFileUploader.setUploadUrl(sUrl);
         },
+
+        handleDeleteAllButtonClick: function () {
+            let oDataModel = this.getView().getModel("Excel_Upload");
+            let that = this;
+            MessageBox.warning("Delete All Data?", {
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                emphasizedAction: MessageBox.Action.OK,
+                onClose: function (sAction) {
+                    if (sAction === "OK") {
+                        that.getView().setBusy(true)
+                        oDataModel.callFunction("/DeleteAllFI", {
+                            success: function (data) {
+                                that.getView().setBusy(false);
+                                MessageBox.success("All records deleted successfully")
+                            },
+                            error: function (error) {
+                                that.getView().setBusy(false)
+                                MessageBox.error("Something went wrong. Please try again")
+                            },
+                        })
+                    }
+
+                }
+            });
+
+        }
     };
 });

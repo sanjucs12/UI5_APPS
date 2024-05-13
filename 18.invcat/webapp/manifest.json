@@ -136,6 +136,12 @@
                                         "text": "Upload Excel",
                                         "press": "handleUploadButtonClick",
                                         "requiresSelection": false
+                                    },
+                                    "deleteAll": {
+                                        "id": "DeleteAllButton",
+                                        "text": "Delete All",
+                                        "press": "handleDeleteAllButtonClick",
+                                        "requiresSelection": false
                                     }
                                 }
                             }
