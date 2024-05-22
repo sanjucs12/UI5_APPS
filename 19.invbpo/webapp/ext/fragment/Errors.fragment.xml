@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable='sap.ui.comp.smarttable'>
+    <Dialog title="Errors">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <smartTable:SmartTable entitySet="GetErrorSet" id="smartTable_Errors" tableType="ResponsiveTable" enableAutoBinding="true" class="sapUiResponsiveContentPadding" demandPopin="true" enableAutoColumnWidth="true" useTablePersonalisation="false" initiallyVisibleFields="LineNo,Message" enableExport="true" header="Errors in Excel" showRowCount="true">
+                </smartTable:SmartTable>
+            </VBox>
+        </content>
+        <buttons>
+            <Button press="handle_ErrorsCloseBtn" text="Close" icon="sap-icon://cancel"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

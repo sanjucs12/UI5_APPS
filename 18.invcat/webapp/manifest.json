@@ -126,7 +126,7 @@
             "extensions": {
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                        "controllerName": "invcat.ext.controller.ListReportExt1",
+                        "controllerName": "invcat.ext.controller.ListReportExt2",
                         "sap.ui.generic.app": {
                             "ZC_INV_CATEGORY": {
                                 "EntitySet": "ZC_INV_CATEGORY",

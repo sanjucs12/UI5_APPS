@@ -127,7 +127,7 @@
       "extensions": {
         "sap.ui.controllerExtensions": {
           "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-            "controllerName": "invbpo.ext.controller.ListReportExt1",
+            "controllerName": "invbpo.ext.controller.ListReportExt2",
             "sap.ui.generic.app": {
               "ZC_INV_BPO": {
                 "EntitySet": "ZC_INV_BPO",

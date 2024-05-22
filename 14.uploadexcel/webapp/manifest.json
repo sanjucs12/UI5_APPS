@@ -124,6 +124,12 @@
                                         "text": "Upload Excel",
                                         "press": "uploadExcel",
                                         "requiresSelection": false
+                                    },
+                                    "test": {
+                                        "id": "testButton",
+                                        "text": "Test Button",
+                                        "press": "testPress",
+                                        "requiresSelection": false
                                     }
                                 }
                             }

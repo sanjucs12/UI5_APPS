@@ -145,5 +145,9 @@ sap.ui.define([
             this.oUploadDialog.close();
         },
 
+        testPress: function(){
+            debugger;
+        }
+
     };
 });
