@@ -5,6 +5,31 @@
         <content>
             <VBox class="sapUiSmallMargin">
                 <smartTable:SmartTable entitySet="GetErrorSet" id="smartTable_Errors" tableType="ResponsiveTable" enableAutoBinding="true" class="sapUiResponsiveContentPadding" demandPopin="true" enableAutoColumnWidth="true" useTablePersonalisation="false" initiallyVisibleFields="LineNo,Message" enableExport="true" header="Errors in Excel" showRowCount="true">
+                    <Table>
+                        <columns>
+                            <Column hAlign="Begin">
+                                <customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "LineNo", "autoColumnWidth": \{ "visibleProperty": "LineNo" }, "columnIndex": 0, "leadingProperty": "LineNo", "sortProperty": "LineNo", "additionalProperty": "LineNo", "additionalSortProperty": "LineNo"}'/>
+                                </customData>
+                                <Text text="Line Number"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "Message", "autoColumnWidth": \{ "visibleProperty": "Message" }, "columnIndex": 1, "leadingProperty": "Message", "sortProperty": "Message", "additionalProperty": "Message", "additionalSortProperty": "Message"}'/>
+                                </customData>
+                                <Text text="Error Message"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{LineNo}"/>
+                                    <Text text="{Message}"/>
+
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
                 </smartTable:SmartTable>
             </VBox>
         </content>

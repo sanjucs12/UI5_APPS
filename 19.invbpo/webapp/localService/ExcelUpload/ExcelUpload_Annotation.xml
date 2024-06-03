@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='HADCLNT110')/$value">
+<edmx:Edmx Version="4.0"
+    xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='HADCLNT110')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='HADCLNT110')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../../sap/zc_inv_bpo_cds/$metadata">
-        <edmx:Include Namespace="ZC_INV_BPO_CDS" Alias="SAP"/>
+    <edmx:Reference Uri="../../../sap/zphyinvbpo_srv/$metadata">
+        <edmx:Include Namespace="ZPHYINVBPO_SRV" Alias="SAP"/>
     </edmx:Reference>
     <edmx:DataServices>
-        <Schema Namespace="zc_inv_bpo_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/created_by">
+        <Schema Namespace="zphyinvbpo_anno_mdl.v1"
+            xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/created_by">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/created_date">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/created_date">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/changed_by">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/changed_by">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/changed_date">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/changed_date">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/category_material_fc">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/category_material_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/mat_group_fc">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/mat_group_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/plant_fc">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/plant_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/storage_location_fc">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/storage_location_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType">
                 <Annotation Term="UI.DataPoint" Qualifier="bpocm">
                     <Record>
                         <PropertyValue Property="Value" Path="category_material"/>
@@ -57,6 +59,15 @@
                         <PropertyValue Property="Title" String="Storage Location"/>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="BPO Maintenance"/>
+                            <PropertyValue Property="ID" String="Slocwisebpo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.HeaderFacets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
@@ -70,15 +81,6 @@
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="ID" String="bpocat"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#bpocm"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="UI.Facets">
-                    <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="BPO Maintenance"/>
-                            <PropertyValue Property="ID" String="Slocwisebpo"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -184,8 +186,24 @@
                     </Collection>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZI_CATMAT_VHType/DomainName">
+            <Annotations Target="ZPHYINVBPO_SRV.ZI_CATMAT_VHType/DomainName">
                 <Annotation Term="UI.Hidden"/>
+            </Annotations>
+
+       
+            <Annotations Target="ZPHYINVBPO_SRV.GetError">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LineNo"/>
+                            <PropertyValue Property="Label" String="Line Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Message"/>
+                            <PropertyValue Property="Label" String="Message"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>

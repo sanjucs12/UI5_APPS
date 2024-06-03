@@ -107,10 +107,16 @@
                                     <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
                                 </ng:layoutAlgorithm>
                                 <ng:nodes>
-                                    <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
+                                    <!-- <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
                                         <ng:attributes>
                                             <ng:ElementAttribute label="Step Type" value="{StepType}"/>
                                             <ng:ElementAttribute label="Sequence" value="{StepSequence}"/>
+                                        </ng:attributes>
+                                    </ng:Node> -->
+                                    <ng:Node icon="sap-icon://approvals" key="{Sequence}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
+                                        <ng:attributes>
+                                            <ng:ElementAttribute label="Step Type" value="{StepType}"/>
+                                            <ng:ElementAttribute label="Sequence" value="{Sequence}"/>
                                         </ng:attributes>
                                     </ng:Node>
                                 </ng:nodes>

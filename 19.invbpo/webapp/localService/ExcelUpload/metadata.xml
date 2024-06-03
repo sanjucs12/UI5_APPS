@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='HADCLNT110')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="ZC_INV_BPO_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <Schema Namespace="ZPHYINVBPO_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BpoUpload" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Messages"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. Loc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatGroup" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CategoryMaterial" Type="Edm.String" MaxLength="70" sap:unicode="false" sap:label="Category Main" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bpo1stLevel" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="BPO 1st Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bpo2ndLevel" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="BPO 2nd Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BpoFinalLevel" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Final BPO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Messages" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="MESSAGES" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DeleteAll" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeleteFlag"/>
+                </Key>
+                <Property Name="DeleteFlag" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Messages" Type="Edm.String" sap:unicode="false" sap:label="MESSAGES" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="GetError" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LineNo"/>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="LineNo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="LINE_NO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="MESSAGE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="ZC_INV_BPOType" sap:label="Sloc &amp; Division wise BPO Maintanence" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="plant"/>
@@ -79,14 +107,18 @@
                 <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
                 <Property Name="StorageLocationText" Type="Edm.String" MaxLength="16" sap:label="Storage Location Description" sap:quickinfo="Description of Storage Location"/>
             </EntityType>
-            <EntityContainer Name="ZC_INV_BPO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="ZC_INV_BPO" EntityType="ZC_INV_BPO_CDS.ZC_INV_BPOType" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZI_CATMAT_VH" EntityType="ZC_INV_BPO_CDS.ZI_CATMAT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZI_MatGroup_VH" EntityType="ZC_INV_BPO_CDS.ZI_MatGroup_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZI_Plant_VH" EntityType="ZC_INV_BPO_CDS.ZI_Plant_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZI_StorageLocation_VH" EntityType="ZC_INV_BPO_CDS.ZI_StorageLocation_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            <EntityContainer Name="ZPHYINVBPO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BpoUploadSet" EntityType="ZPHYINVBPO_SRV.BpoUpload" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DeleteAll001Set" EntityType="ZPHYINVBPO_SRV.DeleteAll" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GetErrorSet" EntityType="ZPHYINVBPO_SRV.GetError" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_INV_BPO" EntityType="ZPHYINVBPO_SRV.ZC_INV_BPOType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CATMAT_VH" EntityType="ZPHYINVBPO_SRV.ZI_CATMAT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_MatGroup_VH" EntityType="ZPHYINVBPO_SRV.ZI_MatGroup_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_Plant_VH" EntityType="ZPHYINVBPO_SRV.ZI_Plant_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_StorageLocation_VH" EntityType="ZPHYINVBPO_SRV.ZI_StorageLocation_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <FunctionImport Name="DeleteAllFI" ReturnType="Collection(ZPHYINVBPO_SRV.DeleteAll)" EntitySet="DeleteAll001Set" m:HttpMethod="GET" sap:label="Delete All Records" sap:action-for="ZPHYINVBPO_SRV.DeleteAll"/>
             </EntityContainer>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Plant Value Help"/>
@@ -109,7 +141,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/storage_location" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/storage_location" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Storage Location Value Help"/>
@@ -132,7 +164,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/mat_group" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/mat_group" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Material Group Value Help"/>
@@ -155,7 +187,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType/category_material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType/category_material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Value Help for Category Material"/>
@@ -178,7 +210,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZPHYINVBPO_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Aggregation.ApplySupported">
                     <Record>
                         <PropertyValue Property="Transformations">
@@ -192,7 +224,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPO_CDS_Entities/ZC_INV_BPO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZPHYINVBPO_SRV_Entities/ZC_INV_BPO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
                     <Record>
                         <PropertyValue Property="NonFilterableProperties">
@@ -218,15 +250,15 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZC_INV_BPO_CDS.ZC_INV_BPOType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZPHYINVBPO_SRV.ZC_INV_BPOType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SemanticKey">
                     <Collection>
                         <PropertyPath>storage_location</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
-            <atom:link rel="self" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_BPO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZC_INV_BPO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="self" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZPHYINVBPO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.178.18.243:8200/sap/opu/odata/sap/ZPHYINVBPO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

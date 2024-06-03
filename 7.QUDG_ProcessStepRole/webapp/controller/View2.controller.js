@@ -82,16 +82,29 @@ sap.ui.define([
                 //var sPath = `${url}/to_ProcesstoRole`; // Defining the path for specific request  
                 var sPath = this.createGraphPath;
                 //console.log(sPath)
-                oModel.read(sPath, {
+                let ssPath = this.processPath + "/to_DyProcesstostep"
+                // oModel.read(sPath, {
+                //     success: function (response) {
+                //         //this._createNetworkGraph(response.results);
+                //         var oDataModel = new sap.ui.model.json.JSONModel(response.results);
+                //         // console.log(oDataModel)
+                //         this.getView().setModel(oDataModel, "JSON_STEPSDATA")
+                //     }.bind(this),
+                //     error: function (oError) {
+                //         // Handle error
+                //         console.error("Error reading data: ", oError);
+                //     }
+                // })
+                oModel.read(ssPath, {
                     success: function (response) {
-                        //console.log("Data Read Successfully: ", response.results);
+                        debugger;
+                        console.log(response)
                         this._createNetworkGraph(response.results);
                         var oDataModel = new sap.ui.model.json.JSONModel(response.results);
-                        // console.log(oDataModel)
                         this.getView().setModel(oDataModel, "JSON_STEPSDATA")
+
                     }.bind(this),
                     error: function (oError) {
-                        // Handle error
                         console.error("Error reading data: ", oError);
                     }
                 })
@@ -299,10 +312,10 @@ sap.ui.define([
                     this.loadFragment({
                         name: "metadata.fragments.createStepDialog"
                     }).then(function (oDialog) {
-                        this.oCreateStepDialog = oDialog;                   
+                        this.oCreateStepDialog = oDialog;
                         this.oCreateStepDialog.open();
                     }.bind(this));
-                } else {                   
+                } else {
                     this.oCreateStepDialog.open();
                 }
             },
@@ -315,7 +328,8 @@ sap.ui.define([
 
             handle_createStepDialog_CreateButton: function () {
                 var oModel = this.getView().getModel();
-                var sPath = this.createStepPath;
+                //var sPath = this.createStepPath;
+                var sPath = this.processPath + "/to_DyProcesstostep";
                 // var sStepName = this.getView().byId("smartField_newStepName").getValue();
                 // var sStepType = this.getView().byId("smartField_newStepType").getValue();
                 // var sStepSequence = this.getView().byId("smartField_newStepSequence").getValue();
@@ -324,8 +338,9 @@ sap.ui.define([
                 var oSmartField_stepName = this.getView().byId("smartField_newStepName");
                 var oSmartField_stepType = this.getView().byId("smartField_newStepType");
                 var oSmartField_stepSequence = this.getView().byId("smartField_newStepSequence");
-                var oSmartField_stepApprover = this.getView().byId("smartField_newStepApprover");
-                let aSmartFields = [oSmartField_stepName, oSmartField_stepType, oSmartField_stepSequence, oSmartField_stepApprover]
+                var oSmartField_stepMainStep = this.getView().byId("smartField_newMainStep");
+                var oSmartField_stepPreceeding = this.getView().byId("smartField_newStepPreceedingSeq");
+                let aSmartFields = [oSmartField_stepName, oSmartField_stepType, oSmartField_stepSequence, oSmartField_stepMainStep, oSmartField_stepPreceeding]
 
                 aSmartFields.forEach((field) => {
                     if (!field.getValue()) {
@@ -345,9 +360,11 @@ sap.ui.define([
                     var oNewStep = {
                         StepName: oSmartField_stepName.getValue(),
                         StepType: oSmartField_stepType.getValue(),
-                        StepSequence: oSmartField_stepSequence.getValue(),
-                        StepApprover: oSmartField_stepApprover.getValue()
+                        Sequence: oSmartField_stepSequence.getValue(),
+                        MainStep: oSmartField_stepMainStep.getValue(),
+                        PreceedingSeq: oSmartField_stepPreceeding.getValue()
                     };
+                    debugger;
                     //console.log(oNewStep);
 
                     //Creating new Process in the Model
@@ -475,7 +492,6 @@ sap.ui.define([
                 ///______________IF  STEP IS SELECTED FROM GRAPH________________
 
                 var oModel_RejectionStepG = this.getView().getModel("JSONModel_SelectedStepData")
-
                 if (oModel_RejectionStepG && oModel_View.graph) {
                     var sStepName = oModel_RejectionStepG.getData().StepName
                     var sStepSequence = oModel_RejectionStepG.getData().StepSequence
@@ -565,7 +581,7 @@ sap.ui.define([
                     StepName: oSmartField_stepName.getText(),
                     StepSequence: oSmartField_stepSequence.getText(),
                     RejectionStepName: oSmartField_Dropdown.getSelectedItem().getText(),
-                    RejectionStepSeq:  oSmartField_Dropdown.getSelectedItem().getAdditionalText()
+                    RejectionStepSeq: oSmartField_Dropdown.getSelectedItem().getAdditionalText()
                 };
                 console.log(oNewRejectionStep);
 
@@ -585,8 +601,10 @@ sap.ui.define([
 
             //////____________________________SECTION 2: NETWORK GRAPH___________________________________
             _createNetworkGraph: function (data) {
+                debugger;
                 let nodes = data.map(step => ({ ...step }));
                 let lines = [];
+                debugger;
 
                 //OLD LOGIC
                 // const firstNode = nodes[0];
@@ -600,19 +618,30 @@ sap.ui.define([
                 //     }
                 // }
 
-                for (let i = 0; i < data.length; i++) {
-                    let child = data[i].StepSequence
-                    let parentArray = []
-                    for (let j = 0; j < data.length; j++) {
-                        if (data[j].StepSequence == child - 1) {
-                            parentArray.push(data[j])
+                // for (let i = 0; i < data.length; i++) {
+                //     let child = data[i].StepSequence
+                //     let parentArray = []
+                //     for (let j = 0; j < data.length; j++) {
+                //         if (data[j].StepSequence == child - 1) {
+                //             parentArray.push(data[j])
+                //         }
+                //     }
+                //     //console.log("child = ", data[i].StepId, parentArray)
+                //     for (let k = 0; k < parentArray.length; k++) {
+                //         lines.push({ from: parentArray[k].StepId, to: data[i].StepId })
+                //     }
+                // }
+
+                //NEW LOGIC
+                data.forEach(item => {
+                    const { Sequence, PreceedingSeq } = item;
+                    const predecessors = PreceedingSeq.split('&');
+                    predecessors.forEach(predecessor => {
+                        if (predecessor !== "0-0") {
+                            lines.push({ from: predecessor, to: Sequence });
                         }
-                    }
-                    //console.log("child = ", data[i].StepId, parentArray)
-                    for (let k = 0; k < parentArray.length; k++) {
-                        lines.push({ from: parentArray[k].StepId, to: data[i].StepId })
-                    }
-                }
+                    });
+                });
 
                 //console.log(lines);
 
@@ -621,6 +650,7 @@ sap.ui.define([
                     nodes,
                     lines,
                 };
+                debugger;
                 //console.log(oGraphData)
                 var oNetworkModel = new sap.ui.model.json.JSONModel(oGraphData);
                 //console.log(oNetworkModel.getData())
@@ -708,10 +738,10 @@ sap.ui.define([
                 //     value1: this.decodeProcessIdFromPath(this.processPath)
                 // });
                 // oEvent.getParameter("bindingParams").filters.push(oFilter);      
-                 //ADDING TWO FILTERS i.e., ProcessId and StepId
+                //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
                 var sStepId = oModel.getData().StepId;
-                 var oFilter = new sap.ui.model.Filter({
+                var oFilter = new sap.ui.model.Filter({
                     filters: [
                         new sap.ui.model.Filter({
                             path: 'ProcessId',

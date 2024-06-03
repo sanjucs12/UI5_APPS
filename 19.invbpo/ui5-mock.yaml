@@ -1,5 +1,3 @@
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-
 specVersion: "3.1"
 metadata:
   name: invbpo
@@ -9,7 +7,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: false
         ui5:
           path:
             - /resources
@@ -18,7 +16,7 @@ server:
         backend:
           - path: /sap
             url: http://10.178.18.243:8200
-            client: '100'
+            client: "100"
             destination: HAP_DEP
     - name: fiori-tools-appreload
       afterMiddleware: compression
@@ -32,7 +30,21 @@ server:
         mountPath: /
         services:
           - urlPath: /sap/opu/odata/sap/ZC_INV_BPO_CDS
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
             generateMockData: true
-        annotations: []
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/ZPHYINVBPO_SRV/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ExcelUpload/metadata.xml
+            mockdataRootPath: ./webapp/localService/ExcelUpload/mockdata
+          - urlPath: /sap/opu/odata/sap/ZC_INV_BPO_CDS/
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/mockdata
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/ZC_INV_BPO_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_INV_BPO_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotation.xml
+            urlPath: annotations/annotation.xml
+          - localPath: ./webapp/localService/ExcelUpload/ExcelUpload_Annotation.xml
+            urlPath: /destinations/HAP_DEP/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZPHYINVBPO_ANNO_MDL',Version='0001')/$value/
