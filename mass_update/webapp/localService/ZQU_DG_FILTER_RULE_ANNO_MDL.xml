@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zqu_dg_filter_rule_srv/$metadata">
+        <edmx:Include Namespace="ZQU_DG_FILTER_RULE_SRV" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zqu_dg_filter_rule_anno_mdl.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/ersda">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/created_at_time">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/laeda">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/aenam">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/lvorm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/bismt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/zeinr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/zeiar">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/zeivr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/zeifo">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/aeszn">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/blatt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/blanz">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/groes">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/normt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/ean11">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/qmpur">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/kzkfg">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/xchpf">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/kzkup">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mstde">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mhdrz">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mhdhb">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/kzumw">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/nrfhg">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/ihivi">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/iloos">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/serlv">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/xgchp">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/kzeff">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/iprkz">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/rdmhd">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/meins">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/gewei">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/voleh">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/bstme">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/labor">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/profl">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/tragr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/magrv">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/ekwsl">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mtpos_mara">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/spart">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/numtp">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/tempb">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mstav">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mstae">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/packcode">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/bwscl">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mfrgr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/satnr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/rmatp">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/stoff">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/kosch">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/extwg">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/commodity">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/matkl">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/rbnrm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/wrkst">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/brgew">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/volum">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/ntgew">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/rule_config_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Material"/>
+                        <PropertyValue Property="TypeNamePlural" String="Materials"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material no."/>
+                            <PropertyValue Property="Value" Path="matnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Description"/>
+                            <PropertyValue Property="Value" Path="maktx"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rule"/>
+                            <PropertyValue Property="Value" Path="rule_config"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Created by"/>
+                            <PropertyValue Property="Value" Path="ernam"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material type"/>
+                            <PropertyValue Property="Value" Path="mtart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Industry"/>
+                            <PropertyValue Property="Value" Path="mbrsh"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

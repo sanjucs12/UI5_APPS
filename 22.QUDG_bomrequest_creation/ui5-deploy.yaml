@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: bomrequest01
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: Airdit_HANA_R
+          url: http://airdithana.airditsoftware.com:8010
+        app:
+          name: ZQUDGBOMREQ
+          description: BOM request create
+          package: ZQU_DG_BOM_UI
+          transport: S4HK901330
+        exclude:
+          - /test/

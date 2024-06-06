@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Panel backgroundDesign="Transparent">
+        <sform:SmartForm id="SFPersonCreateDialog" editable="true" editTogglable="false">
+            <sform:Group >
+                 <!-- <sform:GroupElement>
+                    <smartField:SmartField id="create::ReqId" value="{request_id}" editable="false"  />
+                </sform:GroupElement> -->
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Matnr" value="{matnr}" editable="true"   />
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Werks" value="{werks}" editable="true"   />
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Stlan" value="{stlan}" editable="true"  />
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Stlal" value="{stlal}" editable="true"  />
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Aennr" value="{aennr}" editable="true"  />
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="create::Datuv" value="{valid_from}" editable="true"  />
+                </sform:GroupElement>
+
+            </sform:Group>
+        </sform:SmartForm>
+    </Panel>
+</core:FragmentDefinition>

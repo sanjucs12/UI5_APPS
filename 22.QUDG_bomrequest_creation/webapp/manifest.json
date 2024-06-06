@@ -1,0 +1,195 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "bomrequest01",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.13.3",
+            "toolsId": "934fbe55-ddda-4f4b-9ea0-e3d96a6b278a"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZC_QUDG_BOMHEADERREQUESTTP_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_QUDG_BOMHEADERREQUESTTP_C_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZC_QUDG_BOMHEADERREQUESTTP_C_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QUDG_BOMHEADERREQUESTTP_C_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_QUDG_BOMHEADERREQUESTTP_C_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.123.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "bomrequest01.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "bomrequest01.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "ZC_QUDG_BOMHEADERREQUESTTP": {
+                                "EntitySet": "ZC_QUDG_BOMHEADERREQUESTTP",
+                                "Actions": {
+                                    "Create": {
+                                        "id": "Create",
+                                        "text": "Create",
+                                        "press": "onCreate"
+                                    },
+                                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                                      "SmartFormExtension|STTA_C_MP_Product|com.sap.vocabularies.UI.v1.FieldGroup::Header": {
+                                          "className": "sap.ui.core.Fragment",
+                                          "fragmentName": "STTA_MP.ext.fragments.SmartFormGroupElement",
+                                          "type": "XML"
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "ListReport|ZC_QUDG_BOMHEADERREQUESTTP": {
+                "entitySet": "ZC_QUDG_BOMHEADERREQUESTTP",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "smartVariantManagement": true,
+                        "enableTableFilterInPageVariant": true,
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        },
+                        "tableSettings": {
+                            "type": "ResponsiveTable"
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ZC_QUDG_BOMHEADERREQUESTTP": {
+                        "entitySet": "ZC_QUDG_BOMHEADERREQUESTTP",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        },
+                        "pages": {
+                            "ObjectPage|to_itemreq": {
+                                "navigationProperty": "to_itemreq",
+                                "entitySet": "ZC_QUDG_BOMITEMREQUESTTP",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

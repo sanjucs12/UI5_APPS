@@ -681,6 +681,7 @@ sap.ui.define([
 
                 var oSelectedNodeModel = new sap.ui.model.json.JSONModel(oClickedNodeData);
                 this.getView().setModel(oSelectedNodeModel, "JSONModel_SelectedStepData")
+                debugger;
                 oSmartTable_roles.rebindTable()   //BINDING ROLES TO ROLES TABLE : THIS WILL BIND ONLY ROLES RELATED TO StepId
                 oSmartTable_RejectionSteps.rebindTable()   //Added by rakesh
             },
@@ -740,7 +741,7 @@ sap.ui.define([
                 // oEvent.getParameter("bindingParams").filters.push(oFilter);      
                 //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
-                var sStepId = oModel.getData().StepId;
+                var sStepId = oModel.getData().MainStepUuid;
                 var oFilter = new sap.ui.model.Filter({
                     filters: [
                         new sap.ui.model.Filter({
@@ -764,7 +765,8 @@ sap.ui.define([
             /////______________________________SECTION 4: ROLES AND USERS____________________________________
             onBeforeRebindRolesTable: function (oEvent) {
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
-                var sStepId = oModel.getData().StepId;
+                debugger;
+                var sStepId = oModel.getData().MainStepUuid;
                 //console.log(sStepId);
 
                 //ADDING TWO FILTERS i.e., ProcessId and StepId

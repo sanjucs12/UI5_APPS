@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZQU_DG_FILTER_RULE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_QU_DG_MaterialsType" sap:label="Material details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="matnr"/>
+                </Key>
+                <Property Name="rule_config_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
+                <Property Name="rule_config" Type="Edm.String" MaxLength="30" sap:field-control="rule_config_fc" sap:label="Rule"/>
+                <Property Name="created_at_time" Type="Edm.Time" Precision="0" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
+                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Change" sap:quickinfo="Date of Last Change"/>
+                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="lvorm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at client level" sap:quickinfo="Flag Material for Deletion at Client Level"/>
+                <Property Name="bismt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old material number"/>
+                <Property Name="zeinr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number (without document management system)"/>
+                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Document type" sap:quickinfo="Document type (without Document Management system)"/>
+                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Doc. Version" sap:quickinfo="Document version (without Document Management system)"/>
+                <Property Name="zeifo" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Page format" sap:quickinfo="Page format of document (without Document Management system)"/>
+                <Property Name="aeszn" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Document change no." sap:quickinfo="Document change number (without document management system)"/>
+                <Property Name="blatt" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Page number" sap:quickinfo="Page number of document (without Document Management system)"/>
+                <Property Name="blanz" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Number of sheets" sap:quickinfo="Number of sheets (without Document Management system)"/>
+                <Property Name="groes" Type="Edm.String" MaxLength="32" sap:display-format="UpperCase" sap:label="Size/dimensions"/>
+                <Property Name="normt" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Industry Std Desc." sap:quickinfo="Industry Standard Description (such as ANSI or ISO)"/>
+                <Property Name="ean11" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="EAN/UPC" sap:quickinfo="International Article Number (EAN/UPC)"/>
+                <Property Name="qmpur" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="QM in Procur. Active" sap:quickinfo="QM in Procurement Is Active"/>
+                <Property Name="kzkfg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Configurable" sap:quickinfo="Configurable Material"/>
+                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch management" sap:quickinfo="Batch management requirement indicator"/>
+                <Property Name="kzkup" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co-product" sap:quickinfo="Indicator: Material can be co-product"/>
+                <Property Name="mstde" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid from" sap:quickinfo="Date from which the cross-plant material status is valid"/>
+                <Property Name="mhdrz" Type="Edm.Decimal" Precision="4" Scale="0" sap:label="Min. Rem. Shelf Life" sap:quickinfo="Minimum Remaining Shelf Life"/>
+                <Property Name="mhdhb" Type="Edm.Decimal" Precision="4" Scale="0" sap:label="Total shelf life"/>
+                <Property Name="kzumw" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Environmentally rlvt" sap:quickinfo="Environmentally Relevant"/>
+                <Property Name="nrfhg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Qual.f.FreeGoodsDis." sap:quickinfo="Material qualifies for discount in kind"/>
+                <Property Name="ihivi" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Highly viscous" sap:quickinfo="Indicator: Highly Viscous"/>
+                <Property Name="iloos" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="In bulk/liquid" sap:quickinfo="Indicator: In Bulk/Liquid"/>
+                <Property Name="serlv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Serialization level" sap:quickinfo="Level of Explicitness for Serial Number"/>
+                <Property Name="xgchp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Appr.Batch Recd Req." sap:quickinfo="Approved Batch Record Required"/>
+                <Property Name="kzeff" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Assign effect. vals" sap:quickinfo="Assign effectivity parameter values/ override change numbers"/>
+                <Property Name="iprkz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Period Ind. for SLED" sap:quickinfo="Period Indicator for Shelf Life Expiration Date"/>
+                <Property Name="rdmhd" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rounding rule SLED" sap:quickinfo="Rounding rule for calculation of SLED"/>
+                <Property Name="meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="gewei" Type="Edm.String" MaxLength="3" sap:label="Weight unit" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="voleh" Type="Edm.String" MaxLength="3" sap:label="Volume unit" sap:semantics="unit-of-measure"/>
+                <Property Name="bstme" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="labor" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Lab/Office" sap:quickinfo="Laboratory/design office"/>
+                <Property Name="profl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="DG indicator profile" sap:quickinfo="Dangerous Goods Indicator Profile"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
+                <Property Name="tragr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Transportation Group"/>
+                <Property Name="magrv" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Matl Grp Pack.Matls" sap:quickinfo="Material Group: Packaging Materials"/>
+                <Property Name="ekwsl" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchasing value key" sap:quickinfo="Purchasing Value Key"/>
+                <Property Name="mtpos_mara" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Gen. item cat. grp" sap:quickinfo="General item category group"/>
+                <Property Name="spart" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="numtp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="EAN category" sap:quickinfo="Category of International Article Number (EAN)"/>
+                <Property Name="tempb" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Temp. conditions" sap:quickinfo="Temperature conditions indicator"/>
+                <Property Name="mstav" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="X-distr.chain status" sap:quickinfo="Cross-distribution-chain material status"/>
+                <Property Name="mstae" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="X-Plant Mat.Status" sap:quickinfo="Cross-Plant Material Status"/>
+                <Property Name="packcode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Packaging Code"/>
+                <Property Name="mbrsh" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Industry Sector"/>
+                <Property Name="bwscl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Source of supply" sap:quickinfo="Source of Supply"/>
+                <Property Name="mfrgr" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Material freight grp" sap:quickinfo="Material freight group"/>
+                <Property Name="satnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Cross-plant CM" sap:quickinfo="Cross-Plant Configurable Material"/>
+                <Property Name="rmatp" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Ref. mat. for pckg" sap:quickinfo="Reference material for materials packed in same way"/>
+                <Property Name="stoff" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Haz. material number" sap:quickinfo="Hazardous material number"/>
+                <Property Name="kosch" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Product allocation" sap:quickinfo="Product allocation determination procedure"/>
+                <Property Name="extwg" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Ext. Material Group" sap:quickinfo="External Material Group"/>
+                <Property Name="commodity" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Commodity"/>
+                <Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="rbnrm" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Catalog Profile"/>
+                <Property Name="wrkst" Type="Edm.String" MaxLength="48" sap:label="Basic material" sap:quickinfo="Basic Material"/>
+                <Property Name="brgew" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Gross weight"/>
+                <Property Name="volum" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Volume"/>
+                <Property Name="ntgew" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Net weight"/>
+            </EntityType>
+            <EntityType Name="ZI_QU_DG_RulesType" sap:label="Custom rule details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="rule_name"/>
+                </Key>
+                <Property Name="rule_name" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Rule Name"/>
+                <Property Name="rule_text" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Rule Description"/>
+            </EntityType>
+            <EntityContainer Name="ZQU_DG_FILTER_RULE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_QU_DG_Materials" EntityType="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_QU_DG_Rules" EntityType="ZQU_DG_FILTER_RULE_SRV.ZI_QU_DG_RulesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZQU_DG_FILTER_RULE_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZQU_DG_FILTER_RULE_SRV_Entities/ZC_QU_DG_Materials" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>rule_config_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>rule_config_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZQU_DG_FILTER_RULE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZQU_DG_FILTER_RULE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
