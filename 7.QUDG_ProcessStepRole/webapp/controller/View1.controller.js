@@ -82,11 +82,13 @@ sap.ui.define([
 
                 var sProcessName = this.getView().byId("smartField_newProcessName").getValue();;
                 var sAction = this.getView().byId("smartField_newAction").getValue();
+                var sMaster = this.getView().byId("smartField_newMaster").getValue();
 
                 /////_____VALIDATIONS_______/////
                 var oSmartField_ProcessName = this.getView().byId("smartField_newProcessName");
                 var oSmartField_Action = this.getView().byId("smartField_newAction");
-                let aSmartFields = [oSmartField_ProcessName, oSmartField_Action]
+                var oSmartField_Master = this.getView().byId("smartField_newMaster");
+                let aSmartFields = [oSmartField_ProcessName, oSmartField_Action,oSmartField_Master]
 
                 aSmartFields.forEach((field) => {
                     if (!field.getValue()) {
@@ -103,8 +105,10 @@ sap.ui.define([
                     // Create a new entry with action
                     var oNewProcess = {
                         ProcessName: sProcessName,
-                        Action: sAction
+                        Action: sAction,
+                        Master: sMaster
                     };
+                    
                     //console.log(oNewProcess);
 
                     // Creating new Process in the Model

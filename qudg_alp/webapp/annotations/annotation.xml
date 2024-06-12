@@ -13,6 +13,43 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+            <Annotations Target="SAP.ZC_QUDG_MATREQANALYTICSType/MatReqId" Qualifier="ChartMatRequestByApprovalStep">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="ZC_QUDG_MATREQANALYTICS"/>
+                        <PropertyValue Property="PresentationVariantQualifier" String="FilterMatRequestByApprovalStep">
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MatReqId"/>
+                                    <PropertyValue Property="ValueListProperty" String="MatReqId">
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ZC_QUDG_MATREQANALYTICSType/reqtype" Qualifier="ChartMatRequestByRequestType">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="ZC_QUDG_MATREQANALYTICS"/>
+                        <PropertyValue Property="PresentationVariantQualifier" String="FilterMatRequestByRequestType">
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="reqtype"/>
+                                    <PropertyValue Property="ValueListProperty" String="reqtype">
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

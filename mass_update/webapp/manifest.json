@@ -114,7 +114,20 @@
             "extensions": {
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                        "controllerName": "massupdate.ext.controller.ListReportExt"
+                        "controllerName": "massupdate.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "ZC_QU_DG_Materials": {
+                                "EntitySet": "ZC_QU_DG_Materials",
+                                "Actions": {
+                                    "idMassEditAction": {
+                                        "id": "idMassEditActionButton",
+                                        "text": "Mass Edit",
+                                        "press": "openMassEditDialog",
+                                        "global": true
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 "sap.ui.viewExtensions": {
@@ -151,10 +164,6 @@
                             "dateSettings": {
                                 "useDateRange": true
                             }
-                        },
-                        "tableSettings": {
-                            "multiSelect": true,
-                            "selectAll": true
                         }
                     }
                 },

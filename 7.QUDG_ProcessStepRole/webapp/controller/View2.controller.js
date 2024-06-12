@@ -741,6 +741,9 @@ sap.ui.define([
                 // oEvent.getParameter("bindingParams").filters.push(oFilter);      
                 //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
+                if(!oModel){
+                    return;
+                }
                 var sStepId = oModel.getData().MainStepUuid;
                 var oFilter = new sap.ui.model.Filter({
                     filters: [
@@ -757,6 +760,7 @@ sap.ui.define([
                     ],
                     and: true  // BOTH THE CONTITIONS SHOULD BE TRUE
                 })
+                debugger;
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
             },
 

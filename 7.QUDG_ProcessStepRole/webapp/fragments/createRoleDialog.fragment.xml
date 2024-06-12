@@ -13,7 +13,7 @@
                             <Text text="{JSONModel_SelectedStepData>/StepName}" id="textField_assaignStepName"></Text>
                         </smartForm:GroupElement>
                             <smartForm:GroupElement label="Step Sequence">
-                            <Text text="{JSONModel_SelectedStepData>/StepSequence}" id="textField_assaignStepSequence"></Text>
+                            <Text text="{JSONModel_SelectedStepData>/Sequence}" id="textField_assaignStepSequence"></Text>
                         </smartForm:GroupElement>
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_assaignRoleName" value="{AssignedRole}" entitySet="ZP_QU_DG_STEPS_ROLE"></smartField:SmartField>

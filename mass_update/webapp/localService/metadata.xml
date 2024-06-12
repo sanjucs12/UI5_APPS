@@ -99,7 +99,7 @@
                 <Property Name="rule_text" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Rule Description"/>
             </EntityType>
             <EntityContainer Name="ZQU_DG_FILTER_RULE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="ZC_QU_DG_Materials" EntityType="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_QU_DG_Materials" EntityType="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_QU_DG_Rules" EntityType="ZQU_DG_FILTER_RULE_SRV.ZI_QU_DG_RulesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
             <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZQU_DG_FILTER_RULE_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">

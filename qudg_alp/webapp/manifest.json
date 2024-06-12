@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:alp",
       "version": "1.13.5",
-      "toolsId": "d2588358-05f6-4575-b94b-8bbeab81b5f8"
+      "toolsId": "8b5a8537-fdaa-48d3-902b-f9c5bcef4146"
     },
     "dataSources": {
       "mainService": {
@@ -129,8 +129,10 @@
             "condensedTableLayout": true,
             "showGoButtonOnFilterBar": true,
             "tableType": "AnalyticalTable",
+            "qualifier": "Default",
             "autoHide": true,
             "smartVariantManagement": false,
+            
             "tableSettings": {
               "multiSelect": false
             },

@@ -5,11 +5,6 @@
     xmlns:form="sap.ui.comp.smartform">
     <smartfilterbar:ControlConfiguration groupId="_BASIC" key="rule_config" label="Rule" visibleInAdvancedArea="true">
         <smartfilterbar:customControl>
-            <!-- <ComboBox id="idCustomFilter">
-                <core:Item key="0" text="Item1"/>
-                <core:Item key="1" text="Item2"/>
-                <core:Item key="2" text="Item3"/>
-            </ComboBox> -->
             <ComboBox items="{path: 'JSONModel_Rules>/'}" showSecondaryValues= "true" id="idCustomFilter">
                 <core:ListItem key="{JSONModel_Rules>rule_name}" text="{JSONModel_Rules>rule_name}" additionalText = "{JSONModel_Rules>rule_text}"/>
             </ComboBox>

@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Jun 06 2024 06:38:46 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Fri Jun 07 2024 05:27:57 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.13.5|
 |**Generation Platform**<br>SAP Business Application Studio|
@@ -9,7 +9,7 @@
 |**Service Type**<br>SAP System (ABAP On Premise)|
 |**Service URL**<br>http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZQU_DG_ANALYTICS_SRV
 |**Module Name**<br>qudg_alp|
-|**Application Title**<br>Dash Board|
+|**Application Title**<br>Dashboard|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.124.1|
