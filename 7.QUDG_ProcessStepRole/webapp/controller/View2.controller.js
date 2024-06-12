@@ -571,6 +571,7 @@ sap.ui.define([
             handle_rejectStepDialog_RejectButton: function () {
                 var oModel = this.getView().getModel();
                 var sPath = this.createRejectionPath;
+                var oData = this.getView().getModel("JSONModel_SelectedStepData").getData()
 
                 var oSmartField_stepName = this.getView().byId("textField_StepName");
                 var oSmartField_stepSequence = this.getView().byId("textField_StepSequence");
@@ -579,10 +580,11 @@ sap.ui.define([
 
                 var oNewRejectionStep = {
                     StepName: oSmartField_stepName.getText(),
-                    StepSequence: oSmartField_stepSequence.getText(),
+                    StepSequence: oData.Sequence,
                     RejectionStepName: oSmartField_Dropdown.getSelectedItem().getText(),
                     RejectionStepSeq: oSmartField_Dropdown.getSelectedItem().getAdditionalText()
                 };
+                debugger;
                 console.log(oNewRejectionStep);
 
                 // Creating new Rejection Step in the Model
