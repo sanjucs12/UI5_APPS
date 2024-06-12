@@ -5,34 +5,13 @@
     xmlns:smartmultiedit="sap.ui.comp.smartmultiedit">
     <Dialog title="Edit Multiple" class="sapUiContentPadding" id="idMassEditDialog" contentWidth="40rem" horizontalScrolling="false">
         <content>
-            <smartmultiedit:Container entitySet="ZC_QU_DG_Materials" id="multiEditContainer" >
-       
-                <!-- <smartmultiedit:layout>
-                    <sf:SmartForm editable="true" id="id-smartform">
-                        <sf:layout>
-                            <sf:Layout labelSpanM="12" labelSpanL="12" labelSpanXL="12" />
-                        </sf:layout>
-                        <sf:groups>
-                            <sf:Group>
-                                <sf:GroupElement visible="true">
-                                    <sf:elements>
-                                        <smartmultiedit:Field propertyName="mtart"/>
-                                    </sf:elements>
-                                </sf:GroupElement>
-                                <sf:GroupElement visible="true">
-                                    <sf:elements>
-                                        <smartmultiedit:Field propertyName="mbrsh"/>
-                                    </sf:elements>
-                                </sf:GroupElement>
-                            </sf:Group>
-                        </sf:groups>
-                    </sf:SmartForm>
-                </smartmultiedit:layout> -->
+            <smartmultiedit:Container entitySet="ZC_QU_DG_Materials" id="multiEditContainer">
             </smartmultiedit:Container>
         </content>
         <buttons>
             <Button text="Apply Mass Changes" press="onDialogApplyButton" type="Emphasized"/>
             <Button text="Cancel" press="onCloseDialog"/>
+            <!-- <Button text="Reset" press="onCloseDialog" type="Emphasized"/> -->
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

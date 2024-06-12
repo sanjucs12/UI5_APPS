@@ -608,7 +608,7 @@ sap.ui.define([
                 let lines = [];
                 debugger;
 
-                //OLD LOGIC
+                //OLD LOGIC FOR GRAPH
                 // const firstNode = nodes[0];
                 // const lastNode = nodes[nodes.length - 1];              
                 // if (data.length <= 2) {
