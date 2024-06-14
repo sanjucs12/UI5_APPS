@@ -16,19 +16,23 @@ sap.ui.define([
             var oButtonMassEdit = this.getView().byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--action::idMassEditActionButton")
             oButtonMassEdit.setEnabled(false);
             oButtonMassEdit.setTooltip("Mass Edit");
+
         },
 
         onInitSmartFilterBarExtension: function (oEvent) {
             let oModel = this.getOwnerComponent().getModel()
-            oModel.read('/ZI_QU_DG_Rules', {
-                success: function (oData, oRes) {
-                    let oRulesModel = new sap.ui.model.json.JSONModel(oData.results);
-                    this.getView().setModel(oRulesModel, "JSONModel_Rules")
-                }.bind(this),
-                error: function (oErr) { }
-            })
+            var oModelContext = oModel.createEntry("/ZC_QU_DG_Materials", {});
+            this.getView().byId("idCustomSmartField").setBindingContext(oModelContext);
+
+            // oModel.read('/ZI_QU_DG_Rules', {
+            //     success: function (oData, oRes) {
+            //         let oRulesModel = new sap.ui.model.json.JSONModel(oData.results);
+            //         this.getView().setModel(oRulesModel, "JSONModel_Rules")
+            //     }.bind(this),
+            //     error: function (oErr) { }
+            // })
             oModel.read('/ZC_QU_DG_Materials', {
-                success: function (oData, ores) {
+                success: function (oData, oRes) {
                     this._Count = oData.results.length
                 }.bind(this),
                 error: function (oErr) { }
@@ -41,18 +45,31 @@ sap.ui.define([
             var oSmartFilterBar = this.byId(oSmartTable.getSmartFilterId());
             if (oSmartFilterBar instanceof SmartFilterBar) {
                 var oCustomControl = oSmartFilterBar.getControlByKey("rule_config");
-                if (oCustomControl instanceof ComboBox) {
-                    var sRule = oCustomControl.getSelectedKey();
-                    if (sRule.length > 0) {
-                        debugger
+                // if (oCustomControl instanceof ComboBox) {
+                //     var sRule = oCustomControl.getSelectedKey();
+                //     if (sRule.length > 0) {
+                //         debugger
+                //         this._InnerTable.setGrowingThreshold(this._Count)
+                //         oModel.setHeaders({ rule_config: sRule })
+                //     } else {
+                //         this._InnerTable.setGrowingThreshold(20)
+                //         oModel.setHeaders(null)
+                //     }
+
+                // }
+                let sRule = oCustomControl.getProperty('value')
+                debugger;
+                if (sRule) {
+                    if (sRule.replace(/ /g, '').length > 0) {
                         this._InnerTable.setGrowingThreshold(this._Count)
                         oModel.setHeaders({ rule_config: sRule })
-                    } else {
-                        this._InnerTable.setGrowingThreshold(20)
-                        oModel.setHeaders(null)
                     }
 
+                } else {
+                    this._InnerTable.setGrowingThreshold(20)
+                    oModel.setHeaders(null)
                 }
+
             }
         },
 
@@ -199,11 +216,11 @@ sap.ui.define([
                             sComment = "Mass Change Job"
                         }
                         that.submitMassChanges()
-                        oConfirmationDialog.close();                        
+                        oConfirmationDialog.close();
                         that.getView().byId("idMassEditDialog").close();
                         that.getView().byId("idMassEditDialog").destroy();
                     }
-                    
+
                 }),
                 endButton: new sap.m.Button({
                     text: "Cancel",
@@ -223,8 +240,8 @@ sap.ui.define([
                     sap.ui.getCore().byId("updateJobConfirmationBtn").setEnabled(true);
                 }
             });
-        
-            
+
+
         },
 
         submitMassChanges: function () {
@@ -280,9 +297,9 @@ sap.ui.define([
             let oPayload = changedFields
             let aMatnr = this._InnerTable.getSelectedContexts().map(context => context.getObject().matnr);
             let sMatnr = aMatnr.join(',')
-            oPayload.matnr = sMatnr; 
+            oPayload.matnr = sMatnr;
             debugger;
-            
+
             let oModel = this.getOwnerComponent().getModel();
             let sPath = this._InnerTable.getSelectedContexts()[0].getPath()
             oModel.setDeferredGroups(["DEFAULT"]);
@@ -292,10 +309,10 @@ sap.ui.define([
                 oModel.update(sPath, oPayload, {
                     groupId: "DEFAULT",
                     changeSetId: "myId",
-                    success: function(oData,oRes){
+                    success: function (oData, oRes) {
                         debugger
                     },
-                    error: function(oErr){
+                    error: function (oErr) {
                         debugger
                     }
                 });

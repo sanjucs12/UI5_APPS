@@ -17,6 +17,14 @@
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZQU_DG_FILTER_RULE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_MaterialTypeType" sap:label="Material Type" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialType"/>
+                </Key>
+                <Property Name="MaterialType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="MaterialType_Text" sap:label="Material type"/>
+                <Property Name="MaterialType_Text" Type="Edm.String" MaxLength="25" sap:label="Material Type Descr." sap:quickinfo="Description of Material Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization group" sap:quickinfo="Authorization group in the material master"/>
+            </EntityType>
             <EntityType Name="ZC_QU_DG_MaterialsType" sap:label="Material details" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="matnr"/>
@@ -64,7 +72,7 @@
                 <Property Name="bstme" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
                 <Property Name="labor" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Lab/Office" sap:quickinfo="Laboratory/design office"/>
                 <Property Name="profl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="DG indicator profile" sap:quickinfo="Dangerous Goods Indicator Profile"/>
-                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Material type" sap:value-list="standard"/>
                 <Property Name="tragr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Transportation Group"/>
                 <Property Name="magrv" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Matl Grp Pack.Matls" sap:quickinfo="Material Group: Packaging Materials"/>
                 <Property Name="ekwsl" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchasing value key" sap:quickinfo="Purchasing Value Key"/>
@@ -98,10 +106,43 @@
                 <Property Name="rule_name" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Rule Name"/>
                 <Property Name="rule_text" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Rule Description"/>
             </EntityType>
+            <EntityType Name="ZI_QU_DG_Rule_FieldsType" sap:label="Custom rule fields details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="rule_name"/>
+                    <PropertyRef Name="field_name"/>
+                </Key>
+                <Property Name="rule_name" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Rule Name"/>
+                <Property Name="field_name" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Field Name"/>
+            </EntityType>
             <EntityContainer Name="ZQU_DG_FILTER_RULE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="ZC_QU_DG_Materials" EntityType="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaterialType" EntityType="ZQU_DG_FILTER_RULE_SRV.I_MaterialTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_QU_DG_Materials" EntityType="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType" sap:deletable="false" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_QU_DG_Rules" EntityType="ZQU_DG_FILTER_RULE_SRV.ZI_QU_DG_RulesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_QU_DG_Rule_Fields" EntityType="ZQU_DG_FILTER_RULE_SRV.ZI_QU_DG_Rule_FieldsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
+            <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZC_QU_DG_MaterialsType/mtart" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Type"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialType"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="mtart"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialType_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZQU_DG_FILTER_RULE_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Aggregation.ApplySupported">
                     <Record>
@@ -119,9 +160,23 @@
             <Annotations Target="ZQU_DG_FILTER_RULE_SRV.ZQU_DG_FILTER_RULE_SRV_Entities/ZC_QU_DG_Materials" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
                     <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>rule_config_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>mtart</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="mtart"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>

@@ -13,6 +13,29 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP.ZC_QU_DG_MaterialsType">
+                <Annotation Term="UI.CreateHidden" Bool="true"/>
+            </Annotations>
+            
+            <Annotations Target="SAP.ZC_QU_DG_MaterialsType/rule_config">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="ZI_QU_DG_Rules"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="rule_config"/>
+                                    <PropertyValue Property="ValueListProperty" String="rule_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="rule_text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation >
+
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
