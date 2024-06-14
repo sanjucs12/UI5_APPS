@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: massupdate
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: Airdit_HANA_R
+          url: http://airdithana.airditsoftware.com:8010
+        app:
+          name: ZQUDGMATMASSUDT
+          description: QUDG Material Mass Update
+          package: ZQU-DG-MATUI
+          transport: S4HK901060
+        exclude:
+          - /test/

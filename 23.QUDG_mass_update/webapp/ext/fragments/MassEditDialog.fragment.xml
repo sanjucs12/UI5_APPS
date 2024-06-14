@@ -3,8 +3,17 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:core="sap.ui.core"
     xmlns:smartmultiedit="sap.ui.comp.smartmultiedit">
-    <Dialog title="Edit Multiple" class="sapUiContentPadding" id="idMassEditDialog" contentWidth="40rem" horizontalScrolling="false">
+    <Dialog title="Mass Edit" class="sapUiContentPadding" id="idMassEditDialog" contentWidth="40rem" horizontalScrolling="false">
         <content>
+            <VBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
+                <Title text="Selected Items" class="sapUiSmallMarginTop sapUiSmallMarginBottom"/>
+                <HBox wrap="Wrap">
+                    <VBox class="sapUiLargeMarginEnd">
+                        <Label text="Materials:" labelFor="selectedPRCount"/>
+                        <Text id="selectedMaterialCount"/>
+                    </VBox>
+                </HBox>
+            </VBox>
             <smartmultiedit:Container entitySet="ZC_QU_DG_Materials" id="multiEditContainer">
             </smartmultiedit:Container>
         </content>

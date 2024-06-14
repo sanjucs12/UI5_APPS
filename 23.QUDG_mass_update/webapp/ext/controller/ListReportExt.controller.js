@@ -14,21 +14,21 @@ sap.ui.define([
         },
         onAfterRendering: function () {
             var oButtonMassEdit = this.getView().byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--action::idMassEditActionButton")
-			oButtonMassEdit.setEnabled(false);
-			oButtonMassEdit.setTooltip("Mass Edit");
-		},
+            oButtonMassEdit.setEnabled(false);
+            oButtonMassEdit.setTooltip("Mass Edit");
+        },
 
         onInitSmartFilterBarExtension: function (oEvent) {
             let oModel = this.getOwnerComponent().getModel()
             oModel.read('/ZI_QU_DG_Rules', {
-                success: function (oData,oRes) {
+                success: function (oData, oRes) {
                     let oRulesModel = new sap.ui.model.json.JSONModel(oData.results);
                     this.getView().setModel(oRulesModel, "JSONModel_Rules")
                 }.bind(this),
                 error: function (oErr) { }
             })
             oModel.read('/ZC_QU_DG_Materials', {
-                success: function (oData,ores) {
+                success: function (oData, ores) {
                     this._Count = oData.results.length
                 }.bind(this),
                 error: function (oErr) { }
@@ -56,9 +56,9 @@ sap.ui.define([
             }
         },
 
-        _onTableRowSelection: function(oEvent){
+        _onTableRowSelection: function (oEvent) {
             var oButtonMassEdit = this.getView().byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--action::idMassEditActionButton")
-            if(this._InnerTable.getSelectedItems().length === 0){
+            if (this._InnerTable.getSelectedItems().length === 0) {
                 oButtonMassEdit.setEnabled(false)
                 oButtonMassEdit.setType("Transparent")
             } else {
@@ -68,18 +68,19 @@ sap.ui.define([
         },
 
         handle_MassEditBtnClick: function () {
+            this.getView().setBusy(true)
             var oMassEditDialog = this.getView().byId("idMassEditDialog");
             if (!oMassEditDialog) {
                 oMassEditDialog = sap.ui.xmlfragment(this.getView().getId(), "massupdate.ext.fragments.MassEditDialog", this);
                 this.getView().addDependent(oMassEditDialog);
             }
-            //oMassEditDialog.setEscapeHandler(this.onPressEcsButton.bind(this));
-          
+            oMassEditDialog.setEscapeHandler(this.onPressEscapeButton.bind(this));
+
             let aRules = []
-            this._InnerTable.getSelectedItems().map((oData)=>{
+            this._InnerTable.getSelectedItems().map((oData) => {
                 aRules.push(oData.getBindingContext().getObject().rule_config)
-            })   
-            aRules = [...new Set(aRules)].filter((item)=>{return item !== ''})     
+            })
+            aRules = [...new Set(aRules)].filter((item) => { return item !== '' })
             this._getFieldsForEdit(aRules)
         },
 
@@ -88,7 +89,7 @@ sap.ui.define([
             let oMassEditDialog = this.getView().byId("idMassEditDialog")
 
             let aFilters = []
-            aRules.map((rule)=>{
+            aRules.map((rule) => {
                 aFilters.push(new sap.ui.model.Filter("rule_name", "EQ", rule))
             })
             debugger;
@@ -101,12 +102,14 @@ sap.ui.define([
                         aFields.push(data.field_name.toLowerCase())
                     })
                     debugger;
+                    this.getView().setBusy(false)
                     this._CreateForm(aFields)
                     oMassEditDialog.open();
                 }.bind(this),
                 error: function (oErr) {
+                    this.getView().setBusy(false)
                     debugger
-                },
+                }.bind(this),
             })
         },
 
@@ -123,7 +126,7 @@ sap.ui.define([
                 })
             });
             //CREATING A BINDING CONTEXT TO BIND TO SMART FORM
-            var oModelContext = oModel.createEntry("/ZC_QU_DG_Materials", {});
+            var oModelContext = oModel.createEntry("/ZC_QU_DG_Materials", { groupId: "changes" });
             oSmartForm.setBindingContext(oModelContext);
 
             //GROUP FOR SMARTFORM
@@ -146,74 +149,169 @@ sap.ui.define([
             //CONTAINER FOR SMARTFORM
             var oMultiEditContainer = this.getView().byId("multiEditContainer");
             oMultiEditContainer.setLayout(oSmartForm);
+
+            //Header Details
+            this.getView().byId("selectedMaterialCount").setText(this._InnerTable.getSelectedItems().length)
         },
 
-        onCloseDialog: function(oEvent){
-            oEvent.getSource().getParent().close();
+        onCloseDialog: function (oEvent) {
+            //oEvent.getSource().getParent().close();
+            let oMassEditDialog = this.getView().byId("idMassEditDialog")
+            oMassEditDialog.close();
+            oMassEditDialog.destroy()
         },
 
-        onDialogApplyButton: function(oEvent){
-            this.submitMassChanges()
+        onPressEscapeButton: function (oEvent) {
+            let oMassEditDialog = this.getView().byId("idMassEditDialog")
+            oMassEditDialog.close();
+            oMassEditDialog.destroy()
+            oEvent.resolve();
         },
 
-        submitMassChanges: function(){
+        onDialogApplyButton: function (oEvent) {
+            let that = this;
+            let oConfirmationDialog = new sap.m.Dialog({
+                title: "Apply Mass Changes",
+                type: "Message",
+                icon: "sap-icon://question-mark",
+                content: [
+                    new sap.ui.layout.VerticalLayout({
+                        width: "100%",
+                        content: [
+                            new sap.m.Text("confirmationDialogText", {
+                                text: "Apply mass changes to the selected Materials?" + "\n\n" + "Enter Job Description"
+                            }),
+                            new sap.m.TextArea("confirmDialogTextarea", {
+                                ariaLabelledBy: "confirmationDialogText",
+                                width: "100%",
+                                value: "Mass Change Job",
+                                maxLength: 120
+                            })
+                        ]
+                    })
+                ],
+                beginButton: new sap.m.Button("updateJobConfirmationBtn", {
+                    text: "Apply",
+                    type: "Emphasized",
+                    press: function () {
+                        var sComment = sap.ui.getCore().byId("confirmDialogTextarea").getValue();
+                        if (sComment === "") {
+                            sComment = "Mass Change Job"
+                        }
+                        that.submitMassChanges()
+                        oConfirmationDialog.close();                        
+                        that.getView().byId("idMassEditDialog").close();
+                        that.getView().byId("idMassEditDialog").destroy();
+                    }
+                    
+                }),
+                endButton: new sap.m.Button({
+                    text: "Cancel",
+                    press: function () {
+                        oConfirmationDialog.close();
+                    }
+                }),
+                afterClose: function () {
+                    oConfirmationDialog.destroy();
+                }
+            });
+            oConfirmationDialog.open();
+            sap.ui.getCore().byId("confirmDialogTextarea").attachLiveChange(function (event) {
+                if (event.getParameter("value") === "") {
+                    sap.ui.getCore().byId("updateJobConfirmationBtn").setEnabled(false);
+                } else {
+                    sap.ui.getCore().byId("updateJobConfirmationBtn").setEnabled(true);
+                }
+            });
+        
+            
+        },
+
+        submitMassChanges: function () {
             debugger;
-			//var selectedItemsCount = this.getTotalSelectedItemsCount();
-			var oModel = this.getOwnerComponent().getModel();
-			var currentRowContext;
-			var prEntry = {};
-			var that = this;
-			var changedFields = {};
-			var aFormElements;
-			var oField;
-			var aFormContainers = this.getView().byId("multiEditContainer").getLayout()._oForm.getFormContainers();
 
-			//Create Changed fields Array
-			for (var i = 0; i < aFormContainers.length; i++) {
-				//returns all the fields of the group
-				aFormElements = aFormContainers[i].getFormElements();
-				for (var j = 0; j < aFormElements.length; j++) {
-					oField = aFormElements[j].getFields()[0];
-					if (oField.getMetadata().getName() === "sap.ui.comp.smartmultiedit.Field") {
-						if (oField.getSelectedItem() !== null) {
-							var sKey = oField.getSelectedItem().getKey();
-							var fName, fValue;
-							if (sKey !== "keep") {
-								if (sKey === "blank") {
-									fName = oField.getPropertyName();
-									if (oField.getDataType() === "Edm.DateTime") {
-										fValue = new Date(-18000000000000);
-									} else if (oField.getDataType() === "Edm.Decimal") {
-										fValue = "0.0";
-									} else if (oField.getDataType() === "Edm.Boolean") {
-										fValue = false;
-									} else {
-										fValue = " ";
-									}
-								} else if (sKey === "new") {
-									fName = oField.getPropertyName();
-									if (oField.getDataType() === "Edm.Decimal") {
-										fValue = oField.getRawValue()[fName].toString();
-									} else {
-										fValue = oField.getRawValue()[fName];
-									}
-								} else if (sKey === "true") {
-									fName = oField.getPropertyName();
-									fValue = oField.getRawValue()[fName];
-								} else if (sKey === "false") {
-									fName = oField.getPropertyName();
-									fValue = oField.getRawValue()[fName];
-								}
-								changedFields[fName] = fValue;
-							}
-						}
-					}
-				}
-			}
+            let changedFields = {};
 
-			prEntry = changedFields;
+            //Create Changed fields Array
+            let aFormContainers = this.getView().byId("multiEditContainer").getLayout()._oForm.getFormContainers();
+            for (var i = 0; i < aFormContainers.length; i++) {
+                //returns all the fields of the group
+                let aFormElements = aFormContainers[i].getFormElements();
+                for (var j = 0; j < aFormElements.length; j++) {
+                    let oField = aFormElements[j].getFields()[0];
+                    if (oField.getMetadata().getName() === "sap.ui.comp.smartmultiedit.Field") {
+                        if (oField.getSelectedItem() !== null) {
+                            var sKey = oField.getSelectedItem().getKey();
+                            var fName, fValue;
+                            if (sKey !== "keep") {
+                                if (sKey === "blank") {
+                                    fName = oField.getPropertyName();
+                                    if (oField.getDataType() === "Edm.DateTime") {
+                                        fValue = new Date(-18000000000000);
+                                    } else if (oField.getDataType() === "Edm.Decimal") {
+                                        fValue = "0.0";
+                                    } else if (oField.getDataType() === "Edm.Boolean") {
+                                        fValue = false;
+                                    } else {
+                                        fValue = " ";
+                                    }
+                                } else if (sKey === "new") {
+                                    fName = oField.getPropertyName();
+                                    if (oField.getDataType() === "Edm.Decimal") {
+                                        fValue = oField.getRawValue()[fName].toString();
+                                    } else {
+                                        fValue = oField.getRawValue()[fName];
+                                    }
+                                } else if (sKey === "true") {
+                                    fName = oField.getPropertyName();
+                                    fValue = oField.getRawValue()[fName];
+                                } else if (sKey === "false") {
+                                    fName = oField.getPropertyName();
+                                    fValue = oField.getRawValue()[fName];
+                                }
+                                changedFields[fName] = fValue;
+                            }
+                        }
+                    }
+                }
+            }
             debugger;
-			//prEntry.InternalComment = sComment;
+            //Preparing the PAYLOAD
+            let oPayload = changedFields
+            let aMatnr = this._InnerTable.getSelectedContexts().map(context => context.getObject().matnr);
+            let sMatnr = aMatnr.join(',')
+            oPayload.matnr = sMatnr; 
+            debugger;
+            
+            let oModel = this.getOwnerComponent().getModel();
+            let sPath = this._InnerTable.getSelectedContexts()[0].getPath()
+            oModel.setDeferredGroups(["DEFAULT"]);
+
+            oModel.metadataLoaded().then(() => {
+                debugger;
+                oModel.update(sPath, oPayload, {
+                    groupId: "DEFAULT",
+                    changeSetId: "myId",
+                    success: function(oData,oRes){
+                        debugger
+                    },
+                    error: function(oErr){
+                        debugger
+                    }
+                });
+                debugger;
+                oModel.submitChanges({
+                    groupId: "DEFAULT",
+                    success: function (oData, oRes) {
+                        debugger
+                    },
+                    error: function (oErr) {
+                        debugger
+                    }
+                })
+            })
+
+
         }
 
     };
