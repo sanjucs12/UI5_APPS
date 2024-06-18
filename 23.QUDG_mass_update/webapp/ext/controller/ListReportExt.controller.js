@@ -143,7 +143,7 @@ sap.ui.define([
                 })
             });
             //CREATING A BINDING CONTEXT TO BIND TO SMART FORM
-            var oModelContext = oModel.createEntry("/ZC_QU_DG_Materials", { groupId: "changes" });
+            var oModelContext = oModel.createEntry("/ZC_QU_DG_Materials", {  });
             oSmartForm.setBindingContext(oModelContext);
 
             //GROUP FOR SMARTFORM
@@ -302,30 +302,50 @@ sap.ui.define([
 
             let oModel = this.getOwnerComponent().getModel();
             let sPath = this._InnerTable.getSelectedContexts()[0].getPath()
-            oModel.setDeferredGroups(["DEFAULT"]);
 
-            oModel.metadataLoaded().then(() => {
-                debugger;
-                oModel.update(sPath, oPayload, {
-                    groupId: "DEFAULT",
-                    changeSetId: "myId",
-                    success: function (oData, oRes) {
-                        debugger
-                    },
-                    error: function (oErr) {
-                        debugger
-                    }
-                });
-                debugger;
-                oModel.submitChanges({
-                    groupId: "DEFAULT",
-                    success: function (oData, oRes) {
-                        debugger
-                    },
-                    error: function (oErr) {
-                        debugger
-                    }
-                })
+            // oModel.setDeferredGroups(["DEFAULT"]);
+            // oModel.metadataLoaded().then(() => {
+            //     debugger;
+            //     oModel.update(sPath, oPayload, {
+            //         groupId: "DEFAULT",
+            //         changeSetId: "myId",
+            //         success: function (oData, oRes) {
+            //             debugger
+            //         },
+            //         error: function (oErr) {
+            //             debugger
+            //         }
+            //     });
+            //     debugger;
+            //     oModel.submitChanges({
+            //         groupId: "DEFAULT",
+            //         success: function (oData, oRes) {
+            //             debugger
+            //         },
+            //         error: function (oErr) {
+            //             debugger
+            //         }
+            //     })
+            // })
+
+            debugger;
+            this.getView().setBusy(true)
+            oModel.callFunction('/FIMP_MASS_UPDATE',{
+                urlParameters:{
+                    Json:JSON.stringify(oPayload)
+                },
+                success: function(oData,oRes){
+                    this.getView().setBusy(false)
+                    sap.m.MessageBox.success('Items Updaed Successfully')
+                    this._InnerTable.removeSelections(true);
+                    this._SmartTable.rebindTable();
+                    this.getView().byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--action::idMassEditActionButton").setEnabled(false)
+                }.bind(this),
+                error:function(oErr){
+                    debugger;
+                    this.getView().setBusy(false)
+                    sap.m.MessageBox.error('Something went wrong')
+                }
             })
 
 
