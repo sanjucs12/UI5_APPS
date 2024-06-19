@@ -10,6 +10,10 @@ sap.ui.define([
             this._InnerTable = this._SmartTable.getTable()
             this._InnerTable.setMode("MultiSelect")
             this._InnerTable.attachSelectionChange(this._onTableRowSelection.bind(this));
+            debugger;
+
+            //Hiding the create button
+            this.byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--addEntry").setVisible(false)
 
         },
         onAfterRendering: function () {
