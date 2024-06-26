@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zc_qudg_bomheaderrequesttp_cds/$metadata">
+        <edmx:Include Namespace="ZC_QUDG_BOMHEADERREQUESTTP_CDS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zc_qudg_bomheaderrequesttp_c_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftEntityType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftAccessType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.I_DraftAdministrativeDataType/InProcessByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/Activation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/Edit_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/Update_draft_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMHEADERREQUESTTPType">
+                <Annotation Term="UI.DataPoint" Qualifier="matnr">
+                    <Record>
+                        <PropertyValue Property="Value" Path="matnr"/>
+                        <PropertyValue Property="Title" String="Material"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="reqid">
+                    <Record>
+                        <PropertyValue Property="Value" Path="request_id"/>
+                        <PropertyValue Property="Title" String="Request ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="reqprio">
+                    <Record>
+                        <PropertyValue Property="Value" Path="request_priority"/>
+                        <PropertyValue Property="Title" String="Request ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="reqtype">
+                    <Record>
+                        <PropertyValue Property="Value" Path="request_type"/>
+                        <PropertyValue Property="Title" String="Request Type"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Header Attribute"/>
+                            <PropertyValue Property="ID" String="BOMHeaderreq"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Details"/>
+                                        <PropertyValue Property="ID" String="General_Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#General_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Quantity Details"/>
+                                        <PropertyValue Property="ID" String="Quantity_Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quantity_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="BOM and Alternative"/>
+                                        <PropertyValue Property="ID" String="BOM_ALT_TEXT"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#BOM_Text"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Aditional Details"/>
+                                        <PropertyValue Property="ID" String="Additional_Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Additional_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Administrative Details"/>
+                                        <PropertyValue Property="ID" String="Administrative_Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Administration_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Validity Details"/>
+                                        <PropertyValue Property="ID" String="Validity_Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Validity_data"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Bom Item"/>
+                            <PropertyValue Property="ID" String="bom_item_req"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_itemreq/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="header1"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#reqid"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="header2"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#reqtype"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="header3"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#reqprio"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="header4"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#matnr"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Additional_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Lab/Office"/>
+                                    <PropertyValue Property="Value" Path="labor"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="ALE Indicator"/>
+                                    <PropertyValue Property="Value" Path="alekz"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CAD Indicator"/>
+                                    <PropertyValue Property="Value" Path="cadkz"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Administration_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Created ON"/>
+                                    <PropertyValue Property="Value" Path="andat"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Created BY"/>
+                                    <PropertyValue Property="Value" Path="annam"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Changed ON"/>
+                                    <PropertyValue Property="Value" Path="aedat"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Changed BY"/>
+                                    <PropertyValue Property="Value" Path="aenam"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="BOM_Text">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Description"/>
+                                    <PropertyValue Property="Value" Path="ztext"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Alternative Text"/>
+                                    <PropertyValue Property="Value" Path="stktx"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="General_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Request ID"/>
+                                    <PropertyValue Property="Value" Path="request_id"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Request Type"/>
+                                    <PropertyValue Property="Value" Path="request_type"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Request Text"/>
+                                    <PropertyValue Property="Value" Path="request_text"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Request Priority"/>
+                                    <PropertyValue Property="Value" Path="request_priority"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Material"/>
+                                    <PropertyValue Property="Value" Path="matnr"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Material Description"/>
+                                    <PropertyValue Property="Value" Path="maktx"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Plant"/>
+                                    <PropertyValue Property="Value" Path="werks"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Bill of Material"/>
+                                    <PropertyValue Property="Value" Path="stlnr"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="BOM Usage"/>
+                                    <PropertyValue Property="Value" Path="stlan"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Alternative BOM"/>
+                                    <PropertyValue Property="Value" Path="stlal"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Bom Group"/>
+                                    <PropertyValue Property="Value" Path="exstl"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Technical type"/>
+                                    <PropertyValue Property="Value" Path="bom_tetyp"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Is Ready AIN HandOver"/>
+                                    <PropertyValue Property="Value" Path="bom_ain_ind"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Quantity_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Base Quantity"/>
+                                    <PropertyValue Property="Value" Path="bmeng"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Validity_data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Bom Status"/>
+                                    <PropertyValue Property="Value" Path="stlst"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Autherrization Group"/>
+                                    <PropertyValue Property="Value" Path="stlbe"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Valid From"/>
+                                    <PropertyValue Property="Value" Path="valid_from"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Valid To"/>
+                                    <PropertyValue Property="Value" Path="valid_to"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Change NUmber"/>
+                                    <PropertyValue Property="Value" Path="aennr"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Change NUmber To"/>
+                                    <PropertyValue Property="Value" Path="ecn_to"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Delation indecator"/>
+                                    <PropertyValue Property="Value" Path="lkenz"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Delation Flag"/>
+                                    <PropertyValue Property="Value" Path="loekz"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Requested BOM Detail"/>
+                        <PropertyValue Property="TypeNamePlural" String="Requested BOM Details"/>
+                        <PropertyValue Property="TypeImageUrl" String="image_url"/>
+                        <PropertyValue Property="ImageUrl" String="">
+                            <Annotation Term="Core.Messages">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                        <PropertyValue Property="message" String="Property 'image_url' of annotation 'IMAGEURL' in proj./view 'ZC_QUDG_BOMHEADERREQUESTTP' not found"/>
+                                        <PropertyValue Property="severity" String="error"/>
+                                    </Record>
+                                </Collection>
+                            </Annotation>
+                        </PropertyValue>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Request For BOM Creation"/>
+                                <PropertyValue Property="Value" Path="stlnr"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Request ID"/>
+                            <PropertyValue Property="Value" Path="request_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Request Type"/>
+                            <PropertyValue Property="Value" Path="request_type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Request Priority"/>
+                            <PropertyValue Property="Value" Path="request_priority"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material"/>
+                            <PropertyValue Property="Value" Path="matnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Plant"/>
+                            <PropertyValue Property="Value" Path="werks"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="BOM Usage"/>
+                            <PropertyValue Property="Value" Path="stlan"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Alternative BOM"/>
+                            <PropertyValue Property="Value" Path="stlal"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="BOM Version"/>
+                            <PropertyValue Property="Value" Path="bom_versn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="BOM Version Status"/>
+                            <PropertyValue Property="Value" Path="versnst"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>request_id</PropertyPath>
+                        <PropertyPath>request_type</PropertyPath>
+                        <PropertyPath>request_priority</PropertyPath>
+                        <PropertyPath>matnr</PropertyPath>
+                        <PropertyPath>werks</PropertyPath>
+                        <PropertyPath>stlan</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/billofmaterial">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/billofmaterialcategory">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/billofmaterialvariant">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/material">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/plant">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZC_QUDG_BOMITEMREQUESTTPType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Basic Detail"/>
+                            <PropertyValue Property="ID" String="BasicDetails"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="BOM Item"/>
+                                        <PropertyValue Property="ID" String="BOMItem"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#BOM_Item"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Quantity Details"/>
+                                        <PropertyValue Property="ID" String="QuantityData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quantity_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="MRP Details"/>
+                                        <PropertyValue Property="ID" String="MRPData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#MRP_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Details-1"/>
+                                        <PropertyValue Property="ID" String="GeneralDetail"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#General_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Details-2"/>
+                                        <PropertyValue Property="ID" String="DeneralDetail2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#General_Data2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Administrative Detail"/>
+                            <PropertyValue Property="ID" String="AdministrativeDetails"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Administrative Details"/>
+                                        <PropertyValue Property="ID" String="AdministrativeData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Administrative_Data"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Validity Periods"/>
+                                        <PropertyValue Property="ID" String="ValidityPeriods"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Validity_Periods"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Status/Long Text"/>
+                            <PropertyValue Property="ID" String="TextDetails"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Item Text"/>
+                                        <PropertyValue Property="ID" String="ItemText"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Item_Text"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Item Status"/>
+                                        <PropertyValue Property="ID" String="ItemStatus"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Item_Status"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Additional Data"/>
+                                        <PropertyValue Property="ID" String="AdditionalData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Additional_Data"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Additional_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Material Provision Indicator"/>
+                                    <PropertyValue Property="Value" Path="ismaterialprovision"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Balk Material"/>
+                                    <PropertyValue Property="Value" Path="isbulkmaterial"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Production Storage Location"/>
+                                    <PropertyValue Property="Value" Path="prodorderissuelocation"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Production Supply Area"/>
+                                    <PropertyValue Property="Value" Path="productionsupplyarea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Administrative_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Created On"/>
+                                    <PropertyValue Property="Value" Path="bomitemrecordcreationdate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Created BY"/>
+                                    <PropertyValue Property="Value" Path="bomitemcreatedbyuser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Changed On"/>
+                                    <PropertyValue Property="Value" Path="bomitemlastchangedate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Changed By"/>
+                                    <PropertyValue Property="Value" Path="bomitemlastchangedbyuser"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="BOM_Item">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Request Id"/>
+                                    <PropertyValue Property="Value" Path="request_id"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Item Number"/>
+                                    <PropertyValue Property="Value" Path="billofmaterialitemnumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Item Catagory"/>
+                                    <PropertyValue Property="Value" Path="billofmaterialitemcategory"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Component"/>
+                                    <PropertyValue Property="Value" Path="billofmaterialcomponent"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Component Description"/>
+                                    <PropertyValue Property="Value" Path="componentdescription"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Sort String"/>
+                                    <PropertyValue Property="Value" Path="bomitemsortstring"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Class Selection Indicator"/>
+                                    <PropertyValue Property="Value" Path="isclassificationrelevant"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="General_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CO-Product"/>
+                                    <PropertyValue Property="Value" Path="materialiscoproduct"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Recursion Allowed"/>
+                                    <PropertyValue Property="Value" Path="isbomrecursiveallowed"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="ALE Indicator"/>
+                                    <PropertyValue Property="Value" Path="isale"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Reference Point"/>
+                                    <PropertyValue Property="Value" Path="referencepoint"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CAD indicator"/>
+                                    <PropertyValue Property="Value" Path="documentiscreatedbycad"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Recursive"/>
+                                    <PropertyValue Property="Value" Path="bomisrecursive"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="General_Data2">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Alternative Item Group"/>
+                                    <PropertyValue Property="Value" Path="alternativeitemgroup"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Priority"/>
+                                    <PropertyValue Property="Value" Path="alternativeitempriority"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Strategy"/>
+                                    <PropertyValue Property="Value" Path="alternativeitemstrategy"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Usage Probability (%)"/>
+                                    <PropertyValue Property="Value" Path="usageprobabilitypercent"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Follow-up Group"/>
+                                    <PropertyValue Property="Value" Path="followupgroup"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Discontinuation Group"/>
+                                    <PropertyValue Property="Value" Path="discontinuationgroup"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Item_Status">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Engineering/Design"/>
+                                    <PropertyValue Property="Value" Path="isengineeringrelevant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Production Relevant"/>
+                                    <PropertyValue Property="Value" Path="isproductionrelevant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Plant Maintenance"/>
+                                    <PropertyValue Property="Value" Path="bomitemisplantmaintrelevant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="PM Assembly Indicator"/>
+                                    <PropertyValue Property="Value" Path="ispmassemblyrelevant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Spare Part Indicator"/>
+                                    <PropertyValue Property="Value" Path="bomitemissparepart"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Relevant to Sales"/>
+                                    <PropertyValue Property="Value" Path="bomitemissalesrelevant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Relevancy to Costing"/>
+                                    <PropertyValue Property="Value" Path="bomitemiscostingrelevant"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Item_Text">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Item Text-1"/>
+                                    <PropertyValue Property="Value" Path="bomitemdescription"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Item Text-2"/>
+                                    <PropertyValue Property="Value" Path="bomitemtext2"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="MRP_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Lead-Time Offset"/>
+                                    <PropertyValue Property="Value" Path="leadtimeoffset"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Operation LTO"/>
+                                    <PropertyValue Property="Value" Path="operationleadtimeoffset"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Distribution Key"/>
+                                    <PropertyValue Property="Value" Path="distrkeycompconsumption"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Explosion Type"/>
+                                    <PropertyValue Property="Value" Path="explosiontype"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Special Procurement"/>
+                                    <PropertyValue Property="Value" Path="specialprocurementtype"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Quantity_Data">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Component Quantity"/>
+                                    <PropertyValue Property="Value" Path="billofmaterialitemquantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Fixed Quantity"/>
+                                    <PropertyValue Property="Value" Path="fixedquantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Fixed Quantity"/>
+                                    <PropertyValue Property="Value" Path="operationscrapinpercent"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Fixed Quantity"/>
+                                    <PropertyValue Property="Value" Path="isnetscrap"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Fixed Quantity"/>
+                                    <PropertyValue Property="Value" Path="componentscrapinpercent"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Validity_Periods">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Valid From"/>
+                                    <PropertyValue Property="Value" Path="validitystartdate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Valid To"/>
+                                    <PropertyValue Property="Value" Path="validityenddate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Change Number"/>
+                                    <PropertyValue Property="Value" Path="changenumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Change Number To"/>
+                                    <PropertyValue Property="Value" Path="changenumberto"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Delation Indicator"/>
+                                    <PropertyValue Property="Value" Path="isdeleted"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Requested BOM Component"/>
+                        <PropertyValue Property="TypeNamePlural" String="Requested BOM Components"/>
+                        <PropertyValue Property="TypeImageUrl" String="image_url"/>
+                        <PropertyValue Property="ImageUrl" String="">
+                            <Annotation Term="Core.Messages">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                        <PropertyValue Property="message" String="Property 'image_url' of annotation 'IMAGEURL' in proj./view 'ZC_QUDG_BOMITEMREQUESTTP' not found"/>
+                                        <PropertyValue Property="severity" String="error"/>
+                                    </Record>
+                                </Collection>
+                            </Annotation>
+                        </PropertyValue>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Request For Bom Component"/>
+                                <PropertyValue Property="Value" Path="billofmaterialitemnumber"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Request Id"/>
+                            <PropertyValue Property="Value" Path="request_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Item Number"/>
+                            <PropertyValue Property="Value" Path="billofmaterialitemnumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Item Catagory"/>
+                            <PropertyValue Property="Value" Path="billofmaterialitemcategory"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Component"/>
+                            <PropertyValue Property="Value" Path="billofmaterialcomponent"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Component Description"/>
+                            <PropertyValue Property="Value" Path="componentdescription"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Valid From"/>
+                            <PropertyValue Property="Value" Path="validitystartdate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Valid To"/>
+                            <PropertyValue Property="Value" Path="validityenddate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Component Quantity"/>
+                            <PropertyValue Property="Value" Path="billofmaterialitemquantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Assembly"/>
+                            <PropertyValue Property="Value" Path="isassembly"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZI_QUDG_BillOfMaterialUsageType/Language">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZI_QUDG_BomItemCategoryTextType/Language">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZI_QUDG_BOMVersionStatusVHType/domname">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.zi_qudg_requstpriority_vhType/domname">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZI_QUDG_TechnicalTypeVHType/domname">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_BOMHEADERREQUESTTP_CDS.ZI_QUDG_UnitOfMesureTimeVHType/OpsLeadTimeOffsetUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

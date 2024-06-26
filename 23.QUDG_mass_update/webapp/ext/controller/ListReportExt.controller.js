@@ -16,6 +16,7 @@ sap.ui.define([
             this.byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--addEntry").setVisible(false)
 
         },
+        
         onAfterRendering: function () {
             var oButtonMassEdit = this.getView().byId("massupdate::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_Materials--action::idMassEditActionButton")
             oButtonMassEdit.setEnabled(false);

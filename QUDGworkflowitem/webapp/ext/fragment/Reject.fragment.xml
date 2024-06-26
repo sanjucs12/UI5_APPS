@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Panel backgroundDesign="Transparent">
+        <sform:SmartForm id="uponReject"  editable="true" editTogglable="false" >
+            <sform:Group >
+                <sform:GroupElement>
+                    <smartField:SmartField id="Reject::Step" value="{ApprovalStepType}" editable="true" entitySet="ZC_QU_DG_WORKFLOWITEM"/>
+                    <Input ></Input>
+                </sform:GroupElement>            
+            </sform:Group> 
+        </sform:SmartForm>
+    </Panel>
+</core:FragmentDefinition>

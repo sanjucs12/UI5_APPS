@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:ng="sap.suite.ui.commons.networkgraph"
+    xmlns:ngl="sap.suite.ui.commons.networkgraph.layout">
+    <Dialog id="idStatusLogs" title="Status Log">
+        <content>
+            <ng:Graph enableWheelZoom="false" orientation="TopBottom" nodes="{StatusLogModel>/nodes}" lines="{StatusLogModel>/lines}" id="networkGraph" height="auto">
+                <ng:layoutAlgorithm>
+                    <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
+                </ng:layoutAlgorithm>
+                <ng:nodes>
+                    <ng:Node icon="{StatusLogModel>Icon}" key="{StatusLogModel>Sequence}" description="{StatusLogModel>WiText}" title="{StatusLogModel>WiStat}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick" status="{path: 'StatusLogModel>WiStat', formatter:'.customFormatter.logStatusFormatter'}">
+                        <ng:attributes>
+                            <ng:ElementAttribute label="Author" value="{StatusLogModel>WiAagent}"/>
+                            <ng:ElementAttribute label="Date" value="{path:'StatusLogModel>WiAed', type: 'sap.ui.model.odata.type.Date' , formatOptions: { pattern: 'dd-MMM-yyyy' }}"/>
+                            <ng:ElementAttribute label="Time" value="{path:'StatusLogModel>WiCt', type: 'sap.ui.model.odata.type.Time' , formatOptions: { pattern: 'hh:mm:ss a' }}"/>
+                        </ng:attributes>
+                    </ng:Node>
+                </ng:nodes>
+                <ng:lines>
+                    <ng:Line from="{StatusLogModel>from}" to="{StatusLogModel>to}" lineType="{StatusLogModel>lineType}"/>
+                </ng:lines>
+            </ng:Graph>
+        </content>
+        <endButton>
+            <Button text="Close" press="onCloseStatusLog"/>
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>
