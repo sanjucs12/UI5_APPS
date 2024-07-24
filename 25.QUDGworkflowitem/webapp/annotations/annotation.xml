@@ -1,0 +1,432 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZC_QU_DG_WORKFLOWITEM_CDS/$metadata">
+        <edmx:Include Namespace="ZC_QU_DG_WORKFLOWITEM_CDS" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="workflowitem.annotations.annotation.ZC_QU_DG_WORKFLOWITEM_CDS">
+            <Annotations Target="ZC_QU_DG_WORKFLOWITEM_CDS.ZC_QU_DG_WORKFLOWITEM_CDS_Entities/ZC_QU_DG_MaterialRequests">
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="EditButton" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QU_DG_WORKFLOWITEM_CDS.ZC_QU_DG_WORKFLOWITEM_CDS_Entities/ZC_QU_DG_MaterialRequests">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ZC_QU_DG_MaterialRequestsType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Header"/>
+                            <PropertyValue Property="ID" String="Header"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Header"/>
+                                        <PropertyValue Property="ID" String="Header3"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Header3Q"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Basic Data 1"/>
+                            <PropertyValue Property="ID" String="BasicData1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Dimensions  / EANs"/>
+                                        <PropertyValue Property="ID" String="DimensionsEANs"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DimensionsEANsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General data"/>
+                                        <PropertyValue Property="ID" String="Generaldata"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneraldataQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Packaging Material Data"/>
+                                        <PropertyValue Property="ID" String="PackagingMaterialData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PackagingMaterialDataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="KHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Basic Data 2"/>
+                            <PropertyValue Property="ID" String="BasicData2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Client-Specific Configuration"/>
+                                        <PropertyValue Property="ID" String="ClientSpecificConfiguration"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ClientSpecificConfigurationQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Commodity Management"/>
+                                        <PropertyValue Property="ID" String="CommodityManagement"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CommodityManagementQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Design Document Assigned"/>
+                                        <PropertyValue Property="ID" String="DesignDocumentAssigned"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DesignDocumentAssignedQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Design Drawing"/>
+                                        <PropertyValue Property="ID" String="DesignDrawing"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DesignDrawingQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Environment"/>
+                                        <PropertyValue Property="ID" String="Environment"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#EnvironmentQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Other Data"/>
+                                        <PropertyValue Property="ID" String="OtherData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OtherDataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="KHide"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Material characteristics"/>
+                            <PropertyValue Property="ID" String="Material_characteristics"/>
+                            <PropertyValue Property="Target" EnumMember="UI.FACET$69$"/>
+                            <Annotation Term="UI.Hidden" Path="CHARHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Sales: sales org. 1"/>
+                            <PropertyValue Property="ID" String="Sales:salesorg.1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Data : Sales"/>
+                                        <PropertyValue Property="ID" String="GeneralData:Sales"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralData:SalesQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Quantity Stipulations"/>
+                                        <PropertyValue Property="ID" String="QuantityStipulations"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#QuantityStipulationsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Sales Text"/>
+                                        <PropertyValue Property="ID" String="SalesText"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SalesTextQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Tax Data"/>
+                                        <PropertyValue Property="ID" String="TaxData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TaxDataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="VHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Sales: sales org. 2"/>
+                            <PropertyValue Property="ID" String="Sales:salesorg.2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Grouping Terms"/>
+                                        <PropertyValue Property="ID" String="GroupingTerms"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GroupingTermsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Grouping Trms"/>
+                                        <PropertyValue Property="ID" String="GroupingTrms"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GroupingTrmsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Material Goup"/>
+                                        <PropertyValue Property="ID" String="MaterialGoup"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#MaterialGoupQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Product Attrivute"/>
+                                        <PropertyValue Property="ID" String="ProductAttrivute"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ProductAttrivuteQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="VHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Sales: sales org. 3"/>
+                            <PropertyValue Property="ID" String="Sales:salesorg.3"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Data"/>
+                                        <PropertyValue Property="ID" String="GeneralData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralDataQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Plant Parameter"/>
+                                        <PropertyValue Property="ID" String="GeneralPlantParameter"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralPlantParameterQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Packing Material Data"/>
+                                        <PropertyValue Property="ID" String="PackingMaterialData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PackingMaterialDataQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Shipping Data(Times in Days)"/>
+                                        <PropertyValue Property="ID" String="ShippingData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ShippingDataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="VHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Foreign Trade Export"/>
+                            <PropertyValue Property="ID" String="ForeignTradeExport"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Foreign Trade Export"/>
+                                        <PropertyValue Property="ID" String="ForeignTradeExportNP"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ForeignTradeExportQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="FTEHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="MRP 1"/>
+                            <PropertyValue Property="ID" String="MRP1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General data - MRP"/>
+                                        <PropertyValue Property="ID" String="Generaldata-MRP"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Generaldata-MRPQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Lot Size Data"/>
+                                        <PropertyValue Property="ID" String="LotSizeData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#LotSizeDataQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="MRP Procedure"/>
+                                        <PropertyValue Property="ID" String="MRPProcedure"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#MRPProcedureQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="DHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="MRP 2"/>
+                            <PropertyValue Property="ID" String="MRP2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Net Requirement Calculation"/>
+                                        <PropertyValue Property="ID" String="NetRequirementCalculation"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#NetRequirementCalculationQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Procurement"/>
+                                        <PropertyValue Property="ID" String="Procurement"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ProcurementQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Scheduling"/>
+                                        <PropertyValue Property="ID" String="Scheduling"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SchedulingQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="DHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="MRP 3"/>
+                            <PropertyValue Property="ID" String="MRP3"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Availability check"/>
+                                        <PropertyValue Property="ID" String="Availabilitycheck"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AvailabilitycheckQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Forecast Requirements"/>
+                                        <PropertyValue Property="ID" String="ForecastRequirements"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ForecastRequirementsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Planning"/>
+                                        <PropertyValue Property="ID" String="Planning"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PlanningQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Plant - Specific Configuration"/>
+                                        <PropertyValue Property="ID" String="Plant-SpecificConfiguration"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Plant-SpecificConfigurationQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="DHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="MRP 4"/>
+                            <PropertyValue Property="ID" String="MRP4"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="BOM Explosion/Dependent Requirement"/>
+                                        <PropertyValue Property="ID" String="BOMExplosionDependentRequirement"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#BOMExplosionDependentRequirementQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Discontinued Parts"/>
+                                        <PropertyValue Property="ID" String="DiscontinuedParts"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DiscontinuedPartsQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Repetitive Manufacturing / Assembly / Deployment"/>
+                                        <PropertyValue Property="ID" String="RepetitiveManufacturingAssemblyDeployment"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#RepetitiveManufacturingAssemblyDeploymentQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Storage Location MRP"/>
+                                        <PropertyValue Property="ID" String="StorageLocationMRP"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#StorageLocationMRPQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="DHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Accounting 1"/>
+                            <PropertyValue Property="ID" String="Accounting1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Current Valuation"/>
+                                        <PropertyValue Property="ID" String="CurrentValuationParent"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CurrentValuationParentQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General data -Accounting"/>
+                                        <PropertyValue Property="ID" String="GeneraldataAccounting"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneraldataAccountingQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="BHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Accounting 2"/>
+                            <PropertyValue Property="ID" String="Accounting2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Determination of Lowest Value"/>
+                                        <PropertyValue Property="ID" String="DeterminationofLowestValue"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DeterminationofLowestValueQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="LIFO Data"/>
+                                        <PropertyValue Property="ID" String="LIFOData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#LIFODataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="BHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Costing 1"/>
+                            <PropertyValue Property="ID" String="Costing1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General data - Costing"/>
+                                        <PropertyValue Property="ID" String="Generaldata-Costing"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Generaldata-CostingQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Quality Stru Data"/>
+                                        <PropertyValue Property="ID" String="QualityStruData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#QualityStruDataQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="GHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Costing 2"/>
+                            <PropertyValue Property="ID" String="Costing2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="GHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Purchasing"/>
+                            <PropertyValue Property="ID" String="Purchasing"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General data :Purchase"/>
+                                        <PropertyValue Property="ID" String="Generaldata:Purchase"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Generaldata:PurchaseQ"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Purchase Order Text"/>
+                                        <PropertyValue Property="ID" String="PurchaseOrderText"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PurchaseOrderTextQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="EHide"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Procurement Data: QTY"/>
+                            <PropertyValue Property="ID" String="QualityManagement"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Procurement data :Qty"/>
+                                        <PropertyValue Property="ID" String="Procurementdata:Qty"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Procurementdata:QtyQ"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden" Path="QHide"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="List of Materials"/>
+                            <PropertyValue Property="ID" String="SerialNos"/>
+                            <PropertyValue Property="Target" EnumMember="UI.FACET$70$"/>
+                            <Annotation Term="UI.Hidden" Path="MASSHide"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+
+           
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

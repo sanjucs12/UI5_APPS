@@ -1,0 +1,22 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"> 
+    <Dialog id="poItemDialog" title="Serial Number" class="sapUiResponsiveContentPadding" >
+        <content>
+            <List id="list1">
+            	<InputListItem id="_IDGenInputListItem1" label="Serial no">
+			<Input id ="inputid"
+				placeholder="Enter Serial number"
+				value=""
+				type="Number" />
+                </InputListItem>
+            </List>
+            </content>
+            <footer>
+            <Toolbar id="_IDGenToolbar1" >
+            <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+            <Button id="_IDGenButton1" text = "Ok" type="Emphasized" press = "onSerial"></Button>
+            </Toolbar>
+            </footer>
+    </Dialog>
+</c:FragmentDefinition> 

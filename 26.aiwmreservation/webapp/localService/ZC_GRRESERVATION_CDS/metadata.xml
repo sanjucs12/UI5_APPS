@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zc_grreservation_cds" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_BatchVHType" sap:label="Batch for F4 Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialNumber"/>
+                    <PropertyRef Name="BatchNumber"/>
+                </Key>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="BatchNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+            </EntityType>
+            <EntityType Name="ZC_GRReservationHeaderType" sap:label="Goods Issue Reservation Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocument"/>
+                    <PropertyRef Name="MaterialDocumentYear"/>
+                </Key>
+                <Property Name="MaterialDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="MaterialDocumentYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Document Year"/>
+                <Property Name="DocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Document Date" sap:quickinfo="Document Date in Document"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date" sap:quickinfo="Posting Date in the Document"/>
+                <Property Name="HeaderText" Type="Edm.String" MaxLength="25" sap:label="Document Header Text"/>
+                <Property Name="ReferenceDocumentNumber" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Reference" sap:quickinfo="Reference Document Number"/>
+                <Property Name="BillofLading" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Bill of Lading" sap:quickinfo="Number of Bill of Lading at Time of Goods Receipt"/>
+                <Property Name="GoodsReceiptIssueSlipNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="GR/GI Slip No." sap:quickinfo="Goods Receipt/Issue Slip Number"/>
+                <Property Name="TestRun" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="to_Item" Relationship="cds_zc_grreservation_cds.assoc_E1FBC4730584E31BFD287E890914D836" FromRole="FromRole_assoc_E1FBC4730584E31BFD287E890914D836" ToRole="ToRole_assoc_E1FBC4730584E31BFD287E890914D836"/>
+            </EntityType>
+            <EntityType Name="ZC_GRReservationItemType" sap:label="Goods Issue Reservation Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocument"/>
+                    <PropertyRef Name="MaterialDocumentYear"/>
+                    <PropertyRef Name="ReservationNumber"/>
+                    <PropertyRef Name="ReservationItem"/>
+                </Key>
+                <Property Name="MaterialDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="MaterialDocumentYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Document Year"/>
+                <Property Name="ReservationNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Reservation" sap:quickinfo="Number of reservation/dependent requirements"/>
+                <Property Name="ReservationItem" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Reservation Item" sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number" sap:value-list="standard"/>
+                <Property Name="MovementType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Movement type" sap:quickinfo="Movement type (inventory management)"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PEA54A37FFE0D00DD7CB819B43B4DC122" sap:label="Qty in unit of entry" sap:quickinfo="Quantity in unit of entry"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="UnloadingPoint" Type="Edm.String" MaxLength="25" sap:label="Unloading Point"/>
+                <Property Name="StockType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Stock Type" sap:quickinfo="Stock Type of Goods Movement (Stock Identifier)" sap:value-list="standard"/>
+                <Property Name="DeliveryCompleted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Delivery Completed" sap:quickinfo="&quot;Delivery Completed&quot; Indicator"/>
+                <Property Name="NoTransferRequirement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="ItemText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="GoodsRecipient" Type="Edm.String" MaxLength="12" sap:label="Goods recipient"/>
+                <Property Name="SpecialStockIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Special Stock Type" sap:value-list="standard"/>
+                <Property Name="BatchActivated" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="SerialNumber" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="ShelfLife" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="SerialNumberList" Type="Edm.String" MaxLength="1332"/>
+                <NavigationProperty Name="to_Header" Relationship="cds_zc_grreservation_cds.assoc_8F420666316307B6D1CB747AD38AE8EE" FromRole="FromRole_assoc_8F420666316307B6D1CB747AD38AE8EE" ToRole="ToRole_assoc_8F420666316307B6D1CB747AD38AE8EE"/>
+                <NavigationProperty Name="to_SerialNumber" Relationship="cds_zc_grreservation_cds.assoc_FBC6F3504A93204BDC6D9A3BB51531D6" FromRole="FromRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6" ToRole="ToRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6"/>
+            </EntityType>
+            <EntityType Name="ZC_GRReservationSLType" sap:label="GR Reservation Item Serial Number List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocument"/>
+                    <PropertyRef Name="MaterialDocumentYear"/>
+                    <PropertyRef Name="ReservationNumber"/>
+                    <PropertyRef Name="ReservationItem"/>
+                    <PropertyRef Name="SerialNumber"/>
+                </Key>
+                <Property Name="MaterialDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="MaterialDocumentYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Document Year"/>
+                <Property Name="ReservationNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Reservation" sap:quickinfo="Number of reservation/dependent requirements"/>
+                <Property Name="ReservationItem" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Reservation Item" sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="SerialNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Field length 18" sap:heading="" sap:value-list="standard"/>
+                <NavigationProperty Name="to_Item" Relationship="cds_zc_grreservation_cds.assoc_406503E0D4F0223CC1A82A0E1A023320" FromRole="FromRole_assoc_406503E0D4F0223CC1A82A0E1A023320" ToRole="ToRole_assoc_406503E0D4F0223CC1A82A0E1A023320"/>
+            </EntityType>
+            <EntityType Name="ZC_SerialNumberVHType" sap:label="Serial Number Search Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                    <PropertyRef Name="SerailNumber"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
+                <Property Name="SerailNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Field length 18" sap:heading=""/>
+                <Property Name="BatchNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Stock batch" sap:quickinfo="Batch Number"/>
+            </EntityType>
+            <EntityType Name="ZC_SpecialStockVHType" sap:label="Value Help For Speical stock Indicator" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sobkz"/>
+                </Key>
+                <Property Name="Sobkz" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Special Stock" sap:quickinfo="Special Stock Indicator"/>
+                <Property Name="Sotxt" Type="Edm.String" MaxLength="20" sap:label="Special stock descr." sap:quickinfo="Description of special stock"/>
+            </EntityType>
+            <EntityType Name="ZC_StockTypeVHType" sap:label="Stock Type Search Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StockType"/>
+                </Key>
+                <Property Name="StockType" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="StockTypeName" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <Association Name="assoc_406503E0D4F0223CC1A82A0E1A023320" sap:content-version="1">
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationSLType" Multiplicity="1" Role="FromRole_assoc_406503E0D4F0223CC1A82A0E1A023320"/>
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationItemType" Multiplicity="1" Role="ToRole_assoc_406503E0D4F0223CC1A82A0E1A023320"/>
+            </Association>
+            <Association Name="assoc_8F420666316307B6D1CB747AD38AE8EE" sap:content-version="1">
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationItemType" Multiplicity="1" Role="FromRole_assoc_8F420666316307B6D1CB747AD38AE8EE"/>
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationHeaderType" Multiplicity="1" Role="ToRole_assoc_8F420666316307B6D1CB747AD38AE8EE"/>
+            </Association>
+            <Association Name="assoc_FBC6F3504A93204BDC6D9A3BB51531D6" sap:content-version="1">
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationItemType" Multiplicity="1" Role="FromRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationSLType" Multiplicity="*" Role="ToRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6">
+                        <PropertyRef Name="ReservationItem"/>
+                        <PropertyRef Name="ReservationNumber"/>
+                        <PropertyRef Name="MaterialDocumentYear"/>
+                        <PropertyRef Name="MaterialDocument"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6">
+                        <PropertyRef Name="ReservationItem"/>
+                        <PropertyRef Name="ReservationNumber"/>
+                        <PropertyRef Name="MaterialDocumentYear"/>
+                        <PropertyRef Name="MaterialDocument"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E1FBC4730584E31BFD287E890914D836" sap:content-version="1">
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationHeaderType" Multiplicity="1" Role="FromRole_assoc_E1FBC4730584E31BFD287E890914D836">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zc_grreservation_cds.ZC_GRReservationItemType" Multiplicity="*" Role="ToRole_assoc_E1FBC4730584E31BFD287E890914D836"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_E1FBC4730584E31BFD287E890914D836">
+                        <PropertyRef Name="MaterialDocumentYear"/>
+                        <PropertyRef Name="MaterialDocument"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_E1FBC4730584E31BFD287E890914D836">
+                        <PropertyRef Name="MaterialDocumentYear"/>
+                        <PropertyRef Name="MaterialDocument"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zc_grreservation_cds_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_BatchVH" EntityType="cds_zc_grreservation_cds.ZC_BatchVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_GRReservationHeader" EntityType="cds_zc_grreservation_cds.ZC_GRReservationHeaderType" sap:content-version="1"/>
+                <EntitySet Name="ZC_GRReservationItem" EntityType="cds_zc_grreservation_cds.ZC_GRReservationItemType" sap:content-version="1"/>
+                <EntitySet Name="ZC_GRReservationSL" EntityType="cds_zc_grreservation_cds.ZC_GRReservationSLType" sap:content-version="1"/>
+                <EntitySet Name="ZC_SerialNumberVH" EntityType="cds_zc_grreservation_cds.ZC_SerialNumberVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_SpecialStockVH" EntityType="cds_zc_grreservation_cds.ZC_SpecialStockVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_StockTypeVH" EntityType="cds_zc_grreservation_cds.ZC_StockTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_FBC6F3504A93204BDC6D9A3BB51531D6" Association="cds_zc_grreservation_cds.assoc_FBC6F3504A93204BDC6D9A3BB51531D6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GRReservationItem" Role="FromRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6"/>
+                    <End EntitySet="ZC_GRReservationSL" Role="ToRole_assoc_FBC6F3504A93204BDC6D9A3BB51531D6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E1FBC4730584E31BFD287E890914D836" Association="cds_zc_grreservation_cds.assoc_E1FBC4730584E31BFD287E890914D836" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GRReservationHeader" Role="FromRole_assoc_E1FBC4730584E31BFD287E890914D836"/>
+                    <End EntitySet="ZC_GRReservationItem" Role="ToRole_assoc_E1FBC4730584E31BFD287E890914D836"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8F420666316307B6D1CB747AD38AE8EE" Association="cds_zc_grreservation_cds.assoc_8F420666316307B6D1CB747AD38AE8EE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GRReservationItem" Role="FromRole_assoc_8F420666316307B6D1CB747AD38AE8EE"/>
+                    <End EntitySet="ZC_GRReservationHeader" Role="ToRole_assoc_8F420666316307B6D1CB747AD38AE8EE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_406503E0D4F0223CC1A82A0E1A023320" Association="cds_zc_grreservation_cds.assoc_406503E0D4F0223CC1A82A0E1A023320" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GRReservationSL" Role="FromRole_assoc_406503E0D4F0223CC1A82A0E1A023320"/>
+                    <End EntitySet="ZC_GRReservationItem" Role="ToRole_assoc_406503E0D4F0223CC1A82A0E1A023320"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zc_grreservation_cds.ZC_GRReservationItemType/Batch" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Batch for F4 Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_BatchVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Batch"/>
+                                    <PropertyValue Property="ValueListProperty" String="BatchNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.ZC_GRReservationItemType/StockType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Stock Type Search Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_StockTypeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="StockType"/>
+                                    <PropertyValue Property="ValueListProperty" String="StockType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StockTypeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.ZC_GRReservationItemType/SpecialStockIndicator" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help For Speical stock Indicator"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_SpecialStockVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SpecialStockIndicator"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sobkz"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sotxt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.ZC_GRReservationSLType/SerialNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Serial Number Search Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_SerialNumberVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SerialNumber"/>
+                                    <PropertyValue Property="ValueListProperty" String="SerailNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocation"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BatchNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.cds_zc_grreservation_cds_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.cds_zc_grreservation_cds_Entities/ZC_GRReservationHeader" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zc_grreservation_cds.cds_zc_grreservation_cds_Entities/ZC_GRReservationItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SerialNumber"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZC_GRRESERVATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZC_GRRESERVATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

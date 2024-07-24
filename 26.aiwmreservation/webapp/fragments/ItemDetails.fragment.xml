@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+    <Dialog title="Item Details" id="idItemsDialog">
+        <content>
+            <!-- <FlexBox width="1200px" height="400px"> -->
+                <smartFilterBar:SmartFilterBar id="idItemSmartFilterBar" entitySet="ZC_GRReservationItem">
+                </smartFilterBar:SmartFilterBar>
+                <smartTable:SmartTable entitySet="ZC_GRReservationItem" id="idItemSmartTable" smartFilterId="idItemSmartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Items" enableAutoColumnWidth="true" beforeRebindTable="onBeforeRebindItemTable">
+                    <smartTable:customToolbar >
+                        <OverflowToolbar design="Transparent">
+                            <ToolbarSpacer/>
+                            <Button text="Create" press="onPressCreate" icon="sap-icon://create"></Button>
+                        </OverflowToolbar>
+                    </smartTable:customToolbar>
+                    <Table mode="SingleSelectLeft" selectionChange="" growing="true" id="idHeaderTable">
+                        <items>
+                            <ColumnListItem vAlign="Middle" type="Navigation" press=""></ColumnListItem>
+                        </items>
+                    </Table>
+                </smartTable:SmartTable>
+            <!-- </FlexBox> -->
+        </content>
+        <buttons>
+            <Button text="Close" press="handle_ItemDialogClose" type="Emphasized"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

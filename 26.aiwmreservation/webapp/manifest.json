@@ -1,0 +1,197 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "aiwmreservation",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.0",
+            "toolsId": "2faa65f0-19ec-4c45-ad9c-b0223184373e"
+        },
+        "dataSources": {
+            "ZI_RESERVATIONDTL_CDS_Annotation": {
+                "uri": "/destinations/Airdit_HANA_R/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_RESERVATIONDTL_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZI_RESERVATIONDTL_CDS/ZI_RESERVATIONDTL_CDS_Annotation.xml"
+                }
+            },
+            "ZI_RESERVATIONDTL_CDS": {
+                "uri": "/sap/opu/odata/sap/ZI_RESERVATIONDTL_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZI_RESERVATIONDTL_CDS_Annotation",
+                        "annotation0"
+                    ],
+                    "localUri": "localService/ZI_RESERVATIONDTL_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
+                }
+            },
+            "ZC_GRRESERVATION_CDS_Annotation": {
+                "uri": "/destinations/Airdit_HANA_R/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_GRRESERVATION_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_GRRESERVATION_CDS/ZC_GRRESERVATION_CDS_Annotation.xml"
+                }
+            },
+            "ZC_GRRESERVATION_CDS": {
+                "uri": "/sap/opu/odata/sap/ZC_GRRESERVATION_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_GRRESERVATION_CDS_Annotation"
+                    ],
+                    "localUri": "localService/ZC_GRRESERVATION_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "Data": {
+				"uri": "model/data.json",
+				"type": "JSON"
+			}
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.125.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "aiwmreservation.i18n.i18n"
+                }
+            },
+            "": {
+                "preload": true,
+                "dataSource": "ZI_RESERVATIONDTL_CDS",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZC_GRRESERVATION_CDS": {
+                "dataSource": "ZC_GRRESERVATION_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "GoodsIssueItems": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "Data"
+			}
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "aiwmreservation.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Home",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },
+                {
+                    "name": "GoodsIssue",
+                    "pattern": "GoodsIssue/{ReservationNo}/{ReservationItems}",
+                    "target": [
+                        "TargetGoodsIssue"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "TargetGoodsIssue": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "GoodsIssue",
+                    "viewName": "GoodsIssue"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "aiwmreservation.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

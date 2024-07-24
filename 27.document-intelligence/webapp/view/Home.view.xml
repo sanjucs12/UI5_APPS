@@ -1,0 +1,73 @@
+<mvc:View controllerName="documentintelligence.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:upload="sap.m.upload"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:plugins="sap.m.plugins">
+
+    <f:DynamicPage id="page">
+        <f:content>
+            <Table id="table-uploadSet" sticky="ColumnHeaders,HeaderToolbar" width="auto" mode="SingleSelectLeft" fixedLayout="false" inset="true" autoPopinMode="true" hiddenInPopin="None" items="{path: 'Documents>/items', templateShareable: false}" selectionChange="onSelectionChange">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <ToolbarSeparator />
+                        <upload:ActionsPlaceholder id="uploadButton" placeholderFor="UploadButtonPlaceholder" />
+                        <Button text="Analyse" id="idAnalyseBtn" press="onDocumentVerify" enabled="false"></Button>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <dependents>
+                    <plugins.UploadSetwithTable multiple="true" uploadCompleted="onUploadCompleted" onActivated="onPluginActivated" actions="uploadButton" previewDialog="FilePreviewDialog" cloudFilePickerEnabled="true" itemValidationHandler=".itemValidationCallback">
+                        <rowConfiguration>
+                            <upload.UploadItemConfiguration fileNamePath="fileName" mediaTypePath="mediaType" urlPath="url" previewablePath="previewable" fileSizePath="" isTrustedSourcePath="trustedSource" />
+                        </rowConfiguration>
+                    </plugins.UploadSetwithTable>
+                    <upload.FilePreviewDialog id="FilePreviewDialog" showCarouselArrows="true" maxFileSizeforPreview="50">
+                    </upload.FilePreviewDialog>
+                </dependents>
+
+                <columns>
+                    <Column importance="High">
+                        <header>
+                            <Label text="File Name" />
+                        </header>
+                    </Column>
+                    <Column>
+                        <header>
+                            <Label text="ID" />
+                        </header>
+                    </Column>
+                    <Column >
+                        <header>
+                            <Label text="Status" />
+                        </header>
+                    </Column>
+
+                    <Column importance="High" />
+                </columns>
+                <items>
+                    <ColumnListItem press="onItemPress" highlight="{= ${Documents>uploadState} === 'Complete' ? 'Indication05' : null }">
+                        <cells>
+                            <HBox>
+                                <core:Icon src="{parts: ['Documents>mediaType', 'Documents>fileName'], formatter: '.formatter.getIconSrc' }" color="white"  class="sapMUSTItemImage sapMUSTItemIcon" />
+                                <VBox class="sapUiTinyMargin sapUiSmallMarginBegin">
+                                    <Link text="{Documents>fileName}" press="openPreview" class="sapUiTinyMarginBottom" />
+                                    <Text text="{Documents>documentType}" />
+                                </VBox>
+                            </HBox>
+                            <Text text="{Documents>id}" />
+                            <Text text="{Documents>status}" />
+
+                            <Button class="sapUiTinyMarginBegin" type="Transparent" icon="sap-icon://decline" press="onRemoveItemHandler" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

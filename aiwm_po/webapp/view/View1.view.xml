@@ -1,0 +1,141 @@
+<mvc:View
+    controllerName="airdit.aiwm.sckinpo.aiwmpo.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:sfb="sap.ui.comp.smartfilterbar">
+    <f:DynamicPage
+        id="dynamicPage"
+        fitContent="true">
+        <f:header>
+            <f:DynamicPageHeader>
+            
+                <sfb:SmartFilterBar
+                    id="smartFilterBar1"
+                    entitySet="ZC_POListHeaderItem">
+                    <sfb:controlConfiguration>
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration0"
+                            key="PurchasingDocumentNumber"
+                            label="PurchasingDocumentNumber "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration1"
+                            key="PurchaseGroup"
+                            label="PurchaseGroup "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration2"
+                            key="PODocumentType"
+                            label="PODocument Type "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration3"
+                            key="PurchasingOrganization"
+                            label="Purchasing Org "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration4"
+                            key="WarehouseNumber"
+                            label="WarehouseNumber "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration5"
+                            key="CostCenter"
+                            label="CostCenter "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration6"
+                            key="CreatedByUser"
+                            label="Create dBy "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration7"
+                            key="WbsElement"
+                            label="WbsElement "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration8"
+                            key="Network"
+                            label="Network "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                        <sfb:ControlConfiguration
+                            id="_IDGenControlConfiguration9"
+                            key="CreationDate"
+                            label="Created On "
+                            visibleInAdvancedArea="true"
+                            visible="true"
+                            mandatory="auto"
+                        />
+                    </sfb:controlConfiguration>
+                </sfb:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+        <smartTable:SmartTable id="_IDGenSmartTable1"
+        entitySet="ZC_POListHeaderItem"
+        initiallyVisibleFields=""
+        smartFilterId="smartFilterBar1"
+        tableType="ResponsiveTable"
+        beforeExport="onBeforeExport"
+        useVariantManagement="true"
+        useTablePersonalisation="true"
+        header="Line Items"
+        showRowCount="true"
+        persistencyKey="SmartTableAnalytical_Explored"
+        enableAutoBinding="true"
+        demandPopin="true"
+        class="sapUiResponsiveContentPadding"
+        enableAutoColumnWidth="true"
+        editTogglable="true" >
+        <m:Table id="_IDGenTable1"  mode="MultiSelect">
+        <m:headerToolbar>
+        <m:Toolbar >
+        <m:ToolbarSpacer />
+        <m:Button type="Emphasized" text="Proceed" press="onProceed"></m:Button>
+        </m:Toolbar>
+        </m:headerToolbar>
+        <m:items>
+        <m:ColumnListItem id="_IDGenColumnListItem1"  press="onPress" type="Active">
+        <m:cells>
+        </m:cells>
+        </m:ColumnListItem>
+        </m:items>
+        </m:Table>
+
+       
+    </smartTable:SmartTable>
+    </f:content>
+    </f:DynamicPage>
+</mvc:View>

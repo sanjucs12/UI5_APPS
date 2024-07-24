@@ -1,0 +1,125 @@
+<mvc:View controllerName="aiwmreservation.controller.GoodsIssue"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:objectPage="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <objectPage:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <objectPage:headerTitle>
+            <objectPage:ObjectPageDynamicHeaderTitle>
+                <objectPage:expandedHeading>
+                    <HBox>
+                        <Title wrapping="true" text="Reservation Number: "/>
+                    </HBox>
+                </objectPage:expandedHeading>
+                <objectPage:snappedHeading>
+                    <FlexBox fitContainer="true" alignItems="Center">
+                        <Avatar class="sapUiSmallMarginEnd" src="./src/schedule.png" displaySize="S"/>
+                        <Title text="{ObjectModel>/SES}" wrapping="true"/>
+                    </FlexBox>
+                </objectPage:snappedHeading>
+                <objectPage:expandedContent>
+                    <!--<Text text="PO Number : {ObjectModel>/PoNumber}"/>-->
+                </objectPage:expandedContent>
+                <objectPage:snappedContent>
+                    <Text text="PO Number : "/>
+                </objectPage:snappedContent>
+            </objectPage:ObjectPageDynamicHeaderTitle>
+        </objectPage:headerTitle>
+        <objectPage:headerContent>
+            <FlexBox wrap="Wrap">
+                <Avatar class="sapUiSmallMarginEnd" src="./src/schedule.png" displaySize="S"/>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <Label text="Source" />
+                    <Label text="Document Date : "/>
+                    <Label text="Created By : "/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout class="sapUiSmallMarginMiddle">
+                    <Input placeholder="Posting Date"></Input>
+                    <Input placeholder="Delivery Note"></Input>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout class="sapUiSmallMarginEnd">
+                    <Input placeholder="Bill of landing"></Input>
+                    <Input placeholder="Header Text"></Input>
+                </layout:VerticalLayout>
+            </FlexBox>
+        </objectPage:headerContent>
+        <objectPage:sections>
+            <!--____________________________________________________Item Details_______________________________________________________-->
+            <objectPage:ObjectPageSection title="Item Details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection>
+                        <objectPage:blocks>
+                            <layout:VerticalLayout>
+                                <Table id="idItemsTable" inset="false" items="{path: 'GoodsIssueItems>/'}">
+                                    <columns>
+                                        <Column>
+                                            <Text text="Item No" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Material" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Material Description" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Ordered Quantity" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Plant" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Movement Type" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Serial No" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="Batch" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="WM Status" />
+                                        </Column>
+                                        <Column>
+                                            <Text text="More" />
+                                        </Column>
+
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text text="{GoodsIssueItems>ReservationItem}" />
+                                                <Text text="{GoodsIssueItems>Material}" />
+                                                <Text text="{GoodsIssueItems>MaterialDescription}" />
+                                                <Text text="{GoodsIssueItems>QuantityWithdrawn}" />
+                                                <Text text="{GoodsIssueItems>Plant}" />
+                                                <Text text="{GoodsIssueItems>MovementType}" />
+                                                <Text text="{GoodsIssueItems>StorageLocation}" />
+                                                <Text text="{GoodsIssueItems>StorageLocation}" />
+                                                <Text text="{GoodsIssueItems>StorageLocation}" />
+                                                <Text text="{GoodsIssueItems>StorageLocation}" />
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+            <!--____________________________________________________SES Details_______________________________________________________-->
+            <!-- <objectPage:ObjectPageSection title="SES Details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection>
+                        <objectPage:blocks>
+                        <Text text="2"></Text>
+
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection> -->
+        </objectPage:sections>
+    </objectPage:ObjectPageLayout>
+</mvc:View>

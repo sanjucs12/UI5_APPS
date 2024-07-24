@@ -1,0 +1,110 @@
+{
+	"items": [
+		{
+			"id": "23004578",
+			"fileName": "Instructions.pdf",
+			"mediaType": "application/pdf",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/Instructions.pdf",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Specification",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004579",
+			"fileName": "Document.txt",
+			"mediaType": "text/plain",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/Document.txt",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Document",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004581",
+			"fileName": "Test Image.png",
+			"mediaType": "image/png",
+			"url": "test-resources/sap/m/images/invoice_manager.png",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Attachment",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004582",
+			"fileName": "Test Attachment.gif",
+			"mediaType": "image/gif",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/Animation.gif",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Attachment",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004583",
+			"fileName": "Test Video.mp4",
+			"mediaType": "video/mp4",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/Video.mp4",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Attachment",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004590",
+			"fileName": "Sample Zip File.zip",
+			"mediaType": "application/zip",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/sample-zip-file.zip",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Attachment",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		},
+		{
+			"id": "23004584",
+			"fileName": "Transmission.vds",
+			"mediaType": "model/vnd.sap.vds",
+			"url": "test-resources/sap/m/UploadSetwithTableSampleFiles/transmission.vds",
+			"base64url": "sdfg",
+			"status": "In work",
+			"documentType": "Attachment",
+			"documentTypeId": "sFileTypeId",
+			"previewable": true,
+			"trustedSource": true
+		}
+	],
+	"categories": [
+		{
+			"categoryId": "invoice",
+			"categoryText": "Invoice"
+		},
+		{
+			"categoryId": "gst",
+			"categoryText": "GST Certificate"
+		},
+		{
+			"categoryId": "pan",
+			"categoryText": "PAN card"
+		},
+		{
+			"categoryId": "aadhaar",
+			"categoryText": "Aadhaar Card"
+		},
+		{
+			"categoryId": "receipt",
+			"categoryText": "Receipt"
+		}
+	]
+}

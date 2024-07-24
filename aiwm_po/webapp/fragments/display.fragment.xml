@@ -1,0 +1,45 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"> 
+    <Dialog id="poItemDialog" title="Items" class="sapUiResponsiveContentPadding" >
+        <content>
+            <!-- <List id="poItemList" items="itemModel>/items" mode="MultiSelect" selectionChange="onselect" >
+             <CustomListItem>
+                    <VBox>
+                        <Text text="{itemModel>PurchasingDocumentNumber} - {itemModel>PurchasingDocumentItemNumber}    {itemModel>MaterialNumber}    {itemModel>PurchaseOrderQuantity}-{itemModel>PurchaseOrderUnitMeasure}"/>
+                    </VBox>
+                </CustomListItem>
+            </List> -->
+            <Table id ="poItemList" items = "{itemModel>/items}" mode = "MultiSelect">
+            <columns>
+            <Column >
+            <Label text = "PurchasingDocumentNumber"/>
+            </Column>
+            <Column >
+            <Label text = "PurchasingDocumentItemNumber"/>
+            </Column>
+            <Column >
+            <Label text = "MaterialNumber"/>
+            </Column>
+             <Column >
+            <Label text = "PurchaseOrderQuantity"/>
+            </Column>
+            </columns>
+            <items>
+            </items>
+            <ColumnListItem >
+            <cells>
+            <Text  text = "{itemModel>PurchasingDocumentNumber}"/>
+             <Text  text = "{itemModel>PurchasingDocumentItemNumber}"/>
+              <Text  text = "{itemModel>MaterialNumber}"/>
+               <Text  text = "{itemModel>PurchaseOrderQuantity}"/>
+            </cells>
+            </ColumnListItem>
+            </Table>
+        </content>
+        <buttons>
+            <Button text="OK" press="onOkPress" type="Success"/>
+            <Button text="Close" press="onCloseDialog" type="Reject"/>
+        </buttons>
+    </Dialog>
+</c:FragmentDefinition> 

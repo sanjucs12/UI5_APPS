@@ -1,0 +1,61 @@
+<mvc:View controllerName="airdit.aiwm.sckinpo.aiwmpo.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+ 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+    <Bar >
+    <contentRight>
+	<Button text="Cancel" press="onCancelPress" type="Emphasized"/>
+    <Button text="Post" press="onCheckPress" type="Emphasized"/>
+    </contentRight>
+    </Bar>
+		<ScrollContainer
+		height="100%"
+		width="100%"
+		vertical="true"
+		focusable="true">
+    <VBox class="sapUiSmallMargin" id = "vboxId">
+		<f:SimpleForm id="SimpleFormDisplay480_Trial"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="StockIN"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="4"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+				<core:Title text="PO Details" />
+				<Label text="Vendor Name" />
+				<Text text="{headerModel>/Vendor} {headerModel>/VendorName}" />
+				<Label text="PO Type" />
+				<Text text="{headerModel>/PODocumentType} {headerModel>/PODocumentTypeDescription}" />
+				<Label text="DocumentDate" />
+				<Text text="{headerModel>/DocumentDate}" />
+				<core:Title text="some" />
+				<Label text="Posting Date" />
+				<DatePicker id="d1" editable="true"></DatePicker> 
+				<Label text="Delivery Note"  />
+				<Input value="{DeliveryNote}"/>
+				<Label text="Header Text"  />
+				<Input value="{HeaderText}"/>
+				</f:content>
+		</f:SimpleForm>
+	</VBox>
+	
+	</ScrollContainer>
+
+    
+    
+    
+</mvc:View>

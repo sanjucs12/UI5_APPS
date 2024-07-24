@@ -1,0 +1,40 @@
+<mvc:View controllerName="aiwmreservation.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:f="sap.f">
+    <f:DynamicPage id="dynamicPageId">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="RESERVATION"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <smartFilterBar:SmartFilterBar id="idHeaderSmartFilterBar" entitySet="zi_reservationdtl">
+                    <smartFilterBar:controlConfiguration>
+                        <smartFilterBar:ControlConfiguration key="RequirementDate" visibleInAdvancedArea="true" conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType' }" index="2"></smartFilterBar:ControlConfiguration>
+                    </smartFilterBar:controlConfiguration>
+                </smartFilterBar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <smartTable:SmartTable entitySet="zi_reservationdtl" id="idHeaderSmartTable" smartFilterId="idHeaderSmartFilterBar" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" header="Materials" enableAutoColumnWidth="true">
+                <smartTable:customToolbar >
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer/>
+                        <Button text="Goods Issue" press="onPressGoodsIssue" icon="sap-icon://create"></Button>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+                <Table mode="MultiSelect" selectionChange="" growing="true" id="idHeaderTable">
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation" press=""></ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
