@@ -6,11 +6,13 @@
     xmlns:vm="sap.ui.fl.variants"
     xmlns:upload="sap.m.upload"
     xmlns:u="sap.ui.unified"
-    xmlns:l="sap.ui.layout">
-    <l:VerticalLayout>
+    xmlns:l="sap.ui.layout"
+    xmlns:lf="sap.ui.layout.form"
+    xmlns:sf="sap.ui.comp.smartfield">
+    <!-- <l:VerticalLayout>
         <u:FileUploader id="fileUploader" change="handleFileChange"/>
         <Button text="Upload File" press="handleUploadPress"/>
-    </l:VerticalLayout>
+    </l:VerticalLayout> -->
 
     <!-- <f:DynamicPage id="page">
         <f:content>
@@ -95,4 +97,70 @@
             </Table>
         </f:content>
     </f:DynamicPage> -->
+    <!-- <lf:Form >
+        <lf:layout>
+            <lf:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+        </lf:layout>
+        <lf:formContainers>
+            <lf:FormContainer>
+                <lf:formElements>
+                    <lf:FormElement label="">
+                        <lf:fields>
+                            <Label text="Requisition Date" required="true" id="idCustReqDateLabel"/>
+                            <DatePicker id="idCustReqDate" value="{path:'CreateData>/CustData/ReqDate', formatter:'manage.pr.ZMMPRMANAGE.models.formatter.fnDateFormat'}" displayFormat="dd.MM.yyyy" change="fnDateValidate"/>
+                        </lf:fields>
+                    </lf:FormElement>
+                    <lf:FormElement>
+                        <lf:fields>
+                            <Label text="Consumption Date" required="true"/>
+                            <DatePicker id="idCustConsDate" value="{path:'CreateData>/CustData/ConDate', formatter:'manage.pr.ZMMPRMANAGE.models.formatter.fnDateFormat'}" displayFormat="dd.MM.yyyy" change="fnDateValidate"/>
+                        </lf:fields>
+                    </lf:FormElement>
+                    <lf:FormElement>
+                        <lf:fields>
+                            <Label text="Consumption Date" required="true"/>
+                            <ComboBox id="idCustSSC" items="{PRData>/results}" selectedKey="{CreateData>/CustData/Zzprservice}">
+                                <core:Item key="{PRData>Priority}" text="{PRData>Priority}"/>
+                            </ComboBox>
+                        </lf:fields>
+                    </lf:FormElement>
+                    <lf:FormElement>
+                        <lf:fields>
+                            <Label text="Consumption Date" required="true"/>
+                            <Input />
+                        </lf:fields>
+                    </lf:FormElement>
+                    <lf:FormElement>
+                        <lf:fields>
+                            <Label text="Consumption Date" required="true"/>
+                            <Input />
+                        </lf:fields>
+                    </lf:FormElement>
+                </lf:formElements>
+            </lf:FormContainer>
+        </lf:formContainers>
+    </lf:Form> -->
+
+    <lf:SimpleForm layout="ColumnLayout" title="Address" singleContainerFullSize="false" columnsM="2" columnsL="3" columnsXL="3">
+        <lf:content>
+
+            <Label text="Requisition Date" required="true" id="idCustReqDateLabel"/>
+            <DatePicker id="idCustReqDate" value="{path:'CreateData>/CustData/ReqDate', formatter:'manage.pr.ZMMPRMANAGE.models.formatter.fnDateFormat'}" displayFormat="dd.MM.yyyy" change="fnDateValidate"/>
+
+            <Label text="Consumption Date" required="true" id="idCustConsDateLabel"/>
+            <DatePicker id="idCustConsDate" value="{path:'CreateData>/CustData/ConDate', formatter:'manage.pr.ZMMPRMANAGE.models.formatter.fnDateFormat'}" displayFormat="dd.MM.yyyy" change="fnDateValidate"/>
+
+            <Label text="Safety Severity Categorization"/>
+            <ComboBox id="idCustSSC" items="{PRData>/results}" selectedKey="{CreateData>/CustData/Zzprservice}">
+                <core:Item key="{PRData>Priority}" text="{PRData>Priority}"/>
+            </ComboBox>
+
+            <Label text="PR Priority"/>
+            <sf:SmartField id="idCustPrPrior" textLabel="PR Priority" value="{Zzprpriority}" entitySet="PRCustomerCreateSet"/>
+
+            <Label text="Remarks"/>
+            <sf:SmartField id="idCustRemarks" textLabel="Remarks" value="{Remark}" entitySet="PRCustomerCreateSet"/>
+
+        </lf:content>
+    </lf:SimpleForm>
 </mvc:View>

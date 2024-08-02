@@ -49,10 +49,13 @@ sap.ui.define([
                 this.oUploadPluginInstance = oEvent.getParameter("oPlugin");
             },
             openPreview: function (oEvent) {
+                debugger;
+                const blobUrl = oEvent.getSource().getBindingContext('Documents').getObject().url
                 const oBindingContext = oEvent.getSource().getBindingContext("Documents");
                 if (oBindingContext && this.oUploadPluginInstance) {
                     this.oUploadPluginInstance.openFilePreview(oBindingContext);
-                }
+                } 
+                //window.open(blobUrl)               
             },
 
             ////_________________Uploading functions : Fragment Functions__________________

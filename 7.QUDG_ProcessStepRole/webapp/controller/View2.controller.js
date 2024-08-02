@@ -664,9 +664,11 @@ sap.ui.define([
                 var oSmartTable_RejectionSteps = this.getView().byId('smartTable_RejectionSteps')
                 var oSmartTable_users = this.getView().byId('smartTable_users')
                 var oAssaignRoleButton = this.getView().byId('assaignRoleButton')
+                var oAssaignUserButton = this.getView().byId('idAssaignUserButton')
                 var oRejectStepButton = this.getView().byId('rejectStepButton')
                 oAssaignRoleButton.setEnabled(true);
                 oRejectStepButton.setEnabled(true);
+                oAssaignUserButton.setEnabled(true);
 
                 //IF JSONModel_SelectedRoleData is already present, reset the role to empty string because it has the data of previously selected node
                 var oModel_SelectedRole = this.getView().getModel('JSONModel_SelectedRoleData');
@@ -806,6 +808,20 @@ sap.ui.define([
                     this.oCreateRoleDialog.open();
                 }
             },
+            handleAssaignUserButtonClick: function (oEvent) {
+                if (!this._AssignUserFragment) {
+                    this.loadFragment({
+                        name: "metadata.fragments.AssignUserToStep",
+                    })
+                        .then(function (oDialog) {
+                            this._AssignUserFragment = oDialog;
+                            oDialog.open();
+                        }.bind(this));
+                } else {
+                    this._AssignUserFragment.open();
+                }
+            },
+
 
             handle_createRoleDialog_assaignButton: function () {
                 var oModel = this.getView().getModel();
@@ -823,6 +839,7 @@ sap.ui.define([
                     StepName: sStepName,
                     StepSequence: sStepSequence
                 };
+                debugger;
                 //console.log(oNewRole);
 
                 //Creating new Process in the Model
@@ -842,6 +859,40 @@ sap.ui.define([
 
             handle_createRoleDialog_cancelButton: function () {
                 this.oCreateRoleDialog.close();
+            },
+            handle_assaignUserToStepDialog_cancelButton: function () {
+                this._AssignUserFragment.close();
+            },
+            handle_assaignUserToStepDialog_assignButton: function(oEvent){
+                debugger
+                var oModel = this.getView().getModel();
+                var sPath = this.createRolePath;
+                var sUserName = this.getView().byId("smartField_assaignUserName").getValue();
+                var sStepName = this.getView().byId("textField_assaignUser_StepName").getText();
+                var sStepSequence = this.getView().byId("textField_assaignUser_StepSequence").getText();
+                
+
+                //Create a new entry
+                var oNewUser = {
+                    username: sUserName,
+                    StepName: sStepName,
+                    StepSequence: sStepSequence
+                };
+                //console.log(oNewRole);
+                debugger
+
+                //Creating new Process in the Model
+                oModel.create(sPath, oNewUser, {
+                    success: function (oResponse) {
+                        //console.log(response);
+                        MessageToast.show(` New Role assigned to ${sStepName}`)
+                        this._AssignUserFragment.close();
+                    }.bind(this),
+                    error: function (oError) {
+                        //alert('error')
+                        MessageToast.show('Error: Something went wrong')
+                    }
+                });
             },
 
             handle_RolesTable_RowSelection: function () {

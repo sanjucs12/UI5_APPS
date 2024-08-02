@@ -161,11 +161,12 @@
                                     <!-- __________________________________ROLES TABLE_______________-___________________- -->
                                     <layout:SplitPane requiredParentWidth="600" id="rolesPane">
                                         <m:Panel height="100%">
-                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" header="Roles" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole" enableAutoBinding="false">
+                                            <smartTable:SmartTable id="smartTable_roles" beforeRebindTable="onBeforeRebindRolesTable" entitySet="ZP_QU_DG_STEPS_ROLE" showRowCount="true" header="Roles" tableType="ResponsiveTable" initiallyVisibleFields="StepName,AssignedRole,username" enableAutoBinding="false">
                                                 <smartTable:customToolbar>
                                                     <m:OverflowToolbar design="Transparent">
                                                         <m:ToolbarSpacer/>
                                                         <m:Button id="assaignRoleButton" text="Assaign Role" press="handleAssaignRoleButton" icon="sap-icon://create" enabled="false"></m:Button>
+                                                        <m:Button id="idAssaignUserButton" text="Assaign User" press="handleAssaignUserButtonClick" icon="sap-icon://create" enabled="false"></m:Button>
                                                         <m:Button text="Delete" press="handleDeleteRoleButton" icon="sap-icon://delete" id="deleteRoleButton" enabled="false"></m:Button>
                                                     </m:OverflowToolbar>
                                                 </smartTable:customToolbar>

@@ -34,6 +34,7 @@ server:
             url: http://103.194.234.38:8010
             client: '100'
             destination: Airdit_HANA
+            authenticationType: BasicAuthentication
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
