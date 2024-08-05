@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+    id="11-22"
+    xmlns:core='sap.ui.core'
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+>
+    <sform:GroupElement label = "Product Hierarchy">
+        <Input
+            id="33-44"
+            showValueHelp="true"
+            valueHelpRequest="openvaluehelp"
+        />
+		<!-- <smartField:SmartField id="header::Lgort" value="{lgort}" /> -->
+    </sform:GroupElement>
+    <!-- <Text id="customFieldFormSoldToPartyInputField" text="Product Hierarchy" /> -->
+    <!--<l:Grid id="pk-uo">-->
+    <!-- <Label
+					text="Product Hierarchy"
+					labelFor="33-44" />
+                <Input
+                    id="33-44"
+                    showValueHelp="true"
+                    valueHelpRequest="openvaluehelp"
+                >
+                    <layoutData>
+                        <l:GridData id="jj-kk" />
+                    </layoutData>
+                </Input> -->
+
+    <!--</l:Grid >-->
+</core:FragmentDefinition>

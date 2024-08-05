@@ -26,5 +26,4 @@
             <Button text="Close" press="onCloseStatusLog"/>
         </endButton>
     </Dialog>
-
 </core:FragmentDefinition>

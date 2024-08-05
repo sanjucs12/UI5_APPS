@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:tab="sap.ui.table" xmlns="sap.m" xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Panel backgroundDesign="Transparent">
+        <sform:SmartForm id="DilogExtend"  editable="true" editTogglable="false" >
+            <sform:Group id="Group1">
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::Matnr" value="{matnr}" editable="false"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::Werks" value="{werks}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::Lgort" value="{lgort}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::Vkorg" value="{vkorg}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::Vtweg" value="{vtweg}" editable="true"/>
+                </sform:GroupElement>
+               
+            </sform:Group>
+ 
+            <sform:Group id="Group2" >
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::matnr" value="{matnr}" editable="false"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::werks" value="{werks}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::lgort" value="{lgort}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::vkorg" value="{vkorg}" editable="true"/>
+                </sform:GroupElement>
+                <sform:GroupElement>
+                    <smartField:SmartField id="header::vtweg" value="{vtweg}" editable="true"/>
+                </sform:GroupElement>
+               
+            </sform:Group>  
+        </sform:SmartForm>
+    </Panel>
+</core:FragmentDefinition>

@@ -9,6 +9,7 @@ sap.ui.define([
         return Controller.extend("documentintelligence.controller.Home", {
             formatter: formatter,
             onInit: function () {
+                debugger;
                 this.oItemsProcessor = [];
                 this.documentTypes = this.getOwnerComponent().getModel('Documents').getProperty('/categories')
             },

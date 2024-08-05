@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core">
+	
+	<Dialog id="saumyadialog" title="Product Heirarchy"  verticalScrolling="false" draggable="true" resizable="true" contentHeight="75%" contentWidth="50%">
+		<content>
+			<Toolbar class="sapUiSmallMargin">
+				<Title text="Product Heirarchy"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+			<ScrollContainer id="scont"
+		height="100%"
+		width="100%"
+		vertical="true"
+		focusable="true">
+			<Tree id="Tree" items="{path: 'TreeNode>/data'}" itemPress="selectItem" mode="SingleSelectMaster" selectionChange="selectItem">
+				<StandardTreeItem title="{TreeNode>PHDSC} ({TreeNode>NODEID})"/>
+			</Tree>
+			</ScrollContainer>
+		</content>
+		<beginButton>
+			<Button text="Ok" type="Ghost" class="customSegmentedBtn" press="onSelectProduct"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" type="Ghost" class="customSegmentedBtn" press="onCloseProduct"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

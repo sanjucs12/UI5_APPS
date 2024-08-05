@@ -8,8 +8,7 @@
             <!-- <ComboBox items="{path: 'JSONModel_Rules>/'}" showSecondaryValues= "true" id="idCustomFilter">
                 <core:ListItem key="{JSONModel_Rules>rule_name}" text="{JSONModel_Rules>rule_name}" additionalText = "{JSONModel_Rules>rule_text}"/>
             </ComboBox> -->
-             <sf:SmartField mandatory="false" value="{rule_config}" entitySet="ZC_QU_DG_Materials" editable="true" id="idCustomSmartField" textInEditModeSource="ValueListWarning"/>
-
+            <sf:SmartField mandatory="false" value="{rule_config}" entitySet="ZC_QU_DG_Materials" editable="true" id="idCustomSmartField" textInEditModeSource="ValueListWarning"/>
         </smartfilterbar:customControl>
 
     </smartfilterbar:ControlConfiguration>
