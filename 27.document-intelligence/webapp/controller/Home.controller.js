@@ -55,7 +55,7 @@ sap.ui.define([
                 const oBindingContext = oEvent.getSource().getBindingContext("Documents");
                 if (oBindingContext && this.oUploadPluginInstance) {
                     this.oUploadPluginInstance.openFilePreview(oBindingContext);
-                } 
+                }
                 //window.open(blobUrl)               
             },
 
@@ -334,7 +334,8 @@ sap.ui.define([
                         if (status === "succeeded") {
                             this.getView().setBusy(false)
                             console.log(analysisResult);
-                            sap.m.MessageBox.show(JSON.stringify(analysisResult))
+                            //sap.m.MessageBox.show(analysisResult.analyzeResult.content)
+                            this._ShowAnalysisResult(analysisResult.analyzeResult.documents[0].fields)
                         } else {
                             this.getView().setBusy(false)
                             console.error('Analysis failed:', analysisResult);
@@ -351,6 +352,35 @@ sap.ui.define([
                     console.error('Error:', error.message);
 
                 }
+                //this._ShowAnalysisResult()
+            },
+
+            _ShowAnalysisResult: function (data) {
+                //let oData = this.getOwnerComponent().getModel('Documents').getData().fields
+                let oData = data
+                const aTransformedData = Object.keys(oData).map(key => ({
+                    label: key,
+                    value: oData[key].content
+                }));
+                debugger;
+                const oModel = new sap.ui.model.json.JSONModel({items:aTransformedData});
+                if (!this._InvoiceFragment) {
+                    sap.ui.core.Fragment.load({
+                        name: "documentintelligence.fragment.Invoice",
+                        id: this.getView().getId() + "--invoice-dialog",
+                        controller: this
+                    })
+                        .then(function (oDialog) {
+                            this._InvoiceFragment = oDialog;
+                            this.getView().addDependent(oDialog);
+                            oDialog.setModel(oModel)
+                            oDialog.open();
+                        }.bind(this));
+                } else {
+                    this._InvoiceFragment.setModel(oModel)
+                    this._InvoiceFragment.open();
+                }
+
             },
 
         });

@@ -122,6 +122,165 @@ sap.ui.define([
           that._oFragment = sap.ui.xmlfragment(oView.getId(), "zqudgmaterials.zqudgmaterials.ext.fragment.DuplicateCheck", that);
   
         }
+    },
+
+    // ******P13N code**********
+
+    _registerForP13n: function () {
+      const oTable = this.byId("persoTable");
+
+      this.oMetadataHelper = new MetadataHelper([{
+        key: "Material",
+        label: "Material",
+        path: "Material"
+      },
+      {
+        key: "Description",
+        label: "Description",
+        path: "Description"
+      },
+      {
+        key: "MaterialType",
+        label: "MaterialType",
+        path: "MaterialType"
+      },
+      {
+        key: "IndustrySector",
+        label: "IndustrySector",
+        path: "IndustrySector"
+      },
+      {
+        key: "Plant",
+        label: "Plant",
+        path: "Plant"
+      },
+      {
+        key: "Score",
+        label: "Score",
+        path: "Score"
+      },
+      {
+        key: "Rule",
+        label: "Rule",
+        path: "Rule"
+      }
+      ]);
+
+      const _oMetadataHelperRows = new MetadataHelper("JSONModel1");
+
+      Engine.getInstance().register(oTable, {
+        helper: this.oMetadataHelper,
+        controller: {
+          Columns: new SelectionController({
+            targetAggregation: "columns",
+            control: oTable,
+            persistenceIdentifier: "selection-columns"
+          }),
+          Rows: new SelectionController({
+            targetAggregation: "items",
+            helper: _oMetadataHelperRows,
+            control: oTable,
+            persistenceIdentifier: "selection-items",
+            enableReorder: false,
+            getKeyForItem: function (oListItem) {
+              return oListItem.getCells()[0].getText();
+            }
+          })
+        }
+      });
+
+      Engine.getInstance().attachStateChange(this.handleStateChange.bind(this));
+    },
+
+    openPersoDialog: function (oEvt) {
+      const oTable = this.byId("persoTable");
+      this._registerForP13n();
+
+      Engine.getInstance().show(oTable, ["Columns"], {
+        contentHeight: "35rem",
+        contentWidth: "32rem",
+        source: oEvt.getSource()
+      });
+    },
+
+    handleStateChange: function (oEvt) {
+      const oTable = this.byId("persoTable");
+      const oState = oEvt.getParameter("state");
+
+      if (!oState) {
+        return;
+      }
+
+      oTable.getColumns().forEach(function (oColumn, iIndex) {
+        oColumn.setVisible(false);
+        console.log('bande');
+        oColumn.setSortIndicator(coreLibrary.SortOrder.None);
+        oColumn.data("grouped", false);
+      });
+
+      oState.Columns.forEach(function (oProp, iIndex) {
+        const oCol = this.byId(oProp.key);
+        oCol.setVisible(true);
+        console.log(oState);
+        console.log('illi bande');
+        oTable.removeColumn(oCol);
+        oTable.insertColumn(oCol, iIndex);
+      }.bind(this));
+
+      oTable.getItems().forEach(function (oItem, iIndex) {
+        oItem.setVisible(false);
+      });
+
+      oState.Rows.forEach(function (oProp, iIndex) {
+        const aItems = this.byId("persoTable").getItems();
+        // var oRelevantCol = aItems[0].getCells().find((cell) => true);
+
+        // find index of cell with "id", that can be used later
+        const oFoundItem = aItems.find((oItem) => oItem.getCells()[0].getText() == oProp.key);
+
+        oFoundItem.setVisible(true);
+
+        oTable.removeItem(oFoundItem);
+        oTable.insertItem(oFoundItem, iIndex);
+      }.bind(this));
+
+      //Update the columns per selection in the state
+      this.updateColumns(oState);
+
+      const aCells = oState.Columns.map(function(oColumnState) {
+      	return new Text({
+      		text: "{" + this.oMetadataHelper.getProperty(oColumnState.key).path + "}"
+      	});
+      }.bind(this));
+
+      //rebind the table with the updated cell template
+      oTable.bindItems({
+      	templateShareable: false,
+      	path: 'JSONModel1>/data',
+      	template: new ColumnListItem({
+      		cells: aCells
+      	})
+      });
+    },
+    updateColumns: function (oState) {
+      const oTable = this.byId("persoTable");
+
+      oTable.getColumns().forEach(function (oColumn, iIndex) {
+        oColumn.setVisible(false);
+        oColumn.data("grouped", false);
+      }.bind(this));
+
+      oState.Columns.forEach(function (oProp, iIndex) {
+        const oCol = this.byId(oProp.key);
+        oCol.setVisible(true);
+
+        oTable.removeColumn(oCol);
+        oTable.insertColumn(oCol, iIndex);
+      }.bind(this));
+    },
+    _getKey: function (oControl) {
+      console.log(oControl);
+      return sap.ui.getCore().getLocalId(oControl.getId());
     }
   }
 });

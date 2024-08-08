@@ -41,6 +41,24 @@
                 "settings": {
                     "localUri": "annotations/annotation.xml"
                 }
+            },
+            "ZC_QU_DG_MATCLASSUNION_CDS": {
+                "uri": "/sap/opu/odata/sap/ZC_QU_DG_MATCLASSUNION_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_QU_DG_MATCLASSUNION_CDS_Annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZC_QU_DG_MATCLASSUNION_CDS_Annotation": {
+                "uri": "/destinations/Airdit_HANA/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QU_DG_MATCLASSUNION_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_QU_DG_MATCLASSUNION_CDS_Annotation.xml"
+                }
             }
         }
     },
@@ -105,6 +123,18 @@
                     }
                 }
             },
+            "SearchMaterialByChar": {
+                "dataSource": "ZC_QU_DG_MATCLASSUNION_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"
@@ -147,6 +177,12 @@
                                         "text": "Mark For Deletion",
                                         "press": "onDelete",
                                         "requiresSelection": true
+                                    },
+                                    "idCustomSearch": {
+                                        "id": "idCustomSearchButton",
+                                        "text": "Classification Search",
+                                        "press": "handleCustomSearch",
+                                        "global": true
                                     }
                                 }
                             }

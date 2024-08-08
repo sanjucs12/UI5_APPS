@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_QU_DG_MATCLASSUNION_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_QU_DG_MatClassUnionType" sap:label="Material class and characteristics search" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="reqid"/>
+                    <PropertyRef Name="matnr"/>
+                    <PropertyRef Name="class"/>
+                    <PropertyRef Name="atnam"/>
+                    <PropertyRef Name="atwrtValue"/>
+                </Key>
+                <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="class" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number" sap:value-list="standard"/>
+                <Property Name="atnam" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Characteristic Name" sap:value-list="standard"/>
+                <Property Name="atwrtValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Characteristic Value"/>
+            </EntityType>
+            <EntityType Name="ZI_QU_DG_CharName_VHType" sap:label="Value help for characteristics name" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="clint"/>
+                    <PropertyRef Name="class"/>
+                    <PropertyRef Name="klart"/>
+                    <PropertyRef Name="imerk"/>
+                    <PropertyRef Name="atnam"/>
+                </Key>
+                <Property Name="clint" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Internal class no." sap:quickinfo="Internal Class Number"/>
+                <Property Name="class" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number"/>
+                <Property Name="klart" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Class Type"/>
+                <Property Name="imerk" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="NonNegative" sap:label="Internal char no." sap:quickinfo="Internal characteristic"/>
+                <Property Name="atnam" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Characteristic Name"/>
+            </EntityType>
+            <EntityType Name="ZI_QU_DG_MatChar_ClassType" sap:label="Material characteristics class" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="clint"/>
+                </Key>
+                <Property Name="clint" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Internal class no." sap:quickinfo="Internal Class Number"/>
+                <Property Name="klart" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Class Type"/>
+                <Property Name="class" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number"/>
+            </EntityType>
+            <EntityContainer Name="ZC_QU_DG_MATCLASSUNION_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_QU_DG_MatClassUnion" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_QU_DG_CharName_VH" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_CharName_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_QU_DG_MatChar_Class" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_MatChar_ClassType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType/class" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material characteristics class"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_QU_DG_MatChar_Class"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="class"/>
+                                    <PropertyValue Property="ValueListProperty" String="class"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="clint"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="klart"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType/atnam" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for characteristics name"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_QU_DG_CharName_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="atnam"/>
+                                    <PropertyValue Property="ValueListProperty" String="atnam"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="clint"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="class"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="klart"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="imerk"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MATCLASSUNION_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZC_QU_DG_MATCLASSUNION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZC_QU_DG_MATCLASSUNION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

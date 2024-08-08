@@ -106,5 +106,486 @@
 			"categoryId": "receipt",
 			"categoryText": "Receipt"
 		}
-	]
+	],
+	
+	"fields": {
+		"CustomerName": {
+		  "type": "string",
+		  "valueString": "AIRDIT SOFTWARE\nKarnataka, India.",
+		  "content": "AIRDIT SOFTWARE\nKarnataka, India.",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				0.38,
+				2.3192,
+				1.4136,
+				2.3192,
+				1.4136,
+				2.5875,
+				0.38,
+				2.5875
+			  ]
+			}
+		  ],
+		  "confidence": 0.241,
+		  "spans": [
+			{
+			  "offset": 186,
+			  "length": 33
+			}
+		  ]
+		},
+		"InvoiceDate": {
+		  "type": "date",
+		  "valueDate": "2023-01-31",
+		  "content": "31.01.2023",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				6.2828,
+				2.1217,
+				6.9009,
+				2.1217,
+				6.9009,
+				2.2685,
+				6.2828,
+				2.2685
+			  ]
+			}
+		  ],
+		  "confidence": 0.968,
+		  "spans": [
+			{
+			  "offset": 175,
+			  "length": 10
+			}
+		  ]
+		},
+		"InvoiceId": {
+		  "type": "string",
+		  "valueString": "GWP/GST-93/22-23",
+		  "content": "GWP/GST-93/22-23",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				6.2017,
+				1.8432,
+				7.3012,
+				1.833,
+				7.3012,
+				1.9799,
+				6.2017,
+				1.99
+			  ]
+			}
+		  ],
+		  "confidence": 0.969,
+		  "spans": [
+			{
+			  "offset": 90,
+			  "length": 16
+			}
+		  ]
+		},
+		"InvoiceTotal": {
+		  "type": "currency",
+		  "valueCurrency": {
+			"currencySymbol": "Rs",
+			"amount": 94400,
+			"currencyCode": "INR"
+		  },
+		  "content": "Rs94,400.00",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				7.2151,
+				6.5169,
+				7.8636,
+				6.5119,
+				7.8636,
+				6.6385,
+				7.2151,
+				6.6385
+			  ]
+			}
+		  ],
+		  "confidence": 0.415,
+		  "spans": [
+			{
+			  "offset": 506,
+			  "length": 11
+			}
+		  ]
+		},
+		"Items": {
+		  "type": "array",
+		  "valueArray": [
+			{
+			  "type": "object",
+			  "valueObject": {
+				"Amount": {
+				  "type": "currency",
+				  "valueCurrency": {
+					"currencySymbol": "Rs",
+					"amount": 80000,
+					"currencyCode": "INR"
+				  },
+				  "content": "Rs80,000.00",
+				  "boundingRegions": [
+					{
+					  "pageNumber": 1,
+					  "polygon": [
+						7.1441,
+						3.6661,
+						7.8433,
+						3.656,
+						7.8433,
+						3.7977,
+						7.1441,
+						3.7927
+					  ]
+					}
+				  ],
+				  "confidence": 0,
+				  "spans": [
+					{
+					  "offset": 393,
+					  "length": 11
+					}
+				  ]
+				},
+				"Description": {
+				  "type": "string",
+				  "valueString": "Use of Workstation for The Month of Jan 2023\nFrom 01-01-2023 to 31-01-2023",
+				  "content": "Use of Workstation for The Month of Jan 2023\nFrom 01-01-2023 to 31-01-2023",
+				  "boundingRegions": [
+					{
+					  "pageNumber": 1,
+					  "polygon": [
+						0.8657,
+						3.6839,
+						3.3795,
+						3.6736,
+						3.3808,
+						3.9888,
+						0.867,
+						3.9991
+					  ]
+					}
+				  ],
+				  "confidence": 0,
+				  "spans": [
+					{
+					  "offset": 341,
+					  "length": 44
+					},
+					{
+					  "offset": 405,
+					  "length": 29
+					}
+				  ]
+				},
+				"ProductCode": {
+				  "type": "string",
+				  "valueString": "997212",
+				  "content": "997212",
+				  "boundingRegions": [
+					{
+					  "pageNumber": 1,
+					  "polygon": [
+						4.4283,
+						3.6863,
+						4.7982,
+						3.6813,
+						4.7982,
+						3.7977,
+						4.4283,
+						3.7927
+					  ]
+					}
+				  ],
+				  "confidence": 0,
+				  "spans": [
+					{
+					  "offset": 386,
+					  "length": 6
+					}
+				  ]
+				}
+			  },
+			  "content": "Use of Workstation for The Month of Jan 2023\n997212\nRs80,000.00\nFrom 01-01-2023 to 31-01-2023",
+			  "boundingRegions": [
+				{
+				  "pageNumber": 1,
+				  "polygon": [
+					0.8658,
+					3.6814,
+					7.8433,
+					3.656,
+					7.8445,
+					3.9732,
+					0.8669,
+					3.9987
+				  ]
+				}
+			  ],
+			  "confidence": 0.41,
+			  "spans": [
+				{
+				  "offset": 341,
+				  "length": 93
+				}
+			  ]
+			}
+		  ]
+		},
+		"SubTotal": {
+		  "type": "currency",
+		  "valueCurrency": {
+			"currencySymbol": "Rs",
+			"amount": 80000,
+			"currencyCode": "INR"
+		  },
+		  "content": "Rs80,000.00",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				7.2303,
+				5.2915,
+				7.8585,
+				5.2865,
+				7.8585,
+				5.4131,
+				7.2303,
+				5.4131
+			  ]
+			}
+		  ],
+		  "confidence": 0.96,
+		  "spans": [
+			{
+			  "offset": 441,
+			  "length": 11
+			}
+		  ]
+		},
+		"TaxDetails": {
+		  "type": "array",
+		  "valueArray": [
+			{
+			  "type": "object",
+			  "valueObject": {
+				"Amount": {
+				  "type": "currency",
+				  "valueCurrency": {
+					"currencySymbol": "R$",
+					"amount": 14400,
+					"currencyCode": "INR"
+				  },
+				  "content": "R$14,400.00",
+				  "boundingRegions": [
+					{
+					  "pageNumber": 1,
+					  "polygon": [
+						7.2151,
+						5.6308,
+						7.8484,
+						5.6257,
+						7.8484,
+						5.7473,
+						7.2201,
+						5.7473
+					  ]
+					}
+				  ],
+				  "confidence": 0.001,
+				  "spans": [
+					{
+					  "offset": 469,
+					  "length": 11
+					}
+				  ]
+				}
+			  },
+			  "content": "Add :- IGST@18%\nR$14,400.00",
+			  "boundingRegions": [
+				{
+				  "pageNumber": 1,
+				  "polygon": [
+					0.8715,
+					5.6257,
+					7.8484,
+					5.6257,
+					7.8484,
+					5.7827,
+					0.8715,
+					5.7827
+				  ]
+				}
+			  ],
+			  "confidence": 0.86,
+			  "spans": [
+				{
+				  "offset": 453,
+				  "length": 27
+				}
+			  ]
+			}
+		  ]
+		},
+		"TotalTax": {
+		  "type": "currency",
+		  "valueCurrency": {
+			"currencySymbol": "R$",
+			"amount": 14400,
+			"currencyCode": "INR"
+		  },
+		  "content": "R$14,400.00",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				7.2151,
+				5.6308,
+				7.8484,
+				5.6257,
+				7.8484,
+				5.7473,
+				7.2201,
+				5.7473
+			  ]
+			}
+		  ],
+		  "confidence": 0.828,
+		  "spans": [
+			{
+			  "offset": 469,
+			  "length": 11
+			}
+		  ]
+		},
+		"VendorAddress": {
+		  "type": "address",
+		  "content": "18, 2nd Floor Deen Dayal Complex, Ashok Nagar,\nJanpath, Bhubaneswar - 750 009",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				0.9242,
+				1.9025,
+				2.8879,
+				1.88,
+				2.8909,
+				2.1398,
+				0.9272,
+				2.1623
+			  ]
+			}
+		  ],
+		  "confidence": 0.82,
+		  "spans": [
+			{
+			  "offset": 30,
+			  "length": 46
+			},
+			{
+			  "offset": 107,
+			  "length": 30
+			}
+		  ],
+		  "valueAddress": {
+			"houseNumber": "18",
+			"road": "2nd Floor Deen Dayal Complex, Ashok Nagar,\nJanpath, Bhubaneswar",
+			"streetAddress": "18 2nd Floor Deen Dayal Complex, Ashok Nagar,\nJanpath, Bhubaneswar"
+		  }
+		},
+		"VendorAddressRecipient": {
+		  "type": "string",
+		  "valueString": "GOLDEN WOODPECKER",
+		  "content": "GOLDEN WOODPECKER",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				0.9063,
+				1.6988,
+				2.7209,
+				1.6913,
+				2.7216,
+				1.8689,
+				0.907,
+				1.8764
+			  ]
+			}
+		  ],
+		  "confidence": 0.943,
+		  "spans": [
+			{
+			  "offset": 0,
+			  "length": 17
+			}
+		  ]
+		},
+		"VendorName": {
+		  "type": "string",
+		  "valueString": "GOLDEN WOODPECKER",
+		  "content": "GOLDEN WOODPECKER",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				5.618,
+				8.256,
+				6.9567,
+				8.2487,
+				6.9577,
+				8.4363,
+				5.619,
+				8.4436
+			  ]
+			}
+		  ],
+		  "confidence": 0.886,
+		  "spans": [
+			{
+			  "offset": 601,
+			  "length": 17
+			}
+		  ]
+		},
+		"VendorTaxId": {
+		  "type": "string",
+		  "valueString": "21AGEPM8739J1Z6",
+		  "content": "21AGEPM8739J1Z6",
+		  "boundingRegions": [
+			{
+			  "pageNumber": 1,
+			  "polygon": [
+				5.5278,
+				2.3749,
+				6.5615,
+				2.3749,
+				6.5615,
+				2.5116,
+				5.5329,
+				2.5166
+			  ]
+			}
+		  ],
+		  "confidence": 0.956,
+		  "spans": [
+			{
+			  "offset": 231,
+			  "length": 15
+			}
+		  ]
+		}
+	  }
 }
+
+  

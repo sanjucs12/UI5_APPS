@@ -35,6 +35,10 @@ server:
             metadataXmlPath: ./webapp/localService/metadata.xml
             mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZC_QU_DG_MATERIALSANDREQUESTS_SRV/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mockdata
+          - urlPath: /sap/opu/odata/sap/ZC_QU_DG_MATCLASSUNION_CDS/
             metadataPath: ./webapp/localService/metadata.xml
             mockdataPath: ./webapp/localService/mockdata
             generateMockData: true
@@ -43,3 +47,5 @@ server:
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QU_DG_MATERIALSANDRE_ANNO_MDL',Version='0001')/$value/
           - localPath: ./webapp/annotations/annotation.xml
             urlPath: annotations/annotation.xml
+          - localPath: ./webapp/localService/ZC_QU_DG_MATCLASSUNION_CDS_Annotation.xml
+            urlPath: /destinations/Airdit_HANA/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QU_DG_MATCLASSUNION_CDS_VAN',Version='0001')/$value/

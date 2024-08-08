@@ -2,6 +2,9 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
     onInit: function () {
         //  
         var n = this.extensionAPI.getNavigationController();
+        oButtonCustomsearch = this.getView().byId("zqudgmaterials.zqudgmaterials::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_MaterialsAndRequests--action::idCustomSearchButton")
+       // oButtonCustomsearch.setType("Emphasized")
+        oButtonCustomsearch.setIcon('sap-icon://search')
         debugger;
     },
     onBeforeRebindTableExtension: function (oEvent) {
@@ -11,21 +14,21 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         let sTableId = oEvent.getSource().getId()
         if (sTableId === sTable1) {
             debugger;
-            let aColumns = oEvent.getSource()._aColumnKeys            
-            let fieldsToShow = ['reqid','reqtyp','req_desc','reqprio','ersda','laeda','ersda'];
+            let aColumns = oEvent.getSource()._aColumnKeys
+            let fieldsToShow = ['reqid', 'reqtyp', 'req_desc', 'reqprio', 'ersda', 'laeda', 'ersda'];
             let filteredArray = aColumns.filter((field) => {
                 return !fieldsToShow.includes(field)
             })
             //console.log(filteredArray)
-            oEvent.getSource().deactivateColumns(filteredArray);         
+            oEvent.getSource().deactivateColumns(filteredArray);
 
 
         }
         if (sTableId === sTable2) {
             debugger;
 
-            let bColumns = oEvent.getSource()._aColumnKeys            
-            let fieldsToShowTab2 = ['matnr','maktx','mtart','mbrsh','reqid','reqtyp','req_desc','reqprio','ersda','laeda','ersda'];
+            let bColumns = oEvent.getSource()._aColumnKeys
+            let fieldsToShowTab2 = ['matnr', 'maktx', 'mtart', 'mbrsh', 'reqid', 'reqtyp', 'req_desc', 'reqprio', 'ersda', 'laeda', 'ersda'];
             let filteredArraytab2 = bColumns.filter((field) => {
                 return !fieldsToShowTab2.includes(field)
             })
@@ -281,8 +284,8 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                         oPromise.then((res) => {
                             debugger;
                             // console.log(res)
-                            let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='"+that.reqid+"',matnr='"+matnrInput+"',DraftUUID=guid'"+that.DraftUUIDUpdate+"',IsActiveEntity=false)"
-                            let aContextPath =  new sap.ui.model.Context(oModel, aContext);
+                            let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='" + that.reqid + "',matnr='" + matnrInput + "',DraftUUID=guid'" + that.DraftUUIDUpdate + "',IsActiveEntity=false)"
+                            let aContextPath = new sap.ui.model.Context(oModel, aContext);
                             that.getView().setBusy(false);
                             that.oNavController.navigateInternal(aContextPath);
                         }).catch((err) => {
@@ -393,19 +396,19 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                             }
                             debugger;
                             let sContextPath = that.pathToNavigate;
-                        let oContext = new sap.ui.model.Context(oModel, sContextPath);
-                        let oPromise = oApi.invokeActions("/ZC_QU_DG_MaterialsAndRequestsCopy", [], oPayload);
-                        debugger;
-                        oPromise.then((res) => {
+                            let oContext = new sap.ui.model.Context(oModel, sContextPath);
+                            let oPromise = oApi.invokeActions("/ZC_QU_DG_MaterialsAndRequestsCopy", [], oPayload);
                             debugger;
-                            // console.log(res)
-                            let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='"+that.reqid+"',matnr='',DraftUUID=guid'"+that.DraftUUIDCopy+"',IsActiveEntity=false)"
-                            let aContextPath =  new sap.ui.model.Context(oModel, aContext);
-                            that.getView().setBusy(false);
-                            that.oNavController.navigateInternal(aContextPath);
-                        }).catch((err) => {
-                            debugger;
-                            that.getView().setBusy(false);
+                            oPromise.then((res) => {
+                                debugger;
+                                // console.log(res)
+                                let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='" + that.reqid + "',matnr='',DraftUUID=guid'" + that.DraftUUIDCopy + "',IsActiveEntity=false)"
+                                let aContextPath = new sap.ui.model.Context(oModel, aContext);
+                                that.getView().setBusy(false);
+                                that.oNavController.navigateInternal(aContextPath);
+                            }).catch((err) => {
+                                debugger;
+                                that.getView().setBusy(false);
                             });
                             // that.oNavController.navigateInternal();
                         }
@@ -553,14 +556,14 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                                 oModel.setProperty(sContextPath + "/lgort", lgortObjPage);
                                 oModel.setProperty(sContextPath + "/vkorg", vkorgObjPage);
                                 oModel.setProperty(sContextPath + "/vtweg", vtwegObjPage);
-                                let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='"+that.reqid+"',matnr='"+matnrInput+"',DraftUUID=guid'"+that.DraftUUIDExtend+"',IsActiveEntity=false)"
-                                let aContextPath =  new sap.ui.model.Context(oModel, aContext);
+                                let aContext = "/ZC_QU_DG_MaterialsAndRequests(reqid='" + that.reqid + "',matnr='" + matnrInput + "',DraftUUID=guid'" + that.DraftUUIDExtend + "',IsActiveEntity=false)"
+                                let aContextPath = new sap.ui.model.Context(oModel, aContext);
                                 that.getView().setBusy(false);
                                 that.EDialog.close();
                                 that.oNavController.navigateInternal(aContextPath);
                             }).catch((err) => {
                                 debugger;
-                                });
+                            });
                             that.oNavController.navigateInternal();
                         }
                     },
@@ -666,5 +669,181 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         });
         this.getView().addDependent(this.EDialog);
         this.EDialog.open();
+    },
+
+    //_______________________CUSTOM SEARCH BUTTON________________________
+    handleCustomSearch: function (oEvent) {
+        let oModel = this.getOwnerComponent().getModel('SearchMaterialByChar')
+        let oCustomSearchDialog = this.getView().byId("idCustomSearch");
+        if (!oCustomSearchDialog) {
+            oCustomSearchDialog = sap.ui.xmlfragment(this.getView().getId(), "zqudgmaterials.zqudgmaterials.ext.fragment.CustomSearchByCharClass", this);
+            this.getView().addDependent(oCustomSearchDialog);
+        }
+        oCustomSearchDialog.setModel(oModel)
+        oCustomSearchDialog.setEscapeHandler(this.onPressEscapeButton.bind(this));
+        oCustomSearchDialog.open();
+    },
+    onCloseDialog: function (oEvent) {
+        let oCustomSearchDialog = this.getView().byId("idCustomSearch")
+        oCustomSearchDialog.close();
+        //oCustomSearchDialog.destroy()
+    },
+    onPressEscapeButton: function (oEvent) {
+        let oCustomSearchDialog = this.getView().byId("idCustomSearch")
+        oCustomSearchDialog.close();
+        //oCustomSearchDialog.destroy()
+        oEvent.resolve();
+    },
+    onAddTableRow: function () {
+        var oTable = this.getView().byId("idTable");
+        var oNewItem = new sap.m.ColumnListItem({
+            cells: [
+                new sap.ui.comp.smartfield.SmartField({
+                    entitySet: "ZC_QU_DG_MatClassUnion",
+                    value: "{atnam}"
+                }),
+                new sap.ui.comp.smartfield.SmartField({
+                    entitySet: "ZC_QU_DG_MatClassUnion",
+                    value: "{atwrtValue}"
+                }),
+                new sap.m.Button({
+                    type: "Transparent",
+                    icon: "sap-icon://decline",
+                    press: this.onRemoveTableRow.bind(this)
+                })
+            ]
+        });
+        oTable.addItem(oNewItem);
+    },
+    onDialogSearch: function (oEvent) {
+        let oCustomSearchDialog = this.getView().byId("idCustomSearch")
+        let oModel = this.getOwnerComponent().getModel('SearchMaterialByChar')
+        let aCharacteristics = this._GetCharTableData()
+        let sCharClassName = this.getView().byId("idSearchField").getValue()
+
+
+        //PREPARING ODATA Read Parameters//
+        let oReadParameters = {
+            success: function (oData, oRes) {
+                debugger
+                oCustomSearchDialog.setBusy(false)
+                oCustomSearchDialog.close()
+                let aMaterials = []
+                let aRequests = []
+                oData.results.forEach((item) => {
+                    if (item.matnr.length > 0) {
+                        aMaterials.push(item.matnr);
+                    }
+                    if (item.reqid.length > 0) {
+                        aRequests.push(item.reqid);
+                    }
+                })
+                let oCustomSearchResults = {
+                    Materials: [...new Set(aMaterials)],
+                    Requests: [...new Set(aRequests)]
+                }
+                debugger;
+                this._PassCustomFilters(oCustomSearchResults)
+
+            }.bind(this),
+            error: function (oErr) { debugger },
+        }
+
+        //ADDING FILTER PARAMETER IF FILTERS AREPRESENT
+        if (aCharacteristics.length > 0) {
+            let aFilters = []
+            aCharacteristics.forEach((item) => {
+                let oFilter = new sap.ui.model.Filter({
+                    filters: [
+                        new sap.ui.model.Filter("atnam", "EQ", item.CharacteristicsName),
+                        new sap.ui.model.Filter("atwrtValue", "EQ", item.CharacteristicsValue)
+                    ],
+                    and: true
+                })
+                aFilters.push(oFilter)
+            })
+            let oCombinedFilter = new sap.ui.model.Filter({
+                filters: aFilters,
+                and: false
+            });
+            oReadParameters.filters = [oCombinedFilter]
+        }
+
+        //ADDING URL PARAMETERS IF SEARCH PARAMETER IS PRESENT
+        if (sCharClassName && sCharClassName.length > 0) {
+            oReadParameters.urlParameters = {
+                search: sCharClassName
+            }
+        }
+
+        //MAKING GET CALL
+        if (aCharacteristics.length > 0 || sCharClassName.length > 0) {
+            oCustomSearchDialog.setBusy(true)
+            oModel.read('/ZC_QU_DG_MatClassUnion', oReadParameters)
+        } else {
+            debugger;
+            let oSmartFilterBar = this.getView().byId('listReportFilter')
+            oCustomSearchDialog.close()
+            oSmartFilterBar.removeAllFilters()
+            oSmartFilterBar.search()
+        }
+    },
+    _GetCharTableData: function (oEvent) {
+        let oTable = this.getView().byId("idTable");
+        let aItems = oTable.getItems();
+        let aResults = [];
+        aItems.forEach(function (oItem) {
+            // Get the cells in the current row
+            let aCells = oItem.getCells();
+            let oRowData = {}
+            // Loop through each cell and get the value from SmartField
+            debugger;
+            aCells.forEach(function (oCell, index) {
+                if (oCell instanceof sap.ui.comp.smartfield.SmartField) {
+                    let sValue = oCell.getValue();
+                    if (sValue && sValue.length > 0) {
+                        if (index === 0) {
+                            oRowData.CharacteristicsName = sValue;
+                        } else if (index === 1) {
+                            oRowData.CharacteristicsValue = sValue;
+                        }
+                    }
+                }
+            });
+            // Add the row data to the results array
+            if (Object.keys(oRowData).length > 0) {
+                aResults.push(oRowData)
+            }
+        });
+        return aResults
+    },
+    onRemoveTableRow: function (oEvent) {
+        let oButton = oEvent.getSource();
+        let oItem = oButton.getParent();
+        let oTable = this.getView().byId("idTable");
+        oTable.removeItem(oItem);
+    },
+    _PassCustomFilters: function (data) {
+        let oSmartFilterBar = this.getView().byId('listReportFilter')
+        let aMaterials = data.Materials
+        let aRequests = data.Requests
+        let aMaterialsFilter = aMaterials.map(function (mat) {
+            return { key: mat };
+        });
+        let aRequestsFilter = aRequests.map(function (req) {
+            return { key: req };
+        });
+
+        let oSearchData = {
+            matnr: {
+                items: aMaterialsFilter,
+            },
+            reqid: {
+                items: aRequestsFilter,
+            },
+        }
+
+        oSmartFilterBar.setFilterData(oSearchData)
+        oSmartFilterBar.search()
     }
 });
