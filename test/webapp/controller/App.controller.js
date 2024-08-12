@@ -7,6 +7,7 @@ sap.ui.define(
   
       return BaseController.extend("test.controller.App", {
         onInit: function() {
+          debugger;
         }
       });
     }

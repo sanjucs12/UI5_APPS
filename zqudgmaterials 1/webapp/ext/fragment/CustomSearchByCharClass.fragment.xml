@@ -4,11 +4,11 @@
     xmlns:smartForm="sap.ui.comp.smartform"
     xmlns:core="sap.ui.core">
     <Dialog title="Search by Material Characteristics and Classes" class="sapUiContentPadding" id="idCustomSearch" contentWidth="40rem" horizontalScrolling="false">
-        <subHeader>
+        <!-- <subHeader>
             <Toolbar>
                 <SearchField placeholder="Search Classes or Characteristics" search="onDialogSearch" id="idSearchField"/>
             </Toolbar>
-        </subHeader>
+        </subHeader> -->
         <content>
             <VBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
                 <Table id="idTable" fixedLayout="false">
@@ -20,6 +20,11 @@
                         </Toolbar>
                     </headerToolbar>
                     <columns>
+                        <Column >
+                            <header>
+                                <Label text="Class Name"></Label>
+                            </header>
+                        </Column>
                         <Column >
                             <header>
                                 <Label text="Characteristics Name"></Label>
@@ -34,13 +39,14 @@
                         </Column>
                     </columns>
                     <items>
-                        <!-- <ColumnListItem>
+                        <ColumnListItem>
                             <cells>
+                                <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{class}"></smartField:SmartField>
                                 <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{atnam}"></smartField:SmartField>
                                 <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{atwrtValue}"></smartField:SmartField>
                                 <Button type="Transparent" icon="sap-icon://decline" press="onRemoveTableRow"></Button>
                             </cells>
-                        </ColumnListItem> -->
+                        </ColumnListItem>
                     </items>
                 </Table>
             </VBox>

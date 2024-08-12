@@ -3,7 +3,7 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         //  
         var n = this.extensionAPI.getNavigationController();
         oButtonCustomsearch = this.getView().byId("zqudgmaterials.zqudgmaterials::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_QU_DG_MaterialsAndRequests--action::idCustomSearchButton")
-       // oButtonCustomsearch.setType("Emphasized")
+        oButtonCustomsearch.setType("Neutral")
         oButtonCustomsearch.setIcon('sap-icon://search')
         debugger;
     },
@@ -22,7 +22,19 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
             //console.log(filteredArray)
             oEvent.getSource().deactivateColumns(filteredArray);
 
-
+            //PASSING CUSTON REQUESTS FILTER
+            if (this.Requests && this.Requests.length > 0) {
+                debugger;
+                let aFilters = []
+                this.Requests.map((item) => {
+                    aFilters.push(new sap.ui.model.Filter("reqid", "EQ", item))
+                })
+                let oFilter = new sap.ui.model.Filter({
+                    filters: aFilters,
+                    and: true
+                })
+                oEvent.getParameter("bindingParams").filters.push(oFilter);
+            }
         }
         if (sTableId === sTable2) {
             debugger;
@@ -34,8 +46,21 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
             })
             //console.log(filteredArray)
             oEvent.getSource().deactivateColumns(filteredArraytab2)
+
+            //PASSING CUSTOM MATERIAL FILTER
+            if (this.Materials && this.Materials.length > 0) {
+                debugger;
+                let aFilters = []
+                this.Materials.map((item) => {
+                    aFilters.push(new sap.ui.model.Filter("matnr", "EQ", item))
+                })
+                let oFilter = new sap.ui.model.Filter({
+                    filters: aFilters,
+                    and: true
+                })
+                oEvent.getParameter("bindingParams").filters.push(oFilter);
+            }
         }
-        debugger;
     },
     onAfterRendering: function () {
         let i = this.getView().createId("addEntry-tab1");
@@ -700,6 +725,10 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
             cells: [
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
+                    value: "{class}"
+                }),
+                new sap.ui.comp.smartfield.SmartField({
+                    entitySet: "ZC_QU_DG_MatClassUnion",
                     value: "{atnam}"
                 }),
                 new sap.ui.comp.smartfield.SmartField({
@@ -719,7 +748,7 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         let oCustomSearchDialog = this.getView().byId("idCustomSearch")
         let oModel = this.getOwnerComponent().getModel('SearchMaterialByChar')
         let aCharacteristics = this._GetCharTableData()
-        let sCharClassName = this.getView().byId("idSearchField").getValue()
+        //let sCharClassName = this.getView().byId("idSearchField").getValue()
 
 
         //PREPARING ODATA Read Parameters//
@@ -749,12 +778,13 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
             error: function (oErr) { debugger },
         }
 
-        //ADDING FILTER PARAMETER IF FILTERS AREPRESENT
+        //ADDING FILTER PARAMETER IF FILTERS ARE PRESENT
         if (aCharacteristics.length > 0) {
             let aFilters = []
             aCharacteristics.forEach((item) => {
                 let oFilter = new sap.ui.model.Filter({
                     filters: [
+                        new sap.ui.model.Filter("class", "EQ", item.ClassName),
                         new sap.ui.model.Filter("atnam", "EQ", item.CharacteristicsName),
                         new sap.ui.model.Filter("atwrtValue", "EQ", item.CharacteristicsValue)
                     ],
@@ -770,22 +800,34 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         }
 
         //ADDING URL PARAMETERS IF SEARCH PARAMETER IS PRESENT
-        if (sCharClassName && sCharClassName.length > 0) {
-            oReadParameters.urlParameters = {
-                search: sCharClassName
-            }
-        }
+        // if (sCharClassName && sCharClassName.length > 0) {
+        //     oReadParameters.urlParameters = {
+        //         search: sCharClassName
+        //     }
+        // }
 
         //MAKING GET CALL
-        if (aCharacteristics.length > 0 || sCharClassName.length > 0) {
+        if (aCharacteristics.length > 0) {
             oCustomSearchDialog.setBusy(true)
             oModel.read('/ZC_QU_DG_MatClassUnion', oReadParameters)
         } else {
             debugger;
             let oSmartFilterBar = this.getView().byId('listReportFilter')
             oCustomSearchDialog.close()
-            oSmartFilterBar.removeAllFilters()
+            let oSearchData = {
+                matnr: {
+                    items: [],
+                },
+                reqid: {
+                    items: [],
+                },
+            }
+
+            this.Materials = null;
+            this.Requests = null;
+            oSmartFilterBar.setFilterData(oSearchData)
             oSmartFilterBar.search()
+
         }
     },
     _GetCharTableData: function (oEvent) {
@@ -803,8 +845,10 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                     let sValue = oCell.getValue();
                     if (sValue && sValue.length > 0) {
                         if (index === 0) {
-                            oRowData.CharacteristicsName = sValue;
+                            oRowData.ClassName = sValue;
                         } else if (index === 1) {
+                            oRowData.CharacteristicsName = sValue;
+                        } else if (index === 2) {
                             oRowData.CharacteristicsValue = sValue;
                         }
                     }
@@ -824,26 +868,36 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
         oTable.removeItem(oItem);
     },
     _PassCustomFilters: function (data) {
-        let oSmartFilterBar = this.getView().byId('listReportFilter')
-        let aMaterials = data.Materials
-        let aRequests = data.Requests
-        let aMaterialsFilter = aMaterials.map(function (mat) {
-            return { key: mat };
-        });
-        let aRequestsFilter = aRequests.map(function (req) {
-            return { key: req };
-        });
+        // let oSmartFilterBar = this.getView().byId('listReportFilter')
+        // let aMaterials = data.Materials
+        // let aRequests = data.Requests
+        // let aMaterialsFilter = aMaterials.map(function (mat) {
+        //     return { key: mat };
+        // });
+        // let aRequestsFilter = aRequests.map(function (req) {
+        //     return { key: req };
+        // });
+        // debugger;
 
-        let oSearchData = {
-            matnr: {
-                items: aMaterialsFilter,
-            },
-            reqid: {
-                items: aRequestsFilter,
-            },
-        }
+        // let oSearchData = {
+        //     matnr: {
+        //         items: aMaterialsFilter,
+        //     },
+        //     reqid: {
+        //         items: aRequestsFilter,
+        //     },
+        // }
 
-        oSmartFilterBar.setFilterData(oSearchData)
-        oSmartFilterBar.search()
+        // oSmartFilterBar.setFilterData(oSearchData)
+        // oSmartFilterBar.search()
+
+        //Saving in global variable for Rebinding the Table with filters
+        this.Materials = data.Materials
+        this.Requests = data.Requests
+        let sMaterialsTable = this.getView().byId("listReport-tab0");
+        let sRequestsTable = this.getView().byId("listReport-tab1");
+        debugger;
+        sMaterialsTable.rebindTable()
+        sRequestsTable.rebindTable()
     }
 });
