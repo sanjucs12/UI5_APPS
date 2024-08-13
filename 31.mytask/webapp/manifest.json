@@ -1,0 +1,508 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "zmytask.mytask",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.14.2",
+            "toolsId": "c225a1ad-9848-4f19-93ef-efad06e3027f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZC_QU_DG_MYTASK_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_QU_DG_MYTASK_ANNO_MDL",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZC_QU_DG_MYTASK_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QU_DG_MYTASK_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_QU_DG_MYTASK_ANNO_MDL.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "WorkflowData": {
+				"uri": "ext/model/workflowmodel.json",
+				"type": "JSON"
+			},
+            "LogService1": {
+                "uri": "/sap/opu/odata/sap/ZQU_DG_WF_GETLOG_SRV_01/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.126.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.se.mi.plm.lib.attachmentservice": {}
+            }
+        },
+        "components": {
+            "sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent": {}
+        },
+        "componentUsages": {
+            "attachmentReuseComponent": {
+                "name": "sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent"
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zmytask.mytask.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "WorkflowModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "WorkflowData"
+			},
+            "WorkflowLog": {
+                "dataSource": "LogService1",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/styles.css"
+                  }
+            ]
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "zmytask.mytask.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "ZC_QU_DG_MyTask": {
+                                "EntitySet": "ZC_QU_DG_MyTask"
+                            }
+                        }
+                    },
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "controllerName": "zmytask.mytask.ext.controller.ObjectPageExt",
+                        "sap.ui.generic.app": {
+                            "ZC_QU_DG_MaterialsAndRequests": {
+                                "EntitySet": "ZC_QU_DG_MaterialsAndRequests",
+                                "Header": {
+                                    "Actions": {
+                                        "check": {
+                                            "id": "checkButton",
+                                            "text": "Duplicate Check",
+                                            "press": "onCheck",
+                                            "requiresSelection": false,
+                                            "logicalAction": ""
+                                        },
+                                        "Submit": {
+                                            "id": "Submit",
+                                            "text": "Submit",
+                                            "press": "onApprove",
+                                            "requiresSelection": false,
+                                            "determining": true,
+                                            "applicablePath": "EditButton"
+                                        },
+                                        "Approve": {
+                                            "id": "ApproveButton",
+                                            "text": "Approve",
+                                            "press": "onApprove",
+                                            "requiresSelection": false,
+                                            "determining": true,
+                                            "applicablePath": "ApproveButton"
+                                        },
+                                        "Reject": {
+                                            "id": "RejectButton",
+                                            "text": "Reject",
+                                            "press": "onReject",
+                                            "requiresSelection": false,
+                                            "determining": true,
+                                            "applicablePath": "ApproveButton"
+                                        },
+                                        "ShowLog": {
+                                            "id": "ShowLog",
+                                            "text": "Show Log",
+                                            "press": "onShowLog",
+                                            "requiresSelection": false,
+                                            "determining": true
+                                        },
+                                        "ShowStatus": {
+                                            "id": "ShowStatus",
+                                            "text": "Show Status",
+                                            "press": "onShowStatus",
+                                            "requiresSelection": false,
+                                            "determining": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "sap.ui.viewExtensions": {
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "AfterFacet|ZC_QU_DG_MaterialsAndRequests|G": {
+                            "type": "XML",
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "zmytask.mytask.ext.fragment.Comments",
+                            "sap.ui.generic.app": {
+                                "title": "Comments"
+                            }
+                        },
+                        "BeforeFacet|ZC_QU_DG_MaterialsAndRequests|Sales:salesorg.3": {
+                            "type": "XML",
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "zmytask.mytask.ext.fragment.massupload",
+                            "sap.ui.generic.app": {
+                                "title": "Mass Upload"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "ListReport|ZC_QU_DG_MyTask": {
+                "entitySet": "ZC_QU_DG_MyTask",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "smartVariantManagement": true,
+                        "enableTableFilterInPageVariant": true,
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ZC_QU_DG_MyTask": {
+                        "entitySet": "ZC_QU_DG_MyTask",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        },
+                        "pages": {
+                            "ObjectPage|to_Materials": {
+                                "entitySet": "ZC_QU_DG_MaterialsAndRequests",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage",
+                                    "settings": {
+                                        "allowDeepLinking": true
+                                    }
+                                },
+                                "embeddedComponents": {
+                                    "simple::Attachments": {
+                                        "id": "simple::Attachments",
+                                        "componentUsage": "attachmentReuseComponent",
+                                        "title": "{{Attachments}}",
+                                        "settings": {
+                                            "mode": "{= ${ui>/editable}?'C':'D'}",
+                                            "objectType": "BUS1006",
+                                            "objectKey": "{parts:[{path:'reqid'}]}",
+                                            "isGuid": true
+                                        }
+                                    }
+                                },
+                                "pages": {
+                                    "ObjectPage|ZC_QU_DG_MATERIALTAXTP": {
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                        },
+                                        "entitySet": "ZC_QU_DG_MATERIALTAXTP",
+                                        "navigationProperty": "to_MaterialTax",
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                    },
+                                    "ObjectPage|ZC_QU_DG_MatClass": {
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                        },
+                                        "entitySet": "ZC_QU_DG_MatClass",
+                                        "navigationProperty": "to_class",
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                    },
+                                    "ObjectPage|ZC_QU_DG_MATERIAL": {
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                        },
+                                        "entitySet": "ZC_QU_DG_MATERIAL",
+                                        "pages": {
+                                            "ObjectPage|ZC_QU_DG_Plant": {
+                                                "component": {
+                                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                },
+                                                "entitySet": "ZC_QU_DG_Plant",
+                                                "navigationProperty": "to_plant",
+                                                "pages": {
+                                                    "ObjectPage|ZC_QU_DG_Storage_loc": {
+                                                        "component": {
+                                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                        },
+                                                        "entitySet": "ZC_QU_DG_Storage_loc",
+                                                        "navigationProperty": "to_MatStorage",
+                                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                                    }
+                                                },
+                                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                            },
+                                            "ObjectPage|ZC_QU_DG_SalesOrgTP": {
+                                                "component": {
+                                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                },
+                                                "entitySet": "ZC_QU_DG_SalesOrgTP",
+                                                "navigationProperty": "to_salesorg",
+                                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                            },
+                                            "ObjectPage|ZC_QU_DG_Mat_Class": {
+                                                "component": {
+                                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                },
+                                                "entitySet": "ZC_QU_DG_Mat_Class",
+                                                "navigationProperty": "to_classification",
+                                                "pages": {
+                                                    "ObjectPage|ZC_QU_DG_MatChar_Value": {
+                                                        "component": {
+                                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                        },
+                                                        "entitySet": "ZC_QU_DG_MatChar_Value",
+                                                        "navigationProperty": "to_charvalue",
+                                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                                    }
+                                                },
+                                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                            }
+                                        },
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ObjectPage|ZC_QU_DG_MaterialsAndRequests": {
+                        "entitySet": "ZC_QU_DG_MaterialsAndRequests",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage",
+                            "settings": {
+                                "sections": {
+                                    "MaterialTax": {
+                                        "navigationProperty": "to_MaterialTax",
+                                        "entitySet": "ZC_QU_DG_MATERIALTAXTP",
+                                        "createMode": "inline"
+                                    },
+                                    "Material_characteristics": {
+                                        "navigationProperty": "to_class",
+                                        "entitySet": "ZC_QU_DG_MatClass",
+                                        "createMode": "inline"
+                                    }
+                                }
+                            }
+                        },
+                        "pages": {
+                            "ObjectPage|to_MaterialTax": {
+                                "navigationProperty": "to_MaterialTax",
+                                "entitySet": "ZC_QU_DG_MATERIALTAXTP",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            },
+                            "ObjectPage|to_class": {
+                                "navigationProperty": "to_class",
+                                "entitySet": "ZC_QU_DG_MatClass",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            },
+                            "ObjectPage|ZC_QU_DG_MATERIAL": {
+                                "entitySet": "ZC_QU_DG_MATERIAL",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage",
+                                    "settings": {
+                                        "sections": {
+                                            "to_plant::com.sap.vocabularies.UI.v1.LineItem": {
+                                                "navigationProperty": "to_plant",
+                                                "entitySet": "ZC_QU_DG_Plant"
+                                            },
+                                            "MaterialTax": {
+                                                "navigationProperty": "to_MatStorage",
+                                                "entitySet": "ZC_QU_DG_Storage_loc"
+                                            },
+                                            "MatClassification": {
+                                                "navigationProperty": "to_classification",
+                                                "entitySet": "ZC_QU_DG_Mat_Class"
+                                            },
+                                            "salesorg": {
+                                                "navigationProperty": "to_salesorg",
+                                                "entitySet": "ZC_QU_DG_SalesOrgTP"
+                                            }
+                                        }
+                                    }
+                                },
+                                "pages": {
+                                    "ObjectPage|to_plant": {
+                                        "navigationProperty": "to_plant",
+                                        "entitySet": "ZC_QU_DG_Plant",
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                        },
+                                        "pages": {
+                                            "ObjectPage|to_MatStorage": {
+                                                "navigationProperty": "to_MatStorage",
+                                                "entitySet": "ZC_QU_DG_Storage_loc",
+                                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                                "component": {
+                                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ObjectPage|to_salesorg": {
+                                        "navigationProperty": "to_salesorg",
+                                        "entitySet": "ZC_QU_DG_SalesOrgTP",
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                                        }
+                                    },
+                                    "ObjectPage|to_classification": {
+                                        "navigationProperty": "to_classification",
+                                        "entitySet": "ZC_QU_DG_Mat_Class",
+                                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                        "component": {
+                                            "name": "sap.suite.ui.generic.template.ObjectPage",
+                                            "settings": {
+                                                "sections": {
+                                                    "to_charvalue::com.sap.vocabularies.UI.v1.LineItem": {
+                                                        "navigationProperty": "to_charvalue",
+                                                        "entitySet": "ZC_QU_DG_MatChar_Value"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "pages": {
+                                            "ObjectPage|to_charvalue": {
+                                                "navigationProperty": "to_charvalue",
+                                                "entitySet": "ZC_QU_DG_MatChar_Value",
+                                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                                "component": {
+                                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "embeddedComponents": {
+                            "simple::Attachments": {
+                                "id": "simple::Attachments",
+                                "componentUsage": "attachmentReuseComponent",
+                                "title": "{{Attachments}}",
+                                "settings": {
+                                    "mode": "{= ${ui>/editable}?'C':'D'}",
+                                    "objectType": "BUS1006",
+                                    "objectKey": "{parts:[{path:'reqid'}]}",
+                                    "isGuid": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

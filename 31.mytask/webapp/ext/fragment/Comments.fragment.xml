@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout">
+<l:VerticalLayout id="_IDGenVerticalLayout1"  width="100%" core:require="{handler: 'zmytask/mytask/ext/controller/Comments'}">
+   	<FeedInput id="_IDGenFeedInput1" 
+		post="handler.onPost"
+		icon="test-resources/sap/m/images/dronning_victoria.jpg"
+		class="sapUiSmallMarginTopBottom" />
+	<List id="_IDGenList1"
+		showSeparators="Inner"
+		items="{localCommentModel>/EntryCollection}" >
+		<FeedListItem id="_IDGenFeedListItem1"
+			sender="{localCommentModel>CreatedBy}"
+			icon=""
+			senderPress="handler.onSenderPress"
+			iconPress="handler.onIconPress"
+			info=""
+			timestamp="{localCommentModel>CreatedAt}"
+			text="{localCommentModel>Text}"
+			convertLinksToAnchorTags="All"
+			showIcon = "true" 
+			actions="{path: 'localCommentModel>Actions', templateShareable: false}">
+				<FeedListItemAction id="_IDGenFeedListItemAction1" text="{localCommentModel>Text}" icon="{localCommentModel>Icon}" key="{localCommentModel>Key}" press="handler.onActionPressed" />
+
+				</FeedListItem>
+	</List>
+	</l:VerticalLayout>
+</core:FragmentDefinition>
