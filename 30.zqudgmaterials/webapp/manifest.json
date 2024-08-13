@@ -47,7 +47,8 @@
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "ZC_QU_DG_MATCLASSUNION_CDS_Annotation"
+                        "ZC_QU_DG_MATCLASSUNION_CDS_Annotation",
+                        "annotation0"
                     ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
@@ -58,6 +59,13 @@
                 "type": "ODataAnnotation",
                 "settings": {
                     "localUri": "localService/ZC_QU_DG_MATCLASSUNION_CDS_Annotation.xml"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
                 }
             }
         }

@@ -39,14 +39,14 @@
                         </Column>
                     </columns>
                     <items>
-                        <ColumnListItem>
+                        <!-- <ColumnListItem>
                             <cells>
                                 <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{class}"></smartField:SmartField>
                                 <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{atnam}"></smartField:SmartField>
                                 <smartField:SmartField entitySet="ZC_QU_DG_MatClassUnion" value="{atwrtValue}"></smartField:SmartField>
                                 <Button type="Transparent" icon="sap-icon://decline" press="onRemoveTableRow"></Button>
                             </cells>
-                        </ColumnListItem>
+                        </ColumnListItem> -->
                     </items>
                 </Table>
             </VBox>

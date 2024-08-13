@@ -28,6 +28,11 @@
                         </Record>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>class</PropertyPath>
+                    </Collection>
+                </Annotation>
             </Annotations>
             <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_CharName_VHType/clint">
                 <Annotation Term="UI.Hidden"/>
@@ -35,8 +40,23 @@
             <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_CharName_VHType/imerk">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_CharName_VHType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>atnam</PropertyPath>
+                        <PropertyPath>class</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_MatChar_ClassType/clint">
                 <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_MatChar_ClassType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>class</PropertyPath>
+                    </Collection>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>

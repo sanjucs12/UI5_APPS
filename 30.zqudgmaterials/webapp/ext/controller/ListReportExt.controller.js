@@ -721,19 +721,21 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
     },
     onAddTableRow: function () {
         var oTable = this.getView().byId("idTable");
-        var oNewItem = new sap.m.ColumnListItem({
+        var oNewColumnListItem = new sap.m.ColumnListItem({
             cells: [
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
-                    value: "{class}"
+                    value: "{class}",
+                
                 }),
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
-                    value: "{atnam}"
+                    value: "{atnam}",               
                 }),
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
-                    value: "{atwrtValue}"
+                    value: "{atwrtValue}",
+             
                 }),
                 new sap.m.Button({
                     type: "Transparent",
@@ -742,7 +744,13 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                 })
             ]
         });
-        oTable.addItem(oNewItem);
+        let oModel = this.getOwnerComponent().getModel("SearchMaterialByChar");
+        let oContext = oModel.createEntry("/ZC_QU_DG_MatClassUnion", {});
+        // oNewItem.getCells().forEach((cell)=>{
+        //     cell.setBindingContext(oContext)
+        // })
+        //oNewColumnListItem.setBindingContext(oContext);
+        oTable.addItem(oNewColumnListItem);
     },
     onDialogSearch: function (oEvent) {
         let oCustomSearchDialog = this.getView().byId("idCustomSearch")

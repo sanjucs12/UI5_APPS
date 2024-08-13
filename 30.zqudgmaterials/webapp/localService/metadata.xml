@@ -27,9 +27,10 @@
                 </Key>
                 <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="15"/>
                 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="class" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number" sap:value-list="standard"/>
+                <Property Name="class" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number"/>
                 <Property Name="atnam" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Characteristic Name" sap:value-list="standard"/>
                 <Property Name="atwrtValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Characteristic Value"/>
+                <NavigationProperty Name="to_classname" Relationship="ZC_QU_DG_MATCLASSUNION_CDS.assoc_05A0F71924DF51498B82512A64BF52DD" FromRole="FromRole_assoc_05A0F71924DF51498B82512A64BF52DD" ToRole="ToRole_assoc_05A0F71924DF51498B82512A64BF52DD"/>
             </EntityType>
             <EntityType Name="ZI_QU_DG_CharName_VHType" sap:label="Value help for characteristics name" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -45,7 +46,7 @@
                 <Property Name="imerk" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="NonNegative" sap:label="Internal char no." sap:quickinfo="Internal characteristic"/>
                 <Property Name="atnam" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Characteristic Name"/>
             </EntityType>
-            <EntityType Name="ZI_QU_DG_MatChar_ClassType" sap:label="Material characteristics class" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="ZI_QU_DG_MatChar_ClassType" sap:label="Material characteristics class" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="clint"/>
                 </Key>
@@ -53,34 +54,19 @@
                 <Property Name="klart" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Class Type"/>
                 <Property Name="class" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number"/>
             </EntityType>
+            <Association Name="assoc_05A0F71924DF51498B82512A64BF52DD" sap:content-version="1">
+                <End Type="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType" Multiplicity="1" Role="FromRole_assoc_05A0F71924DF51498B82512A64BF52DD"/>
+                <End Type="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_MatChar_ClassType" Multiplicity="*" Role="ToRole_assoc_05A0F71924DF51498B82512A64BF52DD"/>
+            </Association>
             <EntityContainer Name="ZC_QU_DG_MATCLASSUNION_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="ZC_QU_DG_MatClassUnion" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_QU_DG_CharName_VH" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_CharName_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_QU_DG_MatChar_Class" EntityType="ZC_QU_DG_MATCLASSUNION_CDS.ZI_QU_DG_MatChar_ClassType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_05A0F71924DF51498B82512A64BF52DD" Association="ZC_QU_DG_MATCLASSUNION_CDS.assoc_05A0F71924DF51498B82512A64BF52DD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_QU_DG_MatClassUnion" Role="FromRole_assoc_05A0F71924DF51498B82512A64BF52DD"/>
+                    <End EntitySet="ZI_QU_DG_MatChar_Class" Role="ToRole_assoc_05A0F71924DF51498B82512A64BF52DD"/>
+                </AssociationSet>
             </EntityContainer>
-            <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType/class" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Material characteristics class"/>
-                        <PropertyValue Property="CollectionPath" String="ZI_QU_DG_MatChar_Class"/>
-                        <PropertyValue Property="SearchSupported" Bool="true"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="class"/>
-                                    <PropertyValue Property="ValueListProperty" String="class"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="clint"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="klart"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
             <Annotations Target="ZC_QU_DG_MATCLASSUNION_CDS.ZC_QU_DG_MatClassUnionType/atnam" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -90,14 +76,15 @@
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="class"/>
+                                    <PropertyValue Property="ValueListProperty" String="class"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="atnam"/>
                                     <PropertyValue Property="ValueListProperty" String="atnam"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="clint"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="class"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="klart"/>
