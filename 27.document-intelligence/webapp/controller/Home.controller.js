@@ -56,7 +56,16 @@ sap.ui.define([
                 if (oBindingContext && this.oUploadPluginInstance) {
                     this.oUploadPluginInstance.openFilePreview(oBindingContext);
                 }
-                //window.open(blobUrl)               
+                // window.open(blobUrl)
+
+                // var pdfViewer = new sap.m.PDFViewer({
+                //     source:"https://agpcgpdevqa.blob.core.windows.net/qam-files/testingDoc%40gmail.com_FormPreview%20(14).pdf",
+                //     title: "My PDF Document",
+                //     displayType:"Embedded",
+                //     showDownloadButton: true
+                // });
+                // this.getView().addDependent(pdfViewer);
+                // pdfViewer.open();
             },
 
             ////_________________Uploading functions : Fragment Functions__________________
@@ -335,7 +344,7 @@ sap.ui.define([
                             this.getView().setBusy(false)
                             console.log(analysisResult);
                             //sap.m.MessageBox.show(analysisResult.analyzeResult.content)
-                            this._ShowAnalysisResult(analysisResult.analyzeResult.documents[0].fields)
+                            this._ShowAnalysisResult(analysisResult.analyzeResult.documents[0].fields, sDocBase64Url)
                         } else {
                             this.getView().setBusy(false)
                             console.error('Analysis failed:', analysisResult);
@@ -355,7 +364,7 @@ sap.ui.define([
                 //this._ShowAnalysisResult()
             },
 
-            _ShowAnalysisResult: function (data) {
+            _ShowAnalysisResult: function (data, sDocBase64Url) {
                 //let oData = this.getOwnerComponent().getModel('Documents').getData().fields
                 let oData = data
                 const aTransformedData = Object.keys(oData).map(key => ({
@@ -363,7 +372,10 @@ sap.ui.define([
                     value: oData[key].content
                 }));
                 debugger;
-                const oModel = new sap.ui.model.json.JSONModel({items:aTransformedData});
+                const oModel = new sap.ui.model.json.JSONModel({
+                    items: aTransformedData,
+                    url: Converter._Base64ToBlob(sDocBase64Url)
+                });
                 if (!this._InvoiceFragment) {
                     sap.ui.core.Fragment.load({
                         name: "documentintelligence.fragment.Invoice",
@@ -381,6 +393,82 @@ sap.ui.define([
                     this._InvoiceFragment.open();
                 }
 
+            },
+
+            _fetchDocumentType: async function (sDocUrl, sModelId) {
+                const endpoint = "https://aidg-doc-intl.cognitiveservices.azure.com";
+                const subscriptionKey = "b0c89defb05b445ab391921a5d94b115";
+                const modelId = sModelId;
+                const apiVersion = "2023-07-31";
+                const documentUrl = "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/rest-api/invoice.pdf"
+                const sDocBase64Url = sDocUrl
+
+                const url = `${endpoint}/formrecognizer/documentModels/${modelId}:analyze?api-version=${apiVersion}`;
+
+                debugger;
+                this.getView().setBusy(true)
+                try {
+                    const postReqResponse = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Ocp-Apim-Subscription-Key": subscriptionKey
+                        },
+                        body: JSON.stringify({
+                            "base64Source": sDocBase64Url
+                        })
+                    });
+
+                    if (postReqResponse.ok) {
+                        const getResponseUrl = postReqResponse.headers.get('Operation-Location');
+
+                        let analysisResult;
+                        let status;
+
+                        do {
+                            const getReqResponse = await fetch(getResponseUrl, {
+                                headers: {
+                                    "Ocp-Apim-Subscription-Key": subscriptionKey
+                                }
+                            });
+
+                            if (!getReqResponse.ok) {
+                                const errorText = await getReqResponse.text();
+                                console.error('Error:', errorText);
+                                this.getView().setBusy(false)
+                                return;
+                            }
+
+                            analysisResult = await getReqResponse.json();
+                            status = analysisResult.status;
+
+                            if (status !== "succeeded" && status !== "failed") {
+                                await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds before polling again
+                            }
+                        } while (status !== "succeeded" && status !== "failed");
+
+                        if (status === "succeeded") {
+                            this.getView().setBusy(false)
+                            console.log(analysisResult);
+                            //sap.m.MessageBox.show(analysisResult.analyzeResult.content)
+                            this._ShowAnalysisResult(analysisResult.analyzeResult.documents[0].fields, sDocBase64Url)
+                        } else {
+                            this.getView().setBusy(false)
+                            console.error('Analysis failed:', analysisResult);
+                        }
+
+
+                    } else {
+                        const errorText = await response.text();
+                        console.error('Error:', errorText);
+                    }
+                } catch (error) {
+                    debugger
+                    this.getView().setBusy(false)
+                    console.error('Error:', error.message);
+
+                }
+                //this._ShowAnalysisResult()
             },
 
         });

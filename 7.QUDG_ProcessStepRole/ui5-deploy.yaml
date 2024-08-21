@@ -14,12 +14,12 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: Airdit_HANA
+          destination: Airdit_HANA_R
           url: http://103.194.234.38:8010
         app:
-          name: ZTESTSANJU
-          description: Tesing app by sanju
-          package: ZTEST
-          transport: S4HK900494
+          name: ZQUDGWFCONF
+          description: QUDG Workflow Configuration
+          package: ZQU-DG-FND
+          transport: S4HK901442
         exclude:
           - /test/

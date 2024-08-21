@@ -1,60 +1,9 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="metadata.controller.Dummy"
     xmlns:core="sap.ui.core"
-    xmlns:m="sap.m"
-    xmlns="sap.uxap"
-    xmlns:layout="sap.ui.layout"
-    xmlns:smartForm="sap.ui.comp.smartform"
-    xmlns:smartField="sap.ui.comp.smartfield"
-    xmlns:smartTable='sap.ui.comp.smarttable'
-    xmlns:ng="sap.suite.ui.commons.networkgraph"
-    xmlns:ngl="sap.suite.ui.commons.networkgraph.layout">
-    <layout:FixFlex vertical="true">
-        <layout:fixContent>
-            <m:Toolbar>
-                <m:ToolbarSpacer/>
-                <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
-                <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
-                <m:ToolbarSpacer/>
-                <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
-            </m:Toolbar>
-        </layout:fixContent>
-        <layout:flexContent>
-            <m:FlexBox fitContainer="true" renderType="Bare" wrap="Wrap" id="graphWrapper">
-                <m:items>
-                    <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto" visible="true">
-                        <ng:layoutAlgorithm>
-                            <ngl:LayeredLayout mergeEdges="true" nodePlacement="Simple" nodeSpacing="40"/>
-                        </ng:layoutAlgorithm>
-                        <ng:nodes>
-                            <ng:Node icon="sap-icon://approvals" key="{StepId}" description="{StepType}" title="{StepName}" width="90" descriptionLineSize="0" shape="Box" press="handleNodeClick">
-                                <ng:attributes>
-                                    <ng:ElementAttribute label="Step Type" value="{StepType}"/>
-                                    <ng:ElementAttribute label="Sequence" value="{StepSequence}"/>
-                                </ng:attributes>
-                            </ng:Node>
-                        </ng:nodes>
-                        <ng:lines>
-                            <ng:Line from="{from}" to="{to}" press="linePress"/>
-                        </ng:lines>
-                    </ng:Graph>
-
-                    <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType" enableAutoBinding="true" visible="true">
-                        <smartTable:customToolbar>
-                            <m:OverflowToolbar design="Transparent">
-                                <m:ToolbarSpacer/>
-                                <!-- <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button> -->
-                                <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
-                                <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                            </m:OverflowToolbar>
-                        </smartTable:customToolbar>
-                        <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
-                            <m:items>
-                                <m:ColumnListItem vAlign="Middle" type="Active" press="handleStepRowClick"></m:ColumnListItem>
-                            </m:items>
-                        </m:Table>
-                    </smartTable:SmartTable>
-                </m:items>
-            </m:FlexBox>
-        </layout:flexContent>
-    </layout:FixFlex>
+    xmlns="sap.m">
+    <Page id="page" title="new page">
+        <content>
+            <core:ComponentContainer height="100%" name="workflowitem"/>
+        </content>
+    </Page>
 </mvc:View>

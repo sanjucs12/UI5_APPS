@@ -123,6 +123,20 @@
                     "target": [
                         "TargetView2"
                     ]
+                },
+                {
+                    "name": "RuleDetails",
+                    "pattern": "RuleDetails/{rule}",
+                    "target": [
+                        "TargetRuleDetails"
+                    ]
+                },
+                {
+                    "name": "FormulaDetails",
+                    "pattern": "FormulaDetails/{rule}/{formula}",
+                    "target": [
+                        "TargetFormulaDetails"
+                    ]
                 }
             ],
             "targets": {
@@ -131,14 +145,32 @@
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "View1",
-                    "viewName": "View1"
+                    "viewName": "View1",
+                    "viewLevel": 0
                 },
                 "TargetView2": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "view2",
-                    "viewName": "View2"
+                    "viewName": "View2",
+                    "viewLevel": 1
+                },
+                "TargetRuleDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "RuleDetailsPage",
+                    "viewName": "RuleDetailsPage",
+                    "viewLevel": 2
+                },
+                "TargetFormulaDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FormulaDetailsPage",
+                    "viewName": "FormulaDetailsPage",
+                    "viewLevel": 3
                 }
             }
         },

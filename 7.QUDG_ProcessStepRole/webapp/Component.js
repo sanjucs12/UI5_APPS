@@ -29,6 +29,8 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                //jQuery.sap.registerModulePath("workflowitem", "/sap/bc/ui5_ui5/sap/zqudg/workflowitem")
             }
         });
     }

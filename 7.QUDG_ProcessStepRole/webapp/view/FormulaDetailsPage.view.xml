@@ -1,0 +1,93 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" controllerName="metadata.controller.FormulaDetails"
+    xmlns:objectPage="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:f="sap.ui.layout.form">
+
+    <objectPage:ObjectPageLayout showTitleInHeaderContent="false" upperCaseAnchorBar="false">
+        <objectPage:headerTitle>
+            <objectPage:ObjectPageDynamicHeaderTitle>
+                <objectPage:expandedHeading>
+                    <HBox>
+                        <Title wrapping="true" text="{FormulaDetails>/FormulaId}"/>
+                    </HBox>
+                </objectPage:expandedHeading>
+                <objectPage:snappedHeading>
+                    <FlexBox fitContainer="true" alignItems="Center">
+                        <Avatar class="sapUiSmallMarginEnd" src="sap-icon://product" displaySize="S"/>
+                        <Title text="{FormulaDetails>/FormulaId}" wrapping="true"/>
+                    </FlexBox>
+                </objectPage:snappedHeading>
+                <!-- <objectPage:snappedContent>
+                    <Text text="{RuleDetails>/RuleName}"/>
+                </objectPage:snappedContent> -->
+                <objectPage:actions>
+                    <Button text="Edit" type="Emphasized" press="onPressEdit"/>
+                    <!-- <Button text="Delete" press="onPressDelete"/> -->
+                </objectPage:actions>
+            </objectPage:ObjectPageDynamicHeaderTitle>
+        </objectPage:headerTitle>
+        <objectPage:headerContent>
+            <layout:HorizontalLayout>
+                <Avatar class="sapUiSmallMarginEnd" src="sap-icon://product" displaySize="M"/>
+                <layout:VerticalLayout width="100%">
+                    <f:SimpleForm layout="ResponsiveGridLayout" labelSpanM="8" labelSpanS="8" singleContainerFullSize="false">
+                        <f:content>
+                            <Label text="Formula"/>
+                            <Text text="{FormulaDetails>/FormulaId}"></Text>
+                            <Label text="Message"/>
+                            <Text text="{FormulaDetails>/MessageText}"></Text>
+                        </f:content>
+                    </f:SimpleForm>
+                </layout:VerticalLayout>
+            </layout:HorizontalLayout>
+        </objectPage:headerContent>
+        <objectPage:sections>
+
+            <objectPage:ObjectPageSection title="Formula Details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout width="100%">
+                                <f:SimpleForm layout="ResponsiveGridLayout" singleContainerFullSize="true">
+                                    <f:content>
+                                        <Label text="Formula"/>
+                                        <Text text="{FormulaDetails>/FormulaId}"></Text>
+                                        <Label text="Message"/>
+                                        <Text text="{FormulaDetails>/MessageText}"></Text>
+                                    </f:content>
+                                </f:SimpleForm>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+            <objectPage:ObjectPageSection title="Field details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout width="100%">
+                                <smartTable:SmartTable id="idSmartTable_Fields" entitySet="ZC_QU_DG_FIELDS_DATA" showRowCount="true" header="field details" tableType="ResponsiveTable" initiallyVisibleFields="FormulaId,FieldName,Conditions,value" enableAutoBinding="true" beforeRebindTable="onBeforeRebindFieldsTable">
+                                    <smartTable:customToolbar>
+                                        <OverflowToolbar design="Transparent">
+                                            <ToolbarSpacer/>
+                                            <Button text="Create" press="onPress_CreateFieldBtn" icon="sap-icon://create"></Button>
+                                            <Button text="Delete" press="onPress_DeleteFieldBtn" icon="sap-icon://delete"></Button>
+                                        </OverflowToolbar>
+                                    </smartTable:customToolbar>
+                                    <Table id="idTable_Fields" mode="SingleSelectLeft">
+                                        <items>
+                                            <ColumnListItem vAlign="Middle" type="Inactive" press=""></ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+        </objectPage:sections>
+    </objectPage:ObjectPageLayout>
+</mvc:View>

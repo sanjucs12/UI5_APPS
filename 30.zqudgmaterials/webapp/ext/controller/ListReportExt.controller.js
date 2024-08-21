@@ -31,9 +31,15 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                 })
                 let oFilter = new sap.ui.model.Filter({
                     filters: aFilters,
-                    and: true
+                    and: false
                 })
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
+            } else if (this.Requests && this.Requests.length === 0) {
+                let oFilter = new sap.ui.model.Filter({
+                    filters: [new sap.ui.model.Filter("reqid", "EQ", 'none')],
+                    and: true
+                })
+                oEvent.getParameter("bindingParams").filters.push(oFilter)
             }
         }
         if (sTableId === sTable2) {
@@ -49,16 +55,21 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
 
             //PASSING CUSTOM MATERIAL FILTER
             if (this.Materials && this.Materials.length > 0) {
-                debugger;
                 let aFilters = []
                 this.Materials.map((item) => {
                     aFilters.push(new sap.ui.model.Filter("matnr", "EQ", item))
                 })
                 let oFilter = new sap.ui.model.Filter({
                     filters: aFilters,
-                    and: true
+                    and: false
                 })
                 oEvent.getParameter("bindingParams").filters.push(oFilter);
+            } else if (this.Materials && this.Materials.length === 0) {
+                let oFilter = new sap.ui.model.Filter({
+                    filters: [new sap.ui.model.Filter("matnr", "EQ", 'none')],
+                    and: true
+                })
+                oEvent.getParameter("bindingParams").filters.push(oFilter)
             }
         }
     },
@@ -726,16 +737,16 @@ sap.ui.controller("zqudgmaterials.zqudgmaterials.ext.controller.ListReportExt", 
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
                     value: "{class}",
-                
+
                 }),
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
-                    value: "{atnam}",               
+                    value: "{atnam}",
                 }),
                 new sap.ui.comp.smartfield.SmartField({
                     entitySet: "ZC_QU_DG_MatClassUnion",
                     value: "{atwrtValue}",
-             
+
                 }),
                 new sap.m.Button({
                     type: "Transparent",

@@ -24,6 +24,20 @@ sap.ui.define(
                 return category ? category.categoryText : null;
             },
 
+            _Base64ToBlob: function(base64){
+                var byteCharacters = atob(base64);
+                var byteNumbers = new Array(byteCharacters.length);
+                for (var i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                var byteArray = new Uint8Array(byteNumbers);
+                var blob = new Blob([byteArray], { type: "application/pdf" });
+                
+                // Create a URL for the blob
+                var url = URL.createObjectURL(blob);
+                return url;
+            }
+
         }
     }
 );

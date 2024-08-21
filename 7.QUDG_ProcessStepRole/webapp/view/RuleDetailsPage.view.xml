@@ -1,0 +1,98 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" controllerName="metadata.controller.RuleDetails"
+    xmlns:objectPage="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:f="sap.ui.layout.form">
+
+    <objectPage:ObjectPageLayout showTitleInHeaderContent="false" upperCaseAnchorBar="false">
+        <objectPage:headerTitle>
+            <objectPage:ObjectPageDynamicHeaderTitle>
+                <objectPage:expandedHeading>
+                    <HBox>
+                        <Title wrapping="true" text="{RuleDetails>/RuleName}"/>
+                    </HBox>
+                </objectPage:expandedHeading>
+                <objectPage:snappedHeading>
+                    <FlexBox fitContainer="true" alignItems="Center">
+                        <Avatar class="sapUiSmallMarginEnd" src="sap-icon://product" displaySize="S"/>
+                        <Title text="{RuleDetails>/RuleName}" wrapping="true"/>
+                    </FlexBox>
+                </objectPage:snappedHeading>
+                <!-- <objectPage:snappedContent>
+                    <Text text="{RuleDetails>/RuleName}"/>
+                </objectPage:snappedContent> -->
+                <objectPage:actions>
+                    <Button text="Edit" type="Emphasized" press="onPressEdit"/>
+                    <!-- <Button text="Delete" press="onPressDelete"/> -->
+                </objectPage:actions>
+            </objectPage:ObjectPageDynamicHeaderTitle>
+        </objectPage:headerTitle>
+        <objectPage:headerContent>
+            <layout:HorizontalLayout>
+                <Avatar class="sapUiSmallMarginEnd" src="sap-icon://product" displaySize="M"/>
+                <layout:VerticalLayout width="100%">
+                    <f:SimpleForm layout="ResponsiveGridLayout" labelSpanM="8" labelSpanS="8" singleContainerFullSize="false">
+                        <f:content>
+                            <Label text="Rule Id"/>
+                            <Text text="{RuleDetails>/RuleName}"></Text>
+                            <Label text="Rule Description"/>
+                            <Text text="{RuleDetails>/RuleText}"></Text>
+                            <Label text="Master"/>
+                            <Text text="{RuleDetails>/master}"></Text>
+                        </f:content>
+                    </f:SimpleForm>
+                </layout:VerticalLayout>
+            </layout:HorizontalLayout>
+        </objectPage:headerContent>
+        <objectPage:sections>
+
+            <objectPage:ObjectPageSection title="Rule Details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout width="100%">
+                                <f:SimpleForm layout="ResponsiveGridLayout" singleContainerFullSize="true">
+                                    <f:content>
+                                        <Label text="Rule Id"/>
+                                        <Text text="{RuleDetails>/RuleName}"></Text>
+                                        <Label text="Rule Description"/>
+                                        <Text text="{RuleDetails>/RuleText}"></Text>
+                                        <Label text="Master"/>
+                                        <Text text="{RuleDetails>/master}"></Text>
+                                    </f:content>
+                                </f:SimpleForm>
+
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+            <objectPage:ObjectPageSection title="Formula details" titleUppercase="false">
+                <objectPage:subSections>
+                    <objectPage:ObjectPageSubSection >
+                        <objectPage:blocks>
+                            <layout:VerticalLayout width="100%">
+                                <smartTable:SmartTable id="idSmartTable_Formulas" entitySet="ZC_QU_DG_FORMULA_DATA" showRowCount="true" header="Formula details" tableType="ResponsiveTable" initiallyVisibleFields="FormulaId,MessageText" enableAutoBinding="true" beforeRebindTable="onBeforeRebindFormulaTable">
+                                    <smartTable:customToolbar>
+                                        <OverflowToolbar design="Transparent">
+                                            <ToolbarSpacer/>
+                                            <Button text="Create" press="onPress_CreateFormulaBtn" icon="sap-icon://create"></Button>
+                                            <Button text="Delete" press="onPress_DeleteFormulaBtn" icon="sap-icon://delete"></Button>
+                                        </OverflowToolbar>
+                                    </smartTable:customToolbar>
+                                    <Table id="idTable_Formulas" mode="SingleSelectLeft">
+                                        <items>
+                                            <ColumnListItem vAlign="Middle" type="Navigation" press="handleNavToFormulaDetailsPage"></ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </smartTable:SmartTable>
+                            </layout:VerticalLayout>
+                        </objectPage:blocks>
+                    </objectPage:ObjectPageSubSection>
+                </objectPage:subSections>
+            </objectPage:ObjectPageSection>
+        </objectPage:sections>
+    </objectPage:ObjectPageLayout>
+</mvc:View>

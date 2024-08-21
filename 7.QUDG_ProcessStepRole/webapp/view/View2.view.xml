@@ -199,6 +199,30 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
+
+            <!--_________________________SECTION 05 : SPLITTER(ROLES AND USERS TABLES)_____________________________-->
+            <ObjectPageSection titleUppercase="false" title="Rules">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <smartTable:SmartTable id="idSmartTable_Rules" entitySet="ZC_QU_DG_RULE_FORMULA_FLDS" showRowCount="true" header="Rules" tableType="ResponsiveTable" initiallyVisibleFields="RuleName,RuleText,master" enableAutoBinding="true">
+                                <smartTable:customToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:ToolbarSpacer/>
+                                        <m:Button text="Create" press="onPressRule_createBtn" icon="sap-icon://create"></m:Button>
+                                        <m:Button text="Delete" press="onPressRule_deleteBtn" icon="sap-icon://delete"></m:Button>
+                                    </m:OverflowToolbar>
+                                </smartTable:customToolbar>
+                                <m:Table id="idTable_Rules" mode="SingleSelectLeft" selectionChange="">
+                                    <m:items>
+                                        <m:ColumnListItem vAlign="Middle" type="Navigation" press="handleNavToRuledetailsPage"></m:ColumnListItem>
+                                    </m:items>
+                                </m:Table>
+                            </smartTable:SmartTable>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
         </sections>
     </ObjectPageLayout>
 </mvc:View>

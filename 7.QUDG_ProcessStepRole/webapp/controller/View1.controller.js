@@ -70,7 +70,6 @@ sap.ui.define([
                 } else {
                     this.oCreateProcessDialog.open();
                 }
-
             },
 
             handleCreateProcessDialog_CancelButton: function () {
@@ -88,7 +87,7 @@ sap.ui.define([
                 var oSmartField_ProcessName = this.getView().byId("smartField_newProcessName");
                 var oSmartField_Action = this.getView().byId("smartField_newAction");
                 var oSmartField_Master = this.getView().byId("smartField_newMaster");
-                let aSmartFields = [oSmartField_ProcessName, oSmartField_Action,oSmartField_Master]
+                let aSmartFields = [oSmartField_ProcessName, oSmartField_Action, oSmartField_Master]
 
                 aSmartFields.forEach((field) => {
                     if (!field.getValue()) {
@@ -97,7 +96,7 @@ sap.ui.define([
                     }
                 })
 
-                var bFormValidate = aSmartFields.every((field)=>{
+                var bFormValidate = aSmartFields.every((field) => {
                     return field.getValue()
                 })
 
@@ -108,7 +107,7 @@ sap.ui.define([
                         Action: sAction,
                         Master: sMaster
                     };
-                    
+
                     //console.log(oNewProcess);
 
                     // Creating new Process in the Model
@@ -131,7 +130,7 @@ sap.ui.define([
             handleInputChange: function (oEvent) {
                 //console.log('changed')
                 var sValue = oEvent.getParameters().value;
-                if(sValue.length){
+                if (sValue.length) {
                     oEvent.getSource().setValueState('None')
                 }
             },
@@ -150,6 +149,22 @@ sap.ui.define([
                 oRouter.navTo('RouteView2', {
                     'processPath': encodeURIComponent(sPath)
                 })
+            },
+            onNavigateToAnotherApp: function (oEvent) {
+                debugger;
+                // var oRouter = this.getOwnerComponent().getRouter();
+                // oRouter.navTo('RouteViewDummy')
+
+                var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+                oCrossAppNavigator.toExternal({
+                    target: {
+                        semanticObject: "YourListReportObject",
+                        action: "display"
+                    },
+                    params: {
+                        "parameterName": "parameterValue"
+                    }
+                });
             }
         });
     });

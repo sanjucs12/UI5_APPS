@@ -158,7 +158,20 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            
+
+            <Annotations Target="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALSANDREQUESTS_SRV_Entities/ZC_QU_DG_MaterialsAndRequests">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="FTEHide" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="FTEHide" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

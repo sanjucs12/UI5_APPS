@@ -20,6 +20,6 @@ builder:
           name: ZQUDGMATERIALS
           description: Material Request With Draft
           package: zqu-dg-matui
-          transport: S4HK901060
+          transport: S4HK901442
         exclude:
           - /test/

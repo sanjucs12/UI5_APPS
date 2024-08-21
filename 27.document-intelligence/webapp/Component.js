@@ -29,6 +29,8 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                //jQuery.sap.includeScript("https://unpkg.com/xlsx/dist/xlsx.full.min.js");
             }
         });
     }

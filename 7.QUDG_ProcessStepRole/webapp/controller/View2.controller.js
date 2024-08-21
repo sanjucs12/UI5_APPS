@@ -43,6 +43,11 @@ sap.ui.define([
                 oSmartTable_Steps.rebindTable();
                 oSmartTable_RejectionSteps.rebindTable();
 
+
+                setTimeout(() => {
+                    this.getView().byId('idSmartTable_Rules').rebindTable()
+                }, 1000)
+
                 //IF JSONModel_SelectedStepData and JSONModel_SelectedRoleData is already present, reset the values to empty string and rebind the related tables to empty values
 
                 var oModel_Step = this.getView().getModel("JSONModel_SelectedStepData")
@@ -745,7 +750,7 @@ sap.ui.define([
                 // oEvent.getParameter("bindingParams").filters.push(oFilter);      
                 //ADDING TWO FILTERS i.e., ProcessId and StepId
                 var oModel = this.getView().getModel("JSONModel_SelectedStepData")
-                if(!oModel){
+                if (!oModel) {
                     return;
                 }
                 var sStepId = oModel.getData().MainStepUuid;
@@ -863,14 +868,14 @@ sap.ui.define([
             handle_assaignUserToStepDialog_cancelButton: function () {
                 this._AssignUserFragment.close();
             },
-            handle_assaignUserToStepDialog_assignButton: function(oEvent){
+            handle_assaignUserToStepDialog_assignButton: function (oEvent) {
                 debugger
                 var oModel = this.getView().getModel();
                 var sPath = this.createRolePath;
                 var sUserName = this.getView().byId("smartField_assaignUserName").getValue();
                 var sStepName = this.getView().byId("textField_assaignUser_StepName").getText();
                 var sStepSequence = this.getView().byId("textField_assaignUser_StepSequence").getText();
-                
+
 
                 //Create a new entry
                 var oNewUser = {
@@ -980,5 +985,102 @@ sap.ui.define([
                 }
             },
 
+
+            //>>>>>>>>_______________________RULE CONFIGURATION_______________________________<<<<<<<<<<<
+            onPressRule_createBtn: function (oEvent) {
+                if (!this._createRuleFragment) {
+                    this.loadFragment({
+                        name: "metadata.fragments.createRule"
+                    })
+                        .then(function (oDialog) {
+                            this._createRuleFragment = oDialog;
+                            let oSmartForm = this.byId('idSmartFormCreateRule')
+                            let oContext = this.getOwnerComponent().getModel().createEntry('/ZC_QU_DG_RULE_FORMULA_FLDS', {})
+                            oSmartForm.setBindingContext(oContext)
+                            oDialog.open();
+                        }.bind(this));
+                } else {
+                    this._createRuleFragment.open();
+                }
+
+            },
+            handle_fCreateRule: function (oEvent) {
+                let oSmartForm = this.byId('idSmartFormCreateRule')
+                let oPayload = {
+                    RuleName: oSmartForm.getSmartFields()[0].getValue(),
+                    RuleText: oSmartForm.getSmartFields()[1].getValue(),
+                    master: oSmartForm.getSmartFields()[2].getValue()
+                }
+
+                let oModel = this.getOwnerComponent().getModel()
+                this._createRuleFragment.setBusy(true)
+                oModel.create('/ZC_QU_DG_RULE_FORMULA_FLDS', oPayload, {
+                    success: function (oData, oRes) {
+                        this._createRuleFragment.setBusy(false)
+                        let sMessage = JSON.parse(oRes.headers["sap-message"]).message
+                        sap.m.MessageBox.success(sMessage);
+                        this._createRuleFragment.close()
+                        this._createRuleFragment.destroy()
+                        this._createRuleFragment = null
+                    }.bind(this),
+                    error: function (oErr) {
+                        this._createRuleFragment.setBusy(false)
+                        sap.m.MessageBox.error('Something went wrong');
+                    },
+                })
+            },
+            handle_fCancelRule: function (oEvent) {
+                this._createRuleFragment.close()
+                this._createRuleFragment.destroy()
+                this._createRuleFragment = null
+            },
+            onPressRule_deleteBtn: function (oEvent) {
+                let that = this
+                let oModel = this.getOwnerComponent().getModel();
+                let oTable = this.getView().byId('idTable_Rules');
+
+                let aSelectedContexts = oTable.getSelectedContexts(); // Get selected items
+
+                if (aSelectedContexts.length === 0) {
+                    MessageBox.error("No Items Selected");
+                    return;
+                }
+
+                // Confirm deletion with the user
+                MessageBox.confirm("Are you sure you want to delete the selected Rule?", {
+                    icon: MessageBox.Icon.WARNING,
+                    actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                    emphasizedAction: MessageBox.Action.YES,
+                    //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
+                    onClose: function (oAction) {
+                        if (oAction === MessageBox.Action.YES) {
+                            aSelectedContexts.forEach(function (item) {
+                                let sPath = item.getPath()
+                                that.getView().setBusy(true)
+                                oModel.remove(sPath, {
+                                    success: function (oData, oRes) {
+                                        that.getView().setBusy(false)
+                                        let sMessage = JSON.parse(oRes.headers["sap-message"]).message
+                                        sap.m.MessageBox.success(sMessage);
+                                    },
+                                    error: function (oError) {
+                                        that.getView().setBusy(false)
+                                        sap.m.MessageBox.error('Something went wrong');
+                                    }
+                                });
+                            });
+
+                        }
+                    }
+                });
+            },
+            handleNavToRuledetailsPage: function (oEvent) {
+                var sPath = oEvent.getSource().getBindingContext().getPath()
+                let sRule = oEvent.getSource().getBindingContext().getObject().RuleName
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo('RuleDetails', {
+                    rule: sRule
+                })
+            },
         });
     });
