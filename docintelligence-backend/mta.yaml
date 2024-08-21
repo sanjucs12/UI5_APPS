@@ -1,0 +1,172 @@
+_schema-version: 3.3.0
+ID: docintelligence
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: docintelligence-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      readiness-health-check-type: http
+      readiness-health-check-http-endpoint: /health
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: docintelligence-db
+      - name: docintelligence-auth
+      - name: docintelligence-destination
+
+  - name: docintelligence-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: docintelligence-db
+
+  - name: docintelligence
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: docintelligence-auth
+      - name: docintelligence-html5-runtime
+      - name: docintelligence-portal
+      - name: docintelligence-destination
+
+  - name: docintelligence-app-deployer
+    type: com.sap.application.content
+    path: gen
+    requires:
+      - name: docintelligence-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: app/
+      requires:
+
+
+  - name: docintelligence-portal-deployer
+    type: com.sap.application.content
+    path: app/portal
+    requires:
+      - name: docintelligence-portal
+        parameters:
+          content-target: true
+          service-key:
+            name: docintelligence-portal-key
+            config:
+              content-endpoint: developer
+      - name: docintelligence-auth
+      - name: docintelligence-html5-repo-host
+      - name: docintelligence-app-deployer
+    deployed-after:
+      - docintelligence-app-deployer
+  - name: docintelligence-destinations
+    type: com.sap.application.content
+    requires:
+      - name: docintelligence-auth
+        parameters:
+          service-key:
+            name: docintelligence-auth-key
+      - name: docintelligence-html5-repo-host
+        parameters:
+          service-key:
+            name: docintelligence-html5-repo-host-key
+      - name: srv-api
+      - name: docintelligence-destination
+        parameters:
+          content-target: true
+    build-parameters:
+      no-source: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: docintelligence-html5-repository
+              ServiceInstanceName: docintelligence-html5-repo-host
+              ServiceKeyName: docintelligence-html5-repo-host-key
+              sap.cloud.service: docintelligence.service
+            - Name: docintelligence-auth
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: docintelligence-auth
+              ServiceKeyName: docintelligence-auth-key
+              sap.cloud.service: docintelligence.service
+resources:
+  - name: docintelligence-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: docintelligence-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: docintelligence-${org}-${space}
+        tenant-mode: dedicated
+
+  - name: docintelligence-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+  - name: docintelligence-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+  - name: docintelligence-portal
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: portal
+      service-plan: standard
+  - name: docintelligence-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: docintelligence-srv-api
+                URL: ~{srv-api/srv-url}
+                Authentication: OAuth2UserTokenExchange
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
