@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:footerbar="sap.ushell.ui.footerbar"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns="sap.m"
+    xmlns:commons="sap.suite.ui.commons">
+    	<SelectDialog
+		id="selectDialog"
+		title="Data"
+		items="{/ZC_QU_DG_MaterialsAndRequestsReject}"
+		confirm=".onValueHelpClose"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			title="{reqid}"
+			description="{WiId}" />
+	</SelectDialog>
+
+</core:FragmentDefinition>

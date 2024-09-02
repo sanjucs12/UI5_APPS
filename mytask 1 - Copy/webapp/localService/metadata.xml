@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZQU_DG_WF_GETLOG_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="WorkflowLog" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WfId"/>
+                </Key>
+                <Property Name="WfId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Workflow ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Work Item ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" Nullable="false" MaxLength="90" sap:unicode="false" sap:label="Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiText" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:label="Work item text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiStat" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiAed" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Done On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiAagent" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Agent" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sequence" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Sequence" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Preceeding_seq" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Preceeding Seq" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Icon" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Icon Data Element" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZQU_DG_WF_GETLOG_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="WorkflowLogSet" EntityType="ZQU_DG_WF_GETLOG_SRV_01.WorkflowLog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZQU_DG_WF_GETLOG_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZQU_DG_WF_GETLOG_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

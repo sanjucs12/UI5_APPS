@@ -44,9 +44,9 @@ sap.ui.define([
                 oSmartTable_RejectionSteps.rebindTable();
 
 
-                setTimeout(() => {
-                    this.getView().byId('idSmartTable_Rules').rebindTable()
-                }, 1000)
+                // setTimeout(() => {
+                //     this.getView().byId('idSmartTable_Rules').rebindTable()
+                // }, 1000)
 
                 //IF JSONModel_SelectedStepData and JSONModel_SelectedRoleData is already present, reset the values to empty string and rebind the related tables to empty values
 
@@ -88,18 +88,6 @@ sap.ui.define([
                 var sPath = this.createGraphPath;
                 //console.log(sPath)
                 let ssPath = this.processPath + "/to_DyProcesstostep"
-                // oModel.read(sPath, {
-                //     success: function (response) {
-                //         //this._createNetworkGraph(response.results);
-                //         var oDataModel = new sap.ui.model.json.JSONModel(response.results);
-                //         // console.log(oDataModel)
-                //         this.getView().setModel(oDataModel, "JSON_STEPSDATA")
-                //     }.bind(this),
-                //     error: function (oError) {
-                //         // Handle error
-                //         console.error("Error reading data: ", oError);
-                //     }
-                // })
                 oModel.read(ssPath, {
                     success: function (response) {
                         debugger;
@@ -138,7 +126,6 @@ sap.ui.define([
             /////___________________________________SECTION 1 : HEADER____________________________________________///////
 
             handleDeleteProcessButton: function () {
-                //alert('clicked')
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel = this.getOwnerComponent().getModel();
                 var sPath = this.getView().byId('idObjectPageLayout').getBindingContext().getPath()
@@ -202,11 +189,15 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel() //GET THE MODEL INSTANCE
                 var sPath = oEvent.getSource().getBindingContext().getPath();
                 var sProcessName = this.getView().byId("smartField_editProcessName").getValue();
+                var sMaster = this.getView().byId("smartField_editMaster").getValue();
+                var sRuleName = this.getView().byId("smartField_editRule").getValue();
                 var that = this;
 
                 // DATA OBJECT TO UPDATE
                 var oEditedProcessDetails = {
                     ProcessName: sProcessName,
+                    Master: sMaster,
+                    rule_name: sRuleName,
                 };
                 //console.log(oEditedProcessDetails)
 
@@ -225,9 +216,6 @@ sap.ui.define([
 
             },
 
-            // handleGetProcessDetailsButton: function () {
-            //     this.getProcessData(this.processPath)
-            // },
 
             /////___________________________________SECTION 2 : STEPS TABLE________________________________________///////
 
@@ -269,44 +257,40 @@ sap.ui.define([
 
             handleDeleteStepButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
-                var oTable = this.getView().byId('table_steps');
-                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
-
                 var that = this; //SAVING THE CONTEXT OF THIS IN A VARIABLE
+                let oSelectedStepModel = this.getView().getModel("JSONModel_SelectedStepData")
 
-                // // Check if any items are selected
-                // if (aSelectedItems.length === 0) {
-                //     // No items selected, show an error or inform the user
-                //     MessageBox.error("No Items Selected");
-                //     return;
-                // }
+                if (!oSelectedStepModel) {
+                    MessageBox.error("No Items Selected");
+                    return;
+                }
+
+                let oStepData = oSelectedStepModel.getData()
+                let sPath = `/ZP_QU_DG_STEPS(ProcessId=guid'${oStepData.ProcessId}',Action='${oStepData.Action}',StepId=guid'${oStepData.MainStepUuid}',StepSequence='${oStepData.Sequence}')`
 
                 // Confirm deletion with the user
-                MessageBox.confirm("Are you sure you want to delete the selected steps?", {
+                MessageBox.confirm("Are you sure you want to delete the selected step?", {
                     icon: MessageBox.Icon.WARNING,
                     actions: [MessageBox.Action.YES, MessageBox.Action.NO],
                     emphasizedAction: MessageBox.Action.YES,
                     //CALLBACK FUNCTION WHICH GETS EXECUTED WHEN THE MESSGE BOX IS CLOSED
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.YES) {
-                            // Iterate through selected items and delete them
-                            aSelectedItems.forEach(function (oSelectedItem) {
-                                var sPath = oSelectedItem.getBindingContext().getPath();
-                                oModel.remove(sPath, {
-                                    success: function (oResponse) {
-                                        //console.log("Item deleted successfully");
-                                        MessageToast.show('Item deleted successfully')
-                                        oTable.removeSelections();   // Deselect all items after deletion
-                                        that.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
-                                        that.getView().byId("editStepButton").setEnabled(false);
-                                        that.getProcessData()  //UPDATING THE GRAPH
-                                    },
-                                    error: function (oError) {
-                                        //console.error("Error deleting item");
-                                        MessageToast.show('Error: Something went wrong')
-                                    }
-                                });
+                            that.getView().setBusy(true)
+                            oModel.remove(sPath, {
+                                success: function (oData, oRes) {
+                                    debugger;
+                                    that.getView().setBusy(false)
+                                    let sMessage = JSON.parse(oRes.headers["sap-message"]).message
+                                    sap.m.MessageBox.success(sMessage);
+                                    that.getProcessData()  //UPDATING THE GRAPH
+                                },
+                                error: function (oError) {
+                                    that.getView().setBusy(false)
+                                    sap.m.MessageBox.error('Something went wrong');
+                                }
                             });
+
                         }
                     }
                 });
@@ -497,7 +481,7 @@ sap.ui.define([
                 ///______________IF  STEP IS SELECTED FROM GRAPH________________
 
                 var oModel_RejectionStepG = this.getView().getModel("JSONModel_SelectedStepData")
-                if (oModel_RejectionStepG && oModel_View.graph) {
+                if (oModel_RejectionStepG) {
                     var sStepName = oModel_RejectionStepG.getData().StepName
                     var sStepSequence = oModel_RejectionStepG.getData().StepSequence
                     var aDropDownArray = []
@@ -565,7 +549,6 @@ sap.ui.define([
                     }
 
                 }
-
 
             },
 

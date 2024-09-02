@@ -82,6 +82,7 @@ sap.ui.define([
                 var sProcessName = this.getView().byId("smartField_newProcessName").getValue();;
                 var sAction = this.getView().byId("smartField_newAction").getValue();
                 var sMaster = this.getView().byId("smartField_newMaster").getValue();
+                var sRule = this.getView().byId("smartField_newRule").getValue();
 
                 /////_____VALIDATIONS_______/////
                 var oSmartField_ProcessName = this.getView().byId("smartField_newProcessName");
@@ -105,7 +106,8 @@ sap.ui.define([
                     var oNewProcess = {
                         ProcessName: sProcessName,
                         Action: sAction,
-                        Master: sMaster
+                        Master: sMaster,
+                        rule_name:sRule
                     };
 
                     //console.log(oNewProcess);

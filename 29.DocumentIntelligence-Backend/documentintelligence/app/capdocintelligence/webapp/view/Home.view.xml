@@ -1,0 +1,19 @@
+<mvc:View controllerName="capdocintelligence.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:l="sap.ui.layout">
+
+    <semantic:SemanticPage id="page">
+        <semantic:titleHeading>
+            <Title text="1"/>
+        </semantic:titleHeading>
+        <semantic:content>
+            <l:VerticalLayout>
+                <Text text="First page"></Text>
+                <Button text="next page" press="onNavigate"></Button>
+            </l:VerticalLayout>
+        </semantic:content>
+    </semantic:SemanticPage>
+</mvc:View>

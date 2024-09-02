@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:footerbar="sap.ushell.ui.footerbar"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns="sap.m"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Dialog id="idrejct"  title="Reject">
+     <content>
+            <!-- <VBox> -->
+                <!-- <Input id="_IDGenInput" showValueHelp="true" valueHelpRequest="onvaluehelp" width="50%" ></Input> -->
+            <!-- </VBox> -->
+                    <sform:SmartForm id="uponReject"  editable="true" editTogglable="false" >
+            <sform:Group id="_IDGenGroup1" >
+                <sform:GroupElement id="_IDGenGroupElement1">
+                    <!-- <smartField:SmartField id="Reject::Step" value="{sequence}" editable="true" entitySet="ZC_QU_DG_MyTask"/> -->
+                    <Input id="_IDGenInput1" value="step:1"></Input>
+                </sform:GroupElement>            
+            </sform:Group> 
+        </sform:SmartForm>
+        </content>
+         <beginButton>
+            <Button text="OK" press="onOkPress" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="onCancel" />
+        </endButton>
+       
+    </Dialog>
+
+</core:FragmentDefinition>

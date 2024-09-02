@@ -27,7 +27,7 @@
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <smartTable:SmartTable entitySet="ZP_QU_DG_PROC_STEP_ROLE" id="smartTable_process" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="ProcessName,Action,Master" enableAutoBinding="true" header="Process" enableAutoColumnWidth="true">
+            <smartTable:SmartTable entitySet="ZP_QU_DG_PROC_STEP_ROLE" id="smartTable_process" smartFilterId="smartFilterBar" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="ProcessName,Action,Master,rule_name" enableAutoBinding="true" header="Process" enableAutoColumnWidth="true">
                 <smartTable:customToolbar >
                     <OverflowToolbar design="Transparent">
                         <ToolbarSpacer/>

@@ -1,0 +1,86 @@
+<mvc:View controllerName="massedit.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <f:DynamicPage id="dynamicPageId" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Material Mass Edit"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <IconTabBar class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter text="Basic">
+                        <Table id="idTable_Basic" fixedLayout="false">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Material Edit Fields" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Add" icon="sap-icon://add" press="onAddTableRow" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Name"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Value"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                </Column>
+                            </columns>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter text="Plant">
+                        <Table id="idTable_Plant" fixedLayout="false">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Material Edit Fields" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Add" icon="sap-icon://add" press="onAddTableRow" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Name"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Value"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                </Column>
+                            </columns>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter text="Sales">
+                        <Text text="Notes go here ..." />
+                    </IconTabFilter>
+                    <IconTabFilter text="Classification">
+                        <Text text="People content goes here ..." />
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button type="Accept" text="Apply Mass Changes"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

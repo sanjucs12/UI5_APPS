@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:sform="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield">
+    <Panel id="_IDGenPanel1" backgroundDesign="Transparent">
+        <sform:SmartForm id="uponReject"  editable="true" editTogglable="false" >
+            <sform:Group id="_IDGenGroup1" >
+                <sform:GroupElement id="_IDGenGroupElement1">
+                    <smartField:SmartField id="Reject::Step" value="{sequence}" editable="true" entitySet="ZC_QU_DG_MyTask"/>
+                    <Input id="_IDGenInput1" ></Input>
+                </sform:GroupElement>            
+            </sform:Group> 
+        </sform:SmartForm>
+    </Panel>
+</core:FragmentDefinition>

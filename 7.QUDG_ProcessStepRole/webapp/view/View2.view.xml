@@ -62,6 +62,12 @@
                                         <smartForm:GroupElement >
                                             <smartField:SmartField value="{Action}"/>
                                         </smartForm:GroupElement>
+                                        <smartForm:GroupElement >
+                                            <smartField:SmartField value="{Master}"/>
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement >
+                                            <smartField:SmartField value="{rule_name}"/>
+                                        </smartForm:GroupElement>
                                     </smartForm:Group>
                                 </smartForm:SmartForm>
                             </layout:VerticalLayout>
@@ -77,21 +83,22 @@
                         <m:VBox >
                             <m:Toolbar >
                                 <m:ToolbarSpacer/>
-                                <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
-                                <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" />
+                                <!-- <m:RadioButton valueState="Information" text="Graph" selected="{toggleGraphTable>/graph}" />
+                                <m:RadioButton valueState="Information" text="Table" selected="{toggleGraphTable>/table}" /> -->
                                 <m:ToolbarSpacer/>
-                                <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://employee-rejections" id="rejectStepButton" enabled="false"></m:Button>
                                 <m:Button text="Create" press="handleCreateStepButton" icon="sap-icon://create"></m:Button>
+                                <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="true"></m:Button>
+                                <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="true"></m:Button>
+                                 <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://employee-rejections" id="rejectStepButton" enabled="false"></m:Button>
                             </m:Toolbar>
 
                             <!--_______________________________STEPS TABLE___________________________________-->
-                            <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS" beforeRebindTable="onBeforeRebindStepsTable" header="Steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType,StepApprover,StepSequence" enableAutoBinding="true" visible="{toggleGraphTable>/table}">
+                            <!-- <smartTable:SmartTable id="smartTable_steps" entitySet="ZP_QU_DG_STEPS"  header="Steps" showRowCount="true" tableType="ResponsiveTable" initiallyVisibleFields="StepName,StepType,StepApprover,StepSequence" enableAutoBinding="true">
                                 <smartTable:customToolbar>
                                     <m:OverflowToolbar design="Transparent">
                                         <m:ToolbarSpacer/>
                                         <m:Button text="Delete" press="handleDeleteStepButton" icon="sap-icon://delete" id="deleteStepButton" enabled="false"></m:Button>
                                         <m:Button text="Edit" press="handleEditStepButton" icon="sap-icon://edit" id="editStepButton" enabled="false"></m:Button>
-                                        <!-- <m:Button text="Rejection Step" press="handleRejectStepButton" icon="sap-icon://decline" id="rejectStepButton" enabled="false"></m:Button> -->
                                     </m:OverflowToolbar>
                                 </smartTable:customToolbar>
                                 <m:Table id="table_steps" mode="SingleSelectLeft" selectionChange="handleStepRowSelection">
@@ -99,7 +106,7 @@
                                         <m:ColumnListItem vAlign="Middle" type="Active" press="handleStepRowClick"></m:ColumnListItem>
                                     </m:items>
                                 </m:Table>
-                            </smartTable:SmartTable>
+                            </smartTable:SmartTable> -->
 
                             <!--_______________________________STEPS GRAPH___________________________________-->
                             <ng:Graph enableWheelZoom="false" orientation="LeftRight" nodes="{/nodes}" lines="{/lines}" searchSuggest="suggest" search="search" id="networkGraph" height="auto" visible="{toggleGraphTable>/graph}">
@@ -200,8 +207,8 @@
                 </subSections>
             </ObjectPageSection>
 
-            <!--_________________________SECTION 05 : SPLITTER(ROLES AND USERS TABLES)_____________________________-->
-            <ObjectPageSection titleUppercase="false" title="Rules">
+            <!--_________________________SECTION 06 : RULES_____________________________-->
+            <!-- <ObjectPageSection titleUppercase="false" title="Rules">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -222,7 +229,7 @@
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
-            </ObjectPageSection>
+            </ObjectPageSection> -->
         </sections>
     </ObjectPageLayout>
 </mvc:View>

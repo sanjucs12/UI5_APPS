@@ -1,0 +1,30 @@
+<mvc:View controllerName="capdocintelligence.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:l="sap.ui.layout">
+
+    <semantic:SemanticPage id="page">
+        <semantic:titleHeading>
+            <Title text="2"/>
+        </semantic:titleHeading>
+        <semantic:content>
+            <l:VerticalLayout>
+                <Text text="Second page"></Text>
+            </l:VerticalLayout>
+        </semantic:content>
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onSendEmailPress"/>
+        </semantic:sendEmailAction>
+        <semantic:closeAction>
+            <semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction id="enterFullScreen" visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+    </semantic:SemanticPage>
+</mvc:View>

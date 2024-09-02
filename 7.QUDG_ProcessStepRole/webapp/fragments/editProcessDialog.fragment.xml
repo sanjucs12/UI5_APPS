@@ -14,6 +14,12 @@
                         <smartForm:GroupElement>
                             <smartField:SmartField id="smartField_editAction" value="{Action}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
                         </smartForm:GroupElement>
+                         <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_editMaster" value="{Master}" entitySet="ZP_QU_DG_PROC_STEP_ROLE" editable="false" mandatory="false"></smartField:SmartField>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField id="smartField_editRule" value="{rule_name}" entitySet="ZP_QU_DG_PROC_STEP_ROLE"></smartField:SmartField>
+                        </smartForm:GroupElement>
                     </smartForm:Group>
                 </smartForm:SmartForm>
             </VBox>
