@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover id="idCreateNotiandOrderPopover" resizable="true" class="sapUiContentPadding" placement="Bottom" contentHeight="10rem"
+		contentWidth="25rem" modal="true" verticalScrolling="false" horizontalScrolling="false">
+		<customHeader>
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://decline" type="Transparent" iconDensityAware="false" tooltip="Close" press="onCloseNotifiOrderPopOver"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<HBox alignItems="Center" justifyContent="SpaceAround">
+				<GenericTile class="sapUiTinyMarginTop tileLayout sapUiSmallMarginBottom"
+					press="handlePresssCreateNotif" size="Responsive" frameType="Stretch">
+					<TileContent>
+						<VBox alignItems="Center">
+							<VBox alignItems="Center" class="sapUiSmallMarginTop sapUiTinyMarginBottom">
+								<Image src="{imageModel>/path}/images/CreateNotificationIcon.png" width="2rem"/>
+							</VBox>
+							<Link text="Create Notification" id="idCreatNotif_Link" emphasized="true"/>
+						</VBox>
+					</TileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginTop tileLayout sapUiSmallMarginBottom" press="handlePresssCreateOrder"
+					frameType="Stretch">
+					<TileContent>
+						<VBox alignItems="Center">
+							<VBox alignItems="Center" class="sapUiSmallMarginTop sapUiTinyMarginBottom">
+								<Image src="{imageModel>/path}/images/CreateOrderIcon.png" width="2rem"/>
+							</VBox>
+							<Link text="Create Order" id="idCreatOrder_Link" emphasized="true"/>
+						</VBox>
+					</TileContent>
+				</GenericTile>
+			</HBox>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

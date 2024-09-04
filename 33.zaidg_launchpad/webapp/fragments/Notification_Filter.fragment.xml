@@ -1,0 +1,4 @@
+<ActionSheet xmlns="sap.m" xmlns:core="sap.ui.core" id="idNotificationFilterActionSheet" showCancelButton="true" placement="Bottom">
+	<Button text="Order" icon="sap-icon://key-user-settings" press="handlePressNotificationFilter"/>
+	<Button text="Notification" icon="sap-icon://key-user-settings" press="handlePressNotificationFilter"/>
+</ActionSheet>

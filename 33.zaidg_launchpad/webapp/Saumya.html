@@ -1,0 +1,108 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<title>Custom Fiori Launchpad</title>
+<script>
+		window["sap-ushell-config"] = {
+          defaultRenderer : "fiori2",
+          renderers: {
+            fiori2: {
+              componentData: {
+                config: {
+                  search: "hidden"
+                }
+              }
+            }
+          },
+         
+          applications: {
+            "jerrytestfiori-display": {
+              additionalInformation: "SAPUI5.Component=com.airdit.qudg.qudglpad",
+              applicationType: "URL",
+              url: "./",
+              title: "Jerry test Fiori application"
+            }
+          }
+        };
+</script>
+<script src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
+<script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+       data-sap-ui-libs="sap.m,sap.ushell,sap.ui.layout"
+       data-sap-ui-theme="sap_belize"
+       data-sap-ui-compatVersion="edge"
+       data-sap-ui-resourceroots='{"com.airdit.qudg.qudglpad": "./"}'
+        >
+</script>
+<script>
+      // sap.ui.getCore().attachInit(function () {
+      //     sap.ui.require([
+      //         "sap/ui/core/ComponentContainer",
+      //         "sap/ushell/Container"
+      //     ], function (ComponentContainer,Container) {
+      //     	///////////////////////////
+      //     	window["sap-ushell-config"] = {
+      //    defaultRenderer : "fiori2",
+      //    renderers: {
+      //      fiori2: {
+      //        componentData: {
+      //          config: {
+      //            search: "hidden"
+      //          }
+      //        }
+      //      }
+      //    },
+         
+      //    applications: {
+      //      "jerrytestfiori-display": {
+      //        additionalInformation: "SAPUI5.Component=com.airdit.qudg.qudglpad",
+      //        applicationType: "URL",
+      //        url: "./",
+      //        title: "Jerry test Fiori application"
+      //      }
+      //    }
+      //  };
+      //  //////////////////
+      //         //new ComponentContainer({
+      //         //    name: "com.airdit.qudg.qudglpad",
+      //         //    settings: {
+      //         //        id: "launchpad"
+      //         //    },
+      //         //    async: true
+      //         //}).placeAt("content");
+      //         sap.ushell.bootstrap("abap", {
+      //  abap: "sap.ushell_abap.adapters.abap"
+      //}).then(function () {
+      ////  new ComponentContainer({
+      ////             name: "com.airdit.qudg.qudglpad",
+      ////             settings: {
+      ////                 id: "launchpad"
+      ////             },
+      ////             async: true
+      ////         }).placeAt("content");
+      ////});
+      //debugger;
+      //sap.ushell.Container.getServiceAsync("ShellUIService").then(function (serviceInstance) {
+      //	debugger;
+            new sap.ui.core.ComponentContainer({
+                   name: "com.airdit.qudg.qudglpad",
+                   settings: {
+                       id: "launchpad"
+                   },
+                   async: true
+               }).placeAt("content");
+      //});
+      //  });
+               
+      //       //sap.ushell.Container.createRenderer().placeAt("content");  
+      //         //////////////////////
+      //     });
+      // });
+</script>
+</head>
+<body class="sapUiBody" id="content">
+	<!--<div data-sap-ui-component data-name="com.airdit.qudg.qudglpad" data-id="container" data-settings='{"id" : "qudglpad"}'></div>-->
+</body>
+</html>

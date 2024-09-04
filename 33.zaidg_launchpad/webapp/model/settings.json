@@ -1,0 +1,35 @@
+{
+	"settingnames": [
+	{
+		"title": "Appearence",
+		"desc": "Set Theme",
+		"image": "/images/thememain.png",
+		"id":"Themes",
+		"eleid":"themesetting",
+		"selected":false,
+		"infoStateInverted":true,
+		"highlight":"Success",
+		"info":"",
+		"infoState":"None",
+		"iconDensityAware":false,
+		"iconInset":false,
+		"adaptTitleSize":false
+
+	},
+	{
+		"title": "Push Notification",
+		"desc": "Push Notification Subscription",
+		"image": "/images/push.png",
+		"id":"subscrption",
+		"eleid":"headerForSubscription",
+		"selected":false,
+		"infoStateInverted":true,
+		"highlight":"Success",
+		"info":"",
+		"infoState":"None",
+		"iconDensityAware":false,
+		"iconInset":false,
+		"adaptTitleSize":false
+
+	}]
+}

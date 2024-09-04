@@ -1,0 +1,89 @@
+{
+  "welcomeFile": "/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.105.0"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.105.0"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.105.0"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.105.0"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "AIRDIT_HANA_S4P",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "AIRDIT_HANA_S4P"
+    },
+    {
+      "path": "/SAP/PUBLIC/BC/UI2/QUDG/",
+      "target": {
+        "type": "destination",
+        "name": "AIRDIT_HANA_S4P",
+        "entryPath": "/SAP/PUBLIC/BC/UI2/QUDG/"
+      },
+      "description": "AIRDIT_HANA_S4P"
+    },
+    {
+      "path": "/sap/bc/lrep/",
+      "target": {
+        "type": "destination",
+        "name": "AIRDIT_HANA_S4P",
+        "entryPath": "/sap/bc/lrep/"
+      },
+      "description": "AIRDIT_HANA_S4P"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5/sap/",
+      "target": {
+        "type": "destination",
+        "name": "AIRDIT_HANA_S4P",
+        "entryPath": "/sap/bc/ui5_ui5/sap/"
+      },
+      "description": ""
+    },
+    {
+      "path": "/services/userapi",
+      "target": {
+        "type": "service",
+        "name": "userapi"
+      }
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}
