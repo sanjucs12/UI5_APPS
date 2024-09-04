@@ -31,9 +31,10 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: http://airdithana.airditsoftware.com:8010
-            client: '100'
-            destination: Airdit_HANA_R
+            url: http://103.194.234.17:8010
+            client: '200'
+            destination: AIRDIT_HANA_S4P
+            authenticationType: BasicAuthentication
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

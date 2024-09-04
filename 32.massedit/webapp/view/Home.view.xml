@@ -68,10 +68,54 @@
                         </Table>
                     </IconTabFilter>
                     <IconTabFilter text="Sales">
-                        <Text text="Notes go here ..." />
+                        <Table id="idTable_Sales" fixedLayout="false">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Material Edit Fields" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Add" icon="sap-icon://add" press="onAddTableRow" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Name"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Value"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                </Column>
+                            </columns>
+                        </Table>
                     </IconTabFilter>
                     <IconTabFilter text="Classification">
-                        <Text text="People content goes here ..." />
+                        <Table id="idTable_Classification" fixedLayout="false">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Material Edit Fields" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Add" icon="sap-icon://add" press="onAddTableRow" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Name"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                    <header>
+                                        <Label text="Field Value"></Label>
+                                    </header>
+                                </Column>
+                                <Column >
+                                </Column>
+                            </columns>
+                        </Table>
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -79,7 +123,7 @@
         <f:footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button type="Accept" text="Apply Mass Changes"/>
+                <Button type="Accept" text="Apply Mass Changes" press="onPressEdit"/>
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>

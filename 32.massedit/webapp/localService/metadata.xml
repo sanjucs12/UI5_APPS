@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='S4HCLNT100')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='S4HCLNT100')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='S4HCLNT100')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='S4HCLNT100')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='S4HCLNT100')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZC_QU_DG_MATERIALSANDREQUESTS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="I_CountryType" sap:label="Country" sap:value-list="true" sap:content-version="1">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_CountryType" sap:label="Country/Region" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Country"/>
                 </Key>
-                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text" sap:label="Country Key"/>
-                <Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Country Name" sap:quickinfo="Country Name (Max. 50 Characters)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char" sap:quickinfo="ISO country code 3 char"/>
-                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3" sap:quickinfo="ISO Country Code Numeric 3-Characters"/>
-                <Property Name="CountryCurrency" Type="Edm.String" MaxLength="5" sap:label="Country Currency" sap:semantics="currency-code"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text" sap:label="Country/Region Key"/>
+                <Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char" sap:quickinfo="ISO Country/Region Code 3 Characters"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3" sap:quickinfo="ISO Country/Region Code Numeric 3-Characters"/>
+                <Property Name="CountryISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code of the Country/Region"/>
+                <Property Name="CountryCurrency" Type="Edm.String" MaxLength="5" sap:label="Reporting Currency" sap:semantics="currency-code"/>
                 <Property Name="IndexBasedCurrency" Type="Edm.String" MaxLength="5" sap:label="Index-Based Currency" sap:quickinfo="Currency Key of the Index-Based Currency" sap:semantics="currency-code"/>
                 <Property Name="HardCurrency" Type="Edm.String" MaxLength="5" sap:label="Hard Currency" sap:quickinfo="Currency Key of the Hard Currency" sap:semantics="currency-code"/>
                 <Property Name="TaxCalculationProcedure" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Procedure" sap:quickinfo="Procedure (Pricing, Output Control, Acct. Det., Costing,...)"/>
-                <Property Name="CountryAlternativeCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Altern.Country Key" sap:quickinfo="Alternative Country Key"/>
+                <Property Name="CountryAlternativeCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key" sap:quickinfo="Alternative Country/Region Key"/>
             </EntityType>
             <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
                 </Key>
                 <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
-                <Property Name="DraftEntityType" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
                 <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
                 <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
                 <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
@@ -58,7 +77,7 @@
                     <PropertyRef Name="Material"/>
                 </Key>
                 <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="Material_Text" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="Material_Text" Type="Edm.String" MaxLength="40" sap:label="Material description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Material_Text" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="MaterialType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
                 <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
                 <Property Name="MaterialBaseUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
@@ -68,7 +87,7 @@
                 <Property Name="MaterialManufacturerNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Manufacturer number"/>
                 <Property Name="MaterialManufacturerPartNumber" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Mfr Part Number" sap:quickinfo="Manufacturer Part Number"/>
                 <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
-                <Property Name="IsBatchManagementRequired" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch management" sap:quickinfo="Batch management requirement indicator"/>
+                <Property Name="IsBatchManagementRequired" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch Management" sap:quickinfo="Batch Management Requirement Indicator"/>
                 <Property Name="CrossPlantConfigurableProduct" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Cross-plant CM" sap:quickinfo="Cross-Plant Configurable Material"/>
                 <Property Name="ProductCategory" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Material Category"/>
                 <Property Name="ProductCharacteristic1" Type="Edm.String" MaxLength="18" sap:label="Color" sap:quickinfo="Characteristic Value for Colors of Variants"/>
@@ -77,11 +96,6 @@
                 <Property Name="ProdCharc1InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Charactieristic Number for Color Characteristics"/>
                 <Property Name="ProdCharc2InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Char. Number for Characteristics for Main Sizes"/>
                 <Property Name="ProdCharc3InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Char. Number for Characteristics for Second Sizes"/>
-                <Property Name="Matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="Ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
-                <Property Name="CreatedAtTime" Type="Edm.Time" Precision="0" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
-                <Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
-                <Property Name="lvorm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at plant level" sap:quickinfo="Flag Material for Deletion at Plant Level"/>
                 <NavigationProperty Name="to_Text" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_02E2C642AA5B0AFC02C204BBF1B8D71B" FromRole="FromRole_assoc_02E2C642AA5B0AFC02C204BBF1B8D71B" ToRole="ToRole_assoc_02E2C642AA5B0AFC02C204BBF1B8D71B"/>
             </EntityType>
             <EntityType Name="I_MaterialTextType" sap:label="Material Text" sap:content-version="1">
@@ -91,7 +105,7 @@
                 </Key>
                 <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
                 <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
-                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
                 <NavigationProperty Name="to_Material" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_9A9781A9268FA4E0E32526FC094F1EF2" FromRole="FromRole_assoc_9A9781A9268FA4E0E32526FC094F1EF2" ToRole="ToRole_assoc_9A9781A9268FA4E0E32526FC094F1EF2"/>
             </EntityType>
             <EntityType Name="I_MaterialTypeType" sap:label="Material Type" sap:value-list="true" sap:content-version="1">
@@ -99,10 +113,10 @@
                     <PropertyRef Name="MaterialType"/>
                 </Key>
                 <Property Name="MaterialType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="MaterialType_Text" sap:label="Material type"/>
-                <Property Name="MaterialType_Text" Type="Edm.String" MaxLength="25" sap:label="Material Type Descr." sap:quickinfo="Description of Material Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialType_Text" Type="Edm.String" MaxLength="25" sap:label="Material Type Desc." sap:quickinfo="Description of Material Type" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization group" sap:quickinfo="Authorization group in the material master"/>
             </EntityType>
-            <EntityType Name="I_PlantStdVHType" sap:label="Plant Std VH" sap:content-version="1">
+            <EntityType Name="I_PlantStdVHType" sap:label="Plant" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Plant"/>
                 </Key>
@@ -118,6 +132,7 @@
                 <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
                 <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
                 <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
             </EntityType>
             <EntityType Name="ZC_QUDG_MaterialMassUploadType" sap:label="Material Mass Upload" sap:content-version="1">
                 <Key>
@@ -424,9 +439,9 @@
                 <Property Name="identification_key" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Character Field with Length 10" sap:heading=""/>
                 <Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="ersda_fc" sap:label="Created On"/>
                 <Property Name="created_at_time" Type="Edm.Time" Precision="0" sap:field-control="created_at_time_fc" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
-                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="ernam_fc" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="ernam_fc" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
                 <Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laeda_fc" sap:label="Last Change" sap:quickinfo="Date of Last Change"/>
-                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="aenam_fc" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="aenam_fc" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
                 <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtart_fc" sap:label="Material type" sap:value-list="standard"/>
                 <Property Name="mbrsh" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="mbrsh_fc" sap:label="Industry Sector" sap:value-list="standard"/>
                 <Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="matkl_fc" sap:label="Material Group"/>
@@ -443,11 +458,11 @@
                 <Property Name="stoff" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="stoff_fc" sap:label="Haz. material number" sap:quickinfo="Hazardous material number"/>
                 <Property Name="spart" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="spart_fc" sap:label="Division"/>
                 <Property Name="mtpos_mara" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtpos_mara_fc" sap:label="Gen. item cat. grp" sap:quickinfo="General item category group"/>
-                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xchpf_fc" sap:label="Batch management" sap:quickinfo="Batch management requirement indicator"/>
+                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xchpf_fc" sap:label="Batch Management" sap:quickinfo="Batch Management Requirement Indicator"/>
                 <Property Name="mhdrz" Type="Edm.Decimal" Precision="4" Scale="0" sap:field-control="mhdrz_fc" sap:label="Min. Rem. Shelf Life" sap:quickinfo="Minimum Remaining Shelf Life"/>
                 <Property Name="mhdhb" Type="Edm.Decimal" Precision="4" Scale="0" sap:field-control="mhdhb_fc" sap:label="Total shelf life"/>
                 <Property Name="spras" Type="Edm.String" MaxLength="2" sap:field-control="spras_fc" sap:label="Language Key"/>
-                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:field-control="maktx_fc" sap:label="Material description"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:field-control="maktx_fc" sap:label="Material Description"/>
                 <Property Name="meinh" Type="Edm.String" MaxLength="3" sap:field-control="meinh_fc" sap:label="Display Unit/Measure" sap:quickinfo="Unit of Measure for Display" sap:semantics="unit-of-measure"/>
                 <Property Name="vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="vkorg_fc" sap:label="Sales Organization"/>
                 <Property Name="vtweg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="vtweg_fc" sap:label="Distribution Channel"/>
@@ -486,10 +501,10 @@
                 <Property Name="webaz" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="webaz_fc" sap:label="GR processing time" sap:quickinfo="Goods receipt processing time in days"/>
                 <Property Name="maabc" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="maabc_fc" sap:label="ABC Indicator"/>
                 <Property Name="disls" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="disls_fc" sap:label="Lot Sizing Procedure" sap:quickinfo="Lot Sizing Procedure within Materials Planning"/>
-                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="beskz_fc" sap:label="Procurement type" sap:quickinfo="Procurement Type" sap:value-list="standard"/>
+                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="beskz_fc" sap:label="Procurement Type" sap:value-list="standard"/>
                 <Property Name="sobsl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="sobsl_fc" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
                 <Property Name="minbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="minbe_fc" sap:label="Reorder Point"/>
-                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="eisbe_fc" sap:label="Safety stock"/>
+                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="eisbe_fc" sap:label="Safety Stock"/>
                 <Property Name="bstmi" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstmi_fc" sap:label="Minimum Lot Size"/>
                 <Property Name="bstma" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstma_fc" sap:label="Maximum Lot Size"/>
                 <Property Name="bstfe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstfe_fc" sap:label="Fixed lot size"/>
@@ -520,9 +535,9 @@
                 <Property Name="peinh" Type="Edm.Decimal" Precision="5" Scale="0" sap:field-control="peinh_fc" sap:label="Price unit"/>
                 <Property Name="bklas" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="bklas_fc" sap:label="Valuation Class" sap:value-list="standard"/>
                 <Property Name="bwtty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="bwtty_fc" sap:label="Valuation Category" sap:value-list="standard"/>
-                <Property Name="stprv" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="stprv_fc" sap:label="Previous price"/>
-                <Property Name="laepr" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laepr_fc" sap:label="Last price change" sap:quickinfo="Date of the last price change"/>
-                <Property Name="zkprs" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="zkprs_fc" sap:label="Future price"/>
+                <Property Name="stprv" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="stprv_fc" sap:label="Previous Price"/>
+                <Property Name="laepr" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laepr_fc" sap:label="Last Price Change" sap:quickinfo="Date of Last Price Change"/>
+                <Property Name="zkprs" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="zkprs_fc" sap:label="Future Price"/>
                 <Property Name="pnum1" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:field-control="pnum1_fc" sap:label="Pointer parameters" sap:quickinfo="Pointer: forecast parameters"/>
                 <Property Name="prmod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="prmod_fc" sap:label="Forecast model"/>
                 <Property Name="modav" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="modav_fc" sap:label="Selection procedure" sap:quickinfo="Model selection procedure"/>
@@ -571,11 +586,11 @@
                 <Property Name="mstae" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mstae_fc" sap:label="X-Plant Mat.Status" sap:quickinfo="Cross-Plant Material Status"/>
                 <Property Name="mstav" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mstav_fc" sap:label="X-distr.chain status" sap:quickinfo="Cross-distribution-chain material status"/>
                 <Property Name="mstde" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="mstde_fc" sap:label="Valid from" sap:quickinfo="Date from which the cross-plant material status is valid"/>
-                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr1_fc" sap:label="Material Group 1" sap:quickinfo="Material group 1"/>
-                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr2_fc" sap:label="Material Group 2" sap:quickinfo="Material group 2"/>
-                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr3_fc" sap:label="Material Group 3" sap:quickinfo="Material group 3"/>
-                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr4_fc" sap:label="Material Group 4" sap:quickinfo="Material group 4"/>
-                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr5_fc" sap:label="Material Group 5" sap:quickinfo="Material group 5"/>
+                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr1_fc" sap:label="Material Group 1"/>
+                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr2_fc" sap:label="Material Group 2"/>
+                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr3_fc" sap:label="Material Group 3"/>
+                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr4_fc" sap:label="Material Group 4"/>
+                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr5_fc" sap:label="Material Group 5"/>
                 <Property Name="normt" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:field-control="normt_fc" sap:label="Industry Std Desc." sap:quickinfo="Industry Standard Description (such as ANSI or ISO)"/>
                 <Property Name="nrfhg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="nrfhg_fc" sap:label="Qual.f.FreeGoodsDis." sap:quickinfo="Material qualifies for discount in kind"/>
                 <Property Name="numtp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="numtp_fc" sap:label="EAN category" sap:quickinfo="Category of International Article Number (EAN)"/>
@@ -593,7 +608,7 @@
                 <Property Name="prata" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="prata_fc" sap:label="Product attribute 10" sap:quickinfo="ID for product attribute 10"/>
                 <Property Name="prodh" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:field-control="prodh_fc" sap:label="Product hierarchy"/>
                 <Property Name="profl" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="profl_fc" sap:label="Authoriz. profile" sap:quickinfo="Authorization Profile"/>
-                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="provg_fc" sap:label="Commission Group" sap:quickinfo="Commission group"/>
+                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="provg_fc" sap:label="Commission Group"/>
                 <Property Name="qmpur" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="qmpur_fc" sap:label="QM in Procur. Active" sap:quickinfo="QM in Procurement Is Active"/>
                 <Property Name="qzgtp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="qzgtp_fc" sap:label="Certificate Type"/>
                 <Property Name="rbnrm" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="rbnrm_fc" sap:label="Catalog Profile"/>
@@ -604,7 +619,7 @@
                 <Property Name="satnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="satnr_fc" sap:label="Cross-plant CM" sap:quickinfo="Cross-Plant Configurable Material"/>
                 <Property Name="serlv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="serlv_fc" sap:label="Serialization level" sap:quickinfo="Level of Explicitness for Serial Number"/>
                 <Property Name="sfcpf" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:field-control="sfcpf_fc" sap:label="Prod. Sched. Profile" sap:quickinfo="Production Scheduling Profile"/>
-                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="sktof_fc" sap:label="Cash Discount" sap:quickinfo="Cash discount indicator"/>
+                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="sktof_fc" sap:label="Cash Discount" sap:quickinfo="Cash Discount Indicator"/>
                 <Property Name="ssqss" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:field-control="ssqss_fc" sap:label="QA Control Key"/>
                 <Property Name="taxim" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="taxim_fc" sap:label="Tax ind. f. material" sap:quickinfo="Tax indicator for material (Purchasing)"/>
                 <Property Name="tranz" Type="Edm.Decimal" Precision="5" Scale="2" sap:field-control="tranz_fc" sap:label="Interoperation" sap:quickinfo="Interoperation time"/>
@@ -620,13 +635,13 @@
                 <Property Name="wrkst" Type="Edm.String" MaxLength="48" sap:field-control="wrkst_fc" sap:label="Basic material" sap:quickinfo="Basic Material"/>
                 <Property Name="xgchp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xgchp_fc" sap:label="Appr.Batch Recd Req." sap:quickinfo="Approved Batch Record Required"/>
                 <Property Name="xmcng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xmcng_fc" sap:label="Neg. stocks in plant" sap:quickinfo="Negative stocks allowed in plant"/>
-                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="zeiar_fc" sap:label="Document type" sap:quickinfo="Document type (without Document Management system)"/>
+                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="zeiar_fc" sap:label="Document Type" sap:quickinfo="Document type (without Document Management system)"/>
                 <Property Name="zeifo" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="zeifo_fc" sap:label="Page format" sap:quickinfo="Page format of document (without Document Management system)"/>
                 <Property Name="zeinr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:field-control="zeinr_fc" sap:label="Document" sap:quickinfo="Document number (without document management system)"/>
-                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="zeivr_fc" sap:label="Doc. Version" sap:quickinfo="Document version (without Document Management system)"/>
-                <Property Name="abwkz" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="abwkz_fc" sap:label="Devaluation ind." sap:quickinfo="Lowest value: devaluation indicator"/>
+                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="zeivr_fc" sap:label="Document Version" sap:quickinfo="Document version (without Document Management system)"/>
+                <Property Name="abwkz" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="abwkz_fc" sap:label="Devaluation Ind." sap:quickinfo="Lowest value: devaluation indicator"/>
                 <Property Name="ahdis" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="ahdis_fc" sap:label="MRP dep.requirements" sap:quickinfo="MRP relevancy for dependent requirements"/>
-                <Property Name="aland" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="aland_fc" sap:label="Country" sap:quickinfo="Departure country (country from which the goods are sent)" sap:value-list="standard"/>
+                <Property Name="aland" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="aland_fc" sap:label="Departure Ctry/Reg." sap:quickinfo="Departure Country/Region (from which the goods are sent)" sap:value-list="standard"/>
                 <Property Name="altsl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="altsl_fc" sap:label="Selection method" sap:quickinfo="Method for Selecting Alternative Bills of Material"/>
                 <Property Name="aplal" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="aplal_fc" sap:label="Group Counter"/>
                 <Property Name="auftl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="auftl_fc" sap:label="Splitting indicator" sap:quickinfo="Splitting Indicator"/>
@@ -649,7 +664,7 @@
                 <Property Name="fhori" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="fhori_fc" sap:label="Sched. Margin Key" sap:quickinfo="Scheduling Margin Key for Floats"/>
                 <Property Name="fxhor" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:field-control="fxhor_fc" sap:label="Planning time fence"/>
                 <Property Name="hkmat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="hkmat_fc" sap:label="Material origin" sap:quickinfo="Material-related origin"/>
-                <Property Name="hrkft" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="hrkft_fc" sap:label="Origin group" sap:quickinfo="Origin Group as Subdivision of Cost Element"/>
+                <Property Name="hrkft" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="hrkft_fc" sap:label="Origin Group" sap:quickinfo="Origin Group as Subdivision of Cost Element"/>
                 <Property Name="kausf" Type="Edm.Decimal" Precision="5" Scale="2" sap:field-control="kausf_fc" sap:label="Component Scrap (%)" sap:quickinfo="Component Scrap in Percent"/>
                 <Property Name="kosgr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="kosgr_fc" sap:label="Overhead Group" sap:quickinfo="Costing Overhead Group"/>
                 <Property Name="kzaus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="kzaus_fc" sap:label="Discontinuation ind." sap:quickinfo="Discontinuation indicator"/>
@@ -659,7 +674,7 @@
                 <Property Name="kzpsp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="kzpsp_fc" sap:label="Cross-project matl" sap:quickinfo="Indicator for cross-project material"/>
                 <Property Name="lagpr" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="lagpr_fc" sap:label="Storage Costs Code" sap:quickinfo="Storage Costs Percentage Code"/>
                 <Property Name="lbstf" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="lbstf_fc" sap:label="Replenishment qty" sap:quickinfo="Replenishment quantity for storage location MRP"/>
-                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="lfrhy_fc" sap:label="Planning cycle"/>
+                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="lfrhy_fc" sap:label="Planning Cycle"/>
                 <Property Name="lgfsb" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="lgfsb_fc" sap:label="Storage loc. for EP" sap:quickinfo="Default storage location for external procurement"/>
                 <Property Name="lgpro" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="lgpro_fc" sap:label="Prod. stor. location" sap:quickinfo="Issue Storage Location"/>
                 <Property Name="lgrad" Type="Edm.Decimal" Precision="3" Scale="1" sap:field-control="lgrad_fc" sap:label="Service level (%)" sap:quickinfo="Service level"/>
@@ -667,9 +682,9 @@
                 <Property Name="losfx" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="losfx_fc" sap:label="LS-Independent Costs" sap:quickinfo="Lot-Size-Independent Costs"/>
                 <Property Name="losgr" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="losgr_fc" sap:label="Planned lot size"/>
                 <Property Name="lsobs" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="lsobs_fc" sap:label="Spec.proc.type: SLoc" sap:quickinfo="Special procurement type at storage location level"/>
-                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mdach_fc" sap:label="Action control" sap:quickinfo="Action control: planned order processing"/>
+                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mdach_fc" sap:label="Action Control" sap:quickinfo="Action Control: Planned Order Processing"/>
                 <Property Name="mrppp" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mrppp_fc" sap:label="Planning Calendar" sap:quickinfo="PPC Planning Calendar"/>
-                <Property Name="mypol" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mypol_fc" sap:label="LIFO pool" sap:quickinfo="Pool number for LIFO valuation"/>
+                <Property Name="mypol" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mypol_fc" sap:label="LIFO Pool" sap:quickinfo="Pool number for LIFO valuation"/>
                 <Property Name="ncost" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="ncost_fc" sap:label="Do Not Cost"/>
                 <Property Name="nfmat" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="nfmat_fc" sap:label="Follow-Up Material"/>
                 <Property Name="periv" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="periv_fc" sap:label="Fiscal Year Variant"/>
@@ -682,14 +697,14 @@
                 <Property Name="sfepr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="sfepr_fc" sap:label="REM Profile" sap:quickinfo="Repetitive Manufacturing Profile"/>
                 <Property Name="shflg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="shflg_fc" sap:label="Safety time ind." sap:quickinfo="Safety time indicator (with or without safety time)"/>
                 <Property Name="shpro" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="shpro_fc" sap:label="STime period profile" sap:quickinfo="Period Profile for Safety Time"/>
-                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="shzet_fc" sap:label="Safety time/act.cov." sap:quickinfo="Safety time (in workdays)"/>
+                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="shzet_fc" sap:label="Safety Time" sap:quickinfo="Safety Time (in Workdays)"/>
                 <Property Name="sobsk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="sobsk_fc" sap:label="SpecProcurem Costing" sap:quickinfo="Special Procurement Type for Costing"/>
                 <Property Name="stdpd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="stdpd_fc" sap:label="ConfigurableMaterial" sap:quickinfo="Configurable material"/>
                 <Property Name="casnr" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:field-control="casnr_fc" sap:label="CAS number (pharm.)" sap:quickinfo="CAS number for pharmaceutical products in foreign trade" sap:value-list="standard"/>
                 <Property Name="mtver" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtver_fc" sap:label="Intrastat Group" sap:quickinfo="Material Group for Intrastat"/>
                 <Property Name="gpnum" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="gpnum_fc" sap:label="PRODCOM no." sap:quickinfo="Production statistics: PRODCOM number for foreign trade"/>
-                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkl_fc" sap:label="Country of origin" sap:quickinfo="Country of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
-                <Property Name="herkr" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkr_fc" sap:label="Region of origin" sap:quickinfo="Region of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
+                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkl_fc" sap:label="Cntry/Reg of Origin" sap:quickinfo="Country/Region of Origin of Material (Non-Preferential Ori.)" sap:value-list="standard"/>
+                <Property Name="herkr" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkr_fc" sap:label="Region of Origin" sap:quickinfo="Region of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
                 <Property Name="steuc" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:field-control="steuc_fc" sap:label="Control code" sap:quickinfo="Control code for consumption taxes in foreign trade" sap:value-list="standard"/>
                 <Property Name="takzt" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="takzt_fc" sap:label="Takt time"/>
                 <Property Name="tatyp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="tatyp_fc" sap:label="Tax Category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)" sap:value-list="standard"/>
@@ -697,7 +712,7 @@
                 <Property Name="usequ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="usequ_fc" sap:label="Quota arr. usage" sap:quickinfo="Quota arrangement usage"/>
                 <Property Name="vjbwh" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="vjbwh_fc" sap:label="Commercial price 3" sap:quickinfo="Valuation price based on commercial law: level 3"/>
                 <Property Name="vjbws" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="vjbws_fc" sap:label="Tax price 3" sap:quickinfo="Valuation price based on tax law: level 3"/>
-                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="vspvb_fc" sap:label="Default supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
+                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="vspvb_fc" sap:label="Proposed supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
                 <Property Name="wzeit" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="wzeit_fc" sap:label="Tot. repl. lead time" sap:quickinfo="Total replenishment lead time (in workdays)"/>
                 <Property Name="xlifo" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="xlifo_fc" sap:label="LIFO/FIFO-relevant" sap:quickinfo="LIFO/FIFO-Relevant"/>
                 <Property Name="zkdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="zkdat_fc" sap:label="Valid from" sap:quickinfo="Date as of which the price is valid"/>
@@ -1060,14 +1075,14 @@
                 <Property Name="charnameInput" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Characteristic Name" sap:value-list="standard"/>
                 <Property Name="atinnInput" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Internal char no." sap:quickinfo="Internal characteristic"/>
                 <Property Name="charac_value" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="RootDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RootDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_5C06351AD6746D07C22A7F2E395769E5" FromRole="FromRole_assoc_5C06351AD6746D07C22A7F2E395769E5" ToRole="ToRole_assoc_5C06351AD6746D07C22A7F2E395769E5"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_FA4133A009BE91C5A2483A02CE5CF51A" FromRole="FromRole_assoc_FA4133A009BE91C5A2483A02CE5CF51A" ToRole="ToRole_assoc_FA4133A009BE91C5A2483A02CE5CF51A"/>
                 <NavigationProperty Name="to_request" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_85179FE30571C1C91795164273467516" FromRole="FromRole_assoc_85179FE30571C1C91795164273467516" ToRole="ToRole_assoc_85179FE30571C1C91795164273467516"/>
@@ -1121,13 +1136,13 @@
                 <Property Name="class_name" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:field-control="class_name_fc" sap:label="Class" sap:quickinfo="Class number"/>
                 <Property Name="class_type" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="class_type_fc" sap:label="Class Type" sap:value-list="standard"/>
                 <Property Name="classnameInput" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Class number" sap:value-list="standard"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_D635595BC6B35CDF99AA5001987881D9" FromRole="FromRole_assoc_D635595BC6B35CDF99AA5001987881D9" ToRole="ToRole_assoc_D635595BC6B35CDF99AA5001987881D9"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_80AA3FE0F1B8E9EE312F77F63DE3C2E5" FromRole="FromRole_assoc_80AA3FE0F1B8E9EE312F77F63DE3C2E5" ToRole="ToRole_assoc_80AA3FE0F1B8E9EE312F77F63DE3C2E5"/>
                 <NavigationProperty Name="to_characteristics" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_E56CFDD069EF74AC14A1B4AE1764A6F8" FromRole="FromRole_assoc_E56CFDD069EF74AC14A1B4AE1764A6F8" ToRole="ToRole_assoc_E56CFDD069EF74AC14A1B4AE1764A6F8"/>
@@ -1148,7 +1163,7 @@
                 <Property Name="klart" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Class Type"/>
                 <NavigationProperty Name="to_matclass" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_2F05B7F174BE5D1F7324F273EF8AFB17" FromRole="FromRole_assoc_2F05B7F174BE5D1F7324F273EF8AFB17" ToRole="ToRole_assoc_2F05B7F174BE5D1F7324F273EF8AFB17"/>
             </EntityType>
-            <EntityType Name="ZC_QU_DG_MatClassTypeType" sap:label="Material class type texts" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="ZC_QU_DG_MatClassTypeType" sap:label="Material class type texts" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="spras"/>
                     <PropertyRef Name="klart"/>
@@ -1171,19 +1186,19 @@
                 <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="maktx" sap:label="Material" sap:quickinfo="Material Number"/>
                 <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
-                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
                 <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
                 <Property Name="mbrsh" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Industry Sector"/>
                 <Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
                 <Property Name="created_at_time" Type="Edm.Time" Precision="0" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
                 <Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Change" sap:quickinfo="Date of Last Change"/>
-                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
                 <Property Name="lvorm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at client level" sap:quickinfo="Flag Material for Deletion at Client Level"/>
                 <Property Name="bismt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old material number"/>
                 <Property Name="zeinr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number (without document management system)"/>
-                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Document type" sap:quickinfo="Document type (without Document Management system)"/>
-                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Doc. Version" sap:quickinfo="Document version (without Document Management system)"/>
+                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Document Type" sap:quickinfo="Document type (without Document Management system)"/>
+                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Version" sap:quickinfo="Document version (without Document Management system)"/>
                 <Property Name="zeifo" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Page format" sap:quickinfo="Page format of document (without Document Management system)"/>
                 <Property Name="aeszn" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Document change no." sap:quickinfo="Document change number (without document management system)"/>
                 <Property Name="blatt" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Page number" sap:quickinfo="Page number of document (without Document Management system)"/>
@@ -1193,7 +1208,7 @@
                 <Property Name="ean11" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="EAN/UPC" sap:quickinfo="International Article Number (EAN/UPC)"/>
                 <Property Name="qmpur" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="QM in Procur. Active" sap:quickinfo="QM in Procurement Is Active"/>
                 <Property Name="kzkfg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Configurable" sap:quickinfo="Configurable Material"/>
-                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch management" sap:quickinfo="Batch management requirement indicator"/>
+                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch Management" sap:quickinfo="Batch Management Requirement Indicator"/>
                 <Property Name="kzkup" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co-product" sap:quickinfo="Indicator: Material can be co-product"/>
                 <Property Name="mstde" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid from" sap:quickinfo="Date from which the cross-plant material status is valid"/>
                 <Property Name="mhdrz" Type="Edm.Decimal" Precision="4" Scale="0" sap:label="Min. Rem. Shelf Life" sap:quickinfo="Minimum Remaining Shelf Life"/>
@@ -1237,12 +1252,12 @@
                 <Property Name="brgew" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Gross weight"/>
                 <Property Name="volum" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Volume"/>
                 <Property Name="ntgew" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Net weight"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_8FF2BDD49C3174FAEC1FE3D693E89397" FromRole="FromRole_assoc_8FF2BDD49C3174FAEC1FE3D693E89397" ToRole="ToRole_assoc_8FF2BDD49C3174FAEC1FE3D693E89397"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_B79F755ED2A36DEF4D7F3DFC39CE44AC" FromRole="FromRole_assoc_B79F755ED2A36DEF4D7F3DFC39CE44AC" ToRole="ToRole_assoc_B79F755ED2A36DEF4D7F3DFC39CE44AC"/>
                 <NavigationProperty Name="to_classification" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_818E89EA826CCD6B827E8D5AB55D2E82" FromRole="FromRole_assoc_818E89EA826CCD6B827E8D5AB55D2E82" ToRole="ToRole_assoc_818E89EA826CCD6B827E8D5AB55D2E82"/>
@@ -1260,9 +1275,7 @@
                 <Property Name="Approve_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Check_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Copy_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Delete_material_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Extend_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Reject_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -1563,18 +1576,18 @@
                 <Property Name="zplp3_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Material Request Id" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:field-control="matnr_fc" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
-                <Property Name="req_created_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="req_created_by_fc" sap:label="Request Created By" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="req_created_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="req_created_by_fc" sap:label="Request Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
                 <Property Name="req_created_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="req_created_on_fc" sap:label="Request Created On" sap:quickinfo="Created On"/>
-                <Property Name="req_changed_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="req_changed_by_fc" sap:label="Request Changed By" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="req_changed_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="req_changed_by_fc" sap:label="Request Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
                 <Property Name="req_changed_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="req_changed_on_fc" sap:label="Request Changed On" sap:quickinfo="Date of Last Change"/>
                 <Property Name="reqtyp" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="reqtyp_fc" sap:label="Request Type"/>
                 <Property Name="req_desc" Type="Edm.String" MaxLength="80" sap:field-control="req_desc_fc" sap:label="Request Desription"/>
                 <Property Name="reqprio" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:field-control="reqprio_fc" sap:label="Priority" sap:quickinfo="Priority of a Work Item" sap:value-list="standard"/>
                 <Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="ersda_fc" sap:label="Created On"/>
                 <Property Name="created_at_time" Type="Edm.Time" Precision="0" sap:field-control="created_at_time_fc" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
-                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="ernam_fc" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="ernam_fc" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
                 <Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laeda_fc" sap:label="Last Change" sap:quickinfo="Date of Last Change"/>
-                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="aenam_fc" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="aenam_fc" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
                 <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtart_fc" sap:label="Material type" sap:value-list="standard"/>
                 <Property Name="mbrsh" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="mbrsh_fc" sap:label="Industry Sector" sap:value-list="standard"/>
                 <Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="matkl_fc" sap:label="Material Group"/>
@@ -1591,11 +1604,11 @@
                 <Property Name="stoff" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="stoff_fc" sap:label="Haz. material number" sap:quickinfo="Hazardous material number"/>
                 <Property Name="spart" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="spart_fc" sap:label="Division"/>
                 <Property Name="mtpos_mara" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtpos_mara_fc" sap:label="Gen. item cat. grp" sap:quickinfo="General item category group"/>
-                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xchpf_fc" sap:label="Batch management" sap:quickinfo="Batch management requirement indicator"/>
+                <Property Name="xchpf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xchpf_fc" sap:label="Batch Management" sap:quickinfo="Batch Management Requirement Indicator"/>
                 <Property Name="mhdrz" Type="Edm.Decimal" Precision="4" Scale="0" sap:field-control="mhdrz_fc" sap:label="Min. Rem. Shelf Life" sap:quickinfo="Minimum Remaining Shelf Life"/>
                 <Property Name="mhdhb" Type="Edm.Decimal" Precision="4" Scale="0" sap:field-control="mhdhb_fc" sap:label="Total shelf life"/>
                 <Property Name="spras" Type="Edm.String" MaxLength="2" sap:field-control="spras_fc" sap:label="Language Key"/>
-                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:field-control="maktx_fc" sap:label="Material description"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:field-control="maktx_fc" sap:label="Material Description"/>
                 <Property Name="meinh" Type="Edm.String" MaxLength="3" sap:field-control="meinh_fc" sap:label="Display Unit/Measure" sap:quickinfo="Unit of Measure for Display" sap:semantics="unit-of-measure"/>
                 <Property Name="vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="vkorg_fc" sap:label="Sales Organization" sap:value-list="standard"/>
                 <Property Name="vtweg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="vtweg_fc" sap:label="Distribution Channel" sap:value-list="standard"/>
@@ -1634,10 +1647,10 @@
                 <Property Name="webaz" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="webaz_fc" sap:label="GR processing time" sap:quickinfo="Goods receipt processing time in days"/>
                 <Property Name="maabc" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="maabc_fc" sap:label="ABC Indicator"/>
                 <Property Name="disls" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="disls_fc" sap:label="Lot Sizing Procedure" sap:quickinfo="Lot Sizing Procedure within Materials Planning"/>
-                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="beskz_fc" sap:label="Procurement type" sap:quickinfo="Procurement Type" sap:value-list="standard"/>
+                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="beskz_fc" sap:label="Procurement Type" sap:value-list="standard"/>
                 <Property Name="sobsl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="sobsl_fc" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
                 <Property Name="minbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="minbe_fc" sap:label="Reorder Point"/>
-                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="eisbe_fc" sap:label="Safety stock"/>
+                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="eisbe_fc" sap:label="Safety Stock"/>
                 <Property Name="bstmi" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstmi_fc" sap:label="Minimum Lot Size"/>
                 <Property Name="bstma" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstma_fc" sap:label="Maximum Lot Size"/>
                 <Property Name="bstfe" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="bstfe_fc" sap:label="Fixed lot size"/>
@@ -1668,9 +1681,9 @@
                 <Property Name="peinh" Type="Edm.Decimal" Precision="5" Scale="0" sap:field-control="peinh_fc" sap:label="Price unit"/>
                 <Property Name="bklas" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="bklas_fc" sap:label="Valuation Class" sap:value-list="standard"/>
                 <Property Name="bwtty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="bwtty_fc" sap:label="Valuation Category" sap:value-list="standard"/>
-                <Property Name="stprv" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="stprv_fc" sap:label="Previous price"/>
-                <Property Name="laepr" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laepr_fc" sap:label="Last price change" sap:quickinfo="Date of the last price change"/>
-                <Property Name="zkprs" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="zkprs_fc" sap:label="Future price"/>
+                <Property Name="stprv" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="stprv_fc" sap:label="Previous Price"/>
+                <Property Name="laepr" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="laepr_fc" sap:label="Last Price Change" sap:quickinfo="Date of Last Price Change"/>
+                <Property Name="zkprs" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="zkprs_fc" sap:label="Future Price"/>
                 <Property Name="pnum1" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:field-control="pnum1_fc" sap:label="Pointer parameters" sap:quickinfo="Pointer: forecast parameters"/>
                 <Property Name="prmod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="prmod_fc" sap:label="Forecast model"/>
                 <Property Name="modav" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="modav_fc" sap:label="Selection procedure" sap:quickinfo="Model selection procedure"/>
@@ -1719,11 +1732,11 @@
                 <Property Name="mstae" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mstae_fc" sap:label="X-Plant Mat.Status" sap:quickinfo="Cross-Plant Material Status"/>
                 <Property Name="mstav" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mstav_fc" sap:label="X-distr.chain status" sap:quickinfo="Cross-distribution-chain material status"/>
                 <Property Name="mstde" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="mstde_fc" sap:label="Valid from" sap:quickinfo="Date from which the cross-plant material status is valid"/>
-                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr1_fc" sap:label="Material Group 1" sap:quickinfo="Material group 1"/>
-                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr2_fc" sap:label="Material Group 2" sap:quickinfo="Material group 2"/>
-                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr3_fc" sap:label="Material Group 3" sap:quickinfo="Material group 3"/>
-                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr4_fc" sap:label="Material Group 4" sap:quickinfo="Material group 4"/>
-                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr5_fc" sap:label="Material Group 5" sap:quickinfo="Material group 5"/>
+                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr1_fc" sap:label="Material Group 1"/>
+                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr2_fc" sap:label="Material Group 2"/>
+                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr3_fc" sap:label="Material Group 3"/>
+                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr4_fc" sap:label="Material Group 4"/>
+                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mvgr5_fc" sap:label="Material Group 5"/>
                 <Property Name="normt" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:field-control="normt_fc" sap:label="Industry Std Desc." sap:quickinfo="Industry Standard Description (such as ANSI or ISO)"/>
                 <Property Name="nrfhg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="nrfhg_fc" sap:label="Qual.f.FreeGoodsDis." sap:quickinfo="Material qualifies for discount in kind"/>
                 <Property Name="numtp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="numtp_fc" sap:label="EAN category" sap:quickinfo="Category of International Article Number (EAN)"/>
@@ -1741,7 +1754,7 @@
                 <Property Name="prata" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="prata_fc" sap:label="Product attribute 10" sap:quickinfo="ID for product attribute 10"/>
                 <Property Name="prodh" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:field-control="prodh_fc" sap:label="Product hierarchy"/>
                 <Property Name="profl" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="profl_fc" sap:label="Authoriz. profile" sap:quickinfo="Authorization Profile"/>
-                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="provg_fc" sap:label="Commission Group" sap:quickinfo="Commission group"/>
+                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="provg_fc" sap:label="Commission Group"/>
                 <Property Name="qmpur" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="qmpur_fc" sap:label="QM in Procur. Active" sap:quickinfo="QM in Procurement Is Active"/>
                 <Property Name="qzgtp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="qzgtp_fc" sap:label="Certificate Type"/>
                 <Property Name="rbnrm" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="rbnrm_fc" sap:label="Catalog Profile"/>
@@ -1752,7 +1765,7 @@
                 <Property Name="satnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="satnr_fc" sap:label="Cross-plant CM" sap:quickinfo="Cross-Plant Configurable Material"/>
                 <Property Name="serlv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="serlv_fc" sap:label="Serialization level" sap:quickinfo="Level of Explicitness for Serial Number"/>
                 <Property Name="sfcpf" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:field-control="sfcpf_fc" sap:label="Prod. Sched. Profile" sap:quickinfo="Production Scheduling Profile"/>
-                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="sktof_fc" sap:label="Cash Discount" sap:quickinfo="Cash discount indicator"/>
+                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="sktof_fc" sap:label="Cash Discount" sap:quickinfo="Cash Discount Indicator"/>
                 <Property Name="ssqss" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:field-control="ssqss_fc" sap:label="QA Control Key"/>
                 <Property Name="taxim" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="taxim_fc" sap:label="Tax ind. f. material" sap:quickinfo="Tax indicator for material (Purchasing)"/>
                 <Property Name="tranz" Type="Edm.Decimal" Precision="5" Scale="2" sap:field-control="tranz_fc" sap:label="Interoperation" sap:quickinfo="Interoperation time"/>
@@ -1768,13 +1781,13 @@
                 <Property Name="wrkst" Type="Edm.String" MaxLength="48" sap:field-control="wrkst_fc" sap:label="Basic material" sap:quickinfo="Basic Material"/>
                 <Property Name="xgchp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xgchp_fc" sap:label="Appr.Batch Recd Req." sap:quickinfo="Approved Batch Record Required"/>
                 <Property Name="xmcng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="xmcng_fc" sap:label="Neg. stocks in plant" sap:quickinfo="Negative stocks allowed in plant"/>
-                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="zeiar_fc" sap:label="Document type" sap:quickinfo="Document type (without Document Management system)"/>
+                <Property Name="zeiar" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="zeiar_fc" sap:label="Document Type" sap:quickinfo="Document type (without Document Management system)"/>
                 <Property Name="zeifo" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="zeifo_fc" sap:label="Page format" sap:quickinfo="Page format of document (without Document Management system)"/>
                 <Property Name="zeinr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:field-control="zeinr_fc" sap:label="Document" sap:quickinfo="Document number (without document management system)"/>
-                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="zeivr_fc" sap:label="Doc. Version" sap:quickinfo="Document version (without Document Management system)"/>
-                <Property Name="abwkz" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="abwkz_fc" sap:label="Devaluation ind." sap:quickinfo="Lowest value: devaluation indicator"/>
+                <Property Name="zeivr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="zeivr_fc" sap:label="Document Version" sap:quickinfo="Document version (without Document Management system)"/>
+                <Property Name="abwkz" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="abwkz_fc" sap:label="Devaluation Ind." sap:quickinfo="Lowest value: devaluation indicator"/>
                 <Property Name="ahdis" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="ahdis_fc" sap:label="MRP dep.requirements" sap:quickinfo="MRP relevancy for dependent requirements"/>
-                <Property Name="aland" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="aland_fc" sap:label="Country" sap:quickinfo="Departure country (country from which the goods are sent)" sap:value-list="standard"/>
+                <Property Name="aland" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="aland_fc" sap:label="Departure Ctry/Reg." sap:quickinfo="Departure Country/Region (from which the goods are sent)" sap:value-list="standard"/>
                 <Property Name="altsl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="altsl_fc" sap:label="Selection method" sap:quickinfo="Method for Selecting Alternative Bills of Material"/>
                 <Property Name="aplal" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="aplal_fc" sap:label="Group Counter"/>
                 <Property Name="auftl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="auftl_fc" sap:label="Splitting indicator" sap:quickinfo="Splitting Indicator"/>
@@ -1797,7 +1810,7 @@
                 <Property Name="fhori" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="fhori_fc" sap:label="Sched. Margin Key" sap:quickinfo="Scheduling Margin Key for Floats"/>
                 <Property Name="fxhor" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:field-control="fxhor_fc" sap:label="Planning time fence"/>
                 <Property Name="hkmat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="hkmat_fc" sap:label="Material origin" sap:quickinfo="Material-related origin"/>
-                <Property Name="hrkft" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="hrkft_fc" sap:label="Origin group" sap:quickinfo="Origin Group as Subdivision of Cost Element"/>
+                <Property Name="hrkft" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="hrkft_fc" sap:label="Origin Group" sap:quickinfo="Origin Group as Subdivision of Cost Element"/>
                 <Property Name="kausf" Type="Edm.Decimal" Precision="5" Scale="2" sap:field-control="kausf_fc" sap:label="Component Scrap (%)" sap:quickinfo="Component Scrap in Percent"/>
                 <Property Name="kosgr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="kosgr_fc" sap:label="Overhead Group" sap:quickinfo="Costing Overhead Group"/>
                 <Property Name="kzaus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="kzaus_fc" sap:label="Discontinuation ind." sap:quickinfo="Discontinuation indicator"/>
@@ -1807,7 +1820,7 @@
                 <Property Name="kzpsp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="kzpsp_fc" sap:label="Cross-project matl" sap:quickinfo="Indicator for cross-project material"/>
                 <Property Name="lagpr" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="lagpr_fc" sap:label="Storage Costs Code" sap:quickinfo="Storage Costs Percentage Code"/>
                 <Property Name="lbstf" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="lbstf_fc" sap:label="Replenishment qty" sap:quickinfo="Replenishment quantity for storage location MRP"/>
-                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="lfrhy_fc" sap:label="Planning cycle"/>
+                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="lfrhy_fc" sap:label="Planning Cycle"/>
                 <Property Name="lgfsb" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="lgfsb_fc" sap:label="Storage loc. for EP" sap:quickinfo="Default storage location for external procurement"/>
                 <Property Name="lgpro" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="lgpro_fc" sap:label="Prod. stor. location" sap:quickinfo="Issue Storage Location"/>
                 <Property Name="lgrad" Type="Edm.Decimal" Precision="3" Scale="1" sap:field-control="lgrad_fc" sap:label="Service level (%)" sap:quickinfo="Service level"/>
@@ -1815,9 +1828,9 @@
                 <Property Name="losfx" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="losfx_fc" sap:label="LS-Independent Costs" sap:quickinfo="Lot-Size-Independent Costs"/>
                 <Property Name="losgr" Type="Edm.Decimal" Precision="13" Scale="3" sap:field-control="losgr_fc" sap:label="Planned lot size"/>
                 <Property Name="lsobs" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="lsobs_fc" sap:label="Spec.proc.type: SLoc" sap:quickinfo="Special procurement type at storage location level"/>
-                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mdach_fc" sap:label="Action control" sap:quickinfo="Action control: planned order processing"/>
+                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="mdach_fc" sap:label="Action Control" sap:quickinfo="Action Control: Planned Order Processing"/>
                 <Property Name="mrppp" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="mrppp_fc" sap:label="Planning Calendar" sap:quickinfo="PPC Planning Calendar"/>
-                <Property Name="mypol" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mypol_fc" sap:label="LIFO pool" sap:quickinfo="Pool number for LIFO valuation"/>
+                <Property Name="mypol" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mypol_fc" sap:label="LIFO Pool" sap:quickinfo="Pool number for LIFO valuation"/>
                 <Property Name="ncost" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="ncost_fc" sap:label="Do Not Cost"/>
                 <Property Name="nfmat" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="nfmat_fc" sap:label="Follow-Up Material"/>
                 <Property Name="periv" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="periv_fc" sap:label="Fiscal Year Variant"/>
@@ -1830,14 +1843,14 @@
                 <Property Name="sfepr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="sfepr_fc" sap:label="REM Profile" sap:quickinfo="Repetitive Manufacturing Profile"/>
                 <Property Name="shflg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="shflg_fc" sap:label="Safety time ind." sap:quickinfo="Safety time indicator (with or without safety time)"/>
                 <Property Name="shpro" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="shpro_fc" sap:label="STime period profile" sap:quickinfo="Period Profile for Safety Time"/>
-                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="shzet_fc" sap:label="Safety time/act.cov." sap:quickinfo="Safety time (in workdays)"/>
+                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:field-control="shzet_fc" sap:label="Safety Time" sap:quickinfo="Safety Time (in Workdays)"/>
                 <Property Name="sobsk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="sobsk_fc" sap:label="SpecProcurem Costing" sap:quickinfo="Special Procurement Type for Costing"/>
                 <Property Name="stdpd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:field-control="stdpd_fc" sap:label="ConfigurableMaterial" sap:quickinfo="Configurable material"/>
                 <Property Name="casnr" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:field-control="casnr_fc" sap:label="CAS number (pharm.)" sap:quickinfo="CAS number for pharmaceutical products in foreign trade" sap:value-list="standard"/>
                 <Property Name="mtver" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="mtver_fc" sap:label="Intrastat Group" sap:quickinfo="Material Group for Intrastat"/>
                 <Property Name="gpnum" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:field-control="gpnum_fc" sap:label="PRODCOM no." sap:quickinfo="Production statistics: PRODCOM number for foreign trade"/>
-                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkl_fc" sap:label="Country of origin" sap:quickinfo="Country of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
-                <Property Name="herkr" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkr_fc" sap:label="Region of origin" sap:quickinfo="Region of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
+                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkl_fc" sap:label="Cntry/Reg of Origin" sap:quickinfo="Country/Region of Origin of Material (Non-Preferential Ori.)" sap:value-list="standard"/>
+                <Property Name="herkr" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="herkr_fc" sap:label="Region of Origin" sap:quickinfo="Region of Origin of Material (Non-Preferential Origin)" sap:value-list="standard"/>
                 <Property Name="steuc" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:field-control="steuc_fc" sap:label="Control code" sap:quickinfo="Control code for consumption taxes in foreign trade" sap:value-list="standard"/>
                 <Property Name="takzt" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="takzt_fc" sap:label="Takt time"/>
                 <Property Name="tatyp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="tatyp_fc" sap:label="Tax Category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)" sap:value-list="standard"/>
@@ -1845,7 +1858,7 @@
                 <Property Name="usequ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="usequ_fc" sap:label="Quota arr. usage" sap:quickinfo="Quota arrangement usage"/>
                 <Property Name="vjbwh" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="vjbwh_fc" sap:label="Commercial price 3" sap:quickinfo="Valuation price based on commercial law: level 3"/>
                 <Property Name="vjbws" Type="Edm.Decimal" Precision="12" Scale="3" sap:field-control="vjbws_fc" sap:label="Tax price 3" sap:quickinfo="Valuation price based on tax law: level 3"/>
-                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="vspvb_fc" sap:label="Default supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
+                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="vspvb_fc" sap:label="Proposed supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
                 <Property Name="wzeit" Type="Edm.Decimal" Precision="3" Scale="0" sap:field-control="wzeit_fc" sap:label="Tot. repl. lead time" sap:quickinfo="Total replenishment lead time (in workdays)"/>
                 <Property Name="xlifo" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="xlifo_fc" sap:label="LIFO/FIFO-relevant" sap:quickinfo="LIFO/FIFO-Relevant"/>
                 <Property Name="zkdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:field-control="zkdat_fc" sap:label="Valid from" sap:quickinfo="Date as of which the price is valid"/>
@@ -2175,12 +2188,12 @@
                 <Property Name="MASSHide" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FTEHide" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="WithdrawButton" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_051BD7652DE33413842FA52453CC79AE" FromRole="FromRole_assoc_051BD7652DE33413842FA52453CC79AE" ToRole="ToRole_assoc_051BD7652DE33413842FA52453CC79AE"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_99A7EAECD98C31D10F50A864437E6D23" FromRole="FromRole_assoc_99A7EAECD98C31D10F50A864437E6D23" ToRole="ToRole_assoc_99A7EAECD98C31D10F50A864437E6D23"/>
                 <NavigationProperty Name="to_class" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_EFE17605BD67CB23329D168C1050C0B2" FromRole="FromRole_assoc_EFE17605BD67CB23329D168C1050C0B2" ToRole="ToRole_assoc_EFE17605BD67CB23329D168C1050C0B2"/>
@@ -2201,18 +2214,18 @@
                 <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Material Request Id"/>
                 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Departure country (country from which the goods are sent)"/>
+                <Property Name="aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Departure Ctry/Reg." sap:quickinfo="Departure Country/Region (from which the goods are sent)"/>
                 <Property Name="tatyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Tax Category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)"/>
-                <Property Name="AlandForInput" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Departure country (country from which the goods are sent)" sap:value-list="standard"/>
+                <Property Name="AlandForInput" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Departure Country/Region (from which the goods are sent)" sap:value-list="standard"/>
                 <Property Name="TatypForInput" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tax Category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)" sap:value-list="standard"/>
                 <Property Name="taxkm" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax classification" sap:quickinfo="Tax classification material" sap:value-list="standard"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_MaterialHeaderReq" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_93F45E67F187727ABF7B9D9FDE84934C" FromRole="ToRole_assoc_93F45E67F187727ABF7B9D9FDE84934C" ToRole="FromRole_assoc_93F45E67F187727ABF7B9D9FDE84934C"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_04AD47AC663D21E15FDC804A42F4E799" FromRole="FromRole_assoc_04AD47AC663D21E15FDC804A42F4E799" ToRole="ToRole_assoc_04AD47AC663D21E15FDC804A42F4E799"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_A4C6BF3F1D8D01D422E3F03F16E73092" FromRole="FromRole_assoc_A4C6BF3F1D8D01D422E3F03F16E73092" ToRole="ToRole_assoc_A4C6BF3F1D8D01D422E3F03F16E73092"/>
@@ -2262,7 +2275,7 @@
                 <Property Name="webaz" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="GR processing time" sap:quickinfo="Goods receipt processing time in days"/>
                 <Property Name="ausss" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Assembly scrap (%)" sap:quickinfo="Assembly scrap in percent"/>
                 <Property Name="disls" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Lot Sizing Procedure" sap:quickinfo="Lot Sizing Procedure within Materials Planning"/>
-                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Procurement type" sap:quickinfo="Procurement Type"/>
+                <Property Name="beskz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Procurement Type"/>
                 <Property Name="sobsl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
                 <Property Name="sbdkz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Individual/coll." sap:quickinfo="Dependent requirements ind. for individual and coll. reqmts"/>
                 <Property Name="altsl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Selection method" sap:quickinfo="Method for Selecting Alternative Bills of Material"/>
@@ -2322,7 +2335,7 @@
                 <Property Name="bstma" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Maximum Lot Size"/>
                 <Property Name="bstmi" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Minimum Lot Size"/>
                 <Property Name="bstrf" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Rounding value" sap:quickinfo="Rounding value for purchase order quantity"/>
-                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Safety stock"/>
+                <Property Name="eisbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Safety Stock"/>
                 <Property Name="minbe" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Reorder Point"/>
                 <Property Name="losgr" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Costing Lot Size" sap:quickinfo="Lot Size for Product Costing"/>
                 <Property Name="bstfe" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Fixed lot size"/>
@@ -2340,15 +2353,15 @@
                 <Property Name="sernp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Serial No. Profile" sap:quickinfo="Serial Number Profile"/>
                 <Property Name="sfepr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="REM Profile" sap:quickinfo="Repetitive Manufacturing Profile"/>
                 <Property Name="xmcng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Neg. stocks in plant" sap:quickinfo="Negative stocks allowed in plant"/>
-                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Planning cycle"/>
+                <Property Name="lfrhy" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Planning Cycle"/>
                 <Property Name="rdprf" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Rounding Profile"/>
-                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Action control" sap:quickinfo="Action control: planned order processing"/>
-                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Default supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
+                <Property Name="mdach" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Action Control" sap:quickinfo="Action Control: Planned Order Processing"/>
+                <Property Name="vspvb" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Proposed supply area" sap:quickinfo="Proposed Supply Area in Material Master Record"/>
                 <Property Name="kzkup" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co-product" sap:quickinfo="Indicator: Material can be co-product"/>
                 <Property Name="strgr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Strategy Group" sap:quickinfo="Planning Strategy Group"/>
                 <Property Name="schgt" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Bulk material" sap:quickinfo="Indicator: bulk material"/>
                 <Property Name="shflg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Safety time ind." sap:quickinfo="Safety time indicator (with or without safety time)"/>
-                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Safety time/act.cov." sap:quickinfo="Safety time (in workdays)"/>
+                <Property Name="shzet" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Safety Time" sap:quickinfo="Safety Time (in Workdays)"/>
                 <Property Name="kzech" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Batch entry" sap:quickinfo="Determination of batch entry in the production/process order"/>
                 <Property Name="fprfm" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Distr. profile" sap:quickinfo="Distribution profile of material in plant"/>
                 <Property Name="fabkz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="JIT Indicator" sap:quickinfo="Indicator: Item Relevant to JIT Delivery Schedules"/>
@@ -2365,13 +2378,13 @@
                 <Property Name="iuid_type" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="IUID Type" sap:quickinfo="Structure Type of UII"/>
                 <Property Name="iuid_relevant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="IUID-Relevant"/>
                 <Property Name="uid_iea" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ext. Allocation" sap:quickinfo="External Allocation of UII"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_material" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_5B0EB24C4890AE56971046808100474B" FromRole="ToRole_assoc_5B0EB24C4890AE56971046808100474B" ToRole="FromRole_assoc_5B0EB24C4890AE56971046808100474B"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_513D4D64F8A8901F8079E8D35794678D" FromRole="FromRole_assoc_513D4D64F8A8901F8079E8D35794678D" ToRole="ToRole_assoc_513D4D64F8A8901F8079E8D35794678D"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_B6884E1C51B2CBF8E414EDFF7DBC17BC" FromRole="FromRole_assoc_B6884E1C51B2CBF8E414EDFF7DBC17BC" ToRole="ToRole_assoc_B6884E1C51B2CBF8E414EDFF7DBC17BC"/>
@@ -2392,7 +2405,7 @@
                 <Property Name="reqid" Type="Edm.String" Nullable="false" MaxLength="1"/>
                 <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="vtweg" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
-                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cash Discount" sap:quickinfo="Cash discount indicator"/>
+                <Property Name="sktof" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cash Discount" sap:quickinfo="Cash Discount Indicator"/>
                 <Property Name="prat1" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Product attribute 1" sap:quickinfo="ID for product attribute 1"/>
                 <Property Name="prat2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Product attribute 2" sap:quickinfo="ID for product attribute 2"/>
                 <Property Name="prat3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Product attribute 3" sap:quickinfo="ID for product attribute 3"/>
@@ -2405,11 +2418,11 @@
                 <Property Name="prata" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Product attribute 10" sap:quickinfo="ID for product attribute 10"/>
                 <Property Name="vavme" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales unit not var." sap:quickinfo="Variable Sales Unit Not Allowed"/>
                 <Property Name="vrkme" Type="Edm.String" MaxLength="3" sap:label="Sales unit" sap:semantics="unit-of-measure"/>
-                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 1" sap:quickinfo="Material group 1"/>
-                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 2" sap:quickinfo="Material group 2"/>
-                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 3" sap:quickinfo="Material group 3"/>
-                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 4" sap:quickinfo="Material group 4"/>
-                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 5" sap:quickinfo="Material group 5"/>
+                <Property Name="mvgr1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 1"/>
+                <Property Name="mvgr2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 2"/>
+                <Property Name="mvgr3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 3"/>
+                <Property Name="mvgr4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 4"/>
+                <Property Name="mvgr5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 5"/>
                 <Property Name="schme" Type="Edm.String" MaxLength="3" sap:label="Unit of measure" sap:quickinfo="Unit of measure of delivery unit" sap:semantics="unit-of-measure"/>
                 <Property Name="rdprf" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Rounding Profile"/>
                 <Property Name="dwerk" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Delivering Plant" sap:quickinfo="Delivering Plant (Own or External)"/>
@@ -2417,7 +2430,7 @@
                 <Property Name="megru" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Unit of Measure Grp" sap:quickinfo="Unit of Measure Group"/>
                 <Property Name="kondm" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Material Price Grp" sap:quickinfo="Material Price Group"/>
                 <Property Name="bonus" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Volume Rebate Group" sap:quickinfo="Volume rebate group"/>
-                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Commission Group" sap:quickinfo="Commission group"/>
+                <Property Name="provg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Commission Group"/>
                 <Property Name="vmsta" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="DChain-spec. status" sap:quickinfo="Distribution-chain-specific material status"/>
                 <Property Name="ktgrm" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Acct Assmt Grp Mat." sap:quickinfo="Account Assignment Group for Material"/>
                 <Property Name="versg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Matl statistics grp" sap:quickinfo="Material statistics group"/>
@@ -2426,13 +2439,13 @@
                 <Property Name="lfmng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Minimum Delivery Qty" sap:quickinfo="Minimum Delivery Quantity in Delivery Note Processing"/>
                 <Property Name="aumng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Minimum order qty" sap:quickinfo="Minimum order quantity in base unit of measure"/>
                 <Property Name="scmng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Delivery unit"/>
-                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_material" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_D5E351CD01C28A035735FCCCE3496A80" FromRole="ToRole_assoc_D5E351CD01C28A035735FCCCE3496A80" ToRole="FromRole_assoc_D5E351CD01C28A035735FCCCE3496A80"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_E4949718137D520DA20955A1ACF67181" FromRole="FromRole_assoc_E4949718137D520DA20955A1ACF67181" ToRole="ToRole_assoc_E4949718137D520DA20955A1ACF67181"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.assoc_7B22C17202FC771EA4CE1F372CECA3A1" FromRole="FromRole_assoc_7B22C17202FC771EA4CE1F372CECA3A1" ToRole="ToRole_assoc_7B22C17202FC771EA4CE1F372CECA3A1"/>
@@ -2444,10 +2457,10 @@
                     <PropertyRef Name="lgort"/>
                 </Key>
                 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="matnr_Text" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="matnr_Text" Type="Edm.String" MaxLength="40" sap:label="Material description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="matnr_Text" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
                 <Property Name="lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
-                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
                 <Property Name="pstat" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Maintenance status"/>
                 <Property Name="lvorm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF stor. loc. level" sap:quickinfo="Flag Material for Deletion at Storage Location Level"/>
                 <Property Name="lfgja" Type="Edm.String" MaxLength="11"/>
@@ -2476,7 +2489,7 @@
                 <Property Name="lsobs" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Spec.proc.type: SLoc" sap:quickinfo="Special procurement type at storage location level"/>
                 <Property Name="lminb" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Reorder point" sap:quickinfo="Reorder point for storage location MRP"/>
                 <Property Name="lbstf" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Replenishment qty" sap:quickinfo="Replenishment quantity for storage location MRP"/>
-                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of origin" sap:quickinfo="Country of Origin of Material (Non-Preferential Origin)"/>
+                <Property Name="herkl" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Cntry/Reg of Origin" sap:quickinfo="Country/Region of Origin of Material (Non-Preferential Ori.)"/>
                 <Property Name="exppg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Preference indicator" sap:quickinfo="Preference indicator (deactivated)"/>
                 <Property Name="exver" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Export indicator" sap:quickinfo="Export indicator (deactivated)"/>
                 <Property Name="lgpbe" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Storage Bin"/>
@@ -2519,7 +2532,7 @@
                     <PropertyRef Name="domvalue_l"/>
                 </Key>
                 <Property Name="domname" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Domain name"/>
-                <Property Name="domvalue_l" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Request Priority" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="domvalue_l" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Request Priority" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
                 <Property Name="Ddtext" Type="Edm.String" MaxLength="60" sap:label="Description" sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
             <EntityType Name="ZI_QUDG_TATYP_VHType" sap:label="Valuation class value help" sap:value-list="true" sap:content-version="1">
@@ -2527,7 +2540,7 @@
                     <PropertyRef Name="talnd"/>
                     <PropertyRef Name="tatyp"/>
                 </Key>
-                <Property Name="talnd" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax country" sap:quickinfo="Country is relevant for taxes"/>
+                <Property Name="talnd" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax country/region" sap:quickinfo="Country/Region is relevant for taxes"/>
                 <Property Name="tatyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Tax Category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)"/>
             </EntityType>
             <EntityType Name="ZI_QU_DG_CharName_VHType" sap:label="Value help for characteristics name" sap:value-list="true" sap:content-version="1">
@@ -2603,7 +2616,7 @@
                     <PropertyRef Name="Tatyp"/>
                     <PropertyRef Name="Taxkd"/>
                 </Key>
-                <Property Name="Aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax country" sap:quickinfo="Country is relevant for taxes"/>
+                <Property Name="Aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax country/region" sap:quickinfo="Country/Region is relevant for taxes"/>
                 <Property Name="Tatyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Description" sap:label="Tax category" sap:quickinfo="Tax category (sales tax, federal sales tax,...)"/>
                 <Property Name="Taxkd" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="Description" sap:label="Tax classification for customer"/>
                 <Property Name="Description" Type="Edm.String" MaxLength="20" sap:label="Description"/>
@@ -2612,14 +2625,14 @@
                 <Key>
                     <PropertyRef Name="Aland"/>
                 </Key>
-                <Property Name="Aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Description" sap:label="Departure country" sap:quickinfo="Country Key"/>
-                <Property Name="Description" Type="Edm.String" MaxLength="15" sap:label="Description" sap:quickinfo="Country Name"/>
+                <Property Name="Aland" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Description" sap:label="Departure country" sap:quickinfo="Country/Region Key"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="15" sap:label="Description" sap:quickinfo="Name of Country/Region (Short)"/>
             </EntityType>
             <EntityType Name="ZQU_DG_BESKZ_VHType" sap:label="Value Help for BESKZ" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Beskz"/>
                 </Key>
-                <Property Name="Beskz" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="Description" sap:label="Procurement Type" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="Beskz" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="Description" sap:label="Procurement Type" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
                 <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
             <EntityType Name="ZQU_DG_CASNR_VHType" sap:label="Value Help for CASNR" sap:value-list="true" sap:content-version="1">
@@ -2641,15 +2654,15 @@
                 <Key>
                     <PropertyRef Name="Country"/>
                 </Key>
-                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
-                <Property Name="landx" Type="Edm.String" MaxLength="15" sap:label="Country Description" sap:quickinfo="Country Name"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country/Region Key"/>
+                <Property Name="landx" Type="Edm.String" MaxLength="15" sap:label="Country Description" sap:quickinfo="Name of Country/Region (Short)"/>
             </EntityType>
             <EntityType Name="ZQU_DG_HERKR_VHType" sap:label="Value Help for HERKR" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Country"/>
                     <PropertyRef Name="Region"/>
                 </Key>
-                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country/Region Key"/>
                 <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="bezei" Type="Edm.String" MaxLength="20" sap:label="Country" sap:quickinfo="Description"/>
             </EntityType>
@@ -2658,7 +2671,7 @@
                     <PropertyRef Name="Matnr"/>
                 </Key>
                 <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="Description" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Material description"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Material Description"/>
             </EntityType>
             <EntityType Name="ZQU_DG_MBRSH_VHType" sap:label="Industry Sector Value Help" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -2693,7 +2706,7 @@
                     <PropertyRef Name="Country"/>
                     <PropertyRef Name="Steuc"/>
                 </Key>
-                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country/Region Key"/>
                 <Property Name="Steuc" Type="Edm.String" Nullable="false" MaxLength="16" sap:display-format="UpperCase" sap:label="Control Code" sap:quickinfo="Control code for consumption taxes in foreign trade"/>
             </EntityType>
             <EntityType Name="ZQU_DG_TATYP_VHType" sap:label="Value Help for TATYP" sap:value-list="true" sap:content-version="1">
@@ -2718,7 +2731,7 @@
                 <Key>
                     <PropertyRef Name="Vprsv"/>
                 </Key>
-                <Property Name="Vprsv" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="Description" sap:label="Price control indicator" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="Vprsv" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="Description" sap:label="Price control indicator" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
                 <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
             <ComplexType Name="DummyFunctionImportResult">
@@ -2731,7 +2744,7 @@
                 <Property Name="Mtart" Type="Edm.String" MaxLength="4" sap:label="Material type"/>
                 <Property Name="Matkl" Type="Edm.String" MaxLength="9" sap:label="Material Group"/>
                 <Property Name="Mbrsh" Type="Edm.String" MaxLength="1" sap:label="Industry Sector"/>
-                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant"/>
                 <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
                 <Property Name="Gewei" Type="Edm.String" MaxLength="3" sap:label="Weight unit" sap:semantics="unit-of-measure"/>
@@ -2970,7 +2983,7 @@
                 <EntitySet Name="I_Country" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_CountryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_DraftAdministrativeData" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="I_Material" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_MaterialType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="I_MaterialText" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_MaterialTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_MaterialText" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_MaterialTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_MaterialType" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_MaterialTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_PlantStdVH" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_PlantStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_SalesOrganization" EntityType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.I_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
@@ -3164,234 +3177,218 @@
                     <End EntitySet="ZC_QU_DG_Plant" Role="ToRole_assoc_5B0EB24C4890AE56971046808100474B"/>
                 </AssociationSet>
                 <FunctionImport Name="A8DB471512C6B76D81B2DCreate_mat_succ_req" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QUDG_MaterialMassUploadType" sap:applicable-path="Create_mat_succ_req_ac">
-                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In" sap:label="INT2"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Character Field with Length 10"/>
                 </FunctionImport>
                 <FunctionImport Name="A8DB471512C6B76D81B2D196Delete_error_req" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QUDG_MaterialMassUploadType" sap:applicable-path="Delete_error_req_ac">
-                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In" sap:label="INT2"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Character Field with Length 10"/>
                 </FunctionImport>
                 <FunctionImport Name="A8DB471512C6B76D81B2D196EDuplicate_check" ReturnType="Collection(ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZquDgDupResultTy)" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QUDG_MaterialMassUploadType" sap:applicable-path="Duplicate_check_ac">
-                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In" sap:label="INT2"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Character Field with Length 10"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QUDG_MaterialMassUploadInitiate_wf" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QUDG_MaterialMassUploadType" EntitySet="ZC_QUDG_MaterialMassUpload" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QUDG_MaterialMassUploadType" sap:applicable-path="Initiate_wf_ac">
-                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="parent_reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="s_no" Type="Edm.Int16" Mode="In" sap:label="INT2"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="identification_key" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Character Field with Length 10"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MatCharacterPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatCharacterType" EntitySet="ZC_QU_DG_MatCharacter" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatCharacterType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="charac_name" Type="Edm.String" Mode="In" MaxLength="30"/>
-                    <Parameter Name="atinn" Type="Edm.String" Mode="In" MaxLength="30"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18" sap:label="Class"/>
+                    <Parameter Name="charac_name" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Characteristic Name"/>
+                    <Parameter Name="atinn" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Internal char no."/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MatCharacterValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatCharacterType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="charac_name" Type="Edm.String" Mode="In" MaxLength="30"/>
-                    <Parameter Name="atinn" Type="Edm.String" Mode="In" MaxLength="30"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18" sap:label="Class"/>
+                    <Parameter Name="charac_name" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Characteristic Name"/>
+                    <Parameter Name="atinn" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Internal char no."/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MatClassPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatClassType" EntitySet="ZC_QU_DG_MatClass" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatClassType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18" sap:label="Class"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MatClassValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MatClassType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="class_name" Type="Edm.String" Mode="In" MaxLength="18" sap:label="Class"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALActivation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" EntitySet="ZC_QU_DG_MATERIAL" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" sap:applicable-path="Activation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALEdit" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" EntitySet="ZC_QU_DG_MATERIAL" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" sap:applicable-path="Edit_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" EntitySet="ZC_QU_DG_MATERIAL" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsActivation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Activation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsApprove" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Approve_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12"/>
-                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Work Item ID"/>
+                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Step Sequence"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsCheck" ReturnType="Collection(ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZquDgDupResultTy)" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Check_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsCopy" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Copy_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="lgort" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="lgort" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
+                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsCreate" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST"/>
-                <FunctionImport Name="AC785E442FD1890815DE5A046Delete_material" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Delete_material_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsEdit" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Edit_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
-                </FunctionImport>
-                <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsExtend" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Extend_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="lgort" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsReject" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Reject_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12"/>
-                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Work Item ID"/>
+                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Step Sequence"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsUpdate" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" EntitySet="ZC_QU_DG_MaterialsAndRequests" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Update_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="lgort" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="lgort" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
+                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MaterialsAndRequestsType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MaterialsAndRequestsWithdraw" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.DummyFunctionImportResult" m:HttpMethod="POST">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12"/>
-                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="WiId" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Work Item ID"/>
+                    <Parameter Name="Step" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Step Sequence"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALTAXTPPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALTAXTPType" EntitySet="ZC_QU_DG_MATERIALTAXTP" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALTAXTPType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="aland" Type="Edm.String" Mode="In" MaxLength="3"/>
-                    <Parameter Name="tatyp" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="aland" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Departure Ctry/Reg."/>
+                    <Parameter Name="tatyp" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Tax Category"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_MATERIALTAXTPValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALTAXTPType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20"/>
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="aland" Type="Edm.String" Mode="In" MaxLength="3"/>
-                    <Parameter Name="tatyp" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Material Request Id"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="aland" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Departure Ctry/Reg."/>
+                    <Parameter Name="tatyp" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Tax Category"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_PlantPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_PlantType" EntitySet="ZC_QU_DG_Plant" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_PlantType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_PlantValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_PlantType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
-                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="werks" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_SalesOrgTPPreparation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_SalesOrgTPType" EntitySet="ZC_QU_DG_SalesOrgTP" m:HttpMethod="POST" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_SalesOrgTPType" sap:applicable-path="Preparation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
+                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
                 <FunctionImport Name="ZC_QU_DG_SalesOrgTPValidation" ReturnType="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_SalesOrgTPType" sap:applicable-path="Validation_ac">
-                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="matnr" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
                     <Parameter Name="reqid" Type="Edm.String" Mode="In" MaxLength="1"/>
-                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4"/>
-                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2"/>
-                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
-                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
-                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="vkorg" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
+                    <Parameter Name="vtweg" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
                 </FunctionImport>
             </EntityContainer>
             <Annotations Target="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALSANDREQUESTS_SRV_Entities/ZC_QU_DG_MATERIAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -3511,9 +3508,7 @@
                                 <PropertyPath>Approve_ac</PropertyPath>
                                 <PropertyPath>Check_ac</PropertyPath>
                                 <PropertyPath>Copy_ac</PropertyPath>
-                                <PropertyPath>Delete_material_ac</PropertyPath>
                                 <PropertyPath>Edit_ac</PropertyPath>
-                                <PropertyPath>Extend_ac</PropertyPath>
                                 <PropertyPath>Preparation_ac</PropertyPath>
                                 <PropertyPath>Reject_ac</PropertyPath>
                                 <PropertyPath>Update_ac</PropertyPath>
@@ -4136,9 +4131,7 @@
                                 <PropertyPath>Approve_ac</PropertyPath>
                                 <PropertyPath>Check_ac</PropertyPath>
                                 <PropertyPath>Copy_ac</PropertyPath>
-                                <PropertyPath>Delete_material_ac</PropertyPath>
                                 <PropertyPath>Edit_ac</PropertyPath>
-                                <PropertyPath>Extend_ac</PropertyPath>
                                 <PropertyPath>Preparation_ac</PropertyPath>
                                 <PropertyPath>Reject_ac</PropertyPath>
                                 <PropertyPath>Update_ac</PropertyPath>
@@ -5320,13 +5313,7 @@
                                     <PropertyValue Property="ValueListProperty" String="atnam"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="clint"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="klart"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="imerk"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -5372,9 +5359,6 @@
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="classnameInput"/>
                                     <PropertyValue Property="ValueListProperty" String="class"/>
                                 </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="clint"/>
-                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -5411,9 +5395,6 @@
                                 <Record Type="Common.ValueListParameterInOut">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="reqprio"/>
                                     <PropertyValue Property="ValueListProperty" String="domvalue_l"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="domname"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Ddtext"/>
@@ -5509,6 +5490,9 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -5909,7 +5893,7 @@
             <Annotations Target="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALTAXTPType/AlandForInput" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="Label" String="Country/Region"/>
                         <PropertyValue Property="CollectionPath" String="I_Country"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
@@ -5926,6 +5910,9 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryISOCode"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CountryCurrency"/>
@@ -5997,18 +5984,7 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALSANDREQUESTS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Aggregation.ApplySupported">
-                    <Record>
-                        <PropertyValue Property="Transformations">
-                            <Collection>
-                                <String>aggregate</String>
-                                <String>groupby</String>
-                                <String>filter</String>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="Rollup" EnumMember="None"/>
-                    </Record>
-                </Annotation>
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
             <Annotations Target="ZC_QU_DG_MATERIALSANDREQUESTS_SRV.ZC_QU_DG_MATERIALSANDREQUESTS_SRV_Entities/ZC_QUDG_MaterialMassUpload" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
@@ -7266,8 +7242,8 @@
                     </Collection>
                 </Annotation>
             </Annotations>
-            <atom:link rel="self" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZC_QU_DG_MATERIALSANDREQUESTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZC_QU_DG_MATERIALSANDREQUESTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="self" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZC_QU_DG_MATERIALSANDREQUESTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZC_QU_DG_MATERIALSANDREQUESTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

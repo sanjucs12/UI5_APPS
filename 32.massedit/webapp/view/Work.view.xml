@@ -1,0 +1,61 @@
+<mvc:View controllerName="massedit.controller.Work"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Material Mass Edit"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table id="idTable" fixedLayout="false" items="{ path:'Data>/'}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Material Edit Fields" level="H2"/>
+                        <ToolbarSpacer />
+                        <Button text="Add" icon="sap-icon://edit" press="onEditTableRow" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column >
+                        <header>
+                            <Label text="Field Name"></Label>
+                        </header>
+                    </Column>
+                    <Column >
+                        <header>
+                            <Label text="Field Value"></Label>
+                        </header>
+                    </Column>
+                    <Column >
+                        <header>
+                            <Label text="Field Type"></Label>
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle" type="Active">
+                        <cells>
+                            <Text text="{Data>fieldName}"/>
+                            <Text text="{Data>fieldValue}"/>
+                            <Text text="{Data>fieldType}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button type="Accept" text="Submit Mass Changes" press="onEdit"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
