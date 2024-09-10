@@ -75,7 +75,7 @@
         "name": "Airdit_HANA",
         "entryPath": "/sap/bc/ui5_ui5/sap/"
       },
-      "description": ""
+      "description": "Airdit_HANA"
     },
     {
       "path": "/services/userapi",

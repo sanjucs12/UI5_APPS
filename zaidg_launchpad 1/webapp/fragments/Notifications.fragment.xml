@@ -1,0 +1,291 @@
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">-->
+<!--	<Dialog title="Notifications" showHeader="true" draggable="true" resizable="true" contentWidth="75%" contentHeight="80%"-->
+<!--		id="notificationPopup" class="customDialog">-->
+<!--		<customHeader>-->
+<!--			<Bar>-->
+<!--				<contentLeft>-->
+<!--					<Title text="Notifications"/>-->
+<!--				</contentLeft>-->
+<!--				<contentRight>-->
+<!--					<SearchField liveChange="onSearchInNotifications" width="15rem" search=".onSearch"/>-->
+<!--					<OverflowToolbarButton icon="sap-icon://filter" id="idFilterButtonOnNotification" type="Transparent" iconDensityAware="false"-->
+<!--						tooltip="Filter" press="handleFilterOnNotofication">-->
+<!--						<dependents>-->
+<!--							<core:Fragment fragmentName="com.sap.airdit.zpmcockpit.fragments.Notification_Filter" type="XML"/>-->
+<!--						</dependents>-->
+<!--					</OverflowToolbarButton>-->
+<!--					<OverflowToolbarButton icon="sap-icon://delete" type="Transparent" iconDensityAware="false" tooltip="Delete notofication(s)"-->
+<!--						press="onDeleteMultipleNotofications"/>-->
+<!--					<OverflowToolbarButton icon="sap-icon://decline" type="Transparent" iconDensityAware="false" tooltip="Close notofication"-->
+<!--						press="onCancelNotification"/>-->
+<!--				</contentRight>-->
+<!--			</Bar>-->
+<!--		</customHeader>-->
+<!--		<content>-->
+<!--			<IconTabBar id="idNotificationIconTabBar" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false"-->
+<!--				expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="handleSelectionTypeOfNotification">-->
+<!--				<items>-->
+<!--					<IconTabFilter text="All" key="All" id="All">-->
+<!--						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">-->
+<!--<List items="{PushNotificationModel>/}" mode="MultiSelect" id="idNotificationList_All">-->
+<!--	<CustomListItem class="ClassNotificationCustList">-->
+<!--		<NotificationListItem title="{PushNotificationModel>NotfTitle}" description="{PushNotificationModel>NotfBody}"-->
+<!--			unread="{= (${PushNotificationModel>Status}==='X') ? false : true}" priority="None" authorPicture="test-resources/sap/m/images/Woman_04.png"-->
+<!--			press="onPushNotificationPress" authorName="{PushNotificationModel>UserName}" showCloseButton="true" close="onPressDeleteNotification"-->
+<!--			class="ClassNotificationList">-->
+<!--			<buttons class="ClassNotifButtons">-->
+<!--				<OverflowToolbarButton icon="sap-icon://delete" type="Transparent" iconDensityAware="false" tooltip="Delete notofication"-->
+<!--					press="onPressDeleteNotification"/>-->
+<!--			</buttons>-->
+<!--		</NotificationListItem>-->
+<!--	</CustomListItem>-->
+<!--</List>-->
+<!--<VBox class="sapUiSmallMargin">-->
+<!--	buttons="{ path: 'PushNotificationModel>GROUPBUTTONS', templateShareable: true }"-->
+<!--	<NotificationList items="{PushNotificationModel>/}">-->
+<!--		<layoutData>-->
+<!--			<FlexItemData maxWidth="600px"/>-->
+<!--		</layoutData>-->
+<!--	<NotificationListGroup title="{CATEGORY}" showCloseButton="{SHOWCLOSEBUTTON}" buttons="{ path: 'GROUPBUTTONS', templateShareable: true }"-->
+<!--		showEmptyGroup="{SHOWEMPTYGROUP}" close=".onGroupClose" items="{GROUPITEMS}">-->
+<!--		<buttons>-->
+<!--			<Button text="{text}" press=".onGroupButtonPress"/>-->
+<!--		</buttons>-->
+<!--		<NotificationListItem title="{NOTIF_TITLE}" description="{DESCRIPTION}" showCloseButton="{showCloseButton}" datetime="{creationDate}"-->
+<!--			unread="{UNREAD}" priority="{ path: 'PRIORITY', formatter: '.priorityFormatter' }" close="onItemClose" press="onListItemPress"-->
+<!--			authorPicture="{authorPicture}" authorInitials="{authorInitials}" authorAvatarColor="{authorAvatarColor}"-->
+<!--			buttons="{ path: 'ITEMBUTTONS', templateShareable: true }">-->
+<!--			<buttons>-->
+<!--				<Button text="{text}" press=".onItemButtonPress"/>-->
+<!--			</buttons>-->
+<!--		</NotificationListItem>-->
+<!--	</NotificationListGroup>-->
+<!--</NotificationList>-->
+<!--</VBox>-->
+<!--							<NotificationList mode="MultiSelect"  items=" { path: 'PushNotificationModel>/' , templateShareable: true }" >-->
+<!--								<layoutData>-->
+<!--									<FlexItemData maxWidth="600px"/>-->
+<!--								</layoutData>-->
+<!--								<NotificationListGroup title="{PushNotificationModel>CATEGORY}" showCloseButton="true" showEmptyGroup="true" close=".onGroupClose"-->
+<!--									items="{ path: 'PushNotificationModel>GROUPITEMS', templateShareable: true }" buttons="{ path: 'PushNotificationModel>GROUPBUTTONS', templateShareable: true }">-->
+<!--									<buttons>-->
+<!--										<Button text="{text}" press=".onGroupButtonPress"/>-->
+<!--									</buttons>-->
+<!--									<NotificationListItem highlight="Indication20" highlightText="{PushNotificationModel>NOTIF_TITLE}"-->
+<!--										title="{PushNotificationModel>NOTIF_TITLE}" description="{PushNotificationModel>DESCRIPTION}" showCloseButton="true" unread="false"-->
+<!--										priority="{ path: 'PushNotificationModel>PRIORITY', formatter: '.priorityFormatter' }" close="onItemClose" press="onListItemPress"-->
+<!--										authorInitials="{ path: 'PushNotificationModel>AUTHORNAME', formatter: '.nameFormatter'}"-->
+<!--										datetime="{ path: 'PushNotificationModel>CREATIONDATE', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>AUTHORNAME}"-->
+<!--										authorAvatarColor="Accent8" buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">-->
+<!--										<buttons>-->
+<!--											<Button text="{text}" press=".onItemButtonPress"/>-->
+<!--										</buttons>-->
+<!--									</NotificationListItem>-->
+<!--								</NotificationListGroup>-->
+<!--							</NotificationList>-->
+<!--						</ScrollContainer>-->
+<!--					</IconTabFilter>-->
+<!--					<IconTabFilter text="By Priority" key="P">-->
+<!--						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">-->
+<!--<NotificationList mode="MultiSelect"  items=" { path: 'PushNotificationModel>/' , templateShareable: true }">-->
+<!--	<layoutData>-->
+<!--		<FlexItemData maxWidth="600px"/>-->
+<!--	</layoutData>-->
+<!--	<NotificationListGroup title="{PushNotificationModel>CATEGORY}" showCloseButton="true" showEmptyGroup="true" close=".onGroupClose"-->
+<!--		items="{ path: 'PushNotificationModel>GROUPITEMS', templateShareable: true }" buttons="{ path: 'groupButtons', templateShareable: true }">-->
+<!--		<buttons>-->
+<!--			<Button text="{text}" press=".onGroupButtonPress"/>-->
+<!--		</buttons>-->
+<!--		<NotificationListItem highlight="Indication20" highlightText="{PushNotificationModel>NOTIF_TITLE}"-->
+<!--			title="{PushNotificationModel>NOTIF_TITLE}" description="{PushNotificationModel>DESCRIPTION}" showCloseButton="true" unread="false"-->
+<!--			priority="{ path: 'PushNotificationModel>PRIORITY', formatter: '.priorityFormatter' }" close="onItemClose" press="onListItemPress"-->
+<!--			authorInitials="{ path: 'PushNotificationModel>AUTHORNAME', formatter: '.nameFormatter'}"-->
+<!--			datetime="{ path: 'PushNotificationModel>CREATIONDATE', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>AUTHORNAME}"-->
+<!--			authorAvatarColor="Accent8" buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">-->
+<!--			<buttons>-->
+<!--				<Button text="{text}" press=".onItemButtonPress"/>-->
+<!--			</buttons>-->
+<!--		</NotificationListItem>-->
+<!--	</NotificationListGroup>-->
+<!--</NotificationList>-->
+<!--						</ScrollContainer>-->
+<!--					</IconTabFilter>-->
+<!--					<IconTabFilter text="By Date" key="D">-->
+<!--						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">-->
+<!--<NotificationList mode="MultiSelect"  items=" { path: 'PushNotificationModel>/' , templateShareable: true }">-->
+<!--	<layoutData>-->
+<!--		<FlexItemData maxWidth="600px"/>-->
+<!--	</layoutData>-->
+<!--	<NotificationListGroup title="{PushNotificationModel>CATEGORY}" showCloseButton="true" showEmptyGroup="true" close=".onGroupClose"-->
+<!--		items="{ path: 'PushNotificationModel>GROUPITEMS', templateShareable: true }" buttons="{ path: 'groupButtons', templateShareable: true }">-->
+<!--		<buttons>-->
+<!--			<Button text="{text}" press=".onGroupButtonPress"/>-->
+<!--		</buttons>-->
+<!--		<NotificationListItem highlight="Indication20" highlightText="{PushNotificationModel>NOTIF_TITLE}"-->
+<!--			title="{PushNotificationModel>NOTIF_TITLE}" description="{PushNotificationModel>DESCRIPTION}" showCloseButton="true" unread="false"-->
+<!--			priority="{ path: 'PushNotificationModel>PRIORITY', formatter: '.priorityFormatter' }" close="onItemClose" press="onListItemPress"-->
+<!--			authorInitials="{ path: 'PushNotificationModel>AUTHORNAME', formatter: '.nameFormatter'}"-->
+<!--			datetime="{ path: 'PushNotificationModel>CREATIONDATE', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>AUTHORNAME}"-->
+<!--			authorAvatarColor="Accent8" buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">-->
+<!--			<buttons>-->
+<!--				<Button text="{text}" press=".onItemButtonPress"/>-->
+<!--			</buttons>-->
+<!--		</NotificationListItem>-->
+<!--	</NotificationListGroup>-->
+<!--</NotificationList>-->
+<!--						</ScrollContainer>-->
+<!--					</IconTabFilter>-->
+<!--				</items>-->
+<!--			</IconTabBar>-->
+<!--		</content>-->
+<!--	</Dialog>-->
+<!--</core:FragmentDefinition>-->
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Notifications" showHeader="true" draggable="true" resizable="true" contentWidth="75%" contentHeight="80%"
+		id="notificationPopup" class="customDialog" verticalScrolling="false">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Title text="Notifications"/>
+				</contentLeft>
+				<contentRight>
+					<SearchField liveChange="onSearchInNotifications" width="15rem" search=".onSearch"/>
+					<OverflowToolbarButton icon="sap-icon://filter" id="idFilterButtonOnNotification" type="Transparent" iconDensityAware="false"
+						tooltip="Filter" press="handleFilterOnNotofication">
+						<dependents>
+							<core:Fragment fragmentName="com.airdit.qudg.qudglpad.fragments.Notification_Filter" type="XML"/>
+						</dependents>
+					</OverflowToolbarButton>
+					<OverflowToolbarButton icon="sap-icon://delete" type="Transparent" iconDensityAware="false" tooltip="Delete notofication(s)"
+						press="onDeleteMultipleNotofications"/>
+					<OverflowToolbarButton icon="sap-icon://decline" type="Transparent" iconDensityAware="false" tooltip="Close notofication"
+						press="onCancelNotification"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<IconTabBar id="idNotificationIconTabBar" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false"
+				expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="handleSelectionTypeOfNotification">
+				<items>
+					<IconTabFilter text="All" key="All" id="All">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<NotificationList mode="MultiSelect" items="{PushNotificationModel>/results}">
+								<layoutData>
+									<FlexItemData maxWidth="600px"/>
+								</layoutData>
+								<!--<NotificationListGroup title="{PushNotificationModel>qmdat}" showCloseButton="true" showEmptyGroup="true" close=".onGroupClose"-->
+								<!-- buttons="{ path: 'groupButtons', templateShareable: true }">-->
+								<!--	<buttons>-->
+								<!--		<Button text="{text}" press=".onGroupButtonPress"/>-->
+								<!--	</buttons>-->
+								<!--	<items>-->
+								<!--	<NotificationListItem highlight="Indication20" -->
+								<!--		title="{PushNotificationModel>app_id}" description="{PushNotificationModel>notif_id}" showCloseButton="true" unread="false"-->
+								<!--		priority="{ path: 'PushNotificationModel>priority', formatter: '.priorityFormatter' }" close="onItemClose" -->
+								<!--		authorInitials="{ path: 'PushNotificationModel>user_id', formatter: '.nameFormatter'}" datetime="{ path: 'PushNotificationModel>qmdat', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>user_id}" authorAvatarColor="Accent8"-->
+								<!--		buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">-->
+								<!--		<buttons>-->
+								<!--			<Button text="{text}" press=".onItemButtonPress"/>-->
+								<!--		</buttons>-->
+								<!--	</NotificationListItem>-->
+								<!--</NotificationListGroup>-->
+								<NotificationListItem highlight="Indication20" title="{PushNotificationModel>header_text}" description="{PushNotificationModel>body_text}"
+									showCloseButton="true" unread="false" priority="{ path: 'PushNotificationModel>Priority', formatter: '.priorityFormatter' }"
+									close="onItemClose" authorInitials="{ path: 'PushNotificationModel>notif_type'}"
+									datetime="{ path: 'PushNotificationModel>qmdat', formatter: '.daysFormatter'}" authorAvatarColor="Accent8"
+									buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">
+									<buttons>
+										<Button text="{text}" press=".onItemButtonPress"/>
+									</buttons>
+								</NotificationListItem>
+								<!--</items>-->
+								<!--</NotificationListGroup>-->
+							</NotificationList>
+						</ScrollContainer>
+					</IconTabFilter>
+					<IconTabFilter text="By Priority" key="P">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<NotificationList mode="MultiSelect" items="{ path: 'PushNotificationModel>/results'}">
+								<layoutData>
+									<FlexItemData maxWidth="600px"/>
+								</layoutData>
+								<!--<NotificationListGroup title="{path: 'PushNotificationModel>/priokx', templateShareable: true,formatter: '.daysFormatter' }" showCloseButton="true" showEmptyGroup="true"-->
+								<!--close=".onGroupClose"-->
+								<!--buttons="{ path: 'groupButtons', templateShareable: true }">-->
+								<!--<buttons>-->
+								<!--	<Button text="{text}" press=".onGroupButtonPress"/>-->
+								<!--</buttons>-->
+								<!--<items>-->
+								<NotificationListItem highlight="Indication20" highlightText="{PushNotificationModel>header_text}"
+									title="{PushNotificationModel>header_text}"
+									description="{ parts: ['PushNotificationModel>body_text', 'PushNotificationModel>priokx'], formatter: '.descriptionFormatter' }"
+									showCloseButton="true" unread="false" priority="{ path: 'PushNotificationModel>Priority', formatter: '.priorityFormatter' }"
+									close="onItemClose" press="onListItemPress" authorInitials="{ path: 'PushNotificationModel>notif_type'}"
+									datetime="{ path: 'PushNotificationModel>qmdat', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>AUTHORNAME}"
+									authorAvatarColor="Accent8" buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">
+									<buttons>
+										<Button text="{text}" press=".onItemButtonPress"/>
+									</buttons>
+								</NotificationListItem>
+								<!--	</items>-->
+								<!--</NotificationListGroup>-->
+							</NotificationList>
+						</ScrollContainer>
+					</IconTabFilter>
+					<IconTabFilter text="By Date" key="D">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+						<NotificationList
+    items="{ path: 'PushNotificationModel>/groupedResults', sorter: { path: 'qmdat', descending: true}, group: '.groupByDate'}">
+    <layoutData>
+        <FlexItemData maxWidth="600px"/>
+    </layoutData>
+    <NotificationListGroup title="{PushNotificationModel>key}" datetime="{PushNotificationModel>key}"  items="{PushNotificationModel>items}">
+        <NotificationListItem
+            title="{PushNotificationModel>header_text}"
+            description="{PushNotificationModel>body_text}"
+            showCloseButton="true"
+            unread="false"
+            priority="{ path: 'PushNotificationModel>Priority', formatter: '.priorityFormatter' }"
+            close=".onItemClose"
+            press=".onListItemPress"
+            authorInitials="{ path: 'PushNotificationModel>authorInitials'}"
+            datetime="{ path: 'PushNotificationModel>qmdat', formatter: '.daysFormatter'}"
+            authorName="{PushNotificationModel>authorName}"
+            authorAvatarColor="Accent8">
+            <buttons>
+                <Button text="{PushNotificationModel>buttons/text}" press=".onItemButtonPress"/>
+            </buttons>
+        </NotificationListItem>
+    </NotificationListGroup>
+</NotificationList>
+
+							<!--<NotificationList mode="MultiSelect" items="{ path: 'PushNotificationModel>/results', sorter: { path: 'qmdat', descending: true }, group: '.groupByDate' }">-->
+							<!--	<layoutData>-->
+							<!--		<FlexItemData maxWidth="600px"/>-->
+							<!--	</layoutData>-->
+							<!-- Group notifications by date -->
+							<!--	<NotificationListGroup title="{= ${PushNotificationModel>qmdat} + ' (' + ${PushNotificationModel>GROUPITEMS}.length + ' Notifications)'}"-->
+							<!--		showCloseButton="true" showEmptyGroup="true" close=".onGroupClose"-->
+							<!--		items="{ path: 'PushNotificationModel>/results', sorter: { path: 'qmdat', descending: true }, group: '.groupByDate' }">-->
+							<!--		<items>-->
+							<!--			<NotificationListItem title="{PushNotificationModel>header_text}" description="{PushNotificationModel>body_text}" showCloseButton="true"-->
+							<!--				unread="false" priority="{ path: 'PushNotificationModel>Priority', formatter: '.priorityFormatter' }" close=".onItemClose"-->
+							<!--				press=".onListItemPress" authorInitials="{ path: 'PushNotificationModel>AUTHORNAME', formatter: '.nameFormatter'}"-->
+							<!--				datetime="{ path: 'PushNotificationModel>qmdat', formatter: '.daysFormatter'}" authorName="{PushNotificationModel>AUTHORNAME}"-->
+							<!--				authorAvatarColor="Accent8" buttons="{ path: 'PushNotificationModel>ITEMBUTTONS', templateShareable: true }">-->
+							<!--				<buttons>-->
+							<!--					<Button text="{text}" press=".onItemButtonPress"/>-->
+							<!--				</buttons>-->
+							<!--			</NotificationListItem>-->
+							<!--		</items>-->
+							<!--	</NotificationListGroup>-->
+							<!--</NotificationList>-->
+						</ScrollContainer>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">-->

@@ -77,8 +77,8 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <atom:link rel="self" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://103.194.234.38:8010/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="self" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://airdithana.airditsoftware.com:8010/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

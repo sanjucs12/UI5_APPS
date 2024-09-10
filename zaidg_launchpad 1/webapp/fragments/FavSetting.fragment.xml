@@ -1,0 +1,87 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:ob="sap.uxap"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog showFooter="true" title="User Settings" titleAlignment="Center" contentWidth="58rem" verticalScrolling="false" draggable="true" resizable= "true" >
+		<SplitApp id="SplitAppDemo" showFooter="true" initialDetail="fav" initialMaster="master">
+			<detailPages showFooter="true">
+				
+				<ob:ObjectPageLayout id="Themes" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+					<ob:headerTitle>
+						<ob:ObjectPageHeader id="themesetting" objectTitle="{SETTINGDATA>title}" isActionAreaAlwaysVisible="false" markFlagged="true"
+							objectSubtitle="{SETTINGDATA>desc}" objectImageURI="{imageModel>/path}{SETTINGDATA>image}" objectImageShape="Square"
+							isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"></ob:ObjectPageHeader>
+					</ob:headerTitle>
+					<ob:sections>
+						<ob:ObjectPageSection titleUppercase="false" title="Manage Theme">
+							<ob:subSections>
+								<ob:ObjectPageSubSection titleUppercase="false">
+									
+									<List id="ThemeList" selectionChange="ThmeSelChange" items="{path: 'THEMES>/Themes'}" >
+										<items>
+											<StandardListItem infoStateInverted="true" type="Active" title="{THEMES>Name}" description="{THEMES>id}" iconDensityAware="{SETTINGDATA>iconDensityAware}"
+												info="{THEMES>info}" infoState="Success" iconInset="{SETTINGDATA>iconInset}" adaptTitleSize="false" press="onPressTheme">
+												<avatar>
+													<Avatar src="{imageModel>/path}/images/thememain.png" displayShape="Square" imageFitType="Cover" showBorder="true" press="onPress"/>
+												</avatar>
+											</StandardListItem>
+										</items>
+									</List>
+								</ob:ObjectPageSubSection>
+							</ob:subSections>
+						</ob:ObjectPageSection>
+					</ob:sections>
+				</ob:ObjectPageLayout>
+				
+				<ob:ObjectPageLayout id="subscrption" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+					<ob:headerTitle>
+						<ob:ObjectPageHeader id="headerForSubscription" objectTitle="{SETTINGDATA>title}" isActionAreaAlwaysVisible="false" markFlagged="true"
+							objectSubtitle="{SETTINGDATA>desc}" objectImageURI="{imageModel>/path}{SETTINGDATA>image}" objectImageShape="Square"
+							isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"></ob:ObjectPageHeader>
+					</ob:headerTitle>
+					<ob:sections>
+						<ob:ObjectPageSection titleUppercase="false" title="Applications">
+							<ob:subSections>
+								<ob:ObjectPageSubSection titleUppercase="false">
+									<List growing="true" growingScrollToLoad="true" items="{SubscriptionModel>/}">
+										<CustomListItem >
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<VBox>
+													<Text text="{SubscriptionModel>Description}"/>
+												</VBox>
+												<VBox>
+													<Switch type="AcceptReject" state="{SubscriptionModel>Subscribe}" change="onSubscribeStateChange"/>
+												</VBox>
+											</HBox>
+										</CustomListItem>
+									</List>
+								</ob:ObjectPageSubSection>
+							</ob:subSections>
+						</ob:ObjectPageSection>
+					</ob:sections>
+				</ob:ObjectPageLayout>
+			</detailPages>
+			<masterPages showFooter="true">
+				<Page id="master" showHeader="false" showFooter="true" backgroundDesign="List">
+					<List id="ShortProductList" selectionChange="userSettingSelChange" items="{ path: 'SETTINGDATA>/settingnames' }"
+						updateFinished="usersettingListUpdateFinished">
+						<items>
+							<StandardListItem infoStateInverted="{SETTINGDATA>infoStateInverted}" type="Active" title="{SETTINGDATA>title}"
+								highlight="{SETTINGDATA>highlight}" info="{SETTINGDATA>info}" infoState="{SETTINGDATA>infoState}" description="{SETTINGDATA>desc}"
+								iconDensityAware="{SETTINGDATA>iconDensityAware}" iconInset="{SETTINGDATA>iconInset}" adaptTitleSize="{SETTINGDATA>adaptTitleSize}"
+								press="onPressUserSettingItems">
+								<avatar>
+									<Avatar src="{imageModel>/path}{SETTINGDATA>image}" displayShape="Square" imageFitType="Cover" showBorder="true" press="onPress"/>
+								</avatar>
+							</StandardListItem>
+						</items>
+					</List>
+				</Page>
+			</masterPages>
+		</SplitApp>
+		<beginButton>
+			<Button text="Save" type="Emphasized" press="onSaveSetting"/>
+		</beginButton>
+		<endButton>
+			<Button text="Close" type="Ghost" class="customSegmentedBtn" press="onCloseSettingDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -24,22 +24,22 @@ server:
         ignoreCertError: false
         backend:
           - path: /sap/opu/odata/sap/ZC_QU_DG_CATALOG_CONFIG_CDS/
-            url: http://airdithana.airditsoftware.com:8010
-            client: "100"
-            destination: Airdit_HANA_R
+            url: http://103.194.234.17:8010
+            client: "200"
+            destination: AIRDIT_HANA_S4P
             authenticationType: BasicAuthentication
           - path: /SAP/PUBLIC/BC/UI2/QUDG/
-            destination: Airdit_HANA_R
-            url: http://airdithana.airditsoftware.com:8010
-            client: "100"
+            destination: AIRDIT_HANA_S4P
+            url: http://airdithanaprd.airditsoftware.com:8010
+            client: "200"
           - path: /sap/bc/lrep/
-            destination: Airdit_HANA_R
-            url: http://airdithana.airditsoftware.com:8010
-            client: "100"
+            destination: AIRDIT_HANA_S4P
+            url: http://airdithanaprd.airditsoftware.com:8010
+            client: "200"
           - path: /sap/bc/ui5_ui5/sap/
-            destination: Airdit_HANA_R
-            url: http://airdithana.airditsoftware.com:8010
-            client: "100"
+            destination: AIRDIT_HANA_S4P
+            url: http://airdithanaprd.airditsoftware.com:8010
+            client: "200"
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

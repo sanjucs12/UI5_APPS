@@ -1,0 +1,190 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "com.airdit.qudg.qudglpad",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "d7f55df7-e112-454b-8279-2b529a3f9e18"
+        },
+        "dataSources": {
+            "ZC_QU_DG_CATALOG_CONFIG_CDS": {
+                "uri": "/sap/opu/odata/sap/ZC_QU_DG_CATALOG_CONFIG_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_QU_DG_CATALOG_CONFIG_CDS_Annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "SETTINGDATA": {
+                "uri": "model/settings.json",
+                "type": "JSON"
+            },
+            "THEMEDATA": {
+                "uri": "model/Themes.json",
+                "type": "JSON"
+            },
+            "GRPAH": {
+                "uri": "model/graphtest.json",
+                "type": "JSON"
+            },
+            "ZP_QU_DG_NOTIFICATION_BND": {
+                "uri": "/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_BND/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZP_QU_DG_NOTIFICATION_BND_Annotation"
+                    ],
+                    "localUri": "localService/ZP_QU_DG_NOTIFICATION_BND/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZP_QU_DG_NOTIFICATION_BND_Annotation": {
+                "uri": "/destinations/AIRDIT_HANA_S4P/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZP_QU_DG_NOTIFICATION_BND_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZP_QU_DG_NOTIFICATION_BND/ZP_QU_DG_NOTIFICATION_BND_Annotation.xml"
+                }
+            },
+            "ZC_QU_DG_CATALOG_CONFIG_CDS_Annotation": {
+                "uri": "/destinations/AIRDIT_HANA_S4P/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_QU_DG_CATALOG_CONFIG_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_QU_DG_CATALOG_CONFIG_CDS_Annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService"
+            }
+        },
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.airdit.qudg.qudglpad.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.65.6",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.airdit.qudg.qudglpad.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZC_QU_DG_CATALOG_CONFIG_CDS",
+                "preload": true
+            },
+            "SETDATA": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "SETTINGDATA"
+            },
+            "GRAPH": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "GRPAH"
+            },
+            "THEMEDATA": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "THEMEDATA"
+            },
+            "NotificationData": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZP_QU_DG_NOTIFICATION_BND",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.airdit.qudg.qudglpad.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Overview1",
+                    "pattern": "",
+                    "target": [
+                        "Overview"
+                    ]
+                }
+            ],
+            "targets": {
+                "Overview": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Overview",
+                    "viewName": "Overview"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zqudg/webapp",
+        "_version": "1.1.0"
+    }
+}

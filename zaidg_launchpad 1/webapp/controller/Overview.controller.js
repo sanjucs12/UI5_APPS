@@ -28,26 +28,26 @@ sap.ui.define([
 	// var priority = coreLibrary.Priority;
 	var Priority = coreLibrary.Priority;
 	var Priority = {
-        VeryHigh: 'Very High',
-        High: 'High',
-        Medium: 'Medium',
-        Low: 'Low'
-    };
+		VeryHigh: 'Very High',
+		High: 'High',
+		Medium: 'Medium',
+		Low: 'Low'
+	};
 
-    var PriorityOrder = {
-        'Very High': 1,
-        'High': 2,
-        'Medium': 3,
-        'Low': 4
-    };
+	var PriorityOrder = {
+		'Very High': 1,
+		'High': 2,
+		'Medium': 3,
+		'Low': 4
+	};
 
-    function sortByPriority(data) {
-        return data.sort(function (a, b) {
-            var aPriority = PriorityOrder[a.priokx] || PriorityOrder[Priority.Medium];
-            var bPriority = PriorityOrder[b.priokx] || PriorityOrder[Priority.Medium];
-            return aPriority - bPriority;
-        });
-    }
+	function sortByPriority(data) {
+		return data.sort(function (a, b) {
+			var aPriority = PriorityOrder[a.priokx] || PriorityOrder[Priority.Medium];
+			var bPriority = PriorityOrder[b.priokx] || PriorityOrder[Priority.Medium];
+			return aPriority - bPriority;
+		});
+	}
 	return Controller.extend("com.airdit.qudg.qudglpad.controller.Overview", {
 		formatter: formatter,
 		websocket: null,
@@ -99,6 +99,7 @@ sap.ui.define([
 
 		},
 		createLeftContent: function (sObj) {
+			this.createContent('com.qudgovp', 'Dashboard'); //DASHBOARD PAGE
 			for (var i = 0; i < sObj.length; i++) {
 
 				for (var j = 0; j < sObj[i].tiles.length; j++) {
@@ -108,6 +109,7 @@ sap.ui.define([
 				}
 
 			}
+
 
 		},
 		navigationData: [],
@@ -222,37 +224,37 @@ sap.ui.define([
 						let catName = results[i].url;
 						// if (catName === "X-SAP-UI2-CATALOGPAGE:zqudg_rules" || catName === "X-SAP-UI2-CATALOGPAGE:ZQUDG_MAT_REQ" || catName ===
 						// 	"X-SAP-UI2-CATALOGPAGE:ZQUDG_BOM") {
-							let catObjects = {
-								"CatId": catName,
-								"ui5_component": "",
-								"Appname": "",
-								"Catdesc": results[i].catDesc,
-								"icon": results[i].icon,
-								"tiles": []
-							}
-							for (let j = 0; j < dupData.length; j++) {
-								if (catName === dupData[j].url) {
-									let jsonObj = JSON.parse(dupData[j].config);
-									let tileConfig = JSON.parse(jsonObj.tileConfiguration);
-									catObjects.tiles.push(tileConfig);
+						let catObjects = {
+							"CatId": catName,
+							"ui5_component": "",
+							"Appname": "",
+							"Catdesc": results[i].catDesc,
+							"icon": results[i].icon,
+							"tiles": []
+						}
+						for (let j = 0; j < dupData.length; j++) {
+							if (catName === dupData[j].url) {
+								let jsonObj = JSON.parse(dupData[j].config);
+								let tileConfig = JSON.parse(jsonObj.tileConfiguration);
+								catObjects.tiles.push(tileConfig);
 
+							}
+
+						}
+						leftPageData.push(catObjects);
+						leftPageData.forEach(item => {
+							let uniqueTiles = new Set();
+							let filteredTiles = [];
+
+							item.tiles.forEach(tile => {
+								if (!uniqueTiles.has(tile.semantic_object)) {
+									uniqueTiles.add(tile.semantic_object);
+									filteredTiles.push(tile);
 								}
-
-							}
-							leftPageData.push(catObjects);
-							leftPageData.forEach(item => {
-								let uniqueTiles = new Set();
-								let filteredTiles = [];
-
-								item.tiles.forEach(tile => {
-									if (!uniqueTiles.has(tile.semantic_object)) {
-										uniqueTiles.add(tile.semantic_object);
-										filteredTiles.push(tile);
-									}
-								});
-
-								item.tiles = filteredTiles;
 							});
+
+							item.tiles = filteredTiles;
+						});
 						// }
 
 						// this.readiconInfo(catObjects);
@@ -263,6 +265,10 @@ sap.ui.define([
 					this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(leftPageData), "DashBoardInitial");
 					this.registerModuleAndAddRoutes(leftPageData);
 					this.createLeftContent(leftPageData);
+
+
+					//Navigate to Home Page
+					//this.getView().byId("pageContainer").to('com.qudgovp');
 					//this.createContent("zruleconfig.qudg");
 
 					// let qudgCatalog = [];
@@ -350,6 +356,8 @@ sap.ui.define([
 
 				}
 			}
+
+			modules.push({ Name: 'com/qudgovp', Path: '/sap/bc/ui5_ui5/sap/ZAIDGMMOVP' })
 
 			// Create Routing & Register Modules
 			var stringModule = "";
@@ -504,7 +512,7 @@ sap.ui.define([
 			// this.getOwnerComponent().getRouter().attachRoutePatternMatched(this._onObjectMatched,
 			// 	this);
 			// debugger;
-			this.websocket = new WebSocket("/sap/bc/apc/sap/zqudg_apc?sap-client=100");
+			this.websocket = new WebSocket("/sap/bc/apc/sap/zqudg_apc?sap-client=200");
 			this.websocket.attachOpen(null, this.websocketonOpen, this)
 			this.websocket.attachMessage(null, this.websocketonMessage, this);
 			this.oModel = this.getOwnerComponent().getModel();
@@ -692,15 +700,66 @@ sap.ui.define([
 			this.getView().getModel("THEMES").setProperty("/Themes/" + value + "/info", "Selected");
 		},
 		onNavtoHome: function () {
-			var that = this;
-			this.recentVisitsData.sort(function (a, b) {
-				return that.parseDate(b.description) - that.parseDate(a.description);
+			// var that = this;
+			// this.recentVisitsData.sort(function (a, b) {
+			// 	return that.parseDate(b.description) - that.parseDate(a.description);
+			// });
+			// // Update the model
+			// var oModel = this.getView().getModel("recentVisitsModel");
+			// oModel.setProperty("/recentVisits", this.recentVisitsData);
+			// var homepage = this.getView().byId("pageContainer").getPages()[0];
+			// this.getView().byId("pageContainer").to(homepage);
+			var key = 'com.qudgovp';
+			var text = 'Dashboard';
+			this.getView().byId("pageContainer").getPages().forEach((data, index) => {
+				if (index > 0) {
+					data.destroy();
+				}
+			})
+			if (sap.ui.getCore().byId(key)) {
+				sap.ui.getCore().byId(key).destroy();
+				this.createContent(key, text);
+				this.getView().byId("pageContainer").to(key);
+			} else {
+				this.createContent(key, text);
+				this.getView().byId("pageContainer").to(key);
+			}
+			// sap.ui.core.BusyIndicator.show();
+			var currentUrl = window.location.href;
+
+			var history = window.history.state.sap.history;
+			var length = window.history.state.sap.history.length - 1;
+			var lastHistory = history[length];
+
+			if (lastHistory.startsWith("?sap")) {
+				var updated = currentUrl.replace(lastHistory.split('&')[1], "") || currentUrl;
+				window.location.href = updated;
+			} else if (lastHistory === '') { } else {
+				lastHistory = lastHistory.replace(/%/g, "%25");
+				var updatedUrl = currentUrl.replace(lastHistory, "");
+				window.location.href = updatedUrl;
+			}
+			var exists = this.recentVisitsData.some(function (visit) {
+				return visit.namespace === key;
 			});
-			// Update the model
-			var oModel = this.getView().getModel("recentVisitsModel");
-			oModel.setProperty("/recentVisits", this.recentVisitsData);
-			var homepage = this.getView().byId("pageContainer").getPages()[0];
-			this.getView().byId("pageContainer").to(homepage);
+
+			var currentDateTime = this.formatDate(new Date())
+			if (!exists) {
+				this.recentVisitsData.push({
+					namespace: key,
+					description: currentDateTime,
+					name: text
+				});
+				var oModel = this.getView().getModel("recentVisitsModel");
+				oModel.setProperty("/recentVisits", this.recentVisitsData);
+			} else {
+				this.recentVisitsData = this.recentVisitsData.map(function (visit) {
+					if (visit.namespace === key) {
+						visit.description = currentDateTime;
+					}
+					return visit;
+				});
+			}
 		},
 		_onObjectMatched: function (oEvt) {
 			if (this.navigationData.length !== 0) {
@@ -785,7 +844,7 @@ sap.ui.define([
 			if (lastHistory.startsWith("?sap")) {
 				var updated = currentUrl.replace(lastHistory.split('&')[1], "") || currentUrl;
 				window.location.href = updated;
-			} else if (lastHistory === '') {} else {
+			} else if (lastHistory === '') { } else {
 				lastHistory = lastHistory.replace(/%/g, "%25");
 				var updatedUrl = currentUrl.replace(lastHistory, "");
 				window.location.href = updatedUrl;
@@ -856,8 +915,8 @@ sap.ui.define([
 				oModel.read("/ZP_QU_DG_Notification/$count", {
 					success: function (oData, oReponse) {
 						this.getOwnerComponent().getModel("Notificationcount").setProperty("/notificationCount", parseInt(oData) + 1);
-					
-						 this._onReadNotifications();
+
+						this._onReadNotifications();
 					}.bind(this),
 					error: function (error) {
 						this.getView().setBusy(false);
@@ -926,16 +985,16 @@ sap.ui.define([
 			var Url = "/QUDG";
 			sap.m.MessageBox.show(
 				"Are you sure you want to sign out?", {
-					icon: sap.m.MessageBox.Icon.INFORMATION,
-					title: "Sign Out",
-					actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-					onClose: function (oAction) {
-						if (oAction === sap.m.MessageBox.Action.OK) {
-							//logoutFromOutlook();
-							window.location.href = Url;
-						}
+				icon: sap.m.MessageBox.Icon.INFORMATION,
+				title: "Sign Out",
+				actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+				onClose: function (oAction) {
+					if (oAction === sap.m.MessageBox.Action.OK) {
+						//logoutFromOutlook();
+						window.location.href = Url;
 					}
 				}
+			}
 			);
 
 		},
@@ -1123,7 +1182,7 @@ sap.ui.define([
 
 		_onreadNotofications: function (oScope, NotificationType) {
 			let afilters = [];
-			 var oCountControl = Fragment.byId("idNotificationFragment", "idNotificationCount")
+			var oCountControl = Fragment.byId("idNotificationFragment", "idNotificationCount")
 
 			// if (NotificationType) {
 			// 	afilters.push(new sap.ui.model.Filter("notif_id", sap.ui.model.FilterOperator.EQ, NotificationType));
@@ -1136,44 +1195,113 @@ sap.ui.define([
 					console.log("Data fetched successfully:", data);
 
 					if (data.results && data.results.length > 0) {
-						 //data.results.forEach(function(notification) {
-       //             // Ensure priokx is assigned a default value if empty
-       //             if (!notification.priokx || notification.priokx.trim() === '') {
-       //                 notification.priokx = 'Very High';
-       //             }
-       //         });
+						//data.results.forEach(function(notification) {
+						//             // Ensure priokx is assigned a default value if empty
+						//             if (!notification.priokx || notification.priokx.trim() === '') {
+						//                 notification.priokx = 'Very High';
+						//             }
+						//         });
 
-       //         // Define priority order
-       //         var PriorityOrder = {
-       //             'Very High': 1,
-       //             'High': 2,
-       //             'Medium': 3,
-       //             'Low': 4,
-       //             '': 5 // Treat empty as a lower priority if necessary
-       //         };
+						//         // Define priority order
+						//         var PriorityOrder = {
+						//             'Very High': 1,
+						//             'High': 2,
+						//             'Medium': 3,
+						//             'Low': 4,
+						//             '': 5 // Treat empty as a lower priority if necessary
+						//         };
 
-       //         // Sort data by priority
-       //         data.results.sort(function (a, b) {
-       //             var aPriority = PriorityOrder[a.priokx] || PriorityOrder['Medium'];
-       //             var bPriority = PriorityOrder[b.priokx] || PriorityOrder['Medium'];
-       //             return aPriority - bPriority;
-       //         });
-         data.results.sort(function (a, b) {
-                    if (a.priokx === "Very high" && b.priokx !== "Very high") {
-                        return -1;
-                    }
-                    if (a.priokx !== "Very high" && b.priokx === "Very high") {
-                        return 1;
-                    }
-                    if (!a.priokx && b.priokx) {
-                        return 1;
-                    }
-                    if (a.priokx && !b.priokx) {
-                        return -1;
-                    }
-                    return 0;
-                });
-				let groupedData = {};
+						//         // Sort data by priority
+						//         data.results.sort(function (a, b) {
+						//             var aPriority = PriorityOrder[a.priokx] || PriorityOrder['Medium'];
+						//             var bPriority = PriorityOrder[b.priokx] || PriorityOrder['Medium'];
+						//             return aPriority - bPriority;
+						//         });
+						data.results.sort(function (a, b) {
+							if (a.priokx === "Very high" && b.priokx !== "Very high") {
+								return -1;
+							}
+							if (a.priokx !== "Very high" && b.priokx === "Very high") {
+								return 1;
+							}
+							if (!a.priokx && b.priokx) {
+								return 1;
+							}
+							if (a.priokx && !b.priokx) {
+								return -1;
+							}
+							return 0;
+						});
+						let oNotificationModel = new sap.ui.model.json.JSONModel({
+							results: data.results
+						});
+						let results = data.results;
+						if (data.results.length > 0) {
+							oNotificationModel.setProperty("/qmdat", new Date(data.results[0].qmdat));
+						}
+
+						this.getView().setModel(oNotificationModel, "PushNotificationModel");
+					} else {
+						console.error("No results found for the provided NotificationType.");
+					}
+					//var oNotificationModel = this.getView().getModel("PushNotificationModel");
+					//     if (oNotificationModel) {
+					//         var count = oNotificationModel.getProperty("/results").length;
+					//         oCountControl.setData(count);
+					//     } else {
+					//         console.error("PushNotificationModel not found.");
+					//     }
+
+
+					sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
+				}.bind(this),
+				error: function (error) {
+					sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
+					console.error("Error reading notifications: ", error);
+					if (error.responseText) {
+						try {
+							let errorDetails = JSON.parse(error.responseText);
+							console.error("Error details:", errorDetails);
+						} catch (e) {
+							console.error("Error parsing error response text:", error.responseText);
+						}
+					}
+				}
+
+			});
+
+		},
+		_onreadNotofications: function (oScope, NotificationType) {
+			let afilters = [];
+			var oCountControl = Fragment.byId("idNotificationFragment", "idNotificationCount")
+
+			// if (NotificationType) {
+			// 	afilters.push(new sap.ui.model.Filter("group", sap.ui.model.FilterOperator.EQ, NotificationType));
+			// }
+			sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(true);
+
+			this.getOwnerComponent().getModel("NotificationData").read("/ZP_QU_DG_Notification", {
+				// filters: afilters,
+				success: function (data) {
+					console.log("Data fetched successfully:", data);
+
+					if (data.results && data.results.length > 0) {
+						data.results.sort(function (a, b) {
+							if (a.priokx === "Very high" && b.priokx !== "Very high") {
+								return -1;
+							}
+							if (a.priokx !== "Very high" && b.priokx === "Very high") {
+								return 1;
+							}
+							if (!a.priokx && b.priokx) {
+								return 1;
+							}
+							if (a.priokx && !b.priokx) {
+								return -1;
+							}
+							return 0;
+						});
+						 let groupedData = {};
                 data.results.forEach(notification => {
                     let dateKey = new Date(notification.qmdat).toDateString(); // Group by date
                     if (!groupedData[dateKey]) {
@@ -1191,70 +1319,29 @@ sap.ui.define([
 							results: data.results,
 							 groupedResults: finalResults 
 						});
-
 						this.getView().setModel(oNotificationModel, "PushNotificationModel");
 					} else {
 						console.error("No results found for the provided NotificationType.");
 					}
-                  
+
 					sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
 				}.bind(this),
 				error: function (error) {
 					sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
 					console.error("Error reading notifications: ", error);
 					if (error.responseText) {
-                try {
-                    let errorDetails = JSON.parse(error.responseText);
-                    console.error("Error details:", errorDetails);
-                } catch (e) {
-                    console.error("Error parsing error response text:", error.responseText);
-                }
-            }
+						try {
+							let errorDetails = JSON.parse(error.responseText);
+							console.error("Error details:", errorDetails);
+						} catch (e) {
+							console.error("Error parsing error response text:", error.responseText);
+						}
+					}
 				}
-				
+
 			});
 
 		},
-		// 	_onreadNotofications: function (oScope, NotificationType) {
-		//     let afilters = [];
-
-		//     if (NotificationType) {
-		//         afilters.push(new sap.ui.model.Filter("group", sap.ui.model.FilterOperator.EQ, NotificationType));
-		//     }
-
-		//     sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(true);
-
-		//     this.getOwnerComponent().getModel("NotificationData").read("/ZP_QU_DG_Notification", {
-		//         filters: afilters,
-		//         success: function (data) {
-		//             // Check if data.results contains the expected data
-		//             if (data.results && data.results.length > 0) {
-		//                 // Parse the notifications data
-		//                 let modelData = data.results.map(result => JSON.parse(result.notif_id));
-
-		//                 // Group notifications by date
-		//                 let groupedData = this.groupNotificationsByDate(modelData);
-
-		//                 // Create a model for the grouped notifications
-		//                 let oNotificationModel = new sap.ui.model.json.JSONModel({
-		//                     groups: groupedData
-		//                 });
-
-		//                 // Set the model to the view
-		//                 this.getView().setModel(oNotificationModel, "PushNotificationModel");
-
-		//             } else {
-		//                 console.error("No notifications found.");
-		//             }
-
-		//             sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
-		//         }.bind(this),
-		//         error: function (error) {
-		//             sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
-		//             console.error("Error reading notifications: ", error);
-		//         }
-		//     });
-		// },
 
 		// groupNotificationsByDate: function (notifications) {
 		//     let grouped = {};
@@ -1302,18 +1389,18 @@ sap.ui.define([
 			var sNotiType = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").getSelectedKey(),
 				oList;
 			switch (sNotiType) {
-			case 'All':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
-				this._onSearchInNotifications(this, oEvent, oList)
-				break
-			case 'Read':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
-				this._onSearchInNotifications(this, oEvent, oList)
-				break
-			case 'Unread':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
-				this._onSearchInNotifications(this, oEvent, oList)
-				break
+				case 'All':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
+					this._onSearchInNotifications(this, oEvent, oList)
+					break
+				case 'Read':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
+					this._onSearchInNotifications(this, oEvent, oList)
+					break
+				case 'Unread':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
+					this._onSearchInNotifications(this, oEvent, oList)
+					break
 			}
 		},
 		_onSearchInNotifications: function (oScope, oEvent, oList) {
@@ -1362,33 +1449,33 @@ sap.ui.define([
 			var sNotiType = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").getSelectedKey(),
 				oList;
 			switch (sNotiType) {
-			case 'All':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
-				this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
-				break
-			case 'Read':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
-				this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
-				break
-			case 'Unread':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
-				this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
-				break
+				case 'All':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
+					this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
+					break
+				case 'Read':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
+					this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
+					break
+				case 'Unread':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
+					this._onFilterInNotifications(this, oEvent.getSource().getText(), oList)
+					break
 			}
 			sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationFilterActionSheet").close();
 		},
 		handleSelectionTypeOfNotification: function (oEvent) {
 			var sNotiType = oEvent.getParameters('selectedItem').selectedKey;
 			switch (sNotiType) {
-			case 'All':
-				this._onreadNotofications(this, "");
-				break
-			case 'P':
-				this._onreadNotofications(this, "P");
-				break
-			case 'D':
-				this._onreadNotofications(this, "D");
-				break
+				case 'All':
+					this._onreadNotofications(this, "");
+					break
+				case 'P':
+					this._onreadNotofications(this, "P");
+					break
+				case 'D':
+					this._onreadNotofications(this, "D");
+					break
 			}
 		},
 		onItemClose: function (oEvent) {
@@ -1427,23 +1514,23 @@ sap.ui.define([
 				oDataModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS", true);
 			MessageBox.confirm(
 				"Are you sure you want to delete this notification ?", {
-					title: "Confirmation",
-					onClose: function (action) {
-						if (action === MessageBox.Action.OK) {
-							sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(true);
-							oDataModel.callFunction("/DeleteMessage", {
-								method: "GET",
-								urlParameters: {
-									"MsgId": oSelectedNotification.MsgId,
-									"NotfId": oSelectedNotification.NotfId,
-									"MsgGroupId": oSelectedNotification.MsgGroupId
-								},
-								success: $.proxy(this._onDeleteNotification_Success, this),
-								error: $.proxy(this.onDeleteNotication_Error, this)
-							});
-						}
-					}.bind(this)
-				}
+				title: "Confirmation",
+				onClose: function (action) {
+					if (action === MessageBox.Action.OK) {
+						sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(true);
+						oDataModel.callFunction("/DeleteMessage", {
+							method: "GET",
+							urlParameters: {
+								"MsgId": oSelectedNotification.MsgId,
+								"NotfId": oSelectedNotification.NotfId,
+								"MsgGroupId": oSelectedNotification.MsgGroupId
+							},
+							success: $.proxy(this._onDeleteNotification_Success, this),
+							error: $.proxy(this.onDeleteNotication_Error, this)
+						});
+					}
+				}.bind(this)
+			}
 			);
 		},
 		_onDeleteNotification_Success: function (data) {
@@ -1460,15 +1547,15 @@ sap.ui.define([
 				oDelObj, oPromise, urlParametersoDataModel, aDelEntry,
 				oDataModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZP_QU_DG_NOTIFICATION_CDS", true);;
 			switch (sNotiType) {
-			case 'All':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
-				break
-			case 'Read':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
-				break
-			case 'Unread':
-				oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
-				break
+				case 'All':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_All");
+					break
+				case 'Read':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Read");
+					break
+				case 'Unread':
+					oList = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationList_Unread");
+					break
 			};
 			aSelectedNotifications = oList.getSelectedItems();
 			aSelectedNotifications.forEach(function (para) {
@@ -1482,26 +1569,26 @@ sap.ui.define([
 			if (aSelectedNotifications.length > 0) {
 				MessageBox.confirm(
 					"Are you sure you want to delete all '" + aSelectedNotifications.length + "' selected notification(s) ?", {
-						title: "Confirmation",
-						onClose: function (action) {
-							if (action === MessageBox.Action.OK) {
-								aDelEntry = {
-									"Data": JSON.stringify(aDeleteNoti)
-								}
-								oDataModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZPM_PUSH_NOTIFICATION_SRV");
-								oPromise = this.createEntityValue(oDataModel, "/PushNotificationsSet", aDelEntry); //POST call
-								oPromise.then(function (oData) {
-									var sNotiType = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").getSelectedKey();
-									sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
-									MessageToast.show("Notification(s) deleted");
-									this._onreadNotofications(this, sNotiType);
-								}.bind(this), function () {
-									sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
-									MessageBox.error(JSON.parse(oError.response.body).error.innererror.errordetails[0].message);
-								}.bind(this));
+					title: "Confirmation",
+					onClose: function (action) {
+						if (action === MessageBox.Action.OK) {
+							aDelEntry = {
+								"Data": JSON.stringify(aDeleteNoti)
 							}
-						}.bind(this)
-					}
+							oDataModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZPM_PUSH_NOTIFICATION_SRV");
+							oPromise = this.createEntityValue(oDataModel, "/PushNotificationsSet", aDelEntry); //POST call
+							oPromise.then(function (oData) {
+								var sNotiType = sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").getSelectedKey();
+								sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
+								MessageToast.show("Notification(s) deleted");
+								this._onreadNotofications(this, sNotiType);
+							}.bind(this), function () {
+								sap.ui.core.Fragment.byId("idNotificationFragment", "idNotificationIconTabBar").setBusy(false);
+								MessageBox.error(JSON.parse(oError.response.body).error.innererror.errordetails[0].message);
+							}.bind(this));
+						}
+					}.bind(this)
+				}
 				);
 			} else {
 				MessageBox.information("No notification(s) selected to delete");
@@ -1528,26 +1615,26 @@ sap.ui.define([
 				oView = this.getView(),
 				sIcon = oEvent.getSource().getIcon();
 			switch (sIcon) {
-			case 'sap-icon://decline':
-				oEvent.getSource().setIcon("sap-icon://sys-add");
-				this.byId("idCreateNotiandOrderPopover").close();
-				break
-			case 'sap-icon://sys-add':
-				//oEvent.getSource().setIcon("sap-icon://decline");
-				if (!this._pPopover) {
-					this._pPopover = Fragment.load({
-						id: oView.getId(),
-						name: "com.sap.airdit.zpmcockpit.fragments.CreateNotifiAndOrder",
-						controller: this
-					}).then(function (oPopover) {
-						oView.addDependent(oPopover);
-						return oPopover;
+				case 'sap-icon://decline':
+					oEvent.getSource().setIcon("sap-icon://sys-add");
+					this.byId("idCreateNotiandOrderPopover").close();
+					break
+				case 'sap-icon://sys-add':
+					//oEvent.getSource().setIcon("sap-icon://decline");
+					if (!this._pPopover) {
+						this._pPopover = Fragment.load({
+							id: oView.getId(),
+							name: "com.sap.airdit.zpmcockpit.fragments.CreateNotifiAndOrder",
+							controller: this
+						}).then(function (oPopover) {
+							oView.addDependent(oPopover);
+							return oPopover;
+						});
+					}
+					this._pPopover.then(function (oPopover) {
+						oPopover.openBy(oButton);
 					});
-				}
-				this._pPopover.then(function (oPopover) {
-					oPopover.openBy(oButton);
-				});
-				break
+					break
 			};
 		},
 		onCloseNotifiOrderPopOver: function () {
@@ -1916,36 +2003,36 @@ sap.ui.define([
 
 				this.oModel.create("/DateSearchSet",
 					oPayload, {
-						success: function (data, sResponse) {
-							that.getView().setBusy(false);
-							busyDialog.close();
-							sap.m.MessageBox.success(data.Message);
-							that.userSepecificationCall();
-							that.Datesearch.close();
+					success: function (data, sResponse) {
+						that.getView().setBusy(false);
+						busyDialog.close();
+						sap.m.MessageBox.success(data.Message);
+						that.userSepecificationCall();
+						that.Datesearch.close();
 
-						},
-						error: function (eResponse) {
-							that.getView().setBusy(false);
-							busyDialog.close();
+					},
+					error: function (eResponse) {
+						that.getView().setBusy(false);
+						busyDialog.close();
 
-							var messagesArr = JSON.parse(eResponse.responseText).error.innererror.errordetails;
+						var messagesArr = JSON.parse(eResponse.responseText).error.innererror.errordetails;
 
-							var message1 = [];
-							for (var i = 0; i < messagesArr.length; i++) {
-								if (JSON.parse(eResponse.responseText).error.innererror.errordetails[i].code == "") {
-									var message = JSON.parse(eResponse.responseText).error.innererror.errordetails[i].message;
-									message1.push(message);
-								}
+						var message1 = [];
+						for (var i = 0; i < messagesArr.length; i++) {
+							if (JSON.parse(eResponse.responseText).error.innererror.errordetails[i].code == "") {
+								var message = JSON.parse(eResponse.responseText).error.innererror.errordetails[i].message;
+								message1.push(message);
 							}
-							var strMessage = message1.join(",\r\n");
-							sap.m.MessageBox.error(
-								strMessage
-								// "Sorry, a technical error occurred! Please try again later.", {
-								// 	styleClass: bCompact ? "sapUiSizeCompact" : ""
-								// }
-							);
 						}
-					});
+						var strMessage = message1.join(",\r\n");
+						sap.m.MessageBox.error(
+							strMessage
+							// "Sorry, a technical error occurred! Please try again later.", {
+							// 	styleClass: bCompact ? "sapUiSizeCompact" : ""
+							// }
+						);
+					}
+				});
 			} else {
 				sap.m.MessageBox.information("Please check From days and To days values");
 

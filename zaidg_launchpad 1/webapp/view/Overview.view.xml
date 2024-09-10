@@ -1,0 +1,80 @@
+<mvc:View controllerName="com.airdit.qudg.qudglpad.controller.Overview"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout"
+	xmlns:ndc="sap.ndc"
+	xmlns:chart="sap.suite.ui.commons"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+	xmlns:gt="sap.ui.table"
+	xmlns:w="sap.ui.webc.main">
+	<App id="app">
+		<Page showHeader="false" busy="{settingsModel>/busy}">
+			<content>
+				<!--<core:ComponentContainer async="true" manifest="true" lifecycle="Container" height="100%" name="com.air.zaba"/>-->
+				<tnt:ToolPage id="toolPage" class="customToolPageForDB ">
+					<tnt:header>
+						<tnt:ToolHeader>
+							<OverflowToolbarButton id="sideNavigationToggleButton" icon="sap-icon://menu2" iconDensityAware="false" class="sapUiTinyMarginBegin customNavBtn" type="Transparent" press="onSideNavButtonPress">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</OverflowToolbarButton>
+							<!--<Image src="/../../../../../SAP/PUBLIC/BC/UI2/QUDG/{iconMdl>/imageName}"/>-->
+							<Image src="{imageModel>/path}/images/AIDGBigSize.png" width='50px' height='50px'/>
+							<ToolbarSpacer/>
+							<Title text="{i18n>title}" wrapping="false" id="productName">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="Disappear"/>
+								</layoutData>
+							</Title>
+							<!--<Text text="A Master Data Solution" wrapping="false" id="secondTitle">-->
+							<!--	<layoutData>-->
+							<!--		<OverflowToolbarLayoutData priority="Disappear"/>-->
+							<!--	</layoutData>-->
+							<!--</Text>-->
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://home" press="onNavtoHome" type="Transparent" tooltip="Dashboard"></Button>
+							<Button icon="sap-icon://bell" press="handlePressNotification" type="Transparent" tooltip="Notifications">
+								<customData>
+									<BadgeCustomData key="badge" value="{Notificationcount>/notificationCount}"/>
+								</customData>
+							</Button>
+							<OverflowToolbarButton icon="sap-icon://customer" id="openPopoverButton" type="Transparent" iconDensityAware="false" tooltip="User Profile" text="User Profile" press="onPressUserProfile">
+								<dependents>
+									<core:Fragment fragmentName="com.airdit.qudg.qudglpad.fragments.UserProfile" type="XML"/>
+								</dependents>
+							</OverflowToolbarButton>
+						</tnt:ToolHeader>
+					</tnt:header>
+					<tnt:sideContent >
+						<tnt:SideNavigation id="sideNavigation" expanded="{= ${device>/system/phone} === true ? false : true}" itemSelect="onItemSelect">
+							<tnt:NavigationList items="{DashBoardInitial>/}" id="idNavList">
+								<tnt:NavigationListItem text="{DashBoardInitial>Catdesc}" key="{DashBoardInitial>ui5_component}" expanded="true" icon="{DashBoardInitial>icon}" items="{DashBoardInitial>tiles}">
+									<tnt:NavigationListItem text="{DashBoardInitial>display_title_text}" key="{DashBoardInitial>ui5_component}" icon="{DashBoardInitial>icon}"/>
+								</tnt:NavigationListItem>
+							</tnt:NavigationList>
+						</tnt:SideNavigation>
+					</tnt:sideContent>
+					<tnt:mainContents >
+						<NavContainer  id="pageContainer" navigationFinished="onPageNavigationFinished" afterNavigate="onafterNavigate" navigate="onnavigate">
+							<!-- <pages>
+								<Page id="HOME" title="Home" titleAlignment="Center" height="100%" enableScrolling="true">
+									<content>
+					
+									</content>
+								</Page>
+							</pages> -->
+						</NavContainer>
+					</tnt:mainContents>
+				</tnt:ToolPage>
+			</content>
+		</Page>
+	</App>
+</mvc:View>
