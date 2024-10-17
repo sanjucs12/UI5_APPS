@@ -1,7 +1,7 @@
 {
-    "_version": "1.59.0",
+    "_version": "1.28.0",
     "sap.app": {
-        "id": "metadata",
+        "id": "aidgruleconfig",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -12,17 +12,16 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:basic",
-            "version": "1.12.1",
-            "toolsId": "804d1285-8266-462a-9d8c-d45f1e3d2bb5"
+            "version": "1.15.0",
+            "toolsId": "fa218f03-79a8-4715-aab4-dcc49ff28d70"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZP_QU_DG_PRO_STEP_ROLE_CDS/",
+                "uri": "/sap/opu/odata/sap/ZP_QU_DG_RULECONFIG_BND/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "annotation0",
-                        "mainService_Annotation"
+                        "annotation0"
                     ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
@@ -33,13 +32,6 @@
                 "uri": "annotations/annotation0.xml",
                 "settings": {
                     "localUri": "annotations/annotation0.xml"
-                }
-            },
-            "mainService_Annotation": {
-                "uri": "/destinations/Airdit_HANA/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZP_QU_DG_PRO_STEP_ROLE_CDS_VAN',Version='0001')/$value/",
-                "type": "ODataAnnotation",
-                "settings": {
-                    "localUri": "localService/mainService_Annotation.xml"
                 }
             }
         }
@@ -63,16 +55,10 @@
     "sap.ui5": {
         "flexEnabled": false,
         "dependencies": {
-            "minUI5Version": "1.120.4",
+            "minUI5Version": "1.84.50",
             "libs": {
                 "sap.m": {},
-                "sap.ui.core": {},
-                "sap.f": {},
-                "sap.suite.ui.generic.template": {},
-                "sap.ui.comp": {},
-                "sap.ui.generic.app": {},
-                "sap.ui.table": {},
-                "sap.ushell": {}
+                "sap.ui.core": {}
             }
         },
         "contentDensities": {
@@ -83,14 +69,17 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "metadata.i18n.i18n"
+                    "bundleName": "aidgruleconfig.i18n.i18n"
                 }
             },
             "": {
                 "dataSource": "mainService",
+                "type": "sap.ui.model.odata.v2.ODataModel",
                 "preload": true,
                 "settings": {
-                    "defaultBindingMode": "OneWay"
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
                 }
             }
         },
@@ -106,78 +95,46 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "metadata.view",
+                "viewPath": "aidgruleconfig.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
                 "clearControlAggregation": false
             },
             "routes": [
                 {
-                    "name": "RouteView1",
+                    "name": "RouteRuleHome",
                     "pattern": ":?query:",
                     "target": [
-                        "TargetView1"
+                        "TargetRuleHome"
                     ]
                 },
                 {
-                    "name": "RouteView2",
-                    "pattern": "Details/{processPath}",
+                    "name": "EditRule",
+                    "pattern": "EditRule",
                     "target": [
-                        "TargetView2"
-                    ]
-                },
-                {
-                    "name": "RuleDetails",
-                    "pattern": "RuleDetails/{rule}",
-                    "target": [
-                        "TargetRuleDetails"
-                    ]
-                },
-                {
-                    "name": "FormulaDetails",
-                    "pattern": "FormulaDetails/{rule}/{formula}",
-                    "target": [
-                        "TargetFormulaDetails"
+                        "TargetCreateRuleDetails"
                     ]
                 }
             ],
             "targets": {
-                "TargetView1": {
+                "TargetRuleHome": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "View1",
-                    "viewName": "View1",
-                    "viewLevel": 0
+                    "viewId": "RuleHome",
+                    "viewName": "RuleHome"
                 },
-                "TargetView2": {
+                "TargetCreateRuleDetails": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "view2",
-                    "viewName": "View2",
-                    "viewLevel": 1
-                },
-                "TargetRuleDetails": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "RuleDetailsPage",
-                    "viewName": "RuleDetailsPage",
-                    "viewLevel": 2
-                },
-                "TargetFormulaDetails": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "FormulaDetailsPage",
-                    "viewName": "FormulaDetailsPage",
-                    "viewLevel": 3
+                    "viewId": "CreateRuleDetails",
+                    "viewName": "CreateRuleDetails"
                 }
             }
         },
         "rootView": {
-            "viewName": "metadata.view.App",
+            "viewName": "aidgruleconfig.view.App",
             "type": "XML",
             "async": true,
             "id": "App"

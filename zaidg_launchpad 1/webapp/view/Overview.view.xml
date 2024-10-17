@@ -63,7 +63,7 @@
 						</tnt:SideNavigation>
 					</tnt:sideContent>
 					<tnt:mainContents >
-						<NavContainer  id="pageContainer" navigationFinished="onPageNavigationFinished" afterNavigate="onafterNavigate" navigate="onnavigate">
+						<NavContainer  id="pageContainer" navigationFinished="onPageNavigationFinished" afterNavigate="onafterNavigate" navigate="onnavigate" width="100%">
 							<!-- <pages>
 								<Page id="HOME" title="Home" titleAlignment="Center" height="100%" enableScrolling="true">
 									<content>

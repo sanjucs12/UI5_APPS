@@ -376,82 +376,103 @@ sap.ui.define([
             },
 
             handleEditStepButton: function (oEvent) {
-                var oTable = this.getView().byId('table_steps');
-                var aSelectedItems = oTable.getSelectedItems(); // Get selected items
-                var sPath = aSelectedItems[0].getBindingContext().getPath()
-                //console.log(sPath)
-
+                let oJsonModelData = this.getView().getModel("JSONModel_SelectedStepData").getData()
                 if (!this.oEditStepDialog) {
                     this.loadFragment({
                         name: "metadata.fragments.editStepDialog"
                     }).then(function (oDialog) {
                         this.oEditStepDialog = oDialog;
-                        this.oEditStepDialog.bindElement({
-                            path: sPath,
-                        });
                         this.oEditStepDialog.open();
-                    }.bind(this));
+                        setTimeout(() => {
+                            this.getView().byId('smartField_editStepName').getInnerControls()[0].setValue(oJsonModelData.StepName)
+                            this.getView().byId('smartField_editStepSequence').getInnerControls()[0].setValue(oJsonModelData.Sequence)
+                            this.getView().byId('smartField_editStepType').getInnerControls()[0].setValue(oJsonModelData.StepType)
+                            this.getView().byId('smartField_editMainStep').getInnerControls()[0].setValue(oJsonModelData.MainStep)
+                            this.getView().byId('smartField_editStepPreceedingSeq').getInnerControls()[0].setValue(oJsonModelData.PreceedingSeq)
+
+                        }, 500)
+                    }.bind(this))
                 } else {
-                    this.oEditStepDialog.bindElement({
-                        path: sPath,
-                    });
                     this.oEditStepDialog.open();
+                    setTimeout(() => {
+                        this.getView().byId('smartField_editStepName').getInnerControls()[0].setValue(oJsonModelData.StepName)
+                        this.getView().byId('smartField_editStepSequence').getInnerControls()[0].setValue(oJsonModelData.Sequence)
+                        this.getView().byId('smartField_editStepType').getInnerControls()[0].setValue(oJsonModelData.StepType)
+                        this.getView().byId('smartField_editMainStep').getInnerControls()[0].setValue(oJsonModelData.MainStep)
+                        this.getView().byId('smartField_editStepPreceedingSeq').getInnerControls()[0].setValue(oJsonModelData.PreceedingSeq)
+
+                    }, 500)
+
                 }
             },
 
             handle_editStepDialog_cancelButton: function () {
                 this.oEditStepDialog.close();
+                this.oEditStepDialog.destroy();
+                this.oEditStepDialog = null;
             },
 
 
             handle_editStepDialog_saveButton: function (oEvent) {
                 var oModel = this.getOwnerComponent().getModel();
-                var sPath = oEvent.getSource().getBindingContext().getPath()
-                var sEditedStepName = this.getView().byId("smartField_editStepName").getValue();
-                var sEditedStepType = this.getView().byId("smartField_editStepType").getValue();
 
-                /////_____VALIDATIONS_______/////
-                var oSmartField_EditedStepName = this.getView().byId("smartField_editStepName");
-                var oSmartField_EditedStepType = this.getView().byId("smartField_editStepType")
-                let aSmartFields = [oSmartField_EditedStepName, oSmartField_EditedStepType]
+                var sPath = this.processPath + "/to_DyProcesstostep"
 
-                aSmartFields.forEach((field) => {
-                    if (!field.getValue()) {
-                        field.setValueState("Error");
-                        return;
-                    }
-                })
 
-                var bFormValidation = aSmartFields.every((field) => {
-                    return field.getValue();
+                let sEditedStepName = this.getView().byId('smartField_editStepName').getValue()
+                let sEditedStepSequesce = this.getView().byId('smartField_editStepSequence').getValue()
+                let sEditedStepType = this.getView().byId('smartField_editStepType').getValue()
+                let sEditedStepMain = this.getView().byId('smartField_editMainStep').getValue()
+                let sEditedStepPreceedindSeq = this.getView().byId('smartField_editStepPreceedingSeq').getValue()
+
+                // /////_____VALIDATIONS_______/////
+                // var oSmartField_EditedStepName = this.getView().byId("smartField_editStepName");
+                // var oSmartField_EditedStepType = this.getView().byId("smartField_editStepType")
+                // let aSmartFields = [oSmartField_EditedStepName, oSmartField_EditedStepType]
+
+                // aSmartFields.forEach((field) => {
+                //     if (!field.getValue()) {
+                //         field.setValueState("Error");
+                //         return;
+                //     }
+                // })
+
+                // var bFormValidation = aSmartFields.every((field) => {
+                //     return field.getValue();
+                // });
+                // //console.log(bFormValidation)
+
+
+                // Creating a new Object
+                var oNewEditedStep = {
+                    StepName: sEditedStepName,
+                    StepType: sEditedStepType,
+                    Sequence: sEditedStepSequesce,
+                    MainStep: sEditedStepMain,
+                    PreceedingSeq: sEditedStepPreceedindSeq
+                };;
+                debugger;
+
+                //Updating in the Model
+                oModel.update(sPath, oNewEditedStep, {
+                    success: function (response) {
+                        sap.m.MessageBox.success(JSON.stringify(response))
+                        this.oEditStepDialog.close();  //CLOSING THE DIALOG
+                        this.oEditStepDialog.destroy();  //CLOSING THE DIALOG
+                        this.oEditStepDialog = null;  //CLOSING THE DIALOG
+                        this.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
+                        this.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
+                        this.getProcessData(); //UPDATE THE GRAPH                     
+                    }.bind(this),
+                    error: function (oError) {
+                        sap.m.MessageBox.error(JSON.stringify(oError))
+                        this.oEditStepDialog.close();  //CLOSING THE DIALOG
+                        this.oEditStepDialog.destrop();  //CLOSING THE DIALOG
+                        this.oEditStepDialog = null;
+                    }.bind(this)
                 });
-                //console.log(bFormValidation)
 
-                if (bFormValidation) {
-                    // Creating a new Object
-                    var oNewEditedStep = {
-                        StepName: sEditedStepName,
-                        StepType: sEditedStepType
-                    };
-                    //console.log(oNewEditedStep);
 
-                    //Updating in the Model
-                    oModel.update(sPath, oNewEditedStep, {
-                        success: function (response) {
-                            //console.log(`EDITED: ${response}`);
-                            MessageToast.show("Step details updated")
-                            this.oEditStepDialog.close();  //CLOSING THE DIALOG
-                            this.getView().byId("deleteStepButton").setEnabled(false); //DISABLING BACK THE DELETE BUTTON 
-                            this.getView().byId("editStepButton").setEnabled(false);   //DISABLING BACK THE EDIT BUTTON 
-                            this.getProcessData(); //UPDATE THE GRAPH                     
-                        }.bind(this),
-                        error: function (oError) {
-                            // alert('error')
-                            MessageToast.show("Error: Something went wrong")
-                        }
-                    });
-
-                }
             },
 
             // handleAssaignRoleButton: function () {

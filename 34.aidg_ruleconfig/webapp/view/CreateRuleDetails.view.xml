@@ -1,0 +1,109 @@
+<mvc:View controllerName="aidgruleconfig.controller.CreateRuleDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+    <Page >
+        <content>
+            <VBox>
+                <Panel>
+                    <content>
+                        <Toolbar>
+                            <VBox >
+                                <SegmentedButton selectedKey="satellite" class="sapUiSmallMarginBottom">
+                                    <items>
+                                        <SegmentedButtonItem text="Any" />
+                                        <SegmentedButtonItem text="All" />
+                                    </items>
+                                </SegmentedButton>
+                                <Text text="of the following:"/>
+                            </VBox>
+
+                            <ToolbarSpacer/>
+                            <Button text="Clear All" press="onClearAll"/>
+                        </Toolbar>
+                        <VBox>
+                            <HBox>
+                                <!-- Field Dropdown -->
+                                <Select>
+                                    <items>
+                                        <core:Item key="amount" text="Amount" />
+                                    </items>
+                                </Select>
+
+                                <!-- Operator Dropdown -->
+                                <Select>
+                                    <items>
+                                        <core:Item key="gt" text="is greater than" />
+                                        <core:Item key="eq" text="is equal to" />
+                                        <core:Item key="lt" text="is less than" />
+                                    </items>
+                                </Select>
+
+                                <!-- Value Input -->
+                                <Input placeholder="Enter value" value="1000"/>
+
+                                <!-- Remove Condition Button (Delete Icon) -->
+                                <Button icon="sap-icon://decline" type="Transparent" press="onRemoveCondition"/>
+                            </HBox>
+
+                            <!-- Second Condition Row (Empty) -->
+                            <HBox>
+                                <Select>
+                                    <items>
+                                        <core:Item key="" text="Select item" />
+                                    </items>
+                                </Select>
+                                <Select>
+                                    <items>
+                                        <core:Item key="eq" text="is equal to" />
+                                    </items>
+                                </Select>
+                                <Input placeholder="Select value"/>
+                                <Button icon="sap-icon://decline" type="Transparent" press="onRemoveCondition"/>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Condition Group 2 (New Group with Remove Group Option) -->
+                <Panel>
+                    <content>
+                        <VBox>
+                            <HBox>
+                                <RadioButtonGroup selectedIndex="0">
+                                    <buttons>
+                                        <RadioButton text="All" />
+                                        <RadioButton text="Any" />
+                                    </buttons>
+                                </RadioButtonGroup>
+                                <Button text="Remove Group" type="Transparent" press="onRemoveGroup"/>
+                            </HBox>
+
+                            <!-- Empty Condition Row -->
+                            <HBox>
+                                <Select>
+                                    <items>
+                                        <core:Item key="" text="Select item" />
+                                    </items>
+                                </Select>
+                                <Select>
+                                    <items>
+                                        <core:Item key="eq" text="is equal to" />
+                                    </items>
+                                </Select>
+                                <Input placeholder="Select value"/>
+                                <Button icon="sap-icon://decline" type="Transparent" press="onRemoveCondition"/>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Panel>
+            </VBox>
+
+
+        </content>
+    </Page>
+
+</mvc:View>

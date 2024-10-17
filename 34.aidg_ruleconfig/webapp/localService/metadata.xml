@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+        <edmx:Include Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zp_qu_dg_ruleconfig_srv" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZI_QU_DG_MATFIELDS_VHType" sap:label="Value Help for Mat Flds (Mass Edit)" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FieldName"/>
+                </Key>
+                <Property Name="FieldName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="FieldNameDecs" sap:label="Field Name"/>
+                <Property Name="FieldNameDecs" Type="Edm.String" MaxLength="60" sap:label="Field Name Description" sap:quickinfo="Short Description of Repository Objects"/>
+                <Property Name="TableName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Table Name"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_RULECONFIGType" sap:label="Rule configurations" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RuleId"/>
+                </Key>
+                <Property Name="RuleId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16-byte UID in 32 chars (hexadecimal)"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Char255"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
+                <Property Name="ChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/>
+                <Property Name="Master" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Masters" sap:heading=""/>
+                <Property Name="WfIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False"/>
+                <Property Name="RuleText" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Rule Description"/>
+                <NavigationProperty Name="to_group" Relationship="cds_zp_qu_dg_ruleconfig_srv.assoc_919667D001075DE32FC369D47F0BE1AE" FromRole="FromRole_assoc_919667D001075DE32FC369D47F0BE1AE" ToRole="ToRole_assoc_919667D001075DE32FC369D47F0BE1AE"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_RULE_FIELDType" sap:label="Rule fields and conditions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RuleId"/>
+                    <PropertyRef Name="GroupId"/>
+                </Key>
+                <Property Name="RuleId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16-byte UID in 32 chars (hexadecimal)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Group ID" sap:quickinfo="QUDG: Rule group ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FieldName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name" sap:heading=""/>
+                <Property Name="Conditions" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition" sap:quickinfo="Condition for Rule"/>
+                <Property Name="Value" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Value" sap:quickinfo="Value for Fields"/>
+                <Property Name="Combinator" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Combinator" sap:quickinfo="Combinator for Rule"/>
+                <Property Name="Flag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Character Length 1" sap:quickinfo="Character Field of Length 1"/>
+                <NavigationProperty Name="to_group" Relationship="cds_zp_qu_dg_ruleconfig_srv.assoc_00EE7B5396E643B55A579539A1FB7AF5" FromRole="FromRole_assoc_00EE7B5396E643B55A579539A1FB7AF5" ToRole="ToRole_assoc_00EE7B5396E643B55A579539A1FB7AF5"/>
+                <NavigationProperty Name="to_rule" Relationship="cds_zp_qu_dg_ruleconfig_srv.assoc_BFD26569E25E7345C0127A27735F6716" FromRole="FromRole_assoc_BFD26569E25E7345C0127A27735F6716" ToRole="ToRole_assoc_BFD26569E25E7345C0127A27735F6716"/>
+            </EntityType>
+            <EntityType Name="ZP_QU_DG_RULE_GROUPType" sap:label="Rule group details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RuleId"/>
+                    <PropertyRef Name="GroupId"/>
+                </Key>
+                <Property Name="RuleId" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="UUID" sap:quickinfo="16-byte UID in 32 chars (hexadecimal)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Group ID" sap:quickinfo="QUDG: Rule group ID"/>
+                <Property Name="Combinator" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Combinator" sap:quickinfo="Combinator for Rule"/>
+                <NavigationProperty Name="to_fields" Relationship="cds_zp_qu_dg_ruleconfig_srv.assoc_78F09088580B7118E6D1310ED0470350" FromRole="FromRole_assoc_78F09088580B7118E6D1310ED0470350" ToRole="ToRole_assoc_78F09088580B7118E6D1310ED0470350"/>
+                <NavigationProperty Name="to_rule" Relationship="cds_zp_qu_dg_ruleconfig_srv.assoc_E3304306CAE82EAC11700C25BCC950B4" FromRole="FromRole_assoc_E3304306CAE82EAC11700C25BCC950B4" ToRole="ToRole_assoc_E3304306CAE82EAC11700C25BCC950B4"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Measurement Unit Txt"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+            </EntityType>
+            <Association Name="assoc_919667D001075DE32FC369D47F0BE1AE" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULECONFIGType" Multiplicity="1" Role="FromRole_assoc_919667D001075DE32FC369D47F0BE1AE">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_GROUPType" Multiplicity="*" Role="ToRole_assoc_919667D001075DE32FC369D47F0BE1AE"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_919667D001075DE32FC369D47F0BE1AE">
+                        <PropertyRef Name="RuleId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_919667D001075DE32FC369D47F0BE1AE">
+                        <PropertyRef Name="RuleId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_00EE7B5396E643B55A579539A1FB7AF5" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_FIELDType" Multiplicity="1" Role="FromRole_assoc_00EE7B5396E643B55A579539A1FB7AF5"/>
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_GROUPType" Multiplicity="1" Role="ToRole_assoc_00EE7B5396E643B55A579539A1FB7AF5"/>
+            </Association>
+            <Association Name="assoc_BFD26569E25E7345C0127A27735F6716" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_FIELDType" Multiplicity="1" Role="FromRole_assoc_BFD26569E25E7345C0127A27735F6716"/>
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULECONFIGType" Multiplicity="0..1" Role="ToRole_assoc_BFD26569E25E7345C0127A27735F6716"/>
+            </Association>
+            <Association Name="assoc_78F09088580B7118E6D1310ED0470350" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_GROUPType" Multiplicity="1" Role="FromRole_assoc_78F09088580B7118E6D1310ED0470350">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_FIELDType" Multiplicity="1" Role="ToRole_assoc_78F09088580B7118E6D1310ED0470350"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_78F09088580B7118E6D1310ED0470350">
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="RuleId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_78F09088580B7118E6D1310ED0470350">
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="RuleId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E3304306CAE82EAC11700C25BCC950B4" sap:content-version="1">
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_GROUPType" Multiplicity="1" Role="FromRole_assoc_E3304306CAE82EAC11700C25BCC950B4"/>
+                <End Type="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULECONFIGType" Multiplicity="1" Role="ToRole_assoc_E3304306CAE82EAC11700C25BCC950B4"/>
+            </Association>
+            <EntityContainer Name="cds_zp_qu_dg_ruleconfig_srv_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_zp_qu_dg_ruleconfig_srv.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zp_qu_dg_ruleconfig_srv.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="ZI_QU_DG_MATFIELDS_VH" EntityType="cds_zp_qu_dg_ruleconfig_srv.ZI_QU_DG_MATFIELDS_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_RULECONFIG" EntityType="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULECONFIGType" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_RULE_FIELD" EntityType="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_FIELDType" sap:content-version="1"/>
+                <EntitySet Name="ZP_QU_DG_RULE_GROUP" EntityType="cds_zp_qu_dg_ruleconfig_srv.ZP_QU_DG_RULE_GROUPType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_BFD26569E25E7345C0127A27735F6716" Association="cds_zp_qu_dg_ruleconfig_srv.assoc_BFD26569E25E7345C0127A27735F6716" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_RULE_FIELD" Role="FromRole_assoc_BFD26569E25E7345C0127A27735F6716"/>
+                    <End EntitySet="ZP_QU_DG_RULECONFIG" Role="ToRole_assoc_BFD26569E25E7345C0127A27735F6716"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_78F09088580B7118E6D1310ED0470350" Association="cds_zp_qu_dg_ruleconfig_srv.assoc_78F09088580B7118E6D1310ED0470350" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_RULE_GROUP" Role="FromRole_assoc_78F09088580B7118E6D1310ED0470350"/>
+                    <End EntitySet="ZP_QU_DG_RULE_FIELD" Role="ToRole_assoc_78F09088580B7118E6D1310ED0470350"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_00EE7B5396E643B55A579539A1FB7AF5" Association="cds_zp_qu_dg_ruleconfig_srv.assoc_00EE7B5396E643B55A579539A1FB7AF5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_RULE_FIELD" Role="FromRole_assoc_00EE7B5396E643B55A579539A1FB7AF5"/>
+                    <End EntitySet="ZP_QU_DG_RULE_GROUP" Role="ToRole_assoc_00EE7B5396E643B55A579539A1FB7AF5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_919667D001075DE32FC369D47F0BE1AE" Association="cds_zp_qu_dg_ruleconfig_srv.assoc_919667D001075DE32FC369D47F0BE1AE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_RULECONFIG" Role="FromRole_assoc_919667D001075DE32FC369D47F0BE1AE"/>
+                    <End EntitySet="ZP_QU_DG_RULE_GROUP" Role="ToRole_assoc_919667D001075DE32FC369D47F0BE1AE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E3304306CAE82EAC11700C25BCC950B4" Association="cds_zp_qu_dg_ruleconfig_srv.assoc_E3304306CAE82EAC11700C25BCC950B4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZP_QU_DG_RULE_GROUP" Role="FromRole_assoc_E3304306CAE82EAC11700C25BCC950B4"/>
+                    <End EntitySet="ZP_QU_DG_RULECONFIG" Role="ToRole_assoc_E3304306CAE82EAC11700C25BCC950B4"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.cds_zp_qu_dg_ruleconfig_srv_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.cds_zp_qu_dg_ruleconfig_srv_Entities/ZP_QU_DG_RULECONFIG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_group"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.cds_zp_qu_dg_ruleconfig_srv_Entities/ZP_QU_DG_RULE_GROUP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_fields"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.cds_zp_qu_dg_ruleconfig_srv_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_zp_qu_dg_ruleconfig_srv.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZP_QU_DG_RULECONFIG_BND/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZP_QU_DG_RULECONFIG_BND/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

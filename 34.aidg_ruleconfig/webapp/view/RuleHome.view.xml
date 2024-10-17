@@ -1,0 +1,40 @@
+<mvc:View controllerName="aidgruleconfig.controller.RuleHome"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartTable='sap.ui.comp.smarttable'
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:f="sap.f">
+    <f:DynamicPage>
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Rule Configuration"/>
+                </f:heading>
+                <f:actions>
+                    <Button text="Edit Screen" press="goToEditScreen"></Button>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <sfb:SmartFilterBar id="smartFilterBar" entitySet="ZP_QU_DG_RULECONFIG" enableBasicSearch="false" useToolbar="false"></sfb:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <smartTable:SmartTable id="idSmartTable" entitySet="ZP_QU_DG_RULECONFIG" showRowCount="true" tableType="ResponsiveTable" enableAutoBinding="true" smartFilterId="smartFilterBar" header="RULES">
+                <smartTable:customToolbar >
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer/>
+                        <Button text="Create Rule" press="onPressCreateRule" icon="sap-icon://create"></Button>
+                        <Button text="Delete Rule" press="onPressDeleteRule" icon="sap-icon://delete"></Button>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+                <Table mode="SingleSelectLeft">
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation"></ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -139,14 +139,15 @@ sap.ui.define([
 				async: true,
 				lifecycle: sap.ui.core.ComponentLifecycle.Container,
 				propagateModel: true,
-				height: "100%"
+				height: "100%",
+				width:"100%"
 			});
 			content.attachComponentCreated(this.componentCreated, this);
 			// page.addContent(content);
 			let page = new sap.m.Page(key, {
 				title: text,
 				titleAlignment: sap.m.TitleAlignment.Center,
-				content: [content]
+				content: [content],
 			});
 			page.addEventDelegate({
 				onAfterRendering: function (evt) {

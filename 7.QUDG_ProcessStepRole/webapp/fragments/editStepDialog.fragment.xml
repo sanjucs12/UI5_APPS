@@ -5,18 +5,26 @@
 
     <Dialog id="dialog_editStep" title="Edit Step Details">
         <content>
-            <VBox class="sapUiSmallMargin">
-                <smartForm:SmartForm editable="true">
-                    <smartForm:Group>
-                        <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_editStepName" value="{StepName}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
-                        </smartForm:GroupElement>
-                        <smartForm:GroupElement>
-                            <smartField:SmartField id="smartField_editStepType" value="{StepType}" entitySet="ZP_QU_DG_STEPS" change="handleInputChange"></smartField:SmartField>
-                        </smartForm:GroupElement>
-                    </smartForm:Group>
-                </smartForm:SmartForm>
-            </VBox>
+
+            <smartForm:SmartForm editable="true" id="idSmartForm-EditStep">
+                <smartForm:Group>
+                    <smartForm:GroupElement>
+                        <smartField:SmartField id="smartField_editStepName" value="{StepName}" entitySet="ZP_QU_DG_DY_STEP_CONFIG"></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement>
+                        <smartField:SmartField id="smartField_editStepSequence" value="{Sequence}" entitySet="ZP_QU_DG_DY_STEP_CONFIG"></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement>
+                        <smartField:SmartField id="smartField_editStepType" value="{StepType}" entitySet="ZP_QU_DG_DY_STEP_CONFIG" ></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement>
+                        <smartField:SmartField id="smartField_editMainStep" value="{MainStep}" entitySet="ZP_QU_DG_DY_STEP_CONFIG" ></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement>
+                        <smartField:SmartField id="smartField_editStepPreceedingSeq" value="{PreceedingSeq}" entitySet="ZP_QU_DG_DY_STEP_CONFIG" ></smartField:SmartField>
+                    </smartForm:GroupElement>
+                </smartForm:Group>
+            </smartForm:SmartForm>
         </content>
         <footer>
             <Toolbar >

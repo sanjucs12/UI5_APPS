@@ -14,8 +14,8 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: Airdit_HANA_R
-          url: http://103.194.234.38:8010
+          destination: AIRDIT_HANA_S4P
+          url: http://airdithanaprd.airditsoftware.com:8010
         app:
           name: ZQUDGWFCONF
           description: QUDG Workflow Configuration

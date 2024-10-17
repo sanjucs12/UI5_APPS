@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartForm="sap.ui.comp.smartform">
+    <Dialog title="Create Rule" class="sapUiSmallMargin">
+        <content>
+            <smartForm:SmartForm editable="true" id="idSmartForm_CreateRule" validationMode="Async">
+                <smartForm:Group>
+                    <smartForm:GroupElement >
+                        <smartField:SmartField value="{Master}" mandatory="true"></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement >
+                        <smartField:SmartField value="{RuleText}" mandatory="true"></smartField:SmartField>
+                    </smartForm:GroupElement>
+                    <smartForm:GroupElement >
+                        <smartField:SmartField value="{WfIndicator}"></smartField:SmartField>
+                    </smartForm:GroupElement>
+                </smartForm:Group>
+            </smartForm:SmartForm>
+        </content>
+        <buttons>
+            <Button text="Create" press="_onPressCreateBtn" type="Emphasized"/>
+            <Button text="Cancel" press="_onPressCloseBtn"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
