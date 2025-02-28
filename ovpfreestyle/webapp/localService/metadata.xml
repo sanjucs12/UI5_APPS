@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_QUDG_DEADLINE_MONITOR_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZC_QUDG_DEADLINE_MONITORType" sap:label="QUDG Deadline monitiring report query" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:label="WorkItem ID" sap:quickinfo="Work item ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:label="Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:aggregation-role="dimension" sap:label="Request ID" sap:quickinfo="Instance Ident. in BOR Compat. Persistent Object References" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Material Type" sap:quickinfo="Material type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Attachments exist" sap:quickinfo="Indicator Denoting that At Least One Note Exists for the WI" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Notif. of completion" sap:quickinfo="Flag: Whether a Notification of Completion Is To Be Sent" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="PENDING_DAYS" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Request_id_count" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension" sap:label="Callback Funct. Mod." sap:quickinfo="Callback Function Module for Work Item Feedback" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:text="WiCd_T" sap:label="Creation Date" sap:quickinfo="Creation Date of Work Item" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="WiCd_T" Type="Edm.String" MaxLength="10" sap:label="Creation Date (Description)" sap:quickinfo="Creation Date of Work Item" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:label="Workflow" sap:quickinfo="Superordinate Work Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:aggregation-role="dimension" sap:label="WorkItem Creator" sap:quickinfo="Creator of a work item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:label="Requester" sap:quickinfo="User Who Created the Work Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCt" Type="Edm.Time" Precision="0" sap:aggregation-role="dimension" sap:text="WiCt_T" sap:label="Creation Time" sap:quickinfo="Creation Time of Work Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" MaxLength="10" sap:label="Creation Time (Description)" sap:quickinfo="Creation Time of Work Item" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Language" sap:quickinfo="Language for Texts of a Work Item" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WiPrio" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Priority" sap:quickinfo="Priority of a Work Item" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Rejectable" sap:quickinfo="Indicator Denoting that Work Item Can Be Rejected by Agent" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:aggregation-role="dimension" sap:label="Task" sap:quickinfo="Task ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:label="Work Item Status" sap:quickinfo="Processing Status of a Work Item" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:aggregation-role="dimension" sap:label="WorkItem Text" sap:quickinfo="Work item text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="WorkItem Type" sap:quickinfo="Work item type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WorkItem_count" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="WorkItem_count_F" sap:updatable="false" sap:label="Work Item Count" sap:creatable="false"/>
+                <Property Name="WorkItem_count_F" Type="Edm.String" MaxLength="60" sap:label="Work Item Count (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="PendingDaysForAnalytics" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="PendingDaysForAnalytics_F" sap:updatable="false" sap:label="PENDINGDAYSFORANALYTICS" sap:creatable="false"/>
+                <Property Name="PendingDaysForAnalytics_F" Type="Edm.String" MaxLength="60" sap:label="PENDINGDAYSFORANALYTICS (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="PendingDaysCalculatedAvg" Type="Edm.Decimal" Precision="42" Scale="7" sap:aggregation-role="measure" sap:filterable="false" sap:text="PendingDaysCalculatedAvg_F" sap:updatable="false" sap:label="Awaiting Days" sap:creatable="false"/>
+                <Property Name="PendingDaysCalculatedAvg_F" Type="Edm.String" MaxLength="60" sap:label="Awaiting Days (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="NoteExist" sap:label="Attachments exist (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NoteExist_ID"/>
+                </Key>
+                <Property Name="NoteExist_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="NoteExistText" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExistText" Type="Edm.String" sap:label="Attachments exist (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="NoteExistResult" sap:label="Attachments exist (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NoteExist"/>
+                </Key>
+                <Property Name="NoteExist" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Notify" sap:label="Notif. of completion (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Notify_ID"/>
+                </Key>
+                <Property Name="Notify_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="NotifyText" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NotifyText" Type="Edm.String" sap:label="Notif. of completion (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="NotifyResult" sap:label="Notif. of completion (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Notify"/>
+                </Key>
+                <Property Name="Notify" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="reqtyp" sap:label="Request Type (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="reqtyp_ID"/>
+                </Key>
+                <Property Name="reqtyp_ID" Type="Edm.String" Nullable="false" MaxLength="20" sap:text="reqtypText" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtypText" Type="Edm.String" sap:label="Request Type (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="reqtypResult" sap:label="Request Type (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="reqtyp"/>
+                </Key>
+                <Property Name="reqtyp" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiLang" sap:label="Language (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiLang_ID"/>
+                </Key>
+                <Property Name="WiLang_ID" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="WiLangText" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiLangText" Type="Edm.String" sap:label="Language (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiLangResult" sap:label="Language (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiLang"/>
+                </Key>
+                <Property Name="WiLang" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiPrio" sap:label="Priority (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiPrio_ID"/>
+                </Key>
+                <Property Name="WiPrio_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="WiPrioText" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrioText" Type="Edm.String" sap:label="Priority (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiPrioResult" sap:label="Priority (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiPrio"/>
+                </Key>
+                <Property Name="WiPrio" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiReject" sap:label="Rejectable (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiReject_ID"/>
+                </Key>
+                <Property Name="WiReject_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="WiRejectText" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRejectText" Type="Edm.String" sap:label="Rejectable (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiRejectResult" sap:label="Rejectable (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiReject"/>
+                </Key>
+                <Property Name="WiReject" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiStat" sap:label="Work Item Status (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiStat_ID"/>
+                </Key>
+                <Property Name="WiStat_ID" Type="Edm.String" Nullable="false" MaxLength="12" sap:text="WiStatText" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStatText" Type="Edm.String" sap:label="Work Item Status (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiStatResult" sap:label="Work Item Status (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiStat"/>
+                </Key>
+                <Property Name="WiStat" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiType" Type="Edm.String" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiType" sap:label="WorkItem Type (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiType_ID"/>
+                </Key>
+                <Property Name="WiType_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="WiTypeText" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiTypeText" Type="Edm.String" sap:label="WorkItem Type (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WiTypeResult" sap:label="WorkItem Type (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiType"/>
+                </Key>
+                <Property Name="WiType" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="WorkItem Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiId" Type="Edm.String" MaxLength="12" sap:label="WorkItem ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="instid" Type="Edm.String" MaxLength="70" sap:label="Request ID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NoteExist" Type="Edm.String" MaxLength="1" sap:label="Attachments exist" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Notify" Type="Edm.String" MaxLength="1" sap:label="Notif. of completion" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PENDING_DAYS" Type="Edm.String" MaxLength="6" sap:label="PENDING_DAYS" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="reqtyp" Type="Edm.String" MaxLength="20" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Request_id_count" Type="Edm.String" MaxLength="10" sap:label="Request ID Count" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCbfb" Type="Edm.String" MaxLength="30" sap:label="Callback Funct. Mod." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="10" sap:text="WiCd_T" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCd_T" Type="Edm.String" sap:label="Creation Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiChckwi" Type="Edm.String" MaxLength="12" sap:label="Workflow" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCreator" Type="Edm.String" MaxLength="90" sap:label="WorkItem Creator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCruser" Type="Edm.String" MaxLength="12" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt" Type="Edm.String" MaxLength="6" sap:text="WiCt_T" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiCt_T" Type="Edm.String" sap:label="Creation Time (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiLang" Type="Edm.String" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiReject" Type="Edm.String" MaxLength="1" sap:label="Rejectable" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiRhTask" Type="Edm.String" MaxLength="14" sap:label="Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiStat" Type="Edm.String" MaxLength="12" sap:label="Work Item Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WiText" Type="Edm.String" MaxLength="120" sap:label="WorkItem Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZC_QUDG_DEADLINE_MONITOR_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_QUDG_DEADLINE_MONITOR" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="NoteExist" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.NoteExist" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="NoteExistResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.NoteExistResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Notify" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.Notify" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="NotifyResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.NotifyResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="reqtyp" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.reqtyp" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="reqtypResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.reqtypResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiLang" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiLang" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiLangResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiLangResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiPrio" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiPrio" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiPrioResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiPrioResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiReject" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiReject" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiRejectResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiRejectResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiStat" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiStat" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiStatResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiStatResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiType" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WiTypeResults" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.WiTypeResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZC_QUDG_DEADLINE_MONITOR_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/NoteExist" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Attachments exist ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="NoteExist"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="NoteExist"/>
+                                    <PropertyValue Property="ValueListProperty" String="NoteExist_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NoteExistText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/Notify" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Notif. of completion ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Notify"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Notify"/>
+                                    <PropertyValue Property="ValueListProperty" String="Notify_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NotifyText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/reqtyp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Request Type ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="reqtyp"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="reqtyp"/>
+                                    <PropertyValue Property="ValueListProperty" String="reqtyp_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="reqtypText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/WiLang" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="WiLang"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WiLang"/>
+                                    <PropertyValue Property="ValueListProperty" String="WiLang_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WiLangText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/WiPrio" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Priority ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="WiPrio"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WiPrio"/>
+                                    <PropertyValue Property="ValueListProperty" String="WiPrio_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WiPrioText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/WiReject" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Rejectable ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="WiReject"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WiReject"/>
+                                    <PropertyValue Property="ValueListProperty" String="WiReject_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WiRejectText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/WiStat" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Work Item Status ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="WiStat"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WiStat"/>
+                                    <PropertyValue Property="ValueListProperty" String="WiStat_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WiStatText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_QUDG_DEADLINE_MONITOR_CDS.ZC_QUDG_DEADLINE_MONITORType/WiType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="WorkItem Type ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="WiType"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WiType"/>
+                                    <PropertyValue Property="ValueListProperty" String="WiType_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WiTypeText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZC_QUDG_DEADLINE_MONITOR_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZC_QUDG_DEADLINE_MONITOR_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

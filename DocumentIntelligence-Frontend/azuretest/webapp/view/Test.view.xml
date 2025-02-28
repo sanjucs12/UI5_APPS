@@ -1,0 +1,11 @@
+<mvc:View controllerName="azuretest.controller.Test"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+     xmlns:u="sap.ui.unified">
+    <Page id="page" title="{i18n>title}">
+        <content>
+                <u:FileUploader id="idCompanyProfile" name="Company Profile"  tooltip="Add File" change="handleFileSelection" style="Emphasized" fileType="pdf" placeholder="Choose a file" sendXHR="true" useMultipart="false"/>  
+
+        </content>
+    </Page>
+</mvc:View>

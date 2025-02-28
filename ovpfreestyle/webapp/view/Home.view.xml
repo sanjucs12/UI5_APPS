@@ -1,0 +1,10 @@
+<mvc:View controllerName="ovpfreestyle.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:card="sap.ui.integration.widgets">
+    <Page title="Integration Card Example" id="page" showHeader="false">
+        <content>
+            <card:Card manifest="cards/manifest.json" width="400px" height="300px" />
+        </content>
+    </Page>
+</mvc:View>

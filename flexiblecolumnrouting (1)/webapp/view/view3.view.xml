@@ -1,0 +1,29 @@
+<mvc:View controllerName="flexiblecolumnrouting.controller.view3"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic">
+    <semantic:SemanticPage>
+        <semantic:titleHeading>
+            <Title text="Second Page"/>
+        </semantic:titleHeading>
+
+
+        <semantic:headerContent>
+
+
+        </semantic:headerContent>
+
+        <semantic:content>
+
+        </semantic:content>
+        <semantic:closeAction>
+            <semantic:CloseAction  press="onClosePage"/>
+        </semantic:closeAction>
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction  visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction  visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+    </semantic:SemanticPage>
+</mvc:View>

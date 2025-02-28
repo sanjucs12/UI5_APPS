@@ -1,5 +1,0 @@
-.myDisabledNode {
-    opacity: 0.5;
-    pointer-events: none; /* Prevents all mouse interactions */
-    /* cursor: not-allowed; */
-}

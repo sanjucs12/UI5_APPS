@@ -1,0 +1,23 @@
+{
+  "name": "documentintelligence",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8.1.1",
+    "express": "^4",
+    "mongodb": "^6.8.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.17"
+  },
+  "scripts": {
+    "start": "cds-serve --port 5000",
+    "watch-capdocintelligence": "cds watch --open capdocintelligence/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-docintelligence": "cds watch --open docintelligence/webapp/index.html?sap-ui-xx-viewCache=false"
+  }
+}

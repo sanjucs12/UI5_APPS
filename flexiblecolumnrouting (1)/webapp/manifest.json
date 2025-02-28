@@ -1,0 +1,136 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "flexiblecolumnrouting",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.4",
+      "toolsId": "82866b45-59db-4a6b-bb7f-9dd2a201d959"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.130.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "flexiblecolumnrouting.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "flexiblecolumnrouting.view",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "layout",
+        "clearControlAggregation": false,
+        "bypassed": {
+					"target": "notFound"
+				}
+      },
+      "routes": [
+        {
+          "name": "Routeview1",
+          "pattern": ":?query:",
+          "target": [
+            "Targetview1"
+          ]
+        },
+        {
+          "name": "Routeview2",
+          "pattern": "Routeview2",
+          "target": [
+            "Targetview1",
+            "Targetview2"
+          ]
+        },
+        {
+          "name": "Routeview3",
+          "pattern": "Routeview3",
+          "target": [
+            "Targetview1",
+            "Targetview3"
+          ]
+        }
+      ],
+      "targets": {
+        "Targetview1": {
+          "viewId": "view1",
+          "viewName": "view1",
+          "viewLevel": 1,
+          "clearControlAggregation": true
+        },
+        "Targetview2": {
+          "controlAggregation": "midColumnPages",
+          "viewId": "view2",
+          "viewName": "view2",
+          "viewLevel": 2,
+          "clearControlAggregation": true
+        },
+        "Targetview3": {
+          "controlAggregation": "midColumnPages",
+          "viewId": "view3",
+          "viewName": "view3",
+          "viewLevel": 2,
+          "clearControlAggregation": true
+        },
+        "notFound": {
+					"viewName": "notFound",
+					"viewId": "notFound",
+          "clearControlAggregation": true
+				}
+      }
+    },
+    "rootView": {
+      "viewName": "flexiblecolumnrouting.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<mvc:View controllerName="flexiblecolumnrouting.controller.view1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic">
+    <semantic:SemanticPage>
+        <semantic:titleHeading>
+            <Title text="Home Page"/>
+        </semantic:titleHeading>
+       
+
+        <semantic:headerContent>
+            
+
+        </semantic:headerContent>
+
+        <semantic:content>
+           
+        </semantic:content>
+        <semantic:titleMainAction >
+            <semantic:TitleMainAction text="next Screen" press="goToView2"/>
+        </semantic:titleMainAction>
+    </semantic:SemanticPage>
+</mvc:View>

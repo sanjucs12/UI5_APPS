@@ -1,0 +1,7 @@
+<mvc:View controllerName="flexiblecolumnrouting.controller.notFound"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page id="page" showHeader="false">
+		<IllustratedMessage title="Target Not Found" illustrationType="sapIllus-PageNotFound" enableDefaultTitleAndDescription="false"/>
+	</Page>
+</mvc:View>
